@@ -2,7 +2,9 @@
 
 # Mailtrap
 
-Welcome to your new gem! In this directory, you'll find the files you need to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mailtrap`. To experiment with that code, run `bin/console` for an interactive prompt.
+This Ruby gem offers integration with the [official API](https://api-docs.mailtrap.io/) for [Mailtrap](https://mailtrap.io).
+
+Quickly add email sending functionality to your Ruby application with Mailtrap.
 
 ## Installation
 
@@ -23,6 +25,7 @@ Or install it yourself as:
 ## Usage
 
 ### Minimal
+
 ```ruby
 require 'mailtrap'
 
@@ -42,6 +45,7 @@ client.send(mail)
 ```
 
 ### Full
+
 ```ruby
 require 'mailtrap'
 require 'base64'
