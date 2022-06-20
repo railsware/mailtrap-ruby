@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mailtrap (1.0.0)
+    mailtrap (1.0.1)
 
 GEM
   remote: https://rubygems.org/
