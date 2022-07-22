@@ -5,3 +5,8 @@
 ## [1.0.1] - 2022-06-20
 
 - Update packed files list
+
+
+## [1.1.0] - 2022-07-22
+
+- Add ActionMailer support

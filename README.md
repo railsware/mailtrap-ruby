@@ -87,6 +87,29 @@ client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
+### ActionMailer
+
+This gem also adds ActionMailer delivery method. To configure it, add following to your ActionMailer configuration (in Rails projects located in `config/$ENVIRONMENT.rb`):
+```ruby
+config.action_mailer.delivery_method = :mailtrap
+config.action_mailer.mailtrap_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY'),
+  api_host: ENV.fetch('MAILTRAP_API_HOST'),
+  api_port: ENV.fetch('MAILTRAP_API_PORT')
+}
+```
+And continue to use ActionMailer as usual.
+
+To add `category` and `custom_variables`, add them to the mail generation:
+```ruby
+mail(
+  to: 'your@email.com',
+  subject: 'You are awesome!',
+  category: 'Test category',
+  custom_variables: { test_variable: 'abc' }
+)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

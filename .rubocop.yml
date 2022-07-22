@@ -13,6 +13,9 @@ Naming/MethodParameterName:
 RSpec/MultipleExpectations:
   Max: 4
 
+RSpec/NestedGroups:
+  Max: 4
+
 Style/Documentation:
   Enabled: false
 

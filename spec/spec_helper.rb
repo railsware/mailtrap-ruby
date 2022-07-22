@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'mail'
 require 'mailtrap'
 require 'rspec/its'
 require 'vcr'
