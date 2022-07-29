@@ -93,9 +93,7 @@ This gem also adds ActionMailer delivery method. To configure it, add following 
 ```ruby
 config.action_mailer.delivery_method = :mailtrap
 config.action_mailer.mailtrap_settings = {
-  api_key: ENV.fetch('MAILTRAP_API_KEY'),
-  api_host: ENV.fetch('MAILTRAP_API_HOST'),
-  api_port: ENV.fetch('MAILTRAP_API_PORT')
+  api_key: ENV.fetch('MAILTRAP_API_KEY')
 }
 ```
 And continue to use ActionMailer as usual.

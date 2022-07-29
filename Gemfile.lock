@@ -2,8 +2,6 @@ PATH
   remote: .
   specs:
     mailtrap (1.1.0)
-      mail
-      net-smtp
 
 GEM
   remote: https://rubygems.org/
@@ -68,7 +66,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mail
   mailtrap!
+  net-smtp
   rake (~> 13.0)
   rspec (~> 3.0)
   rspec-its
