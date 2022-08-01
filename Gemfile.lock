@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mailtrap (1.0.1)
+    mailtrap (1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -13,6 +13,10 @@ GEM
       rexml
     diff-lcs (1.5.0)
     hashdiff (1.0.1)
+    mail (2.7.1)
+      mini_mime (>= 0.1.1)
+    mini_mime (1.1.2)
+    net-smtp (0.1.0)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -62,7 +66,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mail
   mailtrap!
+  net-smtp
   rake (~> 13.0)
   rspec (~> 3.0)
   rspec-its

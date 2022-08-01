@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'mail'
+gem 'net-smtp'
 gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.0'
 gem 'rspec-its'
