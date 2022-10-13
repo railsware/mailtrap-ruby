@@ -61,5 +61,15 @@ RSpec.describe Mailtrap::Sending::Client do
 
       it { expect { send }.to raise_error(ArgumentError, 'should be Mailtrap::Sending::Mail object') }
     end
+
+    context 'with an alternative host' do
+      let(:client) do
+        described_class.new(api_key: api_key, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
+      end
+
+      it 'sending is successful' do
+        expect(send).to eq({ message_ids: ['867394cd-4b43-11ed-af38-0a58a9feac02'], success: true })
+      end
+    end
   end
 end

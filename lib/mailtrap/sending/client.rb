@@ -30,7 +30,7 @@ module Mailtrap
       private
 
       def http_client
-        @http_client ||= Net::HTTP.new(API_HOST, API_PORT).tap { |client| client.use_ssl = true }
+        @http_client ||= Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
       end
 
       def post_request(path, body)
