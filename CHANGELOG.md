@@ -10,3 +10,7 @@
 ## [1.1.0] - 2022-07-22
 
 - Add ActionMailer support
+
+## [1.1.1] - 2022-10-14
+
+- Fix custom port and host usage
