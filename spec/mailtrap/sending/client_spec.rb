@@ -59,7 +59,7 @@ RSpec.describe Mailtrap::Sending::Client do
     context 'when mail object is not a Mailtrap::Sending::Mail' do
       let(:mail) { 'it-a-string' }
 
-      it { expect { send }.to raise_error(ArgumentError, 'should be Mailtrap::Sending::Mail object') }
+      it { expect { send }.to raise_error(ArgumentError, 'should be Mailtrap::Sending::Base object') }
     end
 
     context 'with an alternative host' do
