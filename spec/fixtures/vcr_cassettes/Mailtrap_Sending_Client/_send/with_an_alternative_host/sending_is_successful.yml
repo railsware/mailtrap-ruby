@@ -5,10 +5,7 @@ http_interactions:
     uri: https://alternative.host.mailtrap.io:8080/api/send
     body:
       encoding: UTF-8
-      string: '{"to":[{"email":"mailtrap@railsware.com"}],"from":{"email":"mailtrap@mailtrap.io","name":"Mailtrap
-        Test"},"cc":[],"bcc":[],"subject":"You are awesome!","text":"Congrats for
-        sending test email with Mailtrap!","attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"category":"Integration
-        Test","custom_variables":{}}'
+      string: '{"to":[{"email":"mailtrap@railsware.com"}],"from":{"email":"mailtrap@mailtrap.io","name":"Mailtrap Test"},"cc":[],"bcc":[],"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"custom_variables":{},"subject":"You are awesome!","text":"Congrats for sending test email with Mailtrap!","category":"Integration Test"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3

@@ -99,11 +99,19 @@ RSpec.describe Mailtrap::Sending::Mail do
     let(:headers) { { 'Category-Header' => 'some_category' } }
     let(:category) { 'another_category' }
     let(:expected_json) do
-      '{"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
-        '"from":{"email":"test@example.com","name":"Mailtrap User"},"cc":[{"email":"cc@example.com"}],' \
-        '"bcc":[{"email":"bcc@example.com"}],"subject":"This is subject","html":"<div>Test HTML</div>",' \
-        '"text":"This is text","attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
-        '"headers":{"Category-Header":"some_category"},"category":"another_category","custom_variables":{}}'
+      '{' \
+        '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
+        '"from":{"email":"test@example.com","name":"Mailtrap User"},' \
+        '"cc":[{"email":"cc@example.com"}],' \
+        '"bcc":[{"email":"bcc@example.com"}],' \
+        '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
+        '"headers":{"Category-Header":"some_category"},' \
+        '"custom_variables":{},' \
+        '"subject":"This is subject",' \
+        '"html":"<div>Test HTML</div>",' \
+        '"text":"This is text",'\
+        '"category":"another_category"' \
+        '}'
     end
 
     it 'encodes as_json as string' do
