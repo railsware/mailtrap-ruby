@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://send.api.mailtrap.io/api/send
+    body:
+      encoding: UTF-8
+      string: '{"to":[{"email":"mailtrap@railsware.com"}],"from":{"email":"mailtrap@mailtrap.io","name":"Mailtrap
+        Test"},"cc":[],"bcc":[],"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"custom_variables":{},"template_uuid":"aeb1ec59-2737-4a1d-9c95-0baf3be49d74","template_variables":{"user_name":"John
+        Doe"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer incorrect-api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 13 Dec 2022 21:23:26 GMT
+      Content-Length:
+      - '27'
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Unauthorized"]}'
+  recorded_at: Tue, 13 Dec 2022 21:23:26 GMT
+recorded_with: VCR 6.1.0
