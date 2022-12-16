@@ -6,12 +6,12 @@ module Mailtrap
   module Sending
     module Convert
       class << self
-        def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+        def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity
           Mailtrap::Sending::Mail.new(
-            from: prepare_address(message['from']&.address_list&.addresses&.first),
-            to: prepare_addresses(message['to']&.address_list&.addresses),
-            cc: prepare_addresses(message['cc']&.address_list&.addresses),
-            bcc: prepare_addresses(message['bcc']&.address_list&.addresses),
+            from: prepare_address(address_list(message['from'])&.addresses&.first),
+            to: prepare_addresses(address_list(message['to'])&.addresses),
+            cc: prepare_addresses(address_list(message['cc'])&.addresses),
+            bcc: prepare_addresses(address_list(message['bcc'])&.addresses),
             subject: message.subject,
             text: prepare_text_part(message),
             html: prepare_html_part(message),
@@ -34,6 +34,10 @@ module Mailtrap
           customvariables
           contenttype
         ].freeze
+
+        def address_list(header)
+          header.respond_to?(:element) ? header.element : header&.address_list
+        end
 
         def prepare_addresses(addresses)
           Array(addresses).map { |address| prepare_address(address) }
@@ -61,7 +65,7 @@ module Mailtrap
               type: attachment.mime_type,
               filename: attachment.filename,
               disposition: attachment.header[:content_disposition]&.disposition_type,
-              content_id: attachment.header[:content_id]&.field&.content_id
+              content_id: attachment&.cid
             }.compact
           end
         end
