@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'sending/attachment'
+require_relative 'sending/base'
 require_relative 'sending/client'
 require_relative 'sending/convert'
 require_relative 'sending/mail'
+require_relative 'sending/mail_from_template'
 
 module Mailtrap
   module Sending

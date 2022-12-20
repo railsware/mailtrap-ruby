@@ -2,8 +2,8 @@
 
 module Mailtrap
   module Sending
-    class Mail < Base
-      attr_accessor :subject, :text, :html, :category
+    class MailFromTemplate < Base
+      attr_accessor :template_uuid, :template_variables
 
       def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
         from: nil,
@@ -13,10 +13,8 @@ module Mailtrap
         attachments: [],
         headers: {},
         custom_variables: {},
-        subject: nil,
-        text: nil,
-        html: nil,
-        category: nil
+        template_uuid: nil,
+        template_variables: {}
       )
         super(
           from: from,
@@ -27,19 +25,15 @@ module Mailtrap
           headers: headers,
           custom_variables: custom_variables
         )
-        @subject = subject
-        @text = text
-        @html = html
-        @category = category
+        @template_uuid = template_uuid
+        @template_variables = template_variables
       end
 
       def as_json
         super.merge(
           {
-            'subject' => subject,
-            'html' => html,
-            'text' => text,
-            'category' => category
+            'template_uuid' => template_uuid,
+            'template_variables' => template_variables
           }
         ).compact
       end

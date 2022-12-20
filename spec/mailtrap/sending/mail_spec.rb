@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './shared'
+
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Mailtrap::Sending::Mail do
   subject(:mail) do
@@ -29,6 +31,28 @@ RSpec.describe Mailtrap::Sending::Mail do
   let(:headers) { {} }
   let(:category) { nil }
   let(:custom_variables) { {} }
+
+  it_behaves_like 'with attachments'
+
+  specify do
+    mail.subject = 'Hello World'
+    expect(mail.subject).to eq('Hello World')
+  end
+
+  specify do
+    mail.text = "LINE1\nLINE2"
+    expect(mail.text).to eq("LINE1\nLINE2")
+  end
+
+  specify do
+    mail.html = '<h2>Hello World</h2>'
+    expect(mail.html).to eq('<h2>Hello World</h2>')
+  end
+
+  specify do
+    mail.category = 'My Category'
+    expect(mail.category).to eq('My Category')
+  end
 
   describe '#as_json' do
     subject(:as_json) { mail.as_json }
@@ -99,43 +123,23 @@ RSpec.describe Mailtrap::Sending::Mail do
     let(:headers) { { 'Category-Header' => 'some_category' } }
     let(:category) { 'another_category' }
     let(:expected_json) do
-      '{"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
-        '"from":{"email":"test@example.com","name":"Mailtrap User"},"cc":[{"email":"cc@example.com"}],' \
-        '"bcc":[{"email":"bcc@example.com"}],"subject":"This is subject","html":"<div>Test HTML</div>",' \
-        '"text":"This is text","attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
-        '"headers":{"Category-Header":"some_category"},"category":"another_category","custom_variables":{}}'
+      '{' \
+        '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
+        '"from":{"email":"test@example.com","name":"Mailtrap User"},' \
+        '"cc":[{"email":"cc@example.com"}],' \
+        '"bcc":[{"email":"bcc@example.com"}],' \
+        '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
+        '"headers":{"Category-Header":"some_category"},' \
+        '"custom_variables":{},' \
+        '"subject":"This is subject",' \
+        '"html":"<div>Test HTML</div>",' \
+        '"text":"This is text",'\
+        '"category":"another_category"' \
+        '}'
     end
 
     it 'encodes as_json as string' do
       expect(to_json).to eq(expected_json)
-    end
-  end
-
-  describe '#attachments=' do
-    subject(:attachments_list) { mail.attachments }
-
-    let(:attachments) { [{ content: StringIO.new('hello world'), filename: 'attachment.txt' }] }
-
-    its(:size) { is_expected.to eq(1) }
-
-    describe 'attachment_params' do
-      subject(:attachment) { attachments_list.first }
-
-      it { is_expected.to be_a(Mailtrap::Sending::Attachment) }
-      its(:content) { is_expected.to eq('aGVsbG8gd29ybGQ=') }
-      its(:filename) { is_expected.to eq('attachment.txt') }
-    end
-  end
-
-  describe '#add_attachment' do
-    subject(:add_attachment) { mail.add_attachment(**attachment) }
-
-    let(:attachment) { { content: StringIO.new('hello world'), filename: 'attachment.txt' } }
-
-    it 'adds an attachment' do
-      expect { add_attachment }.to change { mail.attachments.size }.from(0).to(1)
-
-      expect(mail.attachments.last.content).to eq('aGVsbG8gd29ybGQ=')
     end
   end
 end

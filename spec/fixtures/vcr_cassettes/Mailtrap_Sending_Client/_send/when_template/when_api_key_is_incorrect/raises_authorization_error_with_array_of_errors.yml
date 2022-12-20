@@ -6,9 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"to":[{"email":"mailtrap@railsware.com"}],"from":{"email":"mailtrap@mailtrap.io","name":"Mailtrap
-        Test"},"cc":[],"bcc":[],"subject":"You are awesome!","text":"Congrats for
-        sending test email with Mailtrap!","attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"category":"Integration
-        Test","custom_variables":{}}'
+        Test"},"cc":[],"bcc":[],"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"custom_variables":{},"template_uuid":"aeb1ec59-2737-4a1d-9c95-0baf3be49d74","template_variables":{"user_name":"John
+        Doe"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -17,7 +16,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Authorization:
-      - Bearer <BEARER_TOKEN>
+      - Bearer incorrect-api-key
       Content-Type:
       - application/json
   response:
@@ -25,16 +24,14 @@ http_interactions:
       code: 401
       message: Unauthorized
     headers:
-      Date:
-      - Wed, 08 Jun 2022 12:30:55 GMT
       Content-Type:
       - application/json; charset=utf-8
+      Date:
+      - Tue, 13 Dec 2022 21:23:26 GMT
       Content-Length:
       - '27'
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"errors":["Unauthorized"]}'
-  recorded_at: Wed, 08 Jun 2022 12:30:55 GMT
+  recorded_at: Tue, 13 Dec 2022 21:23:26 GMT
 recorded_with: VCR 6.1.0

@@ -19,7 +19,7 @@ module Mailtrap
       end
 
       def send(mail)
-        raise ArgumentError, 'should be Mailtrap::Sending::Mail object' unless mail.is_a? Mailtrap::Sending::Mail
+        raise ArgumentError, 'should be Mailtrap::Sending::Base object' unless mail.is_a? Base
 
         request = post_request('/api/send', mail.to_json)
         response = http_client.request(request)
