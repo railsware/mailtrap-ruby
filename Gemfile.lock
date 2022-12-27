@@ -8,6 +8,10 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    appraisal (2.4.1)
+      bundler
+      rake
+      thor (>= 0.14.0)
     ast (2.4.2)
     crack (0.4.5)
       rexml
@@ -55,6 +59,7 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    thor (1.2.1)
     unicode-display_width (2.1.0)
     vcr (6.1.0)
     webmock (3.14.0)
@@ -66,6 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appraisal
   mail
   mailtrap!
   net-smtp
