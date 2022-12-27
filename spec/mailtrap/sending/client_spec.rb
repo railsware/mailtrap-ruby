@@ -10,7 +10,7 @@ RSpec.describe Mailtrap::Sending::Client do
 
     context 'when mail' do
       let(:mail) do
-        Mailtrap::Sending::Mail.new(
+        Mailtrap::Mail::Base.new(
           from: { email: 'mailtrap@mailtrap.io', name: 'Mailtrap Test' },
           to: [
             { email: 'mailtrap@railsware.com' }
@@ -57,10 +57,10 @@ RSpec.describe Mailtrap::Sending::Client do
         end
       end
 
-      context 'when mail object is not a Mailtrap::Sending::Mail' do
+      context 'when mail object is not a Mailtrap::Mail::Base' do
         let(:mail) { 'it-a-string' }
 
-        it { expect { send }.to raise_error(ArgumentError, 'should be Mailtrap::Sending::Base object') }
+        it { expect { send }.to raise_error(ArgumentError, 'should be Mailtrap::Mail::Base object') }
       end
 
       context 'with an alternative host' do
@@ -76,7 +76,7 @@ RSpec.describe Mailtrap::Sending::Client do
 
     context 'when template' do
       let(:mail) do
-        Mailtrap::Sending::MailFromTemplate.new(
+        Mailtrap::Mail::FromTemplate.new(
           from: { email: 'mailtrap@mailtrap.io', name: 'Mailtrap Test' },
           to: [
             { email: 'mailtrap@railsware.com' }

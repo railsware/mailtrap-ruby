@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Mailtrap
-  module Sending
-    class MailFromTemplate < Base
+  module Mail
+    class FromTemplate < Base
       attr_accessor :template_uuid, :template_variables
 
       def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength

@@ -10,7 +10,7 @@ module Mailtrap
       end
 
       def deliver!(message)
-        mail = Mailtrap::Sending::Convert.from_message(message)
+        mail = Mailtrap::Mail.from_message(message)
 
         client.send(mail)
       end

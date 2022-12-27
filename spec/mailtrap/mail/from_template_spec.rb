@@ -3,7 +3,7 @@
 require_relative './shared'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
-RSpec.describe Mailtrap::Sending::MailFromTemplate do
+RSpec.describe Mailtrap::Mail::FromTemplate do
   subject(:mail) do
     described_class.new(
       from: from,
@@ -121,8 +121,8 @@ RSpec.describe Mailtrap::Sending::MailFromTemplate do
     let(:template_variables) { { 'user.name' => 'Jack Daniels' } }
     let(:expected_json) do
       '{' \
-        '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
         '"from":{"email":"test@example.com","name":"Mailtrap User"},' \
+        '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
         '"cc":[{"email":"cc@example.com"}],' \
         '"bcc":[{"email":"bcc@example.com"}],' \
         '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \

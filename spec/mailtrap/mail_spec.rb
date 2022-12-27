@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::Sending::Convert do
+RSpec.describe Mailtrap::Mail do
   describe '.from_message' do
     subject(:mail) do
       described_class.from_message(message)
