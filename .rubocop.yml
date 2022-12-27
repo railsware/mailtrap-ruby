@@ -3,6 +3,8 @@ require: rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+  Exclude:
+    - 'gemfiles/**/*'
 
 Layout/LineLength:
   Max: 120
