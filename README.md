@@ -30,7 +30,7 @@ Or install it yourself as:
 require 'mailtrap'
 
 # create mail object
-mail = Mailtrap::Sending::Mail.new(
+mail = Mailtrap::Mail::Base.new(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com' }
@@ -50,7 +50,7 @@ client.send(mail)
 require 'mailtrap'
 require 'base64'
 
-mail = Mailtrap::Sending::Mail.new(
+mail = Mailtrap::Mail::Base.new(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com', name: 'Your name' }
@@ -93,7 +93,7 @@ client.send(mail)
 require 'mailtrap'
 
 # create mail object
-mail = Mailtrap::Sending::MailFromTemplate.new(
+mail = Mailtrap::Mail::FromTemplate.new(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com' }
