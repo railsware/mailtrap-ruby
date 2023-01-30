@@ -5,7 +5,7 @@ require_relative 'lib/mailtrap/version'
 Gem::Specification.new do |spec|
   spec.name = 'mailtrap'
   spec.version = Mailtrap::VERSION
-  spec.authors = ['Railsware Products Studio, Inc.']
+  spec.authors = ['Railsware Products Studio LLC']
   spec.email = ['support@mailtrap.io']
 
   spec.summary = 'Official mailtrap.io API client'
