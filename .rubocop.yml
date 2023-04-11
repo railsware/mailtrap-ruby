@@ -12,6 +12,9 @@ Layout/LineLength:
 Naming/MethodParameterName:
   MinNameLength: 2
 
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
 RSpec/MultipleExpectations:
   Max: 4
 

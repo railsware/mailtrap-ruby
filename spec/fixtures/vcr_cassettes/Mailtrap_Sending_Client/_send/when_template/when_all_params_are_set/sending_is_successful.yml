@@ -12,9 +12,9 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
       Authorization:
-      - Bearer 35b8966defc381123b3206f19b49df50
+      - Bearer <BEARER_TOKEN>
       Content-Type:
       - application/json
   response:
