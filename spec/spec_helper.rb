@@ -20,8 +20,16 @@ VCR.configure do |config|
     end
   end
 
+  header_matcher = lambda do |request_1, request_2|
+    headers_1, headers_2 = [request_1, request_2].map do |req|
+      req.headers.slice('Accept-Encoding', 'User-Agent', 'Content-Type')
+    end
+
+    headers_1 == headers_2
+  end
+
   config.default_cassette_options = {
-    match_requests_on: %i[method uri body],
+    match_requests_on: [:method, :uri, :body, header_matcher],
     allow_unused_http_interactions: false,
     record: :once
   }
