@@ -1,3 +1,7 @@
+## [1.2.1] - 2023-04-12
+
+- Set custom user agent
+
 ## [1.2.0] - 2023-01-27
 
 - Breaking changes:
