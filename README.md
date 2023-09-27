@@ -130,6 +130,20 @@ mail(
 )
 ```
 
+#### Content-Transfer-Encoding
+
+`mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
+replicate SMTP. That is why you should expect some limitations when it comes to 
+sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
+(see `headers` in the [API documentation](https://railsware.stoplight.io/docs/mailtrap-api-docs/67f1d70aeb62c-send-email)).
+Meaning your recipients will receive emails only in the default encoding which 
+is `quoted-printable`, if you send with Mailtrap API.
+
+For those who does need to use `7bit` or any other encoding, SMTP provides 
+better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_ 
+→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP 
+configuration example.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
