@@ -108,4 +108,71 @@ RSpec.describe Mailtrap::Sending::Client do
       end
     end
   end
+
+  describe 'errors' do
+    let(:mail) do
+      Mailtrap::Mail::Base.new(
+        from: { email: 'from@example.com' },
+        to: [{ email: 'to@example.com' }],
+        subject: 'Test',
+        text: 'Test'
+      )
+    end
+
+    subject { client.send(mail) }
+
+    def stub_api_send(status, body=nil)
+      stub = stub_request(:post, /\/api\/send/).to_return(status: status, body: body)
+      yield
+      expect(stub).to have_been_requested
+    end
+
+    it 'handles 400' do
+      stub_api_send 400, '{"errors":["error"]}' do
+        expect { subject }.to raise_error(Mailtrap::Sending::Error)
+      end
+    end
+
+    it 'handles 401' do
+      stub_api_send 401, '{"errors":["Unauthorized"]}' do
+        expect { subject }.to raise_error(Mailtrap::Sending::AuthorizationError)
+      end
+    end
+
+    it 'handles 403' do
+      stub_api_send 403, '{"errors":["Account is banned"]}' do
+        expect { subject }.to raise_error(Mailtrap::Sending::RejectionError)
+      end
+    end
+
+    it 'handles 413' do
+      stub_api_send 413 do
+        expect { subject }.to raise_error(Mailtrap::Sending::MailSizeError)
+      end
+    end
+
+    it 'handles 429' do
+      stub_api_send 429 do
+        expect { subject }.to raise_error(Mailtrap::Sending::RateLimitError)
+      end
+    end
+
+    it 'handles generic client errors' do
+      stub_api_send 418, '🫖' do
+        expect { subject }.to raise_error(Mailtrap::Sending::Error, 'client error')
+      end
+    end
+
+    it 'handles server errors' do
+      stub_api_send 504, '🫖' do
+        expect { subject }.to raise_error(Mailtrap::Sending::Error, 'server error')
+      end
+    end
+
+    it 'handles unexpected response status code' do
+      stub_api_send 307 do
+        expect { subject }.to raise_error(Mailtrap::Sending::Error, 'unexpected status code=307')
+      end
+    end
+  end
 end

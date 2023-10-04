@@ -3,6 +3,7 @@
 require 'mail'
 require 'mailtrap'
 require 'rspec/its'
+require 'webmock/rspec'
 require 'vcr'
 
 VCR.configure do |config|
