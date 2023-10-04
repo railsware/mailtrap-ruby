@@ -43,16 +43,26 @@ module Mailtrap
         request
       end
 
-      def handle_response(response)
-        case response.code
-        when '200'
+      def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+        case response
+        when Net::HTTPOK
           json_response(response.body)
-        when '400'
+        when Net::HTTPBadRequest
           raise Mailtrap::Sending::Error, json_response(response.body)[:errors]
-        when '401'
+        when Net::HTTPUnauthorized
           raise Mailtrap::Sending::AuthorizationError, json_response(response.body)[:errors]
-        else
+        when Net::HTTPForbidden
+          raise Mailtrap::Sending::RejectionError, json_response(response.body)[:errors]
+        when Net::HTTPPayloadTooLarge
+          raise Mailtrap::Sending::MailSizeError, ['message too large']
+        when Net::HTTPTooManyRequests
+          raise Mailtrap::Sending::RateLimitError, ['too many requests']
+        when Net::HTTPClientError
+          raise Mailtrap::Sending::Error, ['client error']
+        when Net::HTTPServerError
           raise Mailtrap::Sending::Error, ['server error']
+        else
+          raise Mailtrap::Sending::Error, ["unexpected status code=#{response.code}"]
         end
       end
 
