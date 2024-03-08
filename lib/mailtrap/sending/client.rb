@@ -7,27 +7,72 @@ require 'uri'
 module Mailtrap
   module Sending
     class Client
-      API_HOST = 'send.api.mailtrap.io'
+      SENDING_API_HOST = 'send.api.mailtrap.io'
+      BULK_SENDING_API_HOST = 'send.api.mailtrap.io'
+      SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
       API_PORT = 443
 
-      attr_reader :api_key, :api_host, :api_port
+      attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
 
-      def initialize(api_key: ENV.fetch('MAILTRAP_API_KEY'), api_host: API_HOST, api_port: API_PORT)
+      # Initializes a new Mailtrap::Sending::Client instance.
+      #
+      # @param [String] api_key The Mailtrap API key to use for sending. Required.
+      #                         If not set, is taken from the MAILTRAP_API_KEY environment variable.
+      # @param [String, nil] api_host The Mailtrap API hostname. If not set, is chosen internally.
+      # @param [Integer] api_port The Mailtrap API port. Default: 443.
+      # @param [Boolean] bulk Whether to use the Mailtrap bulk sending API. Default: false.
+      #                       If enabled, is incompatible with `sandbox: true`.
+      # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
+      #                          If enabled, is incompatible with `bulk: true`.
+      # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
+      def initialize( # rubocop:disable Metrics/ParameterLists
+        api_key: ENV.fetch('MAILTRAP_API_KEY'),
+        api_host: nil,
+        api_port: API_PORT,
+        bulk: false,
+        sandbox: false,
+        inbox_id: nil
+      )
+        raise ArgumentError, 'api_key is required' if api_key.nil?
+        raise ArgumentError, 'api_port is required' if api_port.nil?
+
+        api_host ||= select_api_host(bulk: bulk, sandbox: sandbox)
+        raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
+
         @api_key = api_key
         @api_host = api_host
         @api_port = api_port
+        @bulk = bulk
+        @sandbox = sandbox
+        @inbox_id = inbox_id
       end
 
       def send(mail)
         raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
-        request = post_request('/api/send', mail.to_json)
+        request = post_request(request_url, mail.to_json)
         response = http_client.request(request)
 
         handle_response(response)
       end
 
       private
+
+      def select_api_host(bulk:, sandbox:)
+        raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
+
+        if sandbox
+          SANDBOX_API_HOST
+        elsif bulk
+          BULK_SENDING_API_HOST
+        else
+          SENDING_API_HOST
+        end
+      end
+
+      def request_url
+        "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
+      end
 
       def http_client
         @http_client ||= Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
