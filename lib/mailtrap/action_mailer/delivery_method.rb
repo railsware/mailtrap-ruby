@@ -18,7 +18,7 @@ module Mailtrap
       private
 
       def client
-        @client ||= Mailtrap::Sending::Client.new(**settings.slice(:api_key, :api_host, :api_port))
+        @client ||= Mailtrap::Client.new(**settings.slice(:api_key, :api_host, :api_port))
       end
     end
   end

@@ -40,7 +40,7 @@ mail = Mailtrap::Mail::Base.new(
 )
 
 # create client and send
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
@@ -83,7 +83,7 @@ encoded = Base64.encode64(data).gsub(/\n/,"")
 
 mail.add_attachment(content: encoded, filename: 'image.png')
 
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
@@ -105,7 +105,7 @@ mail = Mailtrap::Mail::FromTemplate.new(
 )
 
 # create client and send
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 

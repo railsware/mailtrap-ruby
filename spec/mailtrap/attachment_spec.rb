@@ -3,7 +3,7 @@
 require 'stringio'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
-RSpec.describe Mailtrap::Sending::Attachment do
+RSpec.describe Mailtrap::Attachment do
   subject(:attachment) do
     described_class.new(
       content: content,
@@ -43,7 +43,7 @@ RSpec.describe Mailtrap::Sending::Attachment do
       let(:content) { 'non-base64' }
 
       it 'raises AttachmentContentError' do
-        expect { attachment }.to raise_error(Mailtrap::Sending::AttachmentContentError)
+        expect { attachment }.to raise_error(Mailtrap::AttachmentContentError)
       end
     end
   end

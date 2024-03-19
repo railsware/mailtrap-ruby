@@ -11,7 +11,7 @@ RSpec.shared_examples 'with attachments' do
     describe 'attachment_params' do
       subject(:attachment) { attachments_list.first }
 
-      it { is_expected.to be_a(Mailtrap::Sending::Attachment) }
+      it { is_expected.to be_a(Mailtrap::Attachment) }
       its(:content) { is_expected.to eq('aGVsbG8gd29ybGQ=') }
       its(:filename) { is_expected.to eq('attachment.txt') }
     end
