@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.api.mailtrap.io:443/api/send/12
+    body:
+      encoding: UTF-8
+      string: '{"from":{"email":"mailtrap@mailtrap.io","name":"Mailtrap Test"},"to":[{"email":"mailtrap@railsware.com"}],"cc":[],"bcc":[],"subject":"You are awesome!","text":"Congrats for sending test email with Mailtrap!","attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],"headers":{},"custom_variables":{},"category":"Integration Test"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Oct 2022 22:08:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '16'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"success":true}'
+  recorded_at: Thu, 13 Oct 2022 22:08:10 GMT
+recorded_with: VCR 6.1.0

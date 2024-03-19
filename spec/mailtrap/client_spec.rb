@@ -72,6 +72,52 @@ RSpec.describe Mailtrap::Client do
           expect(send).to eq({ message_ids: ['867394cd-4b43-11ed-af38-0a58a9feac02'], success: true })
         end
       end
+
+      context 'with bulk flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true)
+        end
+
+        it 'chooses host for bulk sending' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with bulk flag and alternative host' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
+        end
+
+        it 'chooses alternative host' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with sandbox flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true, inbox_id: 12)
+        end
+
+        it 'chooses host for sandbox sending' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with sandbox flag without inbox id' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true)
+        end
+
+        it { expect { send }.to raise_error(ArgumentError) }
+      end
+
+      context 'with bulk and sandbox flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true, sandbox: true)
+        end
+
+        it { expect { send }.to raise_error(ArgumentError) }
+      end
     end
 
     context 'when template' do
