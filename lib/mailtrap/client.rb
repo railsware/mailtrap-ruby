@@ -24,7 +24,7 @@ module Mailtrap
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
     #                          If enabled, is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
-    def initialize(# rubocop:disable Metrics/ParameterLists
+    def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
       api_port: API_PORT,
