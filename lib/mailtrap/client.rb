@@ -7,7 +7,7 @@ require 'uri'
 module Mailtrap
   class Client
     SENDING_API_HOST = 'send.api.mailtrap.io'
-    BULK_SENDING_API_HOST = 'send.api.mailtrap.io'
+    BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
     API_PORT = 443
 

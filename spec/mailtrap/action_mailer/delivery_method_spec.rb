@@ -7,7 +7,18 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
     subject(:deliver!) { described_class.new(settings).deliver!(message) }
 
     let(:settings) { { api_key: 'correct-api-key' } }
-    let(:message) { Mail::Message.new(params) }
+    let(:message) do
+      Mail::Message.new(params).tap do |message|
+        message.text_part = 'Some text'
+        message.html_part = '<div>HTML part</div>'
+        message.headers('X-Special-Domain-Specific-Header': 'SecretValue')
+        message.headers('One-more-custom-header': 'CustomValue')
+        message.attachments['file.txt'] = File.read('spec/fixtures/files/attachments/file.txt')
+        message.attachments['file.txt'].content_id = '<txt_content_id@test.mail>'
+        message.attachments.inline['file.png'] = File.read('spec/fixtures/files/attachments/file.png')
+        message.attachments['file.png'].content_id = '<png_content_id@test.mail>'
+      end
+    end
     let(:params) do
       {
         from: 'Mailtrap Test <mailtrap@mailtrap.io>',
@@ -32,18 +43,12 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
 
     before do
       allow(::Mail::ContentTypeField).to receive(:generate_boundary).and_return('--==_mimepart_random_boundary')
-      message.text_part = 'Some text'
-      message.html_part = '<div>HTML part</div>'
-      message.headers('X-Special-Domain-Specific-Header': 'SecretValue')
-      message.headers('One-more-custom-header': 'CustomValue')
-      message.attachments['file.txt'] = File.read('spec/fixtures/files/attachments/file.txt')
-      message.attachments['file.txt'].content_id = '<txt_content_id@test.mail>'
-      message.attachments.inline['file.png'] = File.read('spec/fixtures/files/attachments/file.png')
-      message.attachments['file.png'].content_id = '<png_content_id@test.mail>'
+      allow(Mailtrap::Client).to receive(:new).and_call_original
     end
 
     it 'converts the message and sends via API' do
       expect(deliver!).to eq({ success: true, message_ids: expected_message_ids })
+      expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key')
     end
   end
 end
