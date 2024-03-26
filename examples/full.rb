@@ -36,13 +36,13 @@ mail.add_attachment(content: encoded, filename: 'image.png')
 
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 
-# Custom host
+# Custom host / port
 # client = Mailtrap::Client.new(api_key: 'your-api-key', api_host: 'alternative.host.mailtrap.io', api_port: 8080)
 
-# Bulk sending
+# Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
 # client = Mailtrap::Client.new(api_key: 'your-api-key', bulk: true)
 
-# Sandbox sending
+# Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)g
 # client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: 12)
 
 client.send(mail)

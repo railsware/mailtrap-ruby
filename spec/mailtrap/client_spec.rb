@@ -108,7 +108,7 @@ RSpec.describe Mailtrap::Client do
           described_class.new(api_key: api_key, sandbox: true)
         end
 
-        it { expect { send }.to raise_error(ArgumentError) }
+        it { expect { send }.to raise_error(ArgumentError, 'inbox_id is required for sandbox API') }
       end
 
       context 'with bulk and sandbox flag' do
@@ -116,7 +116,7 @@ RSpec.describe Mailtrap::Client do
           described_class.new(api_key: api_key, bulk: true, sandbox: true)
         end
 
-        it { expect { send }.to raise_error(ArgumentError) }
+        it { expect { send }.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API') }
       end
     end
 
@@ -150,6 +150,16 @@ RSpec.describe Mailtrap::Client do
             expect(error.message).to eq('Unauthorized')
             expect(error.messages).to eq(['Unauthorized'])
           end
+        end
+      end
+
+      context 'when using sandbox' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true, inbox_id: 13)
+        end
+
+        it 'sending is successful' do
+          expect(send).to eq({ message_ids: ['617103b5-7b2c-11ed-b344-0242ac1c0107'], success: true })
         end
       end
     end
