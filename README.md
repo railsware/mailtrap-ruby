@@ -70,7 +70,7 @@ configuration example.
 
 Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.
 
-If you use classes which have `Sending` namespace, change them as well.
+If you use classes which have `Sending` namespace, remove the namespace like in the example above.
 
 ## Development
 

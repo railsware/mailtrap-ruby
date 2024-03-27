@@ -42,7 +42,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
 # client = Mailtrap::Client.new(api_key: 'your-api-key', bulk: true)
 
-# Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)g
+# Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
 # client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: 12)
 
 client.send(mail)

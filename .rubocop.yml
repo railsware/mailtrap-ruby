@@ -35,3 +35,7 @@ Style/StringLiteralsInInterpolation:
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'examples/**/*'
+
+Style/TrailingCommaInHashLiteral:
+  Exclude:
+    - 'examples/**/*'
