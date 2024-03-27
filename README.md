@@ -6,6 +6,8 @@ This Ruby gem offers integration with the [official API](https://api-docs.mailtr
 
 Quickly add email sending functionality to your Ruby application with Mailtrap.
 
+(This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/))
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -40,97 +42,17 @@ mail = Mailtrap::Mail::Base.new(
 )
 
 # create client and send
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
-### Full
+Refer to the [`examples`](examples) folder for other examples.
 
-```ruby
-require 'mailtrap'
-require 'base64'
+- [Full](examples/full.rb)
+- [Email template](examples/email_template.rb)
+- [ActionMailer](examples/action_mailer.rb)
 
-mail = Mailtrap::Mail::Base.new(
-  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
-  to: [
-    { email: 'your@email.com', name: 'Your name' }
-  ],
-  cc: [
-    { email: 'cc@email.com', name: 'Copy To' }
-  ],
-  bcc: [
-    { email: 'bcc@email.com', name: 'Hidden Recipient' }
-  ],
-  subject: 'You are awesome!',
-  text: "Congrats for sending test email with Mailtrap!",
-  category: "Integration Test",
-  attachments: [
-    {
-      content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
-      filename: 'attachment.txt'
-    }
-  ],
-  headers: {
-    'X-MT-Header': 'Custom header'
-  },
-  custom_variables: {
-    year: 2022
-  }
-)
-
-data = File.open('/path/to/image.jpg').read
-encoded = Base64.encode64(data).gsub(/\n/,"")
-
-mail.add_attachment(content: encoded, filename: 'image.png')
-
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
-client.send(mail)
-```
-
-### Using email template
-
-```ruby
-require 'mailtrap'
-
-# create mail object
-mail = Mailtrap::Mail::FromTemplate.new(
-  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
-  to: [
-    { email: 'your@email.com' }
-  ],
-  template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
-  template_variables: {
-    'user_name' => 'John Doe'
-  }
-)
-
-# create client and send
-client = Mailtrap::Sending::Client.new(api_key: 'your-api-key')
-client.send(mail)
-```
-
-### ActionMailer
-
-This gem also adds ActionMailer delivery method. To configure it, add following to your ActionMailer configuration (in Rails projects located in `config/$ENVIRONMENT.rb`):
-```ruby
-config.action_mailer.delivery_method = :mailtrap
-config.action_mailer.mailtrap_settings = {
-  api_key: ENV.fetch('MAILTRAP_API_KEY')
-}
-```
-And continue to use ActionMailer as usual.
-
-To add `category` and `custom_variables`, add them to the mail generation:
-```ruby
-mail(
-  to: 'your@email.com',
-  subject: 'You are awesome!',
-  category: 'Test category',
-  custom_variables: { test_variable: 'abc' }
-)
-```
-
-#### Content-Transfer-Encoding
+### Content-Transfer-Encoding
 
 `mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
 replicate SMTP. That is why you should expect some limitations when it comes to 
@@ -143,6 +65,12 @@ For those who does need to use `7bit` or any other encoding, SMTP provides
 better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_ 
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP 
 configuration example.
+
+## Migration guide v1 → v2
+
+Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.
+
+If you use classes which have `Sending` namespace, remove the namespace like in the example above.
 
 ## Development
 

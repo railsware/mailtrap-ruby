@@ -31,3 +31,11 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'examples/**/*'
+
+Style/TrailingCommaInHashLiteral:
+  Exclude:
+    - 'examples/**/*'

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::Sending::Client do
+RSpec.describe Mailtrap::Client do
   subject(:client) { described_class.new(api_key: api_key) }
 
   let(:api_key) { 'correct-api-key' }
@@ -38,7 +38,7 @@ RSpec.describe Mailtrap::Sending::Client do
 
         it 'raises sending error with array of errors' do
           expect { send }.to raise_error do |error|
-            expect(error).to be_a(Mailtrap::Sending::Error)
+            expect(error).to be_a(Mailtrap::Error)
             expect(error.message).to eq("'subject' is required, must specify either text or html body")
             expect(error.messages).to eq(["'subject' is required", 'must specify either text or html body'])
           end
@@ -50,7 +50,7 @@ RSpec.describe Mailtrap::Sending::Client do
 
         it 'raises authorization error with array of errors' do
           expect { send }.to raise_error do |error|
-            expect(error).to be_a(Mailtrap::Sending::AuthorizationError)
+            expect(error).to be_a(Mailtrap::AuthorizationError)
             expect(error.message).to eq('Unauthorized')
             expect(error.messages).to eq(['Unauthorized'])
           end
@@ -71,6 +71,52 @@ RSpec.describe Mailtrap::Sending::Client do
         it 'sending is successful' do
           expect(send).to eq({ message_ids: ['867394cd-4b43-11ed-af38-0a58a9feac02'], success: true })
         end
+      end
+
+      context 'with bulk flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true)
+        end
+
+        it 'chooses host for bulk sending' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with bulk flag and alternative host' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
+        end
+
+        it 'chooses alternative host' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with sandbox flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true, inbox_id: 12)
+        end
+
+        it 'chooses host for sandbox sending' do
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with sandbox flag without inbox id' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true)
+        end
+
+        it { expect { send }.to raise_error(ArgumentError, 'inbox_id is required for sandbox API') }
+      end
+
+      context 'with bulk and sandbox flag' do
+        let(:client) do
+          described_class.new(api_key: api_key, bulk: true, sandbox: true)
+        end
+
+        it { expect { send }.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API') }
       end
     end
 
@@ -100,10 +146,20 @@ RSpec.describe Mailtrap::Sending::Client do
 
         it 'raises authorization error with array of errors' do
           expect { send }.to raise_error do |error|
-            expect(error).to be_a(Mailtrap::Sending::AuthorizationError)
+            expect(error).to be_a(Mailtrap::AuthorizationError)
             expect(error.message).to eq('Unauthorized')
             expect(error.messages).to eq(['Unauthorized'])
           end
+        end
+      end
+
+      context 'when using sandbox' do
+        let(:client) do
+          described_class.new(api_key: api_key, sandbox: true, inbox_id: 13)
+        end
+
+        it 'sending is successful' do
+          expect(send).to eq({ message_ids: ['617103b5-7b2c-11ed-b344-0242ac1c0107'], success: true })
         end
       end
     end
@@ -129,49 +185,49 @@ RSpec.describe Mailtrap::Sending::Client do
 
     it 'handles 400' do
       stub_api_send 400, '{"errors":["error"]}' do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::Error)
+        expect { send_mail }.to raise_error(Mailtrap::Error)
       end
     end
 
     it 'handles 401' do
       stub_api_send 401, '{"errors":["Unauthorized"]}' do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::AuthorizationError)
+        expect { send_mail }.to raise_error(Mailtrap::AuthorizationError)
       end
     end
 
     it 'handles 403' do
       stub_api_send 403, '{"errors":["Account is banned"]}' do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::RejectionError)
+        expect { send_mail }.to raise_error(Mailtrap::RejectionError)
       end
     end
 
     it 'handles 413' do
       stub_api_send 413 do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::MailSizeError)
+        expect { send_mail }.to raise_error(Mailtrap::MailSizeError)
       end
     end
 
     it 'handles 429' do
       stub_api_send 429 do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::RateLimitError)
+        expect { send_mail }.to raise_error(Mailtrap::RateLimitError)
       end
     end
 
     it 'handles generic client errors' do
       stub_api_send 418, '🫖' do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::Error, 'client error')
+        expect { send_mail }.to raise_error(Mailtrap::Error, 'client error')
       end
     end
 
     it 'handles server errors' do
       stub_api_send 504, '🫖' do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::Error, 'server error')
+        expect { send_mail }.to raise_error(Mailtrap::Error, 'server error')
       end
     end
 
     it 'handles unexpected response status code' do
       stub_api_send 307 do
-        expect { send_mail }.to raise_error(Mailtrap::Sending::Error, 'unexpected status code=307')
+        expect { send_mail }.to raise_error(Mailtrap::Error, 'unexpected status code=307')
       end
     end
   end

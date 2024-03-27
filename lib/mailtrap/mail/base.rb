@@ -59,11 +59,11 @@ module Mailtrap
       end
 
       def attachments=(attachments)
-        @attachments = attachments.map { |attachment| Mailtrap::Sending::Attachment.new(**attachment) }
+        @attachments = attachments.map { |attachment| Mailtrap::Attachment.new(**attachment) }
       end
 
       def add_attachment(content:, filename:, type: nil, disposition: nil, content_id: nil)
-        attachment = Mailtrap::Sending::Attachment.new(
+        attachment = Mailtrap::Attachment.new(
           content: content,
           filename: filename,
           type: type,
