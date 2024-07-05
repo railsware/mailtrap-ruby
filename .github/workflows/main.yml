@@ -9,18 +9,19 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - '2.7.6'
-          - '3.0.4'
-          - '3.1.2'
+          - '3.0.7'
+          - '3.1.6'
+          - '3.2.4'
+          - '3.3.3'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Bundle
-        run: bundle install
+          bundler-cache: true
+
       - name: Appraisal install
         run: bundle exec appraisal install
 

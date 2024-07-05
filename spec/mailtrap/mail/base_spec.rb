@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './shared'
+require_relative 'shared'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Mailtrap::Mail::Base do
@@ -129,7 +129,7 @@ RSpec.describe Mailtrap::Mail::Base do
         '"cc":[{"email":"cc@example.com"}],' \
         '"bcc":[{"email":"bcc@example.com"}],' \
         '"subject":"This is subject",' \
-        '"text":"This is text",'\
+        '"text":"This is text",' \
         '"html":"<div>Test HTML</div>",' \
         '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
         '"headers":{"Category-Header":"some_category"},' \

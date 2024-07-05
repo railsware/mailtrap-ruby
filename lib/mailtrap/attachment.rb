@@ -40,7 +40,7 @@ module Mailtrap
 
     def encode(io)
       string = io.read.encode('UTF-8') unless io.respond_to?(:binmode?) && io.binmode?
-      Base64.encode64(string).gsub(/\n/, '')
+      Base64.encode64(string).gsub("\n", '')
     end
 
     def base64?(string)
