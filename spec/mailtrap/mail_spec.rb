@@ -3,6 +3,10 @@
 RSpec.describe Mailtrap::Mail do
   describe '.from_message' do
     subject(:mail) do
+      # This method is called by ActionMailer before passing the message to delivery,
+      # and populates some redundant headers on the message.
+      # We want to ensure they are removed.
+      message.encoded
       described_class.from_message(message)
     end
 
@@ -97,7 +101,7 @@ RSpec.describe Mailtrap::Mail do
           message.text_part = 'Some text'
         end
 
-        it 'only text is present' do
+        specify 'only text is present' do
           expect(mail.text).to eq('Some text')
           expect(mail.html).to be_nil
         end
@@ -108,7 +112,7 @@ RSpec.describe Mailtrap::Mail do
           message.html_part = '<div>HTML part</div>'
         end
 
-        it 'only html is present' do
+        specify 'only html is present' do
           expect(mail.text).to be_nil
           expect(mail.html).to eq('<div>HTML part</div>')
         end
@@ -120,7 +124,7 @@ RSpec.describe Mailtrap::Mail do
           message.html_part = '<div>HTML part</div>'
         end
 
-        it 'only html is present' do
+        specify 'both parts are present' do
           expect(mail.text).to eq('Some text')
           expect(mail.html).to eq('<div>HTML part</div>')
         end
