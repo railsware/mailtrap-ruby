@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './shared'
+require_relative 'shared'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe Mailtrap::Mail::FromTemplate do

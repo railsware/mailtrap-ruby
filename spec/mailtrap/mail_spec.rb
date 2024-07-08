@@ -6,7 +6,7 @@ RSpec.describe Mailtrap::Mail do
       described_class.from_message(message)
     end
 
-    let(:message) { ::Mail::Message.new(**message_params) }
+    let(:message) { Mail::Message.new(**message_params) }
     let(:message_params) do
       {
         from: 'Mailtrap Test <mailtrap@mailtrap.io>',

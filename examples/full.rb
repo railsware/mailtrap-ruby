@@ -30,7 +30,7 @@ mail = Mailtrap::Mail::Base.new(
 )
 
 data = File.read('/path/to/image.jpg')
-encoded = Base64.encode64(data).gsub(/\n/, '')
+encoded = Base64.encode64(data).gsub("\n", '')
 
 mail.add_attachment(content: encoded, filename: 'image.png')
 

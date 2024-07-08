@@ -42,7 +42,7 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
     end
 
     before do
-      allow(::Mail::ContentTypeField).to receive(:generate_boundary).and_return('--==_mimepart_random_boundary')
+      allow(Mail::ContentTypeField).to receive(:generate_boundary).and_return('--==_mimepart_random_boundary')
       allow(Mailtrap::Client).to receive(:new).and_call_original
     end
 
