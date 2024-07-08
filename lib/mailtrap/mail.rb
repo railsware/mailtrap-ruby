@@ -26,7 +26,7 @@ module Mailtrap
 
       private
 
-      PROCESSED_HEADERS = %w[
+      SPECIAL_HEADERS = %w[
         from
         to
         cc
@@ -36,6 +36,19 @@ module Mailtrap
         customvariables
         contenttype
       ].freeze
+
+      # ActionMailer adds these headers by calling `Mail::Message#encoded`,
+      # as if the message is to be delivered via SMTP.
+      # Since the message will actually be generated on the Mailtrap side from its components,
+      # the headers are redundant and potentially conflicting, so we remove them.
+      ACTIONMAILER_ADDED_HEADERS = %w[
+        contenttransferencoding
+        date
+        messageid
+        mimeversion
+      ].freeze
+
+      HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
 
       def address_list(header)
         header.respond_to?(:element) ? header.element : header&.address_list
@@ -48,7 +61,7 @@ module Mailtrap
       def prepare_headers(message)
         message
           .header_fields
-          .reject { |header| PROCESSED_HEADERS.include?(header.name.downcase.delete('-')) }
+          .reject { |header| HEADERS_TO_REMOVE.include?(header.name.downcase.delete('-')) }
           .to_h { |header| [header.name, header.value] }
           .compact
       end
