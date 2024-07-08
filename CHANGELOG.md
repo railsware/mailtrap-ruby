@@ -1,3 +1,8 @@
+## [2.1.0] - 2024-07-08
+
+- Fixed extraneous headers added by ActionMailer #21
+- Dropped Ruby 2.7 support and added test coverage for Ruby up to 3.3 #22
+
 ## [2.0.0] - 2024-03-20
 
 - Added arguments for `Mailtrap::Client`
