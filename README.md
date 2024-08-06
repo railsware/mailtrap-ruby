@@ -1,4 +1,9 @@
 [![test](https://github.com/railsware/mailtrap-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/railsware/mailtrap-ruby/actions/workflows/main.yml)
+[![docs](https://shields.io/badge/docs-rubydoc.info-blue)](https://rubydoc.info/gems/mailtrap)
+[![gem](https://shields.io/gem/v/mailtrap)](https://rubygems.org/gems/mailtrap)
+[![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
+
+
 
 # Official Mailtrap Ruby client
 
@@ -55,15 +60,15 @@ Refer to the [`examples`](examples) folder for other examples.
 ### Content-Transfer-Encoding
 
 `mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
-replicate SMTP. That is why you should expect some limitations when it comes to 
+replicate SMTP. That is why you should expect some limitations when it comes to
 sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
 (see `headers` in the [API documentation](https://railsware.stoplight.io/docs/mailtrap-api-docs/67f1d70aeb62c-send-email)).
-Meaning your recipients will receive emails only in the default encoding which 
+Meaning your recipients will receive emails only in the default encoding which
 is `quoted-printable`, if you send with Mailtrap API.
 
-For those who does need to use `7bit` or any other encoding, SMTP provides 
-better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_ 
-→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP 
+For those who does need to use `7bit` or any other encoding, SMTP provides
+better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
+→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.
 
 ## Migration guide v1 → v2
