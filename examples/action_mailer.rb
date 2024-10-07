@@ -1,13 +1,19 @@
 # This gem adds ActionMailer delivery method.
 # To configure it, add following to your ActionMailer configuration
-# (in Rails projects located in `config/$ENVIRONMENT.rb`)
+# (in Rails projects located in `config/environments/production.rb`)
 config.action_mailer.delivery_method = :mailtrap
-config.action_mailer.mailtrap_settings = {
-  api_key: ENV.fetch('MAILTRAP_API_KEY'),
-  # bulk: true, # Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
-  # sandbox: true, inbox_id: 12, # Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
-}
-# And continue to use ActionMailer as usual.
+
+# # Customize the settings:
+# config.action_mailer.mailtrap_settings = {
+#   # Use custom API key (not necessary if you've set the MAILTRAP_API_KEY environment variable)
+#   api_key: Rails.application.credentials.my_mailtrap_api_key!,
+#   # Switch to bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
+#   bulk: true,
+#   # Switch to sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
+#   sandbox: true, inbox_id: 12,
+# }
+
+# Now you can use ActionMailer to deliver mail through Mailtrap.
 
 # To add `category` and `custom_variables`, add them to the mail generation:
 mail(

@@ -31,7 +31,17 @@ Or install it yourself as:
 
 ## Usage
 
-### Minimal
+### Ruby on Rails
+
+```ruby
+# place this code in config/environments/production.rb:
+config.action_mailer.delivery_method = :mailtrap
+
+# then set the MAILTRAP_API_KEY environment variable
+# using your hosting solution.
+```
+
+### Pure Ruby
 
 ```ruby
 require 'mailtrap'
@@ -51,7 +61,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
-Refer to the [`examples`](examples) folder for other examples.
+Refer to the [`examples`](examples) folder for more examples.
 
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
