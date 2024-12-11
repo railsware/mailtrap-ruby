@@ -5,12 +5,13 @@ require 'json'
 module Mailtrap
   module Mail
     class Base
-      attr_accessor :from, :to, :cc, :bcc, :headers, :custom_variables, :subject, :text, :html, :category
+      attr_accessor :from, :to, :reply_to, :cc, :bcc, :headers, :custom_variables, :subject, :text, :html, :category
       attr_reader :attachments
 
       def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
         from: nil,
         to: [],
+        reply_to: nil,
         cc: [],
         bcc: [],
         subject: nil,
@@ -23,6 +24,7 @@ module Mailtrap
       )
         @from = from
         @to = to
+        @reply_to = reply_to
         @cc = cc
         @bcc = bcc
         @subject = subject
@@ -38,6 +40,7 @@ module Mailtrap
         {
           'from' => from,
           'to' => to,
+          'reply_to' => reply_to,
           'cc' => cc,
           'bcc' => bcc,
           'subject' => subject,

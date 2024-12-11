@@ -6,6 +6,7 @@ mail = Mailtrap::Mail::Base.new(
   to: [
     { email: 'your@email.com', name: 'Your name' }
   ],
+  reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   cc: [
     { email: 'cc@email.com', name: 'Copy To' }
   ],

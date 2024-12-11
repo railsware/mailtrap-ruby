@@ -6,6 +6,7 @@ mail = Mailtrap::Mail::FromTemplate.new(
   to: [
     { email: 'your@email.com' }
   ],
+  reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
   template_variables: {
     'user_name' => 'John Doe'
