@@ -130,5 +130,17 @@ RSpec.describe Mailtrap::Mail do
         end
       end
     end
+
+    describe 'handling empty From correctly (#32)' do
+      let(:message_params) do
+        {
+          from: ''
+        }
+      end
+
+      # Does not raise an "undefined method `address` for nil"
+      # (There will be a "'from' is required" error from the server)
+      its(:from) { is_expected.to be_nil }
+    end
   end
 end

@@ -8,9 +8,9 @@ require_relative 'mail/from_template'
 module Mailtrap
   module Mail
     class << self
-      def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity
+      def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
         Mailtrap::Mail::Base.new(
-          from: prepare_address(address_list(message['from'])&.addresses&.first),
+          from: prepare_addresses(address_list(message['from'])&.addresses).first,
           to: prepare_addresses(address_list(message['to'])&.addresses),
           cc: prepare_addresses(address_list(message['cc'])&.addresses),
           bcc: prepare_addresses(address_list(message['bcc'])&.addresses),
