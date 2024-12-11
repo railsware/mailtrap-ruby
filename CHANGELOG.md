@@ -1,3 +1,7 @@
+## [2.1.1] - 2024-12-11
+
+- Improved handling of empty `from`
+
 ## [2.1.0] - 2024-07-08
 
 - Fixed extraneous headers added by ActionMailer #21
