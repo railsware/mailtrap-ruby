@@ -4,10 +4,13 @@ require 'base64'
 
 require_relative 'mail/base'
 require_relative 'mail/from_template'
+require_relative 'errors'
 
 module Mailtrap
   module Mail
     class << self
+      # @param message [Mail::Message]
+      # @return [Mailtrap::Mail::Base]
       def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
         Mailtrap::Mail::Base.new(
           from: prepare_addresses(address_list(message['from'])&.addresses).first,
@@ -50,10 +53,19 @@ module Mailtrap
 
       HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
 
+      # @param header [Mail::Field, nil]
+      # @return [Mail::AddressList, nil]
       def address_list(header)
-        header.respond_to?(:element) ? header.element : header&.address_list
+        return nil unless header
+
+        unless header.errors.empty?
+          raise Mailtrap::Error, ["failed to parse '#{header.name}': '#{header.unparsed_value}'"]
+        end
+
+        header.respond_to?(:element) ? header.element : header.address_list
       end
 
+      # @param addresses [Array<Mail::Address>, nil]
       def prepare_addresses(addresses)
         Array(addresses).map { |address| prepare_address(address) }
       end
@@ -66,6 +78,7 @@ module Mailtrap
           .compact
       end
 
+      # @param address [Mail::Address]
       def prepare_address(address)
         {
           email: address.address,

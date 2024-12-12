@@ -142,5 +142,18 @@ RSpec.describe Mailtrap::Mail do
       # (There will be a "'from' is required" error from the server)
       its(:from) { is_expected.to be_nil }
     end
+
+    %i[from to cc bcc].each do |header|
+      context "when '#{header}' is invalid" do
+        let(:message_params) { super().merge(header => 'invalid email@example.com') }
+
+        it 'raises an error' do
+          expect { mail }.to raise_error(
+            Mailtrap::Error,
+            "failed to parse '#{header.capitalize}': 'invalid email@example.com'"
+          )
+        end
+      end
+    end
   end
 end
