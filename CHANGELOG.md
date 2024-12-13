@@ -1,6 +1,11 @@
+## [2.1.2] - 2024-12-13
+
+- Improved handling of invalid `from`, `to`, `cc`, `bcc` headers when sending
+  with Action Mailer
+
 ## [2.1.1] - 2024-12-11
 
-- Improved handling of empty `from`
+- Improved handling of empty `from` header when sending with Action Mailer
 
 ## [2.1.0] - 2024-07-08
 
