@@ -1,3 +1,7 @@
+## [2.2.0] - 2024-12-18
+
+- Added `reply_to` parameter support
+
 ## [2.1.2] - 2024-12-13
 
 - Improved handling of invalid `from`, `to`, `cc`, `bcc` headers when sending
