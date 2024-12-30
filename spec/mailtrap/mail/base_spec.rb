@@ -8,6 +8,7 @@ RSpec.describe Mailtrap::Mail::Base do
     described_class.new(
       from: from,
       to: to,
+      reply_to: reply_to,
       cc: cc,
       bcc: bcc,
       subject: mail_subject,
@@ -22,6 +23,7 @@ RSpec.describe Mailtrap::Mail::Base do
 
   let(:from) { nil }
   let(:to) { [] }
+  let(:reply_to) { nil }
   let(:cc) { [] }
   let(:bcc) { [] }
   let(:mail_subject) { nil }
@@ -80,6 +82,7 @@ RSpec.describe Mailtrap::Mail::Base do
     end
 
     context 'when all values set' do
+      let(:reply_to) { { email: 'reply-to@railsware.com' } }
       let(:cc) { [{ email: 'cc@example.com' }] }
       let(:bcc) { [{ email: 'bcc@example.com' }] }
       let(:html) { '<div>Test HTML</div>' }
@@ -91,6 +94,7 @@ RSpec.describe Mailtrap::Mail::Base do
         {
           'from' => { email: 'test@example.com', name: 'Mailtrap User' },
           'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }],
+          'reply_to' => { email: 'reply-to@railsware.com' },
           'cc' => [{ email: 'cc@example.com' }],
           'bcc' => [{ email: 'bcc@example.com' }],
           'subject' => 'This is subject',
@@ -114,6 +118,7 @@ RSpec.describe Mailtrap::Mail::Base do
 
     let(:from) { { email: 'test@example.com', name: 'Mailtrap User' } }
     let(:to) { [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }] }
+    let(:reply_to) { { email: 'reply-to@railsware.com', name: 'Reply To' } }
     let(:mail_subject) { 'This is subject' }
     let(:text) { 'This is text' }
     let(:cc) { [{ email: 'cc@example.com' }] }
@@ -126,6 +131,7 @@ RSpec.describe Mailtrap::Mail::Base do
       '{' \
         '"from":{"email":"test@example.com","name":"Mailtrap User"},' \
         '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
+        '"reply_to":{"email":"reply-to@railsware.com","name":"Reply To"},' \
         '"cc":[{"email":"cc@example.com"}],' \
         '"bcc":[{"email":"bcc@example.com"}],' \
         '"subject":"This is subject",' \

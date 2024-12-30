@@ -8,6 +8,7 @@ module Mailtrap
       def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
         from: nil,
         to: [],
+        reply_to: nil,
         cc: [],
         bcc: [],
         attachments: [],
@@ -19,6 +20,7 @@ module Mailtrap
         super(
           from: from,
           to: to,
+          reply_to: reply_to,
           cc: cc,
           bcc: bcc,
           attachments: attachments,

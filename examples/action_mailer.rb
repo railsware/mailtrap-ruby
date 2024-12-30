@@ -18,6 +18,7 @@ config.action_mailer.delivery_method = :mailtrap
 # To add `category` and `custom_variables`, add them to the mail generation:
 mail(
   to: 'your@email.com',
+  reply_to: 'Mailtrap Reply-To <support@example.com>',
   subject: 'You are awesome!',
   category: 'Test category',
   custom_variables: { test_variable: 'abc' }

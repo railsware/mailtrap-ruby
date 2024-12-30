@@ -52,6 +52,7 @@ mail = Mailtrap::Mail::Base.new(
   to: [
     { email: 'your@email.com' }
   ],
+  reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   subject: 'You are awesome!',
   text: "Congrats for sending test email with Mailtrap!"
 )
