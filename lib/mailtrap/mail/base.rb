@@ -67,11 +67,11 @@ module Mailtrap
 
       def add_attachment(content:, filename:, type: nil, disposition: nil, content_id: nil)
         attachment = Mailtrap::Attachment.new(
-          content: content,
-          filename: filename,
-          type: type,
-          disposition: disposition,
-          content_id: content_id
+          content:,
+          filename:,
+          type:,
+          disposition:,
+          content_id:
         )
         attachments << attachment
 

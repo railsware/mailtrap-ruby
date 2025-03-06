@@ -6,11 +6,11 @@ require 'stringio'
 RSpec.describe Mailtrap::Attachment do
   subject(:attachment) do
     described_class.new(
-      content: content,
-      filename: filename,
-      type: type,
-      disposition: disposition,
-      content_id: content_id
+      content:,
+      filename:,
+      type:,
+      disposition:,
+      content_id:
     )
   end
 

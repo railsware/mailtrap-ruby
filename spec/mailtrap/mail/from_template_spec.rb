@@ -6,16 +6,16 @@ require_relative 'shared'
 RSpec.describe Mailtrap::Mail::FromTemplate do
   subject(:mail) do
     described_class.new(
-      from: from,
-      to: to,
-      reply_to: reply_to,
-      cc: cc,
-      bcc: bcc,
-      attachments: attachments,
-      headers: headers,
-      custom_variables: custom_variables,
-      template_uuid: template_uuid,
-      template_variables: template_variables
+      from:,
+      to:,
+      reply_to:,
+      cc:,
+      bcc:,
+      attachments:,
+      headers:,
+      custom_variables:,
+      template_uuid:,
+      template_variables:
     )
   end
 

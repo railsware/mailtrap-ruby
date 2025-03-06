@@ -1,3 +1,8 @@
+## [2.3.0] - 2025-03-06
+
+- Drop Ruby 3.0 support
+- Update dependencies
+
 ## [2.2.0] - 2024-12-18
 
 - Added `reply_to` parameter support

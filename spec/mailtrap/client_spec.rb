@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::Client do
-  subject(:client) { described_class.new(api_key: api_key) }
+  subject(:client) { described_class.new(api_key:) }
 
   let(:api_key) { 'correct-api-key' }
 
@@ -65,7 +65,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with an alternative host' do
         let(:client) do
-          described_class.new(api_key: api_key, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
+          described_class.new(api_key:, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
         end
 
         it 'sending is successful' do
@@ -75,7 +75,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with bulk flag' do
         let(:client) do
-          described_class.new(api_key: api_key, bulk: true)
+          described_class.new(api_key:, bulk: true)
         end
 
         it 'chooses host for bulk sending' do
@@ -85,7 +85,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with bulk flag and alternative host' do
         let(:client) do
-          described_class.new(api_key: api_key, bulk: true, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
+          described_class.new(api_key:, bulk: true, api_host: 'alternative.host.mailtrap.io', api_port: 8080)
         end
 
         it 'chooses alternative host' do
@@ -95,7 +95,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with sandbox flag' do
         let(:client) do
-          described_class.new(api_key: api_key, sandbox: true, inbox_id: 12)
+          described_class.new(api_key:, sandbox: true, inbox_id: 12)
         end
 
         it 'chooses host for sandbox sending' do
@@ -105,7 +105,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with sandbox flag without inbox id' do
         let(:client) do
-          described_class.new(api_key: api_key, sandbox: true)
+          described_class.new(api_key:, sandbox: true)
         end
 
         it { expect { send }.to raise_error(ArgumentError, 'inbox_id is required for sandbox API') }
@@ -113,7 +113,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with bulk and sandbox flag' do
         let(:client) do
-          described_class.new(api_key: api_key, bulk: true, sandbox: true)
+          described_class.new(api_key:, bulk: true, sandbox: true)
         end
 
         it { expect { send }.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API') }
@@ -155,7 +155,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'when using sandbox' do
         let(:client) do
-          described_class.new(api_key: api_key, sandbox: true, inbox_id: 13)
+          described_class.new(api_key:, sandbox: true, inbox_id: 13)
         end
 
         it 'sending is successful' do
@@ -178,7 +178,7 @@ RSpec.describe Mailtrap::Client do
     end
 
     def stub_api_send(status, body = nil)
-      stub = stub_request(:post, %r{/api/send}).to_return(status: status, body: body)
+      stub = stub_request(:post, %r{/api/send}).to_return(status:, body:)
       yield
       expect(stub).to have_been_requested
     end
