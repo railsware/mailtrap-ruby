@@ -18,14 +18,14 @@ module Mailtrap
         template_variables: {}
       )
         super(
-          from: from,
-          to: to,
-          reply_to: reply_to,
-          cc: cc,
-          bcc: bcc,
-          attachments: attachments,
-          headers: headers,
-          custom_variables: custom_variables
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:
         )
         @template_uuid = template_uuid
         @template_variables = template_variables

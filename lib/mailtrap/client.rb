@@ -35,7 +35,7 @@ module Mailtrap
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
 
-      api_host ||= select_api_host(bulk: bulk, sandbox: sandbox)
+      api_host ||= select_api_host(bulk:, sandbox:)
       raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
 
       @api_key = api_key
