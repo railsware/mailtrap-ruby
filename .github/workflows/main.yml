@@ -9,11 +9,10 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - '3.0.7'
           - '3.1.6'
-          - '3.2.4'
-          - '3.3.3'
-
+          - '3.2.7'
+          - '3.3.7'
+          - '3.4.2'
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
