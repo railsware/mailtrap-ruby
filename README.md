@@ -82,6 +82,30 @@ better flexibility in that regard. Go to your _Mailtrap account_ → _Email Send
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.
 
+### Multiple Mailtrap Clients
+
+You can configure two Mailtrap clients to operate simultaneously. This setup is
+particularly useful when you need to send emails using both the transactional
+and bulk APIs. Refer to the configuration example below:
+
+```ruby
+# config/application.rb
+ActionMailer::Base.add_delivery_method :mailtrap_bulk, Mailtrap::ActionMailer::DeliveryMethod
+
+# config/environments/production.rb
+config.action_mailer.delivery_method = :mailtrap
+config.action_mailer.mailtrap_settings = {
+  api_key: 'your-api-key'
+}
+config.action_mailer.mailtrap_bulk_settings = {
+  api_key: 'your-api-key',
+  bulk: true
+}
+
+# app/mailers/foo_mailer.rb
+mail(delivery_method: :mailtrap_bulk)
+```
+
 ## Migration guide v1 → v2
 
 Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.
