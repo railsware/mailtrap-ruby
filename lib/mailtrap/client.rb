@@ -5,10 +5,11 @@ require 'net/http'
 require 'uri'
 
 module Mailtrap
-  class Client
+  class Client # rubocop:disable Metrics/ClassLength
     SENDING_API_HOST = 'send.api.mailtrap.io'
     BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
+    TEMPLATES_API_HOST = 'mailtrap.io'
     API_PORT = 443
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
@@ -55,6 +56,27 @@ module Mailtrap
       handle_response(response)
     end
 
+    def list_templates(account_id:)
+      template_request(:get, "/api/accounts/#{account_id}/email_templates")
+    end
+
+    def create_template(account_id:, **params)
+      template_request(:post, "/api/accounts/#{account_id}/email_templates", params)
+    end
+
+    def update_template(account_id:, email_template_id:, **params)
+      template_request(
+        :patch,
+        "/api/accounts/#{account_id}/email_templates/#{email_template_id}",
+        params
+      )
+    end
+
+    def destroy_template(account_id:, email_template_id:)
+      template_request(:delete, "/api/accounts/#{account_id}/email_templates/#{email_template_id}")
+      true
+    end
+
     private
 
     def select_api_host(bulk:, sandbox:)
@@ -75,6 +97,10 @@ module Mailtrap
 
     def http_client
       @http_client ||= Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
+    end
+
+    def template_http_client
+      @template_http_client ||= Net::HTTP.new(TEMPLATES_API_HOST, api_port).tap { |client| client.use_ssl = true }
     end
 
     def post_request(path, body)
@@ -113,5 +139,42 @@ module Mailtrap
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
     end
+
+    def template_request(http_method, path, body = nil) # rubocop:disable Metrics/MethodLength
+      request_class = {
+        get: Net::HTTP::Get,
+        post: Net::HTTP::Post,
+        patch: Net::HTTP::Patch,
+        delete: Net::HTTP::Delete
+      }.fetch(http_method)
+
+      request = request_class.new(path)
+      request['Authorization'] = "Bearer #{api_key}"
+      request['User-Agent'] = 'mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)'
+      if body
+        request['Content-Type'] = 'application/json'
+        request.body = JSON.generate(body)
+      end
+
+      response = template_http_client.request(request)
+      handle_template_response(response)
+    end # rubocop:enable Metrics/MethodLength
+
+    def handle_template_response(response) # rubocop:disable Metrics/MethodLength
+      case response
+      when Net::HTTPNoContent
+        true
+      when Net::HTTPSuccess
+        json_response(response.body)
+      when Net::HTTPUnauthorized
+        raise Mailtrap::AuthorizationError, json_response(response.body)[:errors]
+      when Net::HTTPForbidden
+        raise Mailtrap::RejectionError, json_response(response.body)[:errors]
+      when Net::HTTPClientError, Net::HTTPServerError
+        raise Mailtrap::Error, json_response(response.body)[:errors]
+      else
+        raise Mailtrap::Error, ["unexpected status code=#{response.code}"]
+      end
+    end # rubocop:enable Metrics/MethodLength
   end
 end

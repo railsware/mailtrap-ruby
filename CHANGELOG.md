@@ -1,3 +1,8 @@
+## [2.4.0] - 2025-05-12
+
+- Added Email Templates API support
+- Introduced template management methods on `Mailtrap::Client`
+
 ## [2.3.0] - 2025-03-06
 
 - Drop Ruby 3.0 support
