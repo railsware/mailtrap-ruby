@@ -6,5 +6,6 @@ require_relative 'mailtrap/errors'
 require_relative 'mailtrap/version'
 require_relative 'mailtrap/resources/batch_sender'
 require_relative 'mailtrap/resources/contacts'
+require_relative 'mailtrap/resources/templates'
 
 module Mailtrap; end
