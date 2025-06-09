@@ -2,7 +2,7 @@
 
 module Mailtrap
   module Resources
-    class Contacts
+    class Contact
       ALLOWED_CREATE_KEYS = %i[email fields list_ids].freeze
       ALLOWED_UPDATE_KEYS = %i[
         email fields list_ids_included list_ids_excluded unsubscribed
