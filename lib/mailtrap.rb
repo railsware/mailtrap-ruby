@@ -4,8 +4,8 @@ require_relative 'mailtrap/action_mailer' if defined? ActionMailer
 require_relative 'mailtrap/mail'
 require_relative 'mailtrap/errors'
 require_relative 'mailtrap/version'
-require_relative 'mailtrap/resources/batch_sender'
-require_relative 'mailtrap/resources/contact'
-require_relative 'mailtrap/resources/templates'
+require_relative 'mailtrap/batch_sender'
+require_relative 'mailtrap/contact'
+require_relative 'mailtrap/templates'
 
 module Mailtrap; end

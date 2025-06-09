@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'mailtrap/api/client'
-require 'mailtrap/resources/batch_sender'
+require 'mailtrap/batch_sender'
 
-RSpec.describe Mailtrap::Resources::BatchSender do
+RSpec.describe Mailtrap::BatchSender do
   let(:api_client) { instance_double(Mailtrap::Api::Client) }
   let(:batch_sender) { described_class.new(api_client, strict_mode: true) }
 

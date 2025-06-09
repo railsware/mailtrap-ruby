@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 require 'mailtrap/api/client'
-require 'mailtrap/resources/contact'
+require 'mailtrap/contact'
 
-RSpec.describe Mailtrap::Resources::Contact do
+RSpec.describe Mailtrap::Contact do
   let(:client) { instance_double(Mailtrap::Api::Client) }
   let(:resource) { described_class.new(client, strict_mode: true) }
   let(:account_id) { '12345' }

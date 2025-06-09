@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 require 'mailtrap/api/client'
-require 'mailtrap/resources/templates'
+require 'mailtrap/templates'
 
-RSpec.describe Mailtrap::Resources::Templates do
+RSpec.describe Mailtrap::Templates do
   let(:client) { instance_double(Mailtrap::Api::Client) }
 
   context 'non-strict mode' do
