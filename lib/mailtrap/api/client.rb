@@ -63,14 +63,14 @@ module Mailtrap
         response = http.request(request)
       
         unless response.is_a?(Net::HTTPSuccess)
-          Rails.logger.warn("[Mailtrap] Request failed: #{response.code} #{response.body}")
+          warn "[Mailtrap] Request failed: #{response.code} #{response.body}"
           raise "Mailtrap API Error (#{response.code}): #{response.body}"
         end
 
         body = JSON.parse(response.body, symbolize_names: true)
 
         if body.is_a?(Hash) && body[:errors]
-          Rails.logger.warn("[Mailtrap] API errors in response: #{body[:errors]}")
+          warn "[Mailtrap] API errors in response: #{body[:errors]}"
         end
 
         body
