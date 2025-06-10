@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mailtrap
-  class Templates
+  class Template
     ALLOWED_CREATE_KEYS = %i[name subject category body_html body_text].freeze
     ALLOWED_UPDATE_KEYS = ALLOWED_CREATE_KEYS
     ALLOWED_RESPONSE_KEYS = %i[
