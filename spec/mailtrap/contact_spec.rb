@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'mailtrap/api/client'
+require 'mailtrap/client'
 require 'mailtrap/contact'
 
 RSpec.describe Mailtrap::Contact do
-  let(:client) { instance_double(Mailtrap::Api::Client) }
+  let(:client) { instance_double(Mailtrap::Client) }
   let(:resource) { described_class.new(client, strict_mode: true) }
   let(:account_id) { '12345' }
   let(:contact_id) { 'abc-uuid-xyz' }

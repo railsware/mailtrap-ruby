@@ -13,17 +13,6 @@ module Mailtrap
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
 
-    # Initializes a new Mailtrap::Client instance.
-    #
-    # @param [String] api_key The Mailtrap API key to use for sending. Required.
-    #                         If not set, is taken from the MAILTRAP_API_KEY environment variable.
-    # @param [String, nil] api_host The Mailtrap API hostname. If not set, is chosen internally.
-    # @param [Integer] api_port The Mailtrap API port. Default: 443.
-    # @param [Boolean] bulk Whether to use the Mailtrap bulk sending API. Default: false.
-    #                       If enabled, is incompatible with `sandbox: true`.
-    # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
-    #                          If enabled, is incompatible with `bulk: true`.
-    # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
     def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
@@ -55,6 +44,40 @@ module Mailtrap
       handle_response(response)
     end
 
+    def get(path, params: {})
+      uri = URI::HTTPS.build(host: api_host, path: path, query: URI.encode_www_form(params))
+      request = Net::HTTP::Get.new(uri)
+      attach_headers(request)
+      perform_request(uri, request)
+    end
+
+    def post(path, body: {})
+      uri = URI::HTTPS.build(host: api_host, path: path)
+      request = Net::HTTP::Post.new(uri)
+      request.body = JSON.dump(body)
+      attach_headers(request)
+      perform_request(uri, request)
+    end
+
+    def patch(path, body: {})
+      uri = URI::HTTPS.build(host: api_host, path: path)
+      request = Net::HTTP::Patch.new(uri)
+      request.body = JSON.dump(body)
+      attach_headers(request)
+      perform_request(uri, request)
+    end
+
+    def delete(path)
+      uri = URI::HTTPS.build(host: api_host, path: path)
+      request = Net::HTTP::Delete.new(uri)
+      attach_headers(request)
+      perform_request(uri, request)
+    end
+
+    def batch_send(payload)
+      post('/api/send/batch', body: payload)
+    end
+
     private
 
     def select_api_host(bulk:, sandbox:)
@@ -80,11 +103,33 @@ module Mailtrap
     def post_request(path, body)
       request = Net::HTTP::Post.new(path)
       request.body = body
+      attach_headers(request)
+      request
+    end
+
+    def attach_headers(request)
       request['Authorization'] = "Bearer #{api_key}"
       request['Content-Type'] = 'application/json'
       request['User-Agent'] = 'mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)'
+    end
 
-      request
+    def perform_request(uri, request)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      response = http.request(request)
+
+      unless response.is_a?(Net::HTTPSuccess)
+        warn "[Mailtrap] Request failed: #{response.code} #{response.body}"
+        raise "Mailtrap API Error (#{response.code}): #{response.body}"
+      end
+
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      if body.is_a?(Hash) && body[:errors]
+        warn "[Mailtrap] API errors in response: #{body[:errors]}"
+      end
+
+      body
     end
 
     def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength

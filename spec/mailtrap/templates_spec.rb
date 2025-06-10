@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'mailtrap/api/client'
+require 'mailtrap/client'
 require 'mailtrap/templates'
 
 RSpec.describe Mailtrap::Templates do
-  let(:client) { instance_double(Mailtrap::Api::Client) }
+  let(:client) { instance_double(Mailtrap::Client) }
 
   context 'non-strict mode' do
     let(:templates) { described_class.new(client) }
