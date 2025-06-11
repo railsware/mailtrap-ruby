@@ -75,7 +75,7 @@ module Mailtrap
     end
 
     def batch_send(payload)
-      post('/api/send/batch', body: payload)
+      post('/api/batch', body: payload)
     end
 
     private

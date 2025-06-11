@@ -16,6 +16,9 @@ module Mailtrap
     end
   end
 
+  # Raised when the API returns invalid or unexpected structure
+  class InvalidApiResponseError < Error; end
+
   # AuthorizationError is raised when invalid token is used.
   class AuthorizationError < Error; end
 
@@ -33,3 +36,4 @@ module Mailtrap
   #   * Domain is not verified
   class RejectionError < Error; end
 end
+
