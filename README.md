@@ -67,6 +67,60 @@ Refer to the [`examples`](examples) folder for more examples.
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
 - [ActionMailer](examples/action_mailer.rb)
+- [Contact](examples/contact.rb)
+- [Template](examples/template.rb)
+- [Batch sender](examples/batch_sender.rb)
+
+### Additional Features
+
+#### Managing Contacts
+
+```ruby
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+contacts = Mailtrap::Contact.new(client)
+
+contacts.create(
+  account_id: 'your-account-id',
+  email: 'user@example.com',
+  list_ids: ['your-list-id']
+)
+```
+
+#### Managing Email Templates
+
+```ruby
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+templates = Mailtrap::Template.new(client)
+
+templates.create(
+  account_id: 'your-account-id',
+  name: 'Welcome',
+  subject: 'Hi!',
+  body_html: '<h1>Welcome</h1>',
+  body_text: 'Plain text version'
+)
+```
+
+#### Batch Sending
+
+```ruby
+client = Mailtrap::Client.new(
+  api_key: 'your-api-key',
+  api_host: 'bulk.api.mailtrap.io'
+)
+batch = Mailtrap::BatchSender.new(client)
+
+batch.send_emails(
+  base: {
+    from: { email: 'you@example.com' },
+    subject: 'Hello'
+  },
+  requests: [
+    { to: [{ email: 'a@example.com' }] },
+    { to: [{ email: 'b@example.com' }] }
+  ]
+)
+```
 
 ### Content-Transfer-Encoding
 
