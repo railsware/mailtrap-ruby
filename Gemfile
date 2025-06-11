@@ -15,3 +15,4 @@ gem 'rubocop-rake', require: false
 gem 'rubocop-rspec', require: false
 gem 'vcr'
 gem 'webmock'
+gem 'pry'

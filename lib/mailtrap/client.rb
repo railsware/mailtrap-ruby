@@ -13,14 +13,7 @@ module Mailtrap
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
 
-    def initialize( # rubocop:disable Metrics/ParameterLists
-      api_key: ENV.fetch('MAILTRAP_API_KEY'),
-      api_host: nil,
-      api_port: API_PORT,
-      bulk: false,
-      sandbox: false,
-      inbox_id: nil
-    )
+    def initialize(api_key: ENV.fetch('MAILTRAP_API_KEY'), api_host: nil, api_port: API_PORT, bulk: false, sandbox: false, inbox_id: nil)
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
 
@@ -83,17 +76,13 @@ module Mailtrap
     def select_api_host(bulk:, sandbox:)
       raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
 
-      if sandbox
-        SANDBOX_API_HOST
-      elsif bulk
-        BULK_SENDING_API_HOST
-      else
-        SENDING_API_HOST
-      end
+      return SANDBOX_API_HOST if sandbox
+      return BULK_SENDING_API_HOST if bulk
+      SENDING_API_HOST
     end
 
     def request_url
-      "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
+      "/api/send#{sandbox ? "/#{inbox_id}" : ''}"
     end
 
     def http_client
@@ -124,11 +113,7 @@ module Mailtrap
       end
 
       body = JSON.parse(response.body, symbolize_names: true)
-
-      if body.is_a?(Hash) && body[:errors]
-        warn "[Mailtrap] API errors in response: #{body[:errors]}"
-      end
-
+      warn "[Mailtrap] API errors in response: #{body[:errors]}" if body.is_a?(Hash) && body[:errors]
       body
     end
 
