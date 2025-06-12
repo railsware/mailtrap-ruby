@@ -106,15 +106,8 @@ module Mailtrap
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       response = http.request(request)
-
-      unless response.is_a?(Net::HTTPSuccess)
-        warn "[Mailtrap] Request failed: #{response.code} #{response.body}"
-        raise "Mailtrap API Error (#{response.code}): #{response.body}"
-      end
-
-      body = JSON.parse(response.body, symbolize_names: true)
-      warn "[Mailtrap] API errors in response: #{body[:errors]}" if body.is_a?(Hash) && body[:errors]
-      body
+    
+      handle_response(response)
     end
 
     def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
