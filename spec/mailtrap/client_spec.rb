@@ -231,4 +231,53 @@ RSpec.describe Mailtrap::Client do
       end
     end
   end
+
+  describe '#batch_send' do
+    let(:client) do
+      described_class.new(api_key:, bulk: true)
+    end
+
+    let(:payload) do
+      {
+        base: {
+          from: { email: 'sender@example.com' },
+          subject: 'Test subject',
+          html: '<h1>Hello!</h1>',
+          text: 'Hello!'
+        },
+        requests: [
+          { to: [{ email: 'recipient1@example.com' }] },
+          { to: [{ email: 'recipient2@example.com' }] }
+        ]
+      }
+    end
+
+    it 'sends payload to /api/batch and returns parsed response' do
+      stub = stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
+             .with(body: JSON.dump(payload))
+             .to_return(status: 200, body: JSON.dump({ responses: [{ status: 202 }] }))
+
+      result = client.batch_send(payload)
+      expect(result[:responses]).to eq([{ status: 202 }])
+      expect(stub).to have_been_requested
+    end
+
+    it 'raises error when response status is not 2xx' do
+      stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
+        .to_return(status: 400, body: JSON.dump({ errors: ['bad request'] }))
+
+      expect do
+        client.batch_send(payload)
+      end.to raise_error(Mailtrap::Error, /bad request/)
+    end
+
+    it 'raises error when response is invalid JSON' do
+      stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
+        .to_return(status: 200, body: 'not-json')
+
+      expect do
+        client.batch_send(payload)
+      end.to raise_error(JSON::ParserError)
+    end
+  end
 end

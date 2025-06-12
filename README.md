@@ -67,6 +67,37 @@ Refer to the [`examples`](examples) folder for more examples.
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
 - [ActionMailer](examples/action_mailer.rb)
+- [Batch sender](examples/batch_sender.rb)
+
+#### Batch Sending
+
+```ruby
+client = Mailtrap::Client.new(
+  api_key: 'your-api-key',
+  api_host: 'bulk.api.mailtrap.io'
+)
+
+batch = Mailtrap::BatchSender.new(client)
+
+batch.send_emails(
+  base: {
+    from: { email: 'sales@example.com', name: 'Example Sales Team' },
+    subject: 'Your Order Confirmation',
+    text: 'Your order was received!',
+    category: 'API Test'
+  },
+  requests: [
+    {
+      to: [{ email: 'john_doe@example.com' }],
+      custom_variables: { user_id: '45982' }
+    },
+    {
+      to: [{ email: 'jane_doe@example.com' }],
+      custom_variables: { user_id: '12345' }
+    }
+  ]
+)
+```
 
 ### Content-Transfer-Encoding
 
