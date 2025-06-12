@@ -1,6 +1,10 @@
 require 'spec_helper'
 require 'mailtrap/client'
 require 'mailtrap/batch_sender'
+require 'mailtrap/batch/base'
+require 'mailtrap/mail/base'
+require 'mailtrap/validators/email_validator'
+
 
 RSpec.describe Mailtrap::BatchSender do
   let(:client) do
@@ -39,11 +43,14 @@ RSpec.describe Mailtrap::BatchSender do
     end
 
     it 'raises if base.from is invalid' do
-      bad_base = base.as_json.merge(from: { email: 'bad' })
-
       expect {
-        sender.send_emails(base: bad_base, requests: requests)
-      }.to raise_error(ArgumentError, /must be a valid email/)
+        Mailtrap::Batch::Base.new(
+          from: { email: 'bad' },
+          subject: 'Test',
+          html: '<h1>Hello</h1>',
+          text: 'Hello!'
+        )
+      }.to raise_error(ArgumentError, /Invalid from\[:email\]/)
     end
 
     it 'raises if requests are missing or too big' do

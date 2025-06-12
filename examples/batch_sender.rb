@@ -8,7 +8,7 @@ client = Mailtrap::Client.new(
   api_host: 'bulk.api.mailtrap.io'
 )
 
-batch = Mailtrap::BatchSender.new(client, strict_mode: true)
+batch = Mailtrap::BatchSender.new(client)
 
 html_content = '<h1>Hello User</h1>'
 text_content = 'Hello User'
