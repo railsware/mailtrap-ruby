@@ -1,34 +1,33 @@
 # frozen_string_literal: true
+
 require_relative '../lib/mailtrap'
-require 'dotenv/load'
 require 'base64'
 
+API_KEY = 'your-real-mailtrap-api-key-here'
+API_KEY = '66625775e0dcd763c981e72edbe29d2f'
+
 client = Mailtrap::Client.new(
-  api_key: ENV['MAILTRAP_API_KEY'],
-  api_host: 'bulk.api.mailtrap.io'
+  api_key: API_KEY,
+  bulk: true
 )
 
 batch = Mailtrap::BatchSender.new(client)
 
-html_content = '<h1>Hello User</h1>'
-text_content = 'Hello User'
-
-base_payload = {
+base_mail = Mailtrap::Batch::Base.new(
   from: { email: 'noreply@example.com', name: 'NoReply Bot' },
+  reply_to: { email: 'reply@example.com', name: 'Reply' },
   subject: 'System Notification',
-  html: html_content,
-  text: text_content,
+  html: '<h1>Hello User</h1>',
+  text: 'Hello User',
+  category: 'system',
+  headers: { 'X-Custom-Header' => 'BatchSend' },
   attachments: [
     {
       filename: 'test.txt',
       content: Base64.strict_encode64('This is a test')
     }
   ],
-  category: 'system',
-  headers: { 'X-Custom-Header' => 'BatchSend' },
-  track_opens: true,
-  track_clicks: false
-}
+)
 
 requests = [
   {
@@ -43,6 +42,7 @@ requests = [
   }
 ]
 
-batch.send_emails(base: base_payload, requests: requests)
+response = batch.send_emails(base: base_mail, requests: requests)
 
-puts "Batch email sent"
+puts "Batch email sent:"
+puts response

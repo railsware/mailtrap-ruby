@@ -4,7 +4,7 @@ module Mailtrap
   module Batch
     class Base < Mailtrap::Mail::Base
       EXTRA_ALLOWED_KEYS = %i[
-        track_opens track_clicks template_uuid template_variables
+        template_uuid template_variables
       ].freeze
 
       attr_reader :extra_options
