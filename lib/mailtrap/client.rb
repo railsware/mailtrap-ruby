@@ -32,43 +32,57 @@ module Mailtrap
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
       request = post_request(request_url, mail.to_json)
-      response = http_client.request(request)
-
+      response = http_client(cache: true).request(request)
       handle_response(response)
     end
 
     def get(path, params: {})
-      uri = URI::HTTPS.build(host: api_host, path: path, query: URI.encode_www_form(params))
-      request = Net::HTTP::Get.new(uri)
-      attach_headers(request)
-      perform_request(uri, request)
+      request(:get, path, params: params)
     end
-
+    
     def post(path, body: {})
-      uri = URI::HTTPS.build(host: api_host, path: path)
-      request = Net::HTTP::Post.new(uri)
-      request.body = JSON.dump(body)
-      attach_headers(request)
-      perform_request(uri, request)
+      request(:post, path, body: body)
     end
-
+    
     def patch(path, body: {})
-      uri = URI::HTTPS.build(host: api_host, path: path)
-      request = Net::HTTP::Patch.new(uri)
-      request.body = JSON.dump(body)
-      attach_headers(request)
-      perform_request(uri, request)
+      request(:patch, path, body: body)
     end
-
+    
     def delete(path)
-      uri = URI::HTTPS.build(host: api_host, path: path)
-      request = Net::HTTP::Delete.new(uri)
-      attach_headers(request)
-      perform_request(uri, request)
+      request(:delete, path)
     end
 
     def batch_send(payload)
       post('/api/batch', body: payload)
+    end
+
+    def request(method, path, body: nil, params: nil)
+      uri = URI::HTTPS.build(
+        host: api_host,
+        path: path,
+        query: params ? URI.encode_www_form(params) : nil
+      )
+    
+      request = build_request(method, uri, body)
+      perform_request(uri, request)
+    end
+    
+    def build_request(method, uri, body)
+      request_class = {
+        get: Net::HTTP::Get,
+        post: Net::HTTP::Post,
+        patch: Net::HTTP::Patch,
+        delete: Net::HTTP::Delete
+      }[method.to_sym] || raise(ArgumentError, "Unsupported method: #{method}")
+    
+      request = request_class.new(uri)
+
+      if [:post, :patch].include?(method.to_sym) && body
+        request.body = JSON.dump(body)
+      end
+    
+      attach_headers(request)
+      request
     end
 
     private
@@ -85,8 +99,10 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ''}"
     end
 
-    def http_client
-      @http_client ||= Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
+    def http_client(cache: true)
+      return @http_client if cache && defined?(@http_client)
+
+      Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
     end
 
     def post_request(path, body)
@@ -103,10 +119,8 @@ module Mailtrap
     end
 
     def perform_request(uri, request)
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      response = http.request(request)
-    
+      client = http_client(cache: false)
+      response = client.request(request)
       handle_response(response)
     end
 

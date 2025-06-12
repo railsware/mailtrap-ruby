@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'mailtrap/client'
 require 'mailtrap/batch_sender'
 require 'mailtrap/batch/base'
-require 'mailtrap/mail/base'
 require 'mailtrap/validators/email_validator'
 
 
