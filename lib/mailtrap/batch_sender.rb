@@ -8,15 +8,12 @@ module Mailtrap
     end
 
     def send_emails(base:, requests:)
-      unless @client.api_host == Mailtrap::Client::BULK_SENDING_API_HOST
+      unless @client.api_host.include?('bulk.api.mailtrap.io')
         raise ArgumentError, "[Mailtrap] batch_send must use bulk.api.mailtrap.io"
       end
 
-      base_payload = ensure_hash(base).tap do |h|
-        h.delete('to')
-        h.delete('cc')
-        h.delete('bcc')
-      end
+      base_payload = ensure_hash(base).transform_keys(&:to_sym).except(:to, :cc, :bcc)
+
       validate_base!(base_payload)
 
       validate_requests!(requests)
@@ -64,7 +61,7 @@ module Mailtrap
         %i[to cc bcc].each do |field|
           next unless request[field].is_a?(Array)
 
-          request[field].each do |recipient|
+          request[field].compact.each do |recipient|
             email = recipient[:email]
             unless email.is_a?(String) && email.match?(/@/)
               raise ArgumentError, "Invalid #{field}[:email] in request ##{index + 1}"
