@@ -25,9 +25,15 @@ module Mailtrap
     private
 
     def validate_client_host!
-      return if @client.api_host.include?('bulk.api.mailtrap.io')
+      allowed_hosts = %w[
+        bulk.api.mailtrap.io
+        send.api.mailtrap.io
+        sandbox.api.mailtrap.io
+      ]
 
-      raise ArgumentError, '[Mailtrap] batch_send must use bulk.api.mailtrap.io'
+      return if allowed_hosts.any? { |host| @client.api_host.include?(host) }
+
+      raise ArgumentError, "[Mailtrap] batch_send must use a supported Mailtrap host. Got: #{@client.api_host}"
     end
 
     def ensure_hash(obj)
