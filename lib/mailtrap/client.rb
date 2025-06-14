@@ -29,7 +29,7 @@ module Mailtrap
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
 
-      api_host ||= select_api_host(bulk:, sandbox:)
+      api_host ||= select_api_host(bulk: bulk, sandbox: sandbox)
       raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
 
       @api_key = api_key
@@ -48,18 +48,28 @@ module Mailtrap
       handle_response(response)
     end
 
-    def post(path, body: {})
-      request(:post, path, body:)
+    def send_batch(base, requests)
+      raise ArgumentError, 'hould be Mailtrap::Mail::Base object' unless base.is_a?(Mailtrap::Mail::Base)
+      raise ArgumentError, 'requests must be present' if !requests.is_a?(Array) || requests.empty?
+      body = {
+        base: base.as_json.except('to', 'cc', 'bcc'),
+        requests: requests
+      }.to_json
+    
+      request = post_request('/api/batch', body)
+      response = http_client.request(request)
+    
+      handle_response(response)
     end
 
-    def batch_send(payload)
-      post('/api/batch', body: payload)
+    def post(path, body: {})
+      request(:post, path, body: body)
     end
 
     def request(method, path, body: nil, params: nil)
       uri = URI::HTTPS.build(
         host: api_host,
-        path:,
+        path: path,
         query: params ? URI.encode_www_form(params) : nil
       )
 

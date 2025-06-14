@@ -5,7 +5,11 @@ require 'json'
 module Mailtrap
   module Mail
     class Base
-      attr_accessor :from, :to, :reply_to, :cc, :bcc, :headers, :custom_variables, :subject, :text, :html, :category
+      attr_accessor :from, :to, :reply_to, :cc, :bcc,
+                    :headers, :custom_variables, :subject,
+                    :text, :html, :category,
+                    :template_uuid, :template_variables
+
       attr_reader :attachments
 
       def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
@@ -20,7 +24,9 @@ module Mailtrap
         attachments: [],
         headers: {},
         custom_variables: {},
-        category: nil
+        category: nil,
+        template_uuid: nil,
+        template_variables: nil
       )
         @from = from
         @to = to
@@ -34,6 +40,8 @@ module Mailtrap
         @headers = headers
         @custom_variables = custom_variables
         @category = category
+        @template_uuid = template_uuid
+        @template_variables = template_variables
       end
 
       def as_json # rubocop:disable Metrics/MethodLength
@@ -50,15 +58,14 @@ module Mailtrap
           # TODO: update headers and custom_variables with as_json method
           'headers' => headers,
           'custom_variables' => custom_variables,
-          'category' => category
+          'category' => category,
+          'template_uuid' => template_uuid,
+          'template_variables' => template_variables
         }.compact
       end
 
       def to_json(*args)
-        JSON.generate(
-          as_json,
-          *args
-        )
+        JSON.generate(as_json, *args)
       end
 
       def attachments=(attachments)

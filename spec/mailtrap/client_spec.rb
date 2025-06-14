@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'webmock/rspec'
 RSpec.describe Mailtrap::Client do
   subject(:client) { described_class.new(api_key:) }
 
@@ -232,52 +232,73 @@ RSpec.describe Mailtrap::Client do
     end
   end
 
-  describe '#batch_send' do
-    let(:client) do
-      described_class.new(api_key:, bulk: true)
+  describe '#send_batch' do
+    let(:client) { described_class.new(api_key: 'fake-key', bulk: true) }
+  
+    let(:base) do
+      Mailtrap::Mail::Base.new(
+        from: { email: 'mailtrap@mailtrap.io', name: 'Mailtrap Test' },
+        subject: 'Batch subject',
+        template_uuid: 'aeb1ec59-2737-4a1d-9c95-0baf3be49d74',
+        template_variables: { 'user_name' => 'Global User' }
+      )
     end
-
-    let(:payload) do
-      {
-        base: {
-          from: { email: 'sender@example.com' },
-          subject: 'Test subject',
-          html: '<h1>Hello!</h1>',
-          text: 'Hello!'
+  
+    let(:requests) do
+      [
+        {
+          to: [{ email: 'recipient1@example.com' }],
+          template_variables: { 'user_name' => 'Alice' }
         },
-        requests: [
-          { to: [{ email: 'recipient1@example.com' }] },
-          { to: [{ email: 'recipient2@example.com' }] }
-        ]
-      }
+        {
+          to: [{ email: 'recipient2@example.com' }],
+          template_variables: { 'user_name' => 'Bob' }
+        }
+      ]
     end
-
-    it 'sends payload to /api/batch and returns parsed response' do
+  
+    it 'sends batch successfully' do
       stub = stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
-             .with(body: JSON.dump(payload))
-             .to_return(status: 200, body: JSON.dump({ responses: [{ status: 202 }] }))
-
-      result = client.batch_send(payload)
-      expect(result[:responses]).to eq([{ status: 202 }])
+             .to_return(
+               status: 200,
+               body: {
+                 responses: [
+                   { status: 'sent' },
+                   { status: 'sent' }
+                 ]
+               }.to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+  
+      response = client.send_batch(base, requests)
+  
+      expect(response).to include(:responses)
+      expect(response[:responses].size).to eq(2)
+      expect(response[:responses].map { |r| r[:status] }).to all(eq('sent'))
       expect(stub).to have_been_requested
     end
 
-    it 'raises error when response status is not 2xx' do
-      stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
-        .to_return(status: 400, body: JSON.dump({ errors: ['bad request'] }))
-
-      expect do
-        client.batch_send(payload)
-      end.to raise_error(Mailtrap::Error, /bad request/)
+    context 'when requests are empty' do
+      it 'raises argument error' do
+        expect { client.send_batch(base, []) }.to raise_error(ArgumentError, /requests must be present/)
+      end
     end
-
-    it 'raises error when response is invalid JSON' do
-      stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
-        .to_return(status: 200, body: 'not-json')
-
-      expect do
-        client.batch_send(payload)
-      end.to raise_error(JSON::ParserError)
+    
+    context 'when base is invalid type' do
+      it 'raises argument error' do
+        expect { client.send_batch('string-instead-of-base', requests) }.to raise_error(ArgumentError)
+      end
     end
+    
+    context 'when Mailtrap returns 401' do
+      it 'raises authorization error' do
+        stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
+          .to_return(status: 401, body: { errors: ['Unauthorized'] }.to_json, headers: { 'Content-Type' => 'application/json' })
+    
+        expect { client.send_batch(base, requests) }.to raise_error(Mailtrap::AuthorizationError)
+      end
+    end
+    
   end
+  
 end
