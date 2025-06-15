@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'webmock/rspec'
 RSpec.describe Mailtrap::Client do
   subject(:client) { described_class.new(api_key:) }
@@ -234,7 +235,7 @@ RSpec.describe Mailtrap::Client do
 
   describe '#send_batch' do
     let(:client) { described_class.new(api_key: 'fake-key', bulk: true) }
-  
+
     let(:base) do
       Mailtrap::Mail::Base.new(
         from: { email: 'mailtrap@mailtrap.io', name: 'Mailtrap Test' },
@@ -243,7 +244,7 @@ RSpec.describe Mailtrap::Client do
         template_variables: { 'user_name' => 'Global User' }
       )
     end
-  
+
     let(:requests) do
       [
         {
@@ -256,7 +257,7 @@ RSpec.describe Mailtrap::Client do
         }
       ]
     end
-  
+
     it 'sends batch successfully' do
       stub = stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
              .to_return(
@@ -269,9 +270,9 @@ RSpec.describe Mailtrap::Client do
                }.to_json,
                headers: { 'Content-Type' => 'application/json' }
              )
-  
+
       response = client.send_batch(base, requests)
-  
+
       expect(response).to include(:responses)
       expect(response[:responses].size).to eq(2)
       expect(response[:responses].map { |r| r[:status] }).to all(eq('sent'))
@@ -283,22 +284,20 @@ RSpec.describe Mailtrap::Client do
         expect { client.send_batch(base, []) }.to raise_error(ArgumentError, /requests must be present/)
       end
     end
-    
+
     context 'when base is invalid type' do
       it 'raises argument error' do
         expect { client.send_batch('string-instead-of-base', requests) }.to raise_error(ArgumentError)
       end
     end
-    
+
     context 'when Mailtrap returns 401' do
       it 'raises authorization error' do
         stub_request(:post, 'https://bulk.api.mailtrap.io/api/batch')
           .to_return(status: 401, body: { errors: ['Unauthorized'] }.to_json, headers: { 'Content-Type' => 'application/json' })
-    
+
         expect { client.send_batch(base, requests) }.to raise_error(Mailtrap::AuthorizationError)
       end
     end
-    
   end
-  
 end
