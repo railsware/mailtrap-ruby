@@ -1,0 +1,212 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/email_templates
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      Authorization:
+      - Bearer 793a32549bc04f67fcd4f800009781f2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Jun 2025 12:40:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 950a60f3cf5bc04a-WAW
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '148'
+      Etag:
+      - W/"0fc4e4503109da125e3484e521c0d5f1"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Security-Policy:
+      - 'default-src ''self''; style-src ''self'' data: blob: ''unsafe-inline'' assets.mailtrap.io
+        www.googletagmanager.com fonts.googleapis.com; font-src ''self'' data: blob:
+        ''unsafe-inline'' assets.mailtrap.io static.hsappstatic.net fonts.gstatic.cn
+        fonts.gstatic.com *.s-microsoft.com use.typekit.net; script-src ''self'' data:
+        blob: assets.mailtrap.io *.cookiebot.com www.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com www.googleadservices.com www.google.com
+        beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
+        cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
+        www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
+        ''nonce-js-TrseCiGoEV0d499Tp8+m4A==''; connect-src ''self'' assets.mailtrap.io
+        wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
+        *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
+        *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
+        *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo
+        *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz
+        *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
+        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
+        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
+        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
+        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
+        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
+        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
+        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
+        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
+        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
+        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
+        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
+        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
+        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
+        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
+        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
+        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
+        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
+        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
+        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
+        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
+        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
+        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
+        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
+        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
+        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
+        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com
+        *.clarity.ms *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com
+        www.google.com wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
+        *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
+        *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
+        t.co/1/i/adsct *.growthbook.io; img-src ''self'' data: blob: assets.mailtrap.io
+        *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al
+        *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au
+        *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg
+        *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br
+        *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca
+        *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
+        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
+        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
+        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
+        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
+        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
+        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
+        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
+        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
+        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
+        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
+        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
+        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
+        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
+        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
+        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
+        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
+        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
+        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
+        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
+        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
+        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
+        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
+        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
+        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
+        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
+        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com
+        *.clarity.ms *.doubleclick.net *.googlesyndication.com *.googletagmanager.com
+        *.google.com track.hubspot.com *.facebook.com *.facebook.net *.analytics.google.com
+        *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct
+        secure.gravatar.com; frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net
+        www.googletagmanager.com www.facebook.com www.recaptcha.net; frame-ancestors
+        ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
+        object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
+      X-Request-Id:
+      - 11827dfb-faf4-4045-8d13-501c05d217c2
+      X-Runtime:
+      - '0.076887'
+      X-Cloud-Trace-Context:
+      - 6239a1d4fc5349e68e965aa8e2aaffd8;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":39572,"uuid":"ec061785-66c5-4300-bb03-17272415e06f","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-06-16T12:34:41.056Z","updated_at":"2025-06-16T12:34:41.056Z"},{"id":39570,"uuid":"17f0e46f-239e-4bb8-9601-1ea833e1a801","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:40.013Z","updated_at":"2025-06-16T12:34:40.013Z"},{"id":39569,"uuid":"9cb37d93-e56c-4d41-ae40-ba6dc9d84c61","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:39.496Z","updated_at":"2025-06-16T12:34:39.737Z"},{"id":39568,"uuid":"e137b857-eb8e-46ea-8703-bd8d42efe2f5","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:38.654Z","updated_at":"2025-06-16T12:34:39.247Z"},{"id":39567,"uuid":"5018e287-b646-4001-b44a-0f76b1a71cb5","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:38.162Z","updated_at":"2025-06-16T12:34:38.403Z"},{"id":39566,"uuid":"d223be83-e5cd-4653-97cb-76279feb9a95","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:37.683Z","updated_at":"2025-06-16T12:34:37.924Z"},{"id":39565,"uuid":"d1d2fc6d-294d-4a5f-b563-f52a557e3666","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:37.322Z","updated_at":"2025-06-16T12:34:37.322Z"},{"id":39564,"uuid":"ed517ad3-0811-4ecd-a6b2-662a730c7126","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:37.086Z","updated_at":"2025-06-16T12:34:37.086Z"},{"id":39563,"uuid":"a005a793-e792-467d-baac-2844e67d5ec5","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:36.844Z","updated_at":"2025-06-16T12:34:36.844Z"},{"id":39562,"uuid":"307dca90-bc45-4dcf-9fc7-1be6b8d90647","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:36.591Z","updated_at":"2025-06-16T12:34:36.591Z"},{"id":39561,"uuid":"1593a5e8-9cd4-444f-a563-4d85721b4aeb","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:35.781Z","updated_at":"2025-06-16T12:34:35.781Z"},{"id":39560,"uuid":"8e4a26e7-3144-41dd-8a9f-0f6a08845e77","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:34.979Z","updated_at":"2025-06-16T12:34:34.979Z"},{"id":39559,"uuid":"5cb2743b-accc-4cc9-8b19-9b4552f20df2","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:33.822Z","updated_at":"2025-06-16T12:34:33.822Z"},{"id":39558,"uuid":"de5e3bc8-ba14-4009-83f2-238d4fa27f8f","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.847Z","updated_at":"2025-06-16T12:32:10.847Z"},{"id":39557,"uuid":"1bda49ad-df09-4909-b75d-41be83722d59","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.587Z","updated_at":"2025-06-16T12:32:10.587Z"},{"id":39556,"uuid":"20fe63a7-0365-42a2-9c72-c6d9b8d942c8","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.029Z","updated_at":"2025-06-16T12:32:10.029Z"},{"id":39555,"uuid":"e37b6fb4-582c-47ff-9ccd-7a88ef088442","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:09.442Z","updated_at":"2025-06-16T12:32:09.442Z"},{"id":39554,"uuid":"825bf7ea-ccf0-4488-8de7-451fdfd4ff37","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:31:49.287Z","updated_at":"2025-06-16T12:31:49.287Z"},{"id":39553,"uuid":"5b50a0f9-5d42-4fe6-861d-836ac8c2eaa3","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:31:49.007Z","updated_at":"2025-06-16T12:31:49.007Z"},{"id":39542,"uuid":"961bf336-913e-4fe0-a3b9-ee203d441b92","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T11:40:30.175Z","updated_at":"2025-06-16T11:40:30.175Z"},{"id":39541,"uuid":"f2fe6b43-3900-416b-89cc-62257546ca70","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-16T11:40:29.597Z","updated_at":"2025-06-16T11:40:29.597Z"},{"id":39539,"uuid":"da3be452-1e83-4841-b552-35b7658d13e9","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:34:38.504Z","updated_at":"2025-06-16T11:34:38.504Z"},{"id":39537,"uuid":"fed0b42b-f9bb-43db-b8a1-586dce861999","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:29:43.890Z","updated_at":"2025-06-16T11:29:43.890Z"},{"id":39529,"uuid":"8a6346c2-38d5-4a64-a475-ad218fdbeeee","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:27.231Z","updated_at":"2025-06-16T11:14:27.231Z"},{"id":39528,"uuid":"e6a09907-5d56-4f2b-81b4-fb76fcee84df","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:17.482Z","updated_at":"2025-06-16T11:14:17.482Z"},{"id":39527,"uuid":"b663e4a2-8a6d-4e5a-a173-dd2fdb03b1b5","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:12:30.379Z","updated_at":"2025-06-16T11:12:30.379Z"},{"id":39510,"uuid":"24b2fc9d-1583-435c-9c17-43d007045a68","name":"test","category":"t1","subject":"new","body_html":null,"body_text":null,"created_at":"2025-06-16T09:22:48.875Z","updated_at":"2025-06-16T09:22:48.875Z"}]'
+  recorded_at: Mon, 16 Jun 2025 12:40:58 GMT
+recorded_with: VCR 6.2.0

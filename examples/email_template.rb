@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'mailtrap'
 
 # create mail object
@@ -16,3 +17,27 @@ mail = Mailtrap::Mail::FromTemplate.new(
 # create client and send
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
+
+templates = Mailtrap::Template.new(1_111_111, client)
+
+created = templates.create(
+  name: 'Welcome Email',
+  subject: 'Welcome to Mailtrap!',
+  body_html: '<h1>Hello</h1>',
+  body_text: 'Hello',
+  category: 'welcome'
+) # or Mailtrap::EmailTemplateRequest
+puts "Created Template: #{created[:id]}"
+
+list = templates.list
+puts "Templates: #{list}"
+
+found = templates.get(created[:id])
+puts "Found Template: #{found[:name]}"
+
+updated = templates.update(created[:id], name: 'Welcome Updated') # or Mailtrap::EmailTemplateRequest
+puts "Updated Template Name: #{updated[:name]}"
+
+# Delete
+templates.delete(created[:id])
+puts 'Template deleted'

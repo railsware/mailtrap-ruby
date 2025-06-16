@@ -10,6 +10,7 @@ module Mailtrap
     BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
     API_PORT = 443
+    API_HOST = 'mailtrap.io'
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
 
@@ -30,7 +31,8 @@ module Mailtrap
       api_port: API_PORT,
       bulk: false,
       sandbox: false,
-      inbox_id: nil
+      inbox_id: nil,
+      general_api_host: API_HOST
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
@@ -44,15 +46,48 @@ module Mailtrap
       @bulk = bulk
       @sandbox = sandbox
       @inbox_id = inbox_id
+      @general_api_host = general_api_host
     end
 
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
-      request = post_request(request_url, mail.to_json)
-      response = http_client.request(request)
+      uri = URI::HTTP.build(host: api_host, port: api_port, path: request_url)
+      perform_request(:post, uri, mail)
+    end
 
-      handle_response(response)
+    # Performs a GET request to the specified path
+    # @param path [String] The request path
+    # @return [Hash] The JSON response
+    def get(path)
+      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      perform_request(:get, uri)
+    end
+
+    # Performs a POST request to the specified path
+    # @param path [String] The request path
+    # @param body [Hash] The request body
+    # @return [Hash] The JSON response
+    def post(path, body = nil)
+      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      perform_request(:post, uri, body)
+    end
+
+    # Performs a PATCH request to the specified path
+    # @param path [String] The request path
+    # @param body [Hash] The request body
+    # @return [Hash] The JSON response
+    def patch(path, body = nil)
+      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      perform_request(:patch, uri, body)
+    end
+
+    # Performs a DELETE request to the specified path
+    # @param path [String] The request path
+    # @return [Hash] The JSON response
+    def delete(path)
+      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      perform_request(:delete, uri)
     end
 
     private
@@ -73,13 +108,29 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
-    def http_client
-      @http_client ||= Net::HTTP.new(api_host, api_port).tap { |client| client.use_ssl = true }
+    def perform_request(method, uri, body = nil)
+      http_client = Net::HTTP.new(uri.host, @api_port)
+      http_client.use_ssl = true
+      request = setup_request(method, uri.path, body)
+      response = http_client.request(request)
+      handle_response(response)
     end
 
-    def post_request(path, body)
-      request = Net::HTTP::Post.new(path)
-      request.body = body
+    def setup_request(method, path, body = nil)
+      request = case method
+                when :get
+                  Net::HTTP::Get.new(path)
+                when :post
+                  Net::HTTP::Post.new(path)
+                when :patch
+                  Net::HTTP::Patch.new(path)
+                when :delete
+                  Net::HTTP::Delete.new(path)
+                else
+                  raise ArgumentError, "Unsupported HTTP method: #{method}"
+                end
+
+      request.body = body.to_json if body
       request['Authorization'] = "Bearer #{api_key}"
       request['Content-Type'] = 'application/json'
       request['User-Agent'] = 'mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)'
@@ -89,12 +140,15 @@ module Mailtrap
 
     def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
       case response
-      when Net::HTTPOK
+      when Net::HTTPOK, Net::HTTPCreated
         json_response(response.body)
+      when Net::HTTPNoContent
+        true
       when Net::HTTPBadRequest
         raise Mailtrap::Error, json_response(response.body)[:errors]
       when Net::HTTPUnauthorized
-        raise Mailtrap::AuthorizationError, json_response(response.body)[:errors]
+        body = json_response(response.body)
+        raise Mailtrap::AuthorizationError, [body[:errors] || body[:error]].flatten
       when Net::HTTPForbidden
         raise Mailtrap::RejectionError, json_response(response.body)[:errors]
       when Net::HTTPPayloadTooLarge
@@ -102,7 +156,7 @@ module Mailtrap
       when Net::HTTPTooManyRequests
         raise Mailtrap::RateLimitError, ['too many requests']
       when Net::HTTPClientError
-        raise Mailtrap::Error, ['client error']
+        raise Mailtrap::Error, ['client error:', response.body]
       when Net::HTTPServerError
         raise Mailtrap::Error, ['server error']
       else
