@@ -36,6 +36,7 @@ module Mailtrap
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if sandbox && bulk
 
       api_host ||= select_api_host(bulk:, sandbox:)
       raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
@@ -47,6 +48,30 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @general_api_host = general_api_host
+    end
+
+    # Sends a batch of emails
+    # @param base [Mailtrap::Mail::Base] The base email configuration
+    # @param requests [Array<Mailtrap::Mail::Base>] Array of individual email requests
+    # @return [Hash] The JSON response
+    def send_batch(base, requests)
+      raise ArgumentError, 'base should be Mailtrap::Mail::Base object' unless base.is_a?(Mail::Base)
+
+      unless requests.all?(Mail::Base)
+        raise ArgumentError,
+              'requests should be an array of Mailtrap::Mail::Base objects'
+      end
+
+      uri = URI::HTTP.build(
+        host: api_host,
+        port: api_port,
+        path: batch_request_url
+      )
+
+      perform_request(:post, uri, {
+                        base: compact_with_empty_arrays(base.as_json),
+                        requests:
+                      })
     end
 
     def send(mail)
@@ -108,6 +133,10 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
+    def batch_request_url
+      "/api/batch#{sandbox ? "/#{inbox_id}" : ""}"
+    end
+
     def perform_request(method, uri, body = nil)
       http_client = Net::HTTP.new(uri.host, @api_port)
       http_client.use_ssl = true
@@ -166,6 +195,10 @@ module Mailtrap
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
+    end
+
+    def compact_with_empty_arrays(hash)
+      hash.reject { |_, v| v.nil? || (v.is_a?(Array) && v.empty?) }
     end
   end
 end

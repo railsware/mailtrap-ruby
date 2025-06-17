@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bulk.api.mailtrap.io/api/batch
+    body:
+      encoding: UTF-8
+      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"headers":{},"custom_variables":{},"template_uuid":"be5ed4dd-b374-4856-928d-f0957304123d","template_variables":{"company_name":"Mailtrap"}},"requests":[{"to":[{"email":"demo@gmail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"demo@gmail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Jun 2025 13:35:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=0
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9512eddbee4f021b-WAW
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"success":true,"responses":[{"success":true,"message_ids":["e7520f90-4b7f-11f0-0000-f185d7639148"]},{"success":true,"message_ids":["e7525db0-4b7f-11f0-0000-f185d7639148"]}]}'
+  recorded_at: Tue, 17 Jun 2025 13:35:16 GMT
+recorded_with: VCR 6.2.0
