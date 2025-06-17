@@ -43,9 +43,6 @@ module Mailtrap
   end
 
   class Template
-    MAX_LENGTH = 255
-    MAX_BODY_LENGTH = 10_000_000
-
     # @param account_id [Integer] The account ID
     # @param client [Mailtrap::Client] The client instance
     def initialize(account_id, client = Mailtrap::Client.new)
