@@ -39,6 +39,7 @@ module Mailtrap
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if sandbox && bulk
 
       api_host ||= select_api_host(bulk:, sandbox:)
       raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
@@ -51,6 +52,27 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @http_clients = {}
+    end
+
+    # Sends a batch of emails
+    # @param base [Mailtrap::Mail::Base] The base email configuration
+    # @param requests [Array<Mailtrap::Mail::Base>] Array of individual email requests
+    # @return [Hash] The JSON response
+    # @!macro api_errors
+    # @raise [Mailtrap::MailSizeError] If the message is too large
+    # @raise [ArgumentError] If the mail is not a Mail::Base object
+    def send_batch(base, requests)
+      raise ArgumentError, 'base should be Mailtrap::Mail::Base object' unless base.is_a?(Mail::Base)
+
+      unless requests.all?(Mail::Base)
+        raise ArgumentError,
+              'requests should be an array of Mailtrap::Mail::Base objects'
+      end
+
+      perform_request(:post, api_host, batch_request_path, {
+                        base: compact_with_empty_arrays(base.as_json),
+                        requests:
+                      })
     end
 
     # Sends an email
@@ -139,6 +161,10 @@ module Mailtrap
       "/api/send#{"/#{inbox_id}" if sandbox}"
     end
 
+    def batch_request_path
+      "/api/batch#{sandbox ? "/#{inbox_id}" : ""}"
+    end
+
     def perform_request(method, host, path, body = nil)
       http_client = http_client_for(host)
       request = setup_request(method, path, body)
@@ -202,6 +228,10 @@ module Mailtrap
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
+    end
+
+    def compact_with_empty_arrays(hash)
+      hash.reject { |_, v| v.nil? || (v.is_a?(Array) && v.empty?) }
     end
   end
 end
