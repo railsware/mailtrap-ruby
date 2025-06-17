@@ -8,40 +8,9 @@ module Mailtrap
   # @attr_reader body_text [String] The plain text content (<= 10000000 chars)
   # @attr_reader body_html [String] The HTML content (<= 10000000 chars)
   EmailTemplateRequest = Struct.new(:name, :category, :subject, :body_text, :body_html, keyword_init: true) do
-    def initialize(*)
-      super
-      validate_required_fields
-      validate_field_lengths
-    end
-
     # @return [Hash] The template request attributes as a hash
     def to_h
       super.compact
-    end
-
-    private
-
-    def validate_required_fields
-      required_fields = %i[name category subject]
-      missing_fields = required_fields.select { |field| self[field].nil? || self[field].empty? }
-
-      return if missing_fields.empty?
-
-      raise ArgumentError, "Missing required fields: #{missing_fields.join(", ")}"
-    end
-
-    def validate_field_lengths
-      validate_field_length(:name, name, Template::MAX_LENGTH)
-      validate_field_length(:category, category, Template::MAX_LENGTH)
-      validate_field_length(:subject, subject, Template::MAX_LENGTH)
-      validate_field_length(:body_text, body_text, Template::MAX_BODY_LENGTH)
-      validate_field_length(:body_html, body_html, Template::MAX_BODY_LENGTH)
-    end
-
-    def validate_field_length(field, value, max_length)
-      return if value.nil? || value.length <= max_length
-
-      raise ArgumentError, "#{field} exceeds maximum length of #{max_length} characters"
     end
   end
 
@@ -104,9 +73,10 @@ module Mailtrap
     # @return [EmailTemplate] Created template object
     # @raise [ArgumentError] If the request is invalid
     def create(request)
+      normalised = request.is_a?(EmailTemplateRequest) ? request : EmailTemplateRequest.new(**request)
       response = @client.post(base_path,
                               {
-                                email_template: request.to_h
+                                email_template: normalised.to_h
                               })
       EmailTemplate.new(response)
     end
@@ -117,9 +87,10 @@ module Mailtrap
     # @return [EmailTemplate] Updated template object
     # @raise [ArgumentError] If the request is invalid
     def update(template_id, request)
+      normalised = request.is_a?(EmailTemplateRequest) ? request : EmailTemplateRequest.new(**request)
       response = @client.patch("#{base_path}/#{template_id}",
                                {
-                                 email_template: request.to_h
+                                 email_template: normalised.to_h
                                })
       EmailTemplate.new(response)
     end

@@ -15,7 +15,7 @@ http_interactions:
       User-Agent:
       - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
       Authorization:
-      - Bearer 793a32549bc04f67fcd4f800009781f2
+      - Bearer <BEARER_TOKEN>
       Content-Type:
       - application/json
   response:
@@ -24,7 +24,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 16 Jun 2025 12:41:01 GMT
+      - Tue, 17 Jun 2025 09:28:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 950a61090b59b604-WAW
+      - 951183d9dde5ef95-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '144'
+      - '140'
       Etag:
-      - W/"3cfc7a44e198e6b14c84f6e573f525df"
+      - W/"327eec4752dee1e4c5cf975072356e33"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-90Iys9Ron+HedeIR0bEHJQ==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-v7lVVnaxjBfQVa2LeGgr2Q==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 512af69d-b98b-4d6b-aaa5-aaa7a5421b07
+      - 48d9fab6-9cf6-4c67-aacf-d8069b5eb161
       X-Runtime:
-      - '0.024337'
+      - '0.023153'
       X-Cloud-Trace-Context:
-      - 68867fff34124587c0f4d99c3da84608;o=0
+      - 7e346729657a4ad385f2ae008a5905b8;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,8 +160,8 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":39577,"uuid":"bdb308d8-22fd-4792-82c4-495398d5e57d","name":"New
+      string: '{"id":39711,"uuid":"c6bd2ead-fd2f-469b-8f57-2a3ce4b5d0fd","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:41:01.738Z","updated_at":"2025-06-16T12:41:01.738Z"}'
-  recorded_at: Mon, 16 Jun 2025 12:41:01 GMT
+        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:28:08.057Z","updated_at":"2025-06-17T09:28:08.057Z"}'
+  recorded_at: Tue, 17 Jun 2025 09:28:08 GMT
 recorded_with: VCR 6.2.0

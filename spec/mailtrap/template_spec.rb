@@ -123,17 +123,19 @@ RSpec.describe Mailtrap::Template do
       end
     end
 
-    context 'with invalid request' do
+    context 'when API returns an error' do
       let(:request) do
-        Mailtrap::EmailTemplateRequest.new(
-          name: 'New Template',
-          subject: 'New Subject'
-          # category is missing
-        )
+        {
+          name: '', # Invalid value, but present
+          subject: 'Invalid Subject',
+          category: 'Invalid Category',
+          body_html: '<div>Invalid</div>',
+          body_text: 'Invalid'
+        }
       end
 
-      it 'raises validation error' do
-        expect { create }.to raise_error(ArgumentError, 'Missing required fields: category')
+      it 'raises a Mailtrap::Error' do
+        expect { create }.to raise_error(Mailtrap::Error)
       end
     end
   end
@@ -261,49 +263,6 @@ RSpec.describe Mailtrap::EmailTemplateRequest do
           body_html: '<div>HTML</div>',
           body_text: 'Text'
         )
-      end
-    end
-
-    context 'with missing required fields' do
-      let(:attributes) do
-        {
-          name: 'My Template',
-          subject: 'My Subject'
-          # category is missing
-        }
-      end
-
-      it 'raises an ArgumentError' do
-        expect { request }.to raise_error(ArgumentError, 'Missing required fields: category')
-      end
-    end
-
-    context 'with fields exceeding maximum length' do
-      let(:attributes) do
-        {
-          name: 'x' * 256, # exceeds MAX_LENGTH
-          subject: 'My Subject',
-          category: 'My Category'
-        }
-      end
-
-      it 'raises an ArgumentError' do
-        expect { request }.to raise_error(ArgumentError, 'name exceeds maximum length of 255 characters')
-      end
-    end
-
-    context 'with body fields exceeding maximum length' do
-      let(:attributes) do
-        {
-          name: 'My Template',
-          subject: 'My Subject',
-          category: 'My Category',
-          body_html: 'x' * (Mailtrap::Template::MAX_BODY_LENGTH + 1)
-        }
-      end
-
-      it 'raises an ArgumentError' do
-        expect { request }.to raise_error(ArgumentError, 'body_html exceeds maximum length of 10000000 characters')
       end
     end
   end
