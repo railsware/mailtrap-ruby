@@ -67,10 +67,11 @@ module Mailtrap
 
     # Performs a GET request to the specified path
     # @param path [String] The request path
+    # @param query_params [Hash] Query parameters to append to the URL (optional)
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
-    def get(path)
-      perform_request(:get, general_api_host, path)
+    def get(path, query_params = {})
+      perform_request(:get, general_api_host, path, nil, query_params)
     end
 
     # Performs a POST request to the specified path
@@ -121,9 +122,10 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
-    def perform_request(method, host, path, body = nil)
+    def perform_request(method, host, path, body = nil, query_params = {})
       http_client = http_client_for(host)
       request = setup_request(method, path, body)
+      request.query = URI.encode_www_form(query_params) if query_params.any?
       response = http_client.request(request)
       handle_response(response)
     end

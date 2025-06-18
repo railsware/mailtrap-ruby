@@ -3,28 +3,16 @@
 require_relative 'email_template'
 
 module Mailtrap
-  class EmailTemplatesAPI
+  class EmailTemplatesAPI < BaseAPI
     SUPPORTED_OPTIONS = %i[name subject category body_html body_text].freeze
     private_constant :SUPPORTED_OPTIONS
-
-    attr_reader :account_id, :client
-
-    # @param account_id [Integer] The account ID
-    # @param client [Mailtrap::Client] The client instance
-    # @raise [ArgumentError] If account_id is nil
-    def initialize(account_id = ENV.fetch('MAILTRAP_ACCOUNT_ID'), client = Client.new)
-      raise ArgumentError, 'account_id is required' if account_id.nil?
-
-      @account_id = account_id
-      @client = client
-    end
 
     # Lists all email templates for the account
     # @return [Array<EmailTemplate>] Array of template objects
     # @!macro api_errors
     def list
       response = client.get(base_path)
-      response.map { |template| build_email_template(template) }
+      response.map { |template| build_entity(template, EmailTemplate) }
     end
 
     # Retrieves a specific email template
@@ -33,7 +21,7 @@ module Mailtrap
     # @!macro api_errors
     def get(template_id)
       response = client.get("#{base_path}/#{template_id}")
-      build_email_template(response)
+      build_entity(response, EmailTemplate)
     end
 
     # Creates a new email template
@@ -47,10 +35,10 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      validate_options!(options)
+      validate_options!(options, SUPPORTED_OPTIONS)
 
       response = client.post(base_path, email_template: options)
-      build_email_template(response)
+      build_entity(response, EmailTemplate)
     end
 
     # Updates an existing email template
@@ -65,10 +53,10 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(template_id, options)
-      validate_options!(options)
+      validate_options!(options, SUPPORTED_OPTIONS)
 
       response = client.patch("#{base_path}/#{template_id}", email_template: options)
-      build_email_template(response)
+      build_entity(response, EmailTemplate)
     end
 
     # Deletes an email template
@@ -81,19 +69,8 @@ module Mailtrap
 
     private
 
-    def build_email_template(options)
-      EmailTemplate.new(options.slice(*EmailTemplate.members))
-    end
-
     def base_path
       "/api/accounts/#{account_id}/email_templates"
-    end
-
-    def validate_options!(options)
-      invalid_options = options.keys - SUPPORTED_OPTIONS
-      return if invalid_options.empty?
-
-      raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{SUPPORTED_OPTIONS}"
     end
   end
 end
