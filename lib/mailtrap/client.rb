@@ -10,9 +10,9 @@ module Mailtrap
     BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
     API_PORT = 443
-    API_HOST = 'mailtrap.io'
+    GENERAL_API_HOST = 'mailtrap.io'
 
-    attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id
+    attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id, :general_api_host
 
     # Initializes a new Mailtrap::Client instance.
     #
@@ -25,6 +25,7 @@ module Mailtrap
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
     #                          If enabled, is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
+    # @param [String] general_api_host The general API hostname for non-sending operations. Default: mailtrap.io.
     def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
@@ -32,7 +33,7 @@ module Mailtrap
       bulk: false,
       sandbox: false,
       inbox_id: nil,
-      general_api_host: API_HOST
+      general_api_host: GENERAL_API_HOST
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
@@ -60,7 +61,7 @@ module Mailtrap
     # @param path [String] The request path
     # @return [Hash] The JSON response
     def get(path)
-      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
       perform_request(:get, uri)
     end
 
@@ -69,7 +70,7 @@ module Mailtrap
     # @param body [Hash] The request body
     # @return [Hash] The JSON response
     def post(path, body = nil)
-      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
       perform_request(:post, uri, body)
     end
 
@@ -78,7 +79,7 @@ module Mailtrap
     # @param body [Hash] The request body
     # @return [Hash] The JSON response
     def patch(path, body = nil)
-      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
       perform_request(:patch, uri, body)
     end
 
@@ -145,12 +146,14 @@ module Mailtrap
       when Net::HTTPNoContent
         true
       when Net::HTTPBadRequest
-        raise Mailtrap::Error, json_response(response.body)[:errors]
+        body = json_response(response.body)
+        raise Mailtrap::Error, body[:errors] || Array(body[:error])
       when Net::HTTPUnauthorized
         body = json_response(response.body)
-        raise Mailtrap::AuthorizationError, [body[:errors] || body[:error]].flatten
+        raise Mailtrap::AuthorizationError, body[:errors] || Array(body[:error])
       when Net::HTTPForbidden
-        raise Mailtrap::RejectionError, json_response(response.body)[:errors]
+        body = json_response(response.body)
+        raise Mailtrap::RejectionError, body[:errors] || Array(body[:error])
       when Net::HTTPPayloadTooLarge
         raise Mailtrap::MailSizeError, ['message too large']
       when Net::HTTPTooManyRequests

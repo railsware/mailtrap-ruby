@@ -1,6 +1,3 @@
-## [2.3.1] - 2025-06-17
-- Add EmailTemplates API functionality
-
 ## [2.3.0] - 2025-03-06
 
 - Drop Ruby 3.0 support
