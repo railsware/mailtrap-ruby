@@ -25,9 +25,9 @@ module Mailtrap
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
     #                          If enabled, is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
-    # @param [String] general_api_host The general API hostname for non-sending operations. Default: mailtrap.io.
-    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil
-    def initialize( # rubocop:disable Metrics/ParameterLists
+    # @param [String] general_api_host The general API hostname for non-sending operations. Default: GENERAL_API_HOST.
+    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil, or if incompatible options are provided. # rubocop:disable Layout/LineLength
+    def initialize( # rubocop:disable Metrics/ParameterLists,Metrics/MethodLength
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
       api_port: API_PORT,
@@ -106,7 +106,7 @@ module Mailtrap
 
     private
 
-    def http_clients(host)
+    def http_clients_for(host)
       @clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
@@ -127,7 +127,7 @@ module Mailtrap
     end
 
     def perform_request(method, host, path, body = nil)
-      http_client = http_clients(host)
+      http_client = http_clients_for(host)
       request = setup_request(method, path, body)
       response = http_client.request(request)
       handle_response(response)
