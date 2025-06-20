@@ -26,6 +26,7 @@ module Mailtrap
     #                          If enabled, is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
     # @param [String] general_api_host The general API hostname for non-sending operations. Default: mailtrap.io.
+    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil
     def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
@@ -48,50 +49,71 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @general_api_host = general_api_host
+      @clients = {}
     end
 
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
-      uri = URI::HTTP.build(host: api_host, port: api_port, path: request_url)
+      uri = URI::HTTP.build(host: api_host, port: api_port, path: send_url)
       perform_request(:post, uri, mail)
     end
 
     # Performs a GET request to the specified path
     # @param path [String] The request path
-    # @return [Hash] The JSON response
+    # @return [Hash, nil] The JSON response
+    # @raise [Mailtrap::Error] If the API request fails with a client or server error
+    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
+    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
+    # @raise [Mailtrap::RateLimitError] If too many requests are made
     def get(path)
-      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, path:)
       perform_request(:get, uri)
     end
 
     # Performs a POST request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash] The JSON response
+    # @return [Hash, nil] The JSON response
+    # @raise [Mailtrap::Error] If the API request fails with a client or server error
+    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
+    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
+    # @raise [Mailtrap::RateLimitError] If too many requests are made
     def post(path, body = nil)
-      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, path:)
       perform_request(:post, uri, body)
     end
 
     # Performs a PATCH request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash] The JSON response
+    # @return [Hash, nil] The JSON response
+    # @raise [Mailtrap::Error] If the API request fails with a client or server error
+    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
+    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
+    # @raise [Mailtrap::RateLimitError] If too many requests are made
     def patch(path, body = nil)
-      uri = URI::HTTP.build(host: general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: general_api_host, path:)
       perform_request(:patch, uri, body)
     end
 
     # Performs a DELETE request to the specified path
     # @param path [String] The request path
-    # @return [Hash] The JSON response
+    # @return [Hash, nil] The JSON response
+    # @raise [Mailtrap::Error] If the API request fails with a client or server error
+    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
+    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
+    # @raise [Mailtrap::RateLimitError] If too many requests are made
     def delete(path)
-      uri = URI::HTTP.build(host: @general_api_host, port: @api_port, path:)
+      uri = URI::HTTP.build(host: @general_api_host, path:)
       perform_request(:delete, uri)
     end
 
     private
+
+    def http_clients(host)
+      @clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
+    end
 
     def select_api_host(bulk:, sandbox:)
       raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
@@ -105,13 +127,12 @@ module Mailtrap
       end
     end
 
-    def request_url
+    def send_url
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
     def perform_request(method, uri, body = nil)
-      http_client = Net::HTTP.new(uri.host, @api_port)
-      http_client.use_ssl = true
+      http_client = http_clients(uri.host)
       request = setup_request(method, uri.path, body)
       response = http_client.request(request)
       handle_response(response)
@@ -144,7 +165,7 @@ module Mailtrap
       when Net::HTTPOK, Net::HTTPCreated
         json_response(response.body)
       when Net::HTTPNoContent
-        true
+        nil
       when Net::HTTPBadRequest
         body = json_response(response.body)
         raise Mailtrap::Error, body[:errors] || Array(body[:error])
