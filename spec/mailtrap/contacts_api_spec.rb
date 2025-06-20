@@ -209,7 +209,6 @@ RSpec.describe Mailtrap::ContactsAPI do
           headers: { 'Content-Type' => 'application/json' }
         )
       response = client.update(contact_id, update_data)
-      pp response
 
       expect(response).to have_attributes(
         data: have_attributes(

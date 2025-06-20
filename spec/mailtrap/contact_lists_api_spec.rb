@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 RSpec.describe Mailtrap::ContactListsAPI do
   let(:client) { described_class.new('1111111', Mailtrap::Client.new(api_key: 'correct-api-key')) }
   let(:base_url) { 'https://mailtrap.io/api/accounts/1111111' }
 
-  describe '#' do
+  describe '#list' do
     let(:expected_response) do
       [
         { 'id' => 1, 'name' => 'List 1' },
@@ -150,7 +152,7 @@ RSpec.describe Mailtrap::ContactListsAPI do
         .to_return(status: 204)
 
       response = client.delete(contact_list_id)
-      expect(response).to true
+      expect(response).to be true
     end
 
     it 'raises error when contact list not found' do
