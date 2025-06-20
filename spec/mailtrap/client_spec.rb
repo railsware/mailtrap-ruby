@@ -215,7 +215,7 @@ RSpec.describe Mailtrap::Client do
 
     it 'handles generic client errors' do
       stub_api_send 418, '🫖' do
-        expect { send_mail }.to raise_error(Mailtrap::Error, 'client error:, 🫖')
+        expect { send_mail }.to raise_error(Mailtrap::Error, "client error '🫖'")
       end
     end
 

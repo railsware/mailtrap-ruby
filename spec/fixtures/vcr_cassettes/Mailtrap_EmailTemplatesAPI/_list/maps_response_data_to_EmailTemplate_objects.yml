@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 20 Jun 2025 11:37:25 GMT
+      - Fri, 20 Jun 2025 16:03:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,7 +31,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 952af9583ac8bf3a-WAW
+      - 952c7e7bcc243530-WAW
       Vary:
       - Accept
       - Accept-Encoding
@@ -54,7 +54,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '148'
       Etag:
-      - W/"061782719c613be4c8515ad03fc2fd0c"
+      - W/"e588e6b4a4c3e7ba64acc6a8b351853e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-M6b4GVeJuh0YLlpGXFa4tA==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-JNEUXirq1RY6Lu8Vc8qcyQ==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 7b59932e-a3d2-479c-b80d-6d5d5947adfa
+      - 794f1ae4-acb9-42c5-9154-6e39eb3a1127
       X-Runtime:
-      - '0.052427'
+      - '0.048915'
       X-Cloud-Trace-Context:
-      - c907c6b72ed0443f8e985ac790c0cf14;o=0
+      - 0d600ca249ba4107c1eba30a33228e44;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,7 +160,36 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":40187,"uuid":"1b0280f0-e6a3-4d96-bb20-72f46cf991f7","name":"New
+      string: '[{"id":40235,"uuid":"c1440207-bf94-4f9d-9f18-272ca713137c","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:47:24.164Z","updated_at":"2025-06-20T15:47:24.164Z"},{"id":40231,"uuid":"ece5c1d4-c870-4068-bae6-1cbb8fef61df","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:44:14.407Z","updated_at":"2025-06-20T15:44:14.407Z"},{"id":40229,"uuid":"6a5f364b-3581-418b-bccc-edac677767b8","name":"Welcome
+        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:38:47.623Z","updated_at":"2025-06-20T15:38:47.623Z"},{"id":40201,"uuid":"cde12c53-c8eb-41dc-8226-d51c61ef001a","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T11:37:31.178Z","updated_at":"2025-06-20T11:37:31.178Z"},{"id":40199,"uuid":"a6b600ef-ab44-4d20-ae07-c2a65c1e36d2","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:30.225Z","updated_at":"2025-06-20T11:37:30.225Z"},{"id":40198,"uuid":"20b20aba-9e3c-4123-bcbf-ca795d1804db","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:29.712Z","updated_at":"2025-06-20T11:37:29.977Z"},{"id":40197,"uuid":"6cb39e8e-c61e-4844-892a-16aceabbdf02","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:29.191Z","updated_at":"2025-06-20T11:37:29.439Z"},{"id":40196,"uuid":"4e6c72d6-ce71-4c3f-960a-3f519d4abc3f","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T11:37:28.696Z","updated_at":"2025-06-20T11:37:28.939Z"},{"id":40195,"uuid":"73d834f3-e689-4368-b275-f78828d5ecee","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T11:37:28.209Z","updated_at":"2025-06-20T11:37:28.457Z"},{"id":40194,"uuid":"56ccc0fc-717c-4d77-b092-b4bf46c861d7","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.709Z","updated_at":"2025-06-20T11:37:27.709Z"},{"id":40193,"uuid":"dcbf6fc6-8cb1-4902-8c63-b1d86fc48223","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.451Z","updated_at":"2025-06-20T11:37:27.451Z"},{"id":40192,"uuid":"66ca0755-23fd-44cf-83a2-347f6cd4d233","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.179Z","updated_at":"2025-06-20T11:37:27.179Z"},{"id":40191,"uuid":"45876cd3-f78b-4fa5-9382-816a9462ee22","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:26.943Z","updated_at":"2025-06-20T11:37:26.943Z"},{"id":40190,"uuid":"06a4c6e6-c90c-4101-b968-495d1d8de626","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:26.474Z","updated_at":"2025-06-20T11:37:26.474Z"},{"id":40189,"uuid":"81a911ca-74a4-458c-82f3-ea811226d386","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:25.970Z","updated_at":"2025-06-20T11:37:25.970Z"},{"id":40188,"uuid":"6ad419da-fde4-402e-8e30-9a206bcc14e7","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:25.498Z","updated_at":"2025-06-20T11:37:25.498Z"},{"id":40187,"uuid":"1b0280f0-e6a3-4d96-bb20-72f46cf991f7","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
         HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:17.203Z","updated_at":"2025-06-20T11:37:17.203Z"},{"id":40186,"uuid":"e86d85c3-40dc-4c96-b4c1-78090c7da2e5","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
@@ -462,5 +491,5 @@ http_interactions:
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:27.231Z","updated_at":"2025-06-16T11:14:27.231Z"},{"id":39528,"uuid":"e6a09907-5d56-4f2b-81b4-fb76fcee84df","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:17.482Z","updated_at":"2025-06-16T11:14:17.482Z"},{"id":39527,"uuid":"b663e4a2-8a6d-4e5a-a173-dd2fdb03b1b5","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:12:30.379Z","updated_at":"2025-06-16T11:12:30.379Z"},{"id":39510,"uuid":"24b2fc9d-1583-435c-9c17-43d007045a68","name":"test","category":"t1","subject":"new","body_html":null,"body_text":null,"created_at":"2025-06-16T09:22:48.875Z","updated_at":"2025-06-16T09:22:48.875Z"}]'
-  recorded_at: Fri, 20 Jun 2025 11:37:25 GMT
+  recorded_at: Fri, 20 Jun 2025 16:03:04 GMT
 recorded_with: VCR 6.2.0

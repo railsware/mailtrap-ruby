@@ -24,7 +24,7 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Fri, 20 Jun 2025 11:37:28 GMT
+      - Fri, 20 Jun 2025 16:03:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 952af96d2f660260-WAW
+      - 952c7e9adc49bf51-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -65,7 +65,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-6o//kuXGqhw/auSurdvL+A==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-fmvZXEILtzxq+bkJ/n5v/Q==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -143,11 +143,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 783ecc93-9120-4055-a9b4-05fff73fd823
+      - 241319ea-c353-4e58-82da-0a3ae91d33d5
       X-Runtime:
-      - '0.023518'
+      - '0.031007'
       X-Cloud-Trace-Context:
-      - e12a6d478bb6437682c6a5e52422a59c;o=0
+      - 7311768946b94c9ac21f0f48b586bf6d;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -159,5 +159,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"errors":{"name":["can''t be blank"]}}'
-  recorded_at: Fri, 20 Jun 2025 11:37:28 GMT
+  recorded_at: Fri, 20 Jun 2025 16:03:08 GMT
 recorded_with: VCR 6.2.0

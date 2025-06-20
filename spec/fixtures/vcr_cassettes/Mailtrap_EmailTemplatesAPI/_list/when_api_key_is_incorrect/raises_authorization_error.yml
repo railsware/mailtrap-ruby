@@ -23,7 +23,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Fri, 20 Jun 2025 11:37:25 GMT
+      - Fri, 20 Jun 2025 16:03:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -31,7 +31,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 952af95c1efbbfab-WAW
+      - 952c7e7fd9e1ef8e-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -66,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-YJ2ESbISbf/MgT/Hreke1A==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-tfy6n6OmYgEk5IWHMLRrDg==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -144,11 +144,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 1c6ee722-99ad-4763-a818-a9e78a25d6b1
+      - 468a3be1-1fb8-4fa6-8948-dccbccde770c
       X-Runtime:
-      - '0.031074'
+      - '0.014818'
       X-Cloud-Trace-Context:
-      - 1f86f32a39ee48468de69018cd1dd145;o=0
+      - 5911eb731ebf4859c8c01d982693f2b3;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,5 +160,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":"Incorrect API token"}'
-  recorded_at: Fri, 20 Jun 2025 11:37:25 GMT
+  recorded_at: Fri, 20 Jun 2025 16:03:04 GMT
 recorded_with: VCR 6.2.0

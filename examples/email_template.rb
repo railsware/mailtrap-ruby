@@ -19,7 +19,7 @@ client.send(mail)
 
 templates = Mailtrap::EmailTemplatesAPI.new(1_111_111, client)
 
-created = templates.create(
+created_email_template = templates.create(
   name: 'Welcome Email',
   subject: 'Welcome to Mailtrap!',
   body_html: '<h1>Hello</h1>',
@@ -27,17 +27,20 @@ created = templates.create(
   category: 'welcome'
 )
 
-puts "Created Template: #{created[:id]}"
+puts "Created Template: #{created_email_template.id}"
 
 list = templates.list
 puts "Templates: #{list}"
 
-found = templates.get(created[:id])
-puts "Found Template: #{found[:name]}"
+email_template = templates.get(created_email_template.id)
+puts "Found Template: #{email_template.name}"
 
-updated = templates.update(created[:id], name: 'Welcome Updated')
-puts "Updated Template Name: #{updated[:name]}"
+updated_email_template = templates.update(email_template.id, name: 'Welcome Updated')
+puts "Updated Template Name: #{updated_email_template.name}"
+
+updated_email_template = templates.update(email_template.id, body_html: nil)
+puts "Updated body_html: #{updated_email_template.body_html}"
 
 # Delete
-templates.delete(created[:id])
+templates.delete(email_template.id)
 puts 'Template deleted'

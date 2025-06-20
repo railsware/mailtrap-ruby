@@ -14,6 +14,13 @@ module Mailtrap
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id, :general_api_host
 
+    # @!macro api_errors
+    # @raise [Mailtrap::Error] If the API request fails with a client or server error
+    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
+    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
+    # @raise [Mailtrap::RateLimitError] If too many requests are made
+    # @raise [Mailtrap::MailSizeError] If the message is too large
+
     # Initializes a new Mailtrap::Client instance.
     #
     # @param [String] api_key The Mailtrap API key to use for sending. Required.
@@ -49,7 +56,7 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @general_api_host = general_api_host
-      @clients = {}
+      @http_clients = {}
     end
 
     def send(mail)
@@ -61,10 +68,7 @@ module Mailtrap
     # Performs a GET request to the specified path
     # @param path [String] The request path
     # @return [Hash, nil] The JSON response
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
+    # @!macro api_errors
     def get(path)
       perform_request(:get, general_api_host, path)
     end
@@ -73,10 +77,7 @@ module Mailtrap
     # @param path [String] The request path
     # @param body [Hash] The request body
     # @return [Hash, nil] The JSON response
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
+    # @!macro api_errors
     def post(path, body = nil)
       perform_request(:post, general_api_host, path, body)
     end
@@ -85,10 +86,7 @@ module Mailtrap
     # @param path [String] The request path
     # @param body [Hash] The request body
     # @return [Hash, nil] The JSON response
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
+    # @!macro api_errors
     def patch(path, body = nil)
       perform_request(:patch, general_api_host, path, body)
     end
@@ -96,10 +94,7 @@ module Mailtrap
     # Performs a DELETE request to the specified path
     # @param path [String] The request path
     # @return [Hash, nil] The JSON response
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
+    # @!macro api_errors
     def delete(path)
       perform_request(:delete, general_api_host, path)
     end
@@ -107,7 +102,7 @@ module Mailtrap
     private
 
     def http_clients_for(host)
-      @clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
+      @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
     def select_api_host(bulk:, sandbox:)
@@ -175,7 +170,7 @@ module Mailtrap
       when Net::HTTPTooManyRequests
         raise Mailtrap::RateLimitError, ['too many requests']
       when Net::HTTPClientError
-        raise Mailtrap::Error, ['client error:', response.body]
+        raise Mailtrap::Error, ["client error '#{response.body}'"]
       when Net::HTTPServerError
         raise Mailtrap::Error, ['server error']
       else
