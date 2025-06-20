@@ -66,7 +66,7 @@ module Mailtrap
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def list
       response = @client.get(base_path)
-      response.map { |template| EmailTemplate.new(template) }
+      response.map { |template| build_email_template(template) }
     end
 
     # Retrieves a specific email template
@@ -78,7 +78,7 @@ module Mailtrap
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def get(template_id)
       response = @client.get("#{base_path}/#{template_id}")
-      EmailTemplate.new(response)
+      build_email_template(response)
     end
 
     # Creates a new email template
@@ -94,7 +94,7 @@ module Mailtrap
                               {
                                 email_template: prepare_request(request)
                               })
-      EmailTemplate.new(response)
+      build_email_template(response)
     end
 
     # Updates an existing email template
@@ -111,12 +111,12 @@ module Mailtrap
                                {
                                  email_template: prepare_request(request)
                                })
-      EmailTemplate.new(response)
+      build_email_template(response)
     end
 
     # Deletes an email template
     # @param template_id [Integer] The template ID
-    # @return [Boolean] true if successful
+    # @return nil
     # @raise [Mailtrap::Error] If the API request fails with a client or server error
     # @raise [Mailtrap::AuthorizationError] If the API key is invalid
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
