@@ -5,8 +5,8 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/email_templates
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"Template to Delete","category":"Delete Category","subject":"Delete
-        Subject","body_text":"Delete Text","body_html":"<div>Delete HTML</div>"}}'
+      string: '{"email_template":{"name":"Template to Delete","subject":"Delete Subject","category":"Delete
+        Category","body_html":"<div>Delete HTML</div>","body_text":"Delete Text"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -24,7 +24,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Fri, 20 Jun 2025 07:40:46 GMT
+      - Fri, 20 Jun 2025 11:37:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 95299eb29a6934e0-WAW
+      - 952af9815c54ee3b-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '131'
+      - '145'
       Etag:
-      - W/"57f8b017e7f77fd676748b8b0ed2e43d"
+      - W/"71f00db1f572b5c1178034bdb361a3f0"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-hP7zHJcQkbfSv10CKXcViQ==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-Gd1cM2TNTvZnoNyfMr+Arg==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - de65832a-da6e-455c-9fc9-a9bd4215afd3
+      - 3b8ae2dc-c503-43c1-8459-1f94178bce6a
       X-Runtime:
-      - '0.033171'
+      - '0.028343'
       X-Cloud-Trace-Context:
-      - 0364275c44684395c9024b280e2235f2;o=0
+      - 576b8c6ddb974d4289d6ce3b326ca05a;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,10 +160,10 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":40148,"uuid":"523a810d-8b3b-49dc-84d8-fdc4838e8cf5","name":"Template
+      string: '{"id":40201,"uuid":"cde12c53-c8eb-41dc-8226-d51c61ef001a","name":"Template
         to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T07:40:45.952Z","updated_at":"2025-06-20T07:40:45.952Z"}'
-  recorded_at: Fri, 20 Jun 2025 07:40:46 GMT
+        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T11:37:31.178Z","updated_at":"2025-06-20T11:37:31.178Z"}'
+  recorded_at: Fri, 20 Jun 2025 11:37:31 GMT
 - request:
     method: delete
     uri: https://mailtrap.io/api/accounts/1111111/email_templates/999999
@@ -187,7 +187,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Fri, 20 Jun 2025 07:40:46 GMT
+      - Fri, 20 Jun 2025 11:37:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -195,7 +195,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 95299eb41d4aee4c-WAW
+      - 952af982cccc3506-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -215,7 +215,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '130'
+      - '144'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -228,7 +228,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-IYz8gJystg/ZAw1rrQZcRg==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-W70L3r0sXBEF0PunhqomtA==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -306,11 +306,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 4a682766-d1fe-4388-97dc-ac36c9e6451b
+      - 7f16af04-fa89-48af-bb45-01554d2a572c
       X-Runtime:
-      - '0.020178'
+      - '0.019948'
       X-Cloud-Trace-Context:
-      - d65ec1e23c2c471d89cb7b91b82a7693;o=0
+      - 270a48eb796641a38296402ea89b9c3e;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -322,5 +322,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":"Not Found"}'
-  recorded_at: Fri, 20 Jun 2025 07:40:46 GMT
+  recorded_at: Fri, 20 Jun 2025 11:37:31 GMT
 recorded_with: VCR 6.2.0

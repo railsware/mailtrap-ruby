@@ -55,8 +55,7 @@ module Mailtrap
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
-      uri = URI::HTTP.build(host: api_host, port: api_port, path: send_url)
-      perform_request(:post, uri, mail)
+      perform_request(:post, api_host, send_url, mail)
     end
 
     # Performs a GET request to the specified path
@@ -67,8 +66,7 @@ module Mailtrap
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def get(path)
-      uri = URI::HTTP.build(host: general_api_host, path:)
-      perform_request(:get, uri)
+      perform_request(:get, general_api_host, path)
     end
 
     # Performs a POST request to the specified path
@@ -80,8 +78,7 @@ module Mailtrap
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def post(path, body = nil)
-      uri = URI::HTTP.build(host: general_api_host, path:)
-      perform_request(:post, uri, body)
+      perform_request(:post, general_api_host, path, body)
     end
 
     # Performs a PATCH request to the specified path
@@ -93,8 +90,7 @@ module Mailtrap
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def patch(path, body = nil)
-      uri = URI::HTTP.build(host: general_api_host, path:)
-      perform_request(:patch, uri, body)
+      perform_request(:patch, general_api_host, path, body)
     end
 
     # Performs a DELETE request to the specified path
@@ -105,8 +101,7 @@ module Mailtrap
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
     def delete(path)
-      uri = URI::HTTP.build(host: @general_api_host, path:)
-      perform_request(:delete, uri)
+      perform_request(:delete, general_api_host, path)
     end
 
     private
@@ -131,9 +126,9 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
-    def perform_request(method, uri, body = nil)
-      http_client = http_clients(uri.host)
-      request = setup_request(method, uri.path, body)
+    def perform_request(method, host, path, body = nil)
+      http_client = http_clients(host)
+      request = setup_request(method, path, body)
       response = http_client.request(request)
       handle_response(response)
     end

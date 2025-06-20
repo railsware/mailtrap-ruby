@@ -5,8 +5,8 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/email_templates
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"","category":"Invalid Category","subject":"Invalid
-        Subject","body_text":"Invalid","body_html":"<div>Invalid</div>"}}'
+      string: '{"email_template":{"name":"","subject":"Invalid Subject","category":"Invalid
+        Category","body_html":"<div>Invalid</div>","body_text":"Invalid"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -24,7 +24,7 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Fri, 20 Jun 2025 07:40:42 GMT
+      - Fri, 20 Jun 2025 11:37:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 95299e9b2dbf34ec-WAW
+      - 952af96d2f660260-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,7 +52,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '144'
+      - '137'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -65,7 +65,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-+fagWhbNyGm3avZvZwkmmw==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-6o//kuXGqhw/auSurdvL+A==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -143,11 +143,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 63ecd98f-cf93-4760-93ee-e6c131f7a80c
+      - 783ecc93-9120-4055-a9b4-05fff73fd823
       X-Runtime:
-      - '0.027499'
+      - '0.023518'
       X-Cloud-Trace-Context:
-      - 8e3701c8438b4644c1bd43be0cc2b7e9;o=0
+      - e12a6d478bb6437682c6a5e52422a59c;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -159,5 +159,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"errors":{"name":["can''t be blank"]}}'
-  recorded_at: Fri, 20 Jun 2025 07:40:42 GMT
+  recorded_at: Fri, 20 Jun 2025 11:37:28 GMT
 recorded_with: VCR 6.2.0

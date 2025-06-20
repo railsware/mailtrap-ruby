@@ -1,23 +1,6 @@
 # frozen_string_literal: true
 
 module Mailtrap
-  # Data Transfer Object for Email Template Request
-  #
-  # For validation rules and field requirements, see the official API documentation:
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/3295b60f19012-create-email-template
-  #
-  # @attr_reader name [String] The template name
-  # @attr_reader category [String] The template category
-  # @attr_reader subject [String] The email subject
-  # @attr_reader body_text [String] The plain text content
-  # @attr_reader body_html [String] The HTML content
-  EmailTemplateRequest = Struct.new(:name, :category, :subject, :body_text, :body_html, keyword_init: true) do
-    # @return [Hash] The template request attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
-
   # Data Transfer Object for Email Template
   #
   # For field descriptions and response format, see the official API documentation:
@@ -82,34 +65,52 @@ module Mailtrap
     end
 
     # Creates a new email template
-    # @param request [EmailTemplateRequest, Hash] The template request object or a hash with the same attributes
+    # @param name [String] The template name
+    # @param subject [String] The email subject
+    # @param category [String] The template category
+    # @param body_html [String] The HTML content
+    # @param body_text [String] The plain text content
     # @return [EmailTemplate] Created template object
-    # @raise [ArgumentError] If the request is invalid
     # @raise [Mailtrap::Error] If the API request fails with a client or server error
     # @raise [Mailtrap::AuthorizationError] If the API key is invalid
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
-    def create(request)
+    def create(name:, subject:, category:, body_html:, body_text:) # rubocop:disable Metrics/MethodLength
       response = @client.post(base_path,
                               {
-                                email_template: prepare_request(request)
+                                email_template: {
+                                  name:,
+                                  subject:,
+                                  category:,
+                                  body_html:,
+                                  body_text:
+                                }.compact
                               })
       build_email_template(response)
     end
 
     # Updates an existing email template
     # @param template_id [Integer] The template ID
-    # @param request [EmailTemplateRequest, Hash] The template request object or a hash with the same attributes
+    # @param name [String, nil] The template name
+    # @param subject [String, nil] The email subject
+    # @param category [String, nil] The template category
+    # @param body_html [String, nil] The HTML content
+    # @param body_text [String, nil] The plain text content
     # @return [EmailTemplate] Updated template object
-    # @raise [ArgumentError] If the request is invalid
     # @raise [Mailtrap::Error] If the API request fails with a client or server error
     # @raise [Mailtrap::AuthorizationError] If the API key is invalid
     # @raise [Mailtrap::RejectionError] If the server refuses to process the request
     # @raise [Mailtrap::RateLimitError] If too many requests are made
-    def update(template_id, request)
+    def update(template_id, name: nil, subject: nil, category: nil, body_html: nil, body_text: nil) # rubocop:disable Metrics/ParameterLists,Metrics/MethodLength
       response = @client.patch("#{base_path}/#{template_id}",
                                {
-                                 email_template: prepare_request(request)
+                                 email_template: {
+                                   name:,
+                                   subject:,
+                                   category:,
+                                   body_html:,
+                                   body_text:
+                                 }.compact
                                })
       build_email_template(response)
     end
@@ -127,17 +128,8 @@ module Mailtrap
 
     private
 
-    def prepare_request(request)
-      normalised = request.is_a?(EmailTemplateRequest) ? request : build_email_template_request(request)
-      normalised.to_h
-    end
-
     def build_email_template(options)
       EmailTemplate.new(options.slice(*EmailTemplate.members))
-    end
-
-    def build_email_template_request(options)
-      EmailTemplateRequest.new(options.slice(*EmailTemplateRequest.members))
     end
 
     def base_path

@@ -41,32 +41,3 @@ puts "Updated Template Name: #{updated[:name]}"
 # Delete
 templates.delete(created[:id])
 puts 'Template deleted'
-
-# create template using DTOs
-template_request = Mailtrap::EmailTemplateRequest.new
-template_request.name = 'Welcome Email'
-template_request.subject = 'Welcome to Mailtrap!'
-template_request.body_html = '<h1>Hello</h1>'
-template_request.body_text = 'Hello'
-template_request.category = 'welcome'
-
-created = templates.create(template_request)
-template_request.name = 'Welcome Email Updated DTO'
-updated = templates.update(created.id, template_request)
-
-puts "Updated Template Name: #{updated.name}"
-
-templates.delete(created.id)
-
-# create template using DTOs with hash
-template_request = Mailtrap::EmailTemplateRequest.new(
-  name: 'Welcome Email',
-  subject: 'Welcome to Mailtrap!',
-  body_html: '<h1>Hello</h1>',
-  body_text: 'Hello',
-  category: 'welcome'
-)
-
-created = templates.create(template_request)
-
-templates.delete(created.id)

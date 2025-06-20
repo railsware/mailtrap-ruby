@@ -75,16 +75,16 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
   end
 
   describe '#create', :vcr do
-    subject(:create) { template.create(request) }
+    subject(:create) { template.create(**request) }
 
     let(:request) do
-      Mailtrap::EmailTemplateRequest.new(
+      {
         name: 'New Template',
         subject: 'New Subject',
         category: 'New Category',
         body_html: '<div>New HTML</div>',
         body_text: 'New Text'
-      )
+      }
     end
 
     it 'returns an EmailTemplate object' do
@@ -141,7 +141,7 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
   end
 
   describe '#update', :vcr do
-    subject(:update) { template.update(template_id, request) }
+    subject(:update) { template.update(template_id, **request) }
 
     let!(:created_template) do
       template.create(
@@ -154,11 +154,13 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
     end
     let(:template_id) { created_template.id }
     let(:request) do
-      Mailtrap::EmailTemplateRequest.new(
+      {
         name: 'Updated Template',
         subject: 'Updated Subject',
-        category: 'Updated Category'
-      )
+        category: 'Updated Category',
+        body_html: '<div>Updated HTML</div>',
+        body_text: 'Updated Text'
+      }
     end
 
     it 'returns an EmailTemplate object' do
@@ -235,76 +237,6 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
         end
-      end
-    end
-  end
-end
-
-RSpec.describe Mailtrap::EmailTemplateRequest do
-  describe '#initialize' do
-    subject(:request) { described_class.new(attributes) }
-
-    context 'with valid attributes' do
-      let(:attributes) do
-        {
-          name: 'My Template',
-          subject: 'My Subject',
-          category: 'My Category',
-          body_html: '<div>HTML</div>',
-          body_text: 'Text'
-        }
-      end
-
-      it 'creates a valid request' do
-        expect(request).to have_attributes(
-          name: 'My Template',
-          subject: 'My Subject',
-          category: 'My Category',
-          body_html: '<div>HTML</div>',
-          body_text: 'Text'
-        )
-      end
-    end
-  end
-
-  describe '#to_h' do
-    subject(:hash) { request.to_h }
-
-    let(:request) do
-      described_class.new(
-        name: 'My Template',
-        subject: 'My Subject',
-        category: 'My Category',
-        body_html: '<div>HTML</div>',
-        body_text: 'Text'
-      )
-    end
-
-    it 'returns a hash with all attributes' do
-      expect(hash).to eq(
-        name: 'My Template',
-        subject: 'My Subject',
-        category: 'My Category',
-        body_html: '<div>HTML</div>',
-        body_text: 'Text'
-      )
-    end
-
-    context 'with nil optional fields' do
-      let(:request) do
-        described_class.new(
-          name: 'My Template',
-          subject: 'My Subject',
-          category: 'My Category'
-        )
-      end
-
-      it 'excludes nil fields from the hash' do
-        expect(hash).to eq(
-          name: 'My Template',
-          subject: 'My Subject',
-          category: 'My Category'
-        )
       end
     end
   end
