@@ -4,7 +4,7 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
   subject(:template) { described_class.new(account_id, client) }
 
   let(:account_id) { 1_111_111 }
-  let(:client) { Mailtrap::Client.new(api_key: 'correct-api-key') }
+  let(:client) { Mailtrap::Client.new(api_key: 'local-api-key') }
 
   describe '#list', :vcr do
     subject(:list) { template.list }
@@ -193,6 +193,80 @@ RSpec.describe Mailtrap::EmailTemplatesAPI do
           name: 'Updated Template',
           subject: 'Updated Subject',
           category: 'Updated Category'
+        )
+      end
+    end
+
+    context 'when updating only category' do
+      let(:request) { { category: 'New Category Only' } }
+
+      it 'returns an EmailTemplate object' do
+        expect(update).to be_a(Mailtrap::EmailTemplate)
+      end
+
+      it 'updates only the category field' do
+        expect(update).to have_attributes(
+          category: 'New Category Only'
+        )
+      end
+
+      it 'preserves other fields unchanged' do
+        expect(update).to have_attributes(
+          name: 'Original Template',
+          subject: 'Original Subject',
+          body_html: '<div>Original HTML</div>',
+          body_text: 'Original Text'
+        )
+      end
+    end
+
+    context 'when updating only body_html' do
+      let(:request) { { body_html: '<div>New HTML Only</div>' } }
+
+      it 'returns an EmailTemplate object' do
+        expect(update).to be_a(Mailtrap::EmailTemplate)
+      end
+
+      it 'updates only the body_html field' do
+        expect(update).to have_attributes(
+          body_html: '<div>New HTML Only</div>'
+        )
+      end
+
+      it 'preserves other fields unchanged' do
+        expect(update).to have_attributes(
+          name: 'Original Template',
+          subject: 'Original Subject',
+          category: 'Original Category',
+          body_text: 'Original Text'
+        )
+      end
+    end
+
+    context 'when updating multiple specific fields' do
+      let(:request) do
+        {
+          category: 'Updated Category',
+          body_html: '<div>Updated HTML</div>'
+        }
+      end
+
+      it 'returns an EmailTemplate object' do
+        expect(update).to be_a(Mailtrap::EmailTemplate)
+      end
+
+      it 'updates only the specified fields' do
+        expect(update).to have_attributes(
+          category: 'Updated Category',
+          body_html: '<div>Updated HTML</div>'
+        )
+      end
+
+      it 'preserves other fields unchanged' do
+        expect(update).to have_attributes(
+          name: 'Original Template',
+          subject: 'Original Subject',
+          body_text: 'Original Text'
         )
       end
     end

@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:35:44 GMT
+      - Mon, 23 Jun 2025 06:54:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,7 +31,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9541f791db38ecb4-WAW
+      - 954213815efc3bbb-WAW
       Vary:
       - Accept
       - Accept-Encoding
@@ -54,7 +54,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '149'
       Etag:
-      - W/"843a1399749d76a4463a8acef0bcc4c5"
+      - W/"67f72cadb48b63652fc60ad28a7f1dc9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-r4+v5tJpnaNu8P6/RT8qTg==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-kHFIZ2/IXFSsTEqkG8NnnQ==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - c05a3e6a-4b57-4c8f-ad50-0f1d0298242e
+      - 160c3a50-e147-4952-9c03-c0e531d01cf5
       X-Runtime:
-      - '0.083657'
+      - '0.021037'
       X-Cloud-Trace-Context:
-      - 04bd7f0683ea46d2814885fd0349a424;o=0
+      - 38e92a5e6015409ec7221e96b1123f74;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,360 +160,24 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":40250,"uuid":"ef9530d6-8ed3-4b17-af57-88b995a0780a","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T16:03:12.407Z","updated_at":"2025-06-20T16:03:12.407Z"},{"id":40248,"uuid":"580666a4-8db7-4749-847c-ccf0871173f0","name":"Original
+      string: '[{"id":40423,"uuid":"2e0f2a45-3b0b-4742-b6b6-acb371e420b8","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-23T06:54:25.377Z","updated_at":"2025-06-23T06:54:25.377Z"},{"id":40422,"uuid":"f5ac55d2-f2a8-4182-b440-055119994b0a","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T16:03:11.428Z","updated_at":"2025-06-20T16:03:11.428Z"},{"id":40247,"uuid":"2347d3b8-11c5-424c-a133-998a1f6bd3c0","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":null,"body_text":null,"created_at":"2025-06-20T16:03:10.936Z","updated_at":"2025-06-20T16:03:11.200Z"},{"id":40246,"uuid":"3ec762ef-7b97-4fc9-a015-ff29e9ec4e20","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":null,"body_text":null,"created_at":"2025-06-20T16:03:10.440Z","updated_at":"2025-06-20T16:03:10.694Z"},{"id":40245,"uuid":"e7d0d3b1-f584-4c20-afa8-07b44b71a01c","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
-        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T16:03:09.934Z","updated_at":"2025-06-20T16:03:10.195Z"},{"id":40244,"uuid":"1a9cc3a7-7cbd-49b9-87b3-0f882290e78f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
-        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T16:03:09.001Z","updated_at":"2025-06-20T16:03:09.582Z"},{"id":40243,"uuid":"9d953522-9fe9-4208-af55-79c6a1dff714","name":"New
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:25.154Z","updated_at":"2025-06-23T06:54:25.154Z"},{"id":40421,"uuid":"58c27b45-03ac-49e6-85cc-48c090d1c119","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:08.459Z","updated_at":"2025-06-20T16:03:08.459Z"},{"id":40242,"uuid":"a7eefa6a-9270-4532-b147-9513ea8fb4b2","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.870Z","updated_at":"2025-06-20T16:03:07.870Z"},{"id":40241,"uuid":"d7595e4e-2e89-405f-bbc1-072c59e39119","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.629Z","updated_at":"2025-06-20T16:03:07.629Z"},{"id":40240,"uuid":"e320e2e4-7a8c-4448-b897-4dc3a0b58047","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.355Z","updated_at":"2025-06-20T16:03:07.355Z"},{"id":40239,"uuid":"7b191d70-92b0-4fab-886a-e3fd8f77f1d6","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:06.518Z","updated_at":"2025-06-20T16:03:06.518Z"},{"id":40238,"uuid":"ec134871-fc23-4556-944b-a060efb87d9b","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:06.053Z","updated_at":"2025-06-20T16:03:06.053Z"},{"id":40237,"uuid":"aeacb9de-4510-42f8-9fbd-44cdf571c614","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:05.242Z","updated_at":"2025-06-20T16:03:05.242Z"},{"id":40235,"uuid":"c1440207-bf94-4f9d-9f18-272ca713137c","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:47:24.164Z","updated_at":"2025-06-20T15:47:24.164Z"},{"id":40231,"uuid":"ece5c1d4-c870-4068-bae6-1cbb8fef61df","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:44:14.407Z","updated_at":"2025-06-20T15:44:14.407Z"},{"id":40229,"uuid":"6a5f364b-3581-418b-bccc-edac677767b8","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:38:47.623Z","updated_at":"2025-06-20T15:38:47.623Z"},{"id":40201,"uuid":"cde12c53-c8eb-41dc-8226-d51c61ef001a","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T11:37:31.178Z","updated_at":"2025-06-20T11:37:31.178Z"},{"id":40199,"uuid":"a6b600ef-ab44-4d20-ae07-c2a65c1e36d2","name":"Original
+        HTML</div>","body_text":"New Text","created_at":"2025-06-23T06:54:24.923Z","updated_at":"2025-06-23T06:54:24.923Z"},{"id":40420,"uuid":"b778baa9-98ee-4a47-9f75-97555de7d550","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:30.225Z","updated_at":"2025-06-20T11:37:30.225Z"},{"id":40198,"uuid":"20b20aba-9e3c-4123-bcbf-ca795d1804db","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:29.712Z","updated_at":"2025-06-20T11:37:29.977Z"},{"id":40197,"uuid":"6cb39e8e-c61e-4844-892a-16aceabbdf02","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:37:29.191Z","updated_at":"2025-06-20T11:37:29.439Z"},{"id":40196,"uuid":"4e6c72d6-ce71-4c3f-960a-3f519d4abc3f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
-        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T11:37:28.696Z","updated_at":"2025-06-20T11:37:28.939Z"},{"id":40195,"uuid":"73d834f3-e689-4368-b275-f78828d5ecee","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
-        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T11:37:28.209Z","updated_at":"2025-06-20T11:37:28.457Z"},{"id":40194,"uuid":"56ccc0fc-717c-4d77-b092-b4bf46c861d7","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.709Z","updated_at":"2025-06-20T11:37:27.709Z"},{"id":40193,"uuid":"dcbf6fc6-8cb1-4902-8c63-b1d86fc48223","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.451Z","updated_at":"2025-06-20T11:37:27.451Z"},{"id":40192,"uuid":"66ca0755-23fd-44cf-83a2-347f6cd4d233","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:27.179Z","updated_at":"2025-06-20T11:37:27.179Z"},{"id":40191,"uuid":"45876cd3-f78b-4fa5-9382-816a9462ee22","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:26.943Z","updated_at":"2025-06-20T11:37:26.943Z"},{"id":40190,"uuid":"06a4c6e6-c90c-4101-b968-495d1d8de626","name":"Test
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:24.694Z","updated_at":"2025-06-23T06:54:24.694Z"},{"id":40419,"uuid":"69d611fb-3d99-40ac-ae89-ed5018934f4e","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:26.474Z","updated_at":"2025-06-20T11:37:26.474Z"},{"id":40189,"uuid":"81a911ca-74a4-458c-82f3-ea811226d386","name":"Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:24.191Z","updated_at":"2025-06-23T06:54:24.191Z"},{"id":40418,"uuid":"e74bb071-0bf6-4c4d-a075-c58eeca8e3d7","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:25.970Z","updated_at":"2025-06-20T11:37:25.970Z"},{"id":40188,"uuid":"6ad419da-fde4-402e-8e30-9a206bcc14e7","name":"Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:23.740Z","updated_at":"2025-06-23T06:54:23.740Z"},{"id":40417,"uuid":"4d2909fd-6c42-4581-9ffe-798fede44ddb","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:37:25.498Z","updated_at":"2025-06-20T11:37:25.498Z"},{"id":40187,"uuid":"1b0280f0-e6a3-4d96-bb20-72f46cf991f7","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:17.203Z","updated_at":"2025-06-20T11:37:17.203Z"},{"id":40186,"uuid":"e86d85c3-40dc-4c96-b4c1-78090c7da2e5","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:16.964Z","updated_at":"2025-06-20T11:37:16.964Z"},{"id":40185,"uuid":"4b2125f9-9a4f-4dec-ac3f-0ea98ecf4b9c","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:16.726Z","updated_at":"2025-06-20T11:37:16.726Z"},{"id":40184,"uuid":"cfb6cb93-9172-46e7-b580-d49efbae16ef","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T11:37:14.076Z","updated_at":"2025-06-20T11:37:14.076Z"},{"id":40183,"uuid":"131c7354-5eb6-42f5-bf0c-8b22b0afe4b6","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T11:36:24.190Z","updated_at":"2025-06-20T11:36:24.190Z"},{"id":40181,"uuid":"cf32b49e-d628-4fa1-8c1a-e456b3e400c7","name":"Original
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:23.292Z","updated_at":"2025-06-23T06:54:23.292Z"},{"id":40416,"uuid":"2a770112-44da-4da1-8626-6131343b57e9","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:36:23.457Z","updated_at":"2025-06-20T11:36:23.457Z"},{"id":40180,"uuid":"8db8a20b-e62d-48a1-a40b-52fe0e02d60e","name":"Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:22.600Z","updated_at":"2025-06-23T06:54:22.600Z"},{"id":40415,"uuid":"49f89f62-5f59-4925-9e6a-441d95830d95","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:36:23.207Z","updated_at":"2025-06-20T11:36:23.207Z"},{"id":40179,"uuid":"d77d3ec3-63fe-4665-9c7c-c7edefdbaf70","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:36:22.785Z","updated_at":"2025-06-20T11:36:22.785Z"},{"id":40178,"uuid":"66de2a2b-9154-489d-9e65-4e23f01e87c3","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:36:22.545Z","updated_at":"2025-06-20T11:36:22.545Z"},{"id":40177,"uuid":"1569fe26-23f2-4c33-995e-411fe2818c27","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:36:22.281Z","updated_at":"2025-06-20T11:36:22.281Z"},{"id":40176,"uuid":"8b206dd7-0de3-403a-98de-a6dfe94df10f","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:36:21.796Z","updated_at":"2025-06-20T11:36:21.796Z"},{"id":40175,"uuid":"c8e669e3-65f9-4fcd-8476-283b74121d26","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:36:21.302Z","updated_at":"2025-06-20T11:36:21.302Z"},{"id":40174,"uuid":"ab40bc44-76ce-43f0-8b9d-93f11591c101","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:36:20.514Z","updated_at":"2025-06-20T11:36:20.514Z"},{"id":40173,"uuid":"088c3a07-bdaa-4265-ad5b-12355503c1b0","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T11:35:51.627Z","updated_at":"2025-06-20T11:35:51.627Z"},{"id":40171,"uuid":"6a128da2-fc51-4ed3-8199-fba5d8e5612b","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:35:50.603Z","updated_at":"2025-06-20T11:35:50.603Z"},{"id":40170,"uuid":"57d5ac89-dff6-4d39-ad30-37dce0c2b8ce","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:35:50.344Z","updated_at":"2025-06-20T11:35:50.344Z"},{"id":40169,"uuid":"f6f9d949-c5fa-46fc-8fea-ad030bf33c7e","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:35:48.713Z","updated_at":"2025-06-20T11:35:48.713Z"},{"id":40168,"uuid":"972079e4-7089-4c1d-b4e1-8d3493eaf3de","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:35:48.376Z","updated_at":"2025-06-20T11:35:48.376Z"},{"id":40167,"uuid":"ba29802d-d393-4bbd-943f-dbe38d4efcd7","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T11:35:48.143Z","updated_at":"2025-06-20T11:35:48.143Z"},{"id":40166,"uuid":"36b4f346-9316-4fd4-acd2-86edbd3fc5b3","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:35:47.661Z","updated_at":"2025-06-20T11:35:47.661Z"},{"id":40165,"uuid":"e1983d5c-e891-4c31-8bee-eed972214f8a","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:35:47.179Z","updated_at":"2025-06-20T11:35:47.179Z"},{"id":40164,"uuid":"59743fea-d267-4b5b-97ea-f5225c89e5b0","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T11:35:46.379Z","updated_at":"2025-06-20T11:35:46.379Z"},{"id":40148,"uuid":"523a810d-8b3b-49dc-84d8-fdc4838e8cf5","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T07:40:45.952Z","updated_at":"2025-06-20T07:40:45.952Z"},{"id":40146,"uuid":"984b62bb-ab9b-460b-9837-5c374e671a96","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:40:44.639Z","updated_at":"2025-06-20T07:40:44.639Z"},{"id":40145,"uuid":"050b6815-7d8c-461f-b22d-962990c1e675","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:40:44.152Z","updated_at":"2025-06-20T07:40:44.386Z"},{"id":40144,"uuid":"f861cb79-6941-41f3-b77e-5b12cc40380f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:40:43.698Z","updated_at":"2025-06-20T07:40:43.920Z"},{"id":40143,"uuid":"8cc11d42-d9c9-467a-8360-8389acc3edc9","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:40:43.231Z","updated_at":"2025-06-20T07:40:43.466Z"},{"id":40142,"uuid":"b58cb672-7d4b-4e3e-bf00-48e173c1bfde","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:40:42.763Z","updated_at":"2025-06-20T07:40:42.998Z"},{"id":40141,"uuid":"b41055bd-35cb-4780-97dd-d0059d0bf56c","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:40:41.960Z","updated_at":"2025-06-20T07:40:41.960Z"},{"id":40140,"uuid":"5c2d38c8-ef6c-4c0a-9cbc-e541a15694bd","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:40:41.382Z","updated_at":"2025-06-20T07:40:41.382Z"},{"id":40139,"uuid":"86caaf38-03ac-4093-921c-ca572b2438ec","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:40:40.816Z","updated_at":"2025-06-20T07:40:40.816Z"},{"id":40138,"uuid":"a55069b8-5c8b-49b3-90e5-cccd0f67f5a2","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:40:40.575Z","updated_at":"2025-06-20T07:40:40.575Z"},{"id":40137,"uuid":"3915190a-5fde-46b5-9b7a-0313d0bddbb7","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:40:39.943Z","updated_at":"2025-06-20T07:40:39.943Z"},{"id":40136,"uuid":"155cee49-add8-43ea-9db4-5afb43de6065","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:40:39.142Z","updated_at":"2025-06-20T07:40:39.142Z"},{"id":40135,"uuid":"6bf583bb-c3f1-4e42-80f6-c7a94566ba7d","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:40:38.343Z","updated_at":"2025-06-20T07:40:38.343Z"},{"id":40131,"uuid":"3344dad7-fd39-4c08-850a-782a02f75c2e","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T07:34:25.226Z","updated_at":"2025-06-20T07:34:25.226Z"},{"id":40129,"uuid":"9604ad37-ddcf-4ef3-b9c3-815d4023f07e","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:34:24.161Z","updated_at":"2025-06-20T07:34:24.161Z"},{"id":40128,"uuid":"deeecce1-86ee-44de-bf8a-0ae66ed8f3a7","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:34:23.674Z","updated_at":"2025-06-20T07:34:23.904Z"},{"id":40127,"uuid":"c1b88816-a238-4445-a8a0-20fdf3962a99","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:34:23.191Z","updated_at":"2025-06-20T07:34:23.431Z"},{"id":40126,"uuid":"fcc990c4-04e2-4bfc-be5a-d13708cad7b6","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:34:22.649Z","updated_at":"2025-06-20T07:34:22.951Z"},{"id":40125,"uuid":"4f4faa75-8f65-48af-be00-9c7f9ef6e9e6","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:34:21.874Z","updated_at":"2025-06-20T07:34:22.096Z"},{"id":40124,"uuid":"efbaf85f-5600-4a28-b63b-29206f27b912","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:34:21.063Z","updated_at":"2025-06-20T07:34:21.063Z"},{"id":40123,"uuid":"a9cad2a0-6e2e-4be1-ad4d-15072235b822","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:34:20.824Z","updated_at":"2025-06-20T07:34:20.824Z"},{"id":40122,"uuid":"700af311-fa35-43fe-9ea7-b48a816f3123","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:34:20.574Z","updated_at":"2025-06-20T07:34:20.574Z"},{"id":40121,"uuid":"91565eae-ff9b-455c-8920-e6717dc2b8cf","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:34:20.320Z","updated_at":"2025-06-20T07:34:20.320Z"},{"id":40120,"uuid":"1528c753-f558-472d-8325-f8085e6da5ce","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:34:19.361Z","updated_at":"2025-06-20T07:34:19.361Z"},{"id":40119,"uuid":"c6ce16da-2041-4c88-addf-e59945719172","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:34:18.564Z","updated_at":"2025-06-20T07:34:18.564Z"},{"id":40118,"uuid":"cb057b3b-ea0b-48e3-898e-65b40f062216","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:34:18.074Z","updated_at":"2025-06-20T07:34:18.074Z"},{"id":40117,"uuid":"4f90b2c9-2338-41a0-8cd6-6a5d18747b1c","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T07:33:02.917Z","updated_at":"2025-06-20T07:33:02.917Z"},{"id":40115,"uuid":"2f6e9c5b-4d53-4719-8ff5-07c8c9ce74c0","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:33:01.911Z","updated_at":"2025-06-20T07:33:01.911Z"},{"id":40114,"uuid":"7f9275f4-d142-4d98-9c7e-9389407d9bca","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:33:01.424Z","updated_at":"2025-06-20T07:33:01.668Z"},{"id":40113,"uuid":"f5ff4e19-c1b0-4409-8858-34b5f4d4e89a","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:33:00.917Z","updated_at":"2025-06-20T07:33:01.178Z"},{"id":40112,"uuid":"9c82fdd5-4140-4bb6-935b-840cfcc6ab79","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:33:00.432Z","updated_at":"2025-06-20T07:33:00.663Z"},{"id":40111,"uuid":"fbf7f71e-2add-4726-a2de-b24a2304b5f5","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T07:32:59.784Z","updated_at":"2025-06-20T07:33:00.052Z"},{"id":40110,"uuid":"648703ea-f93f-4ae2-aaf1-2f5ea08e2c7f","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:32:58.980Z","updated_at":"2025-06-20T07:32:58.980Z"},{"id":40109,"uuid":"22611668-fd92-475c-82a8-cbad2102271b","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:32:58.752Z","updated_at":"2025-06-20T07:32:58.752Z"},{"id":40108,"uuid":"8db782ee-67ad-4599-a93c-46e60aabecc0","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:32:58.504Z","updated_at":"2025-06-20T07:32:58.504Z"},{"id":40107,"uuid":"2bacd7e2-d93e-4b4c-a6f6-79a2a687317d","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-20T07:32:58.269Z","updated_at":"2025-06-20T07:32:58.269Z"},{"id":40106,"uuid":"802bae1a-ae22-4fc9-ac2f-192fc241a232","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:32:57.486Z","updated_at":"2025-06-20T07:32:57.486Z"},{"id":40105,"uuid":"e98831cf-f764-40c1-9fdf-86f368077f4b","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:32:56.682Z","updated_at":"2025-06-20T07:32:56.682Z"},{"id":40104,"uuid":"d3084f01-8244-476b-8907-2f19ed690fa4","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T07:32:55.554Z","updated_at":"2025-06-20T07:32:55.554Z"},{"id":39720,"uuid":"5c6be4ad-4f89-4729-a66f-778f3988d4f6","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-17T09:28:12.100Z","updated_at":"2025-06-17T09:28:12.100Z"},{"id":39718,"uuid":"09d18e52-7938-4e93-b6dd-724f22991b8e","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:28:11.126Z","updated_at":"2025-06-17T09:28:11.126Z"},{"id":39717,"uuid":"56b651f9-feaa-4012-8e36-e818d3aa5d86","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:28:10.637Z","updated_at":"2025-06-17T09:28:10.871Z"},{"id":39716,"uuid":"8c4cda52-1e95-4c88-b879-9552fcaa9550","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:28:10.144Z","updated_at":"2025-06-17T09:28:10.384Z"},{"id":39715,"uuid":"b9fe9bc5-9e6a-4073-8fa5-fb8bfb4ea851","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:28:09.478Z","updated_at":"2025-06-17T09:28:09.841Z"},{"id":39714,"uuid":"1b071e21-5eec-46da-b20d-5c775b45e2d2","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:28:08.997Z","updated_at":"2025-06-17T09:28:09.235Z"},{"id":39713,"uuid":"e34827c6-fefd-47c6-875a-2e428dad2afb","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:28:08.523Z","updated_at":"2025-06-17T09:28:08.523Z"},{"id":39712,"uuid":"41d8a4cb-bf6f-452b-b1a8-056aad3a208f","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:28:08.289Z","updated_at":"2025-06-17T09:28:08.289Z"},{"id":39711,"uuid":"c6bd2ead-fd2f-469b-8f57-2a3ce4b5d0fd","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:28:08.057Z","updated_at":"2025-06-17T09:28:08.057Z"},{"id":39710,"uuid":"bc374786-1b26-471a-a5c0-35cb9cb2f224","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:28:07.832Z","updated_at":"2025-06-17T09:28:07.832Z"},{"id":39709,"uuid":"412ec561-47e4-4813-99ff-bda451f07814","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:28:07.344Z","updated_at":"2025-06-17T09:28:07.344Z"},{"id":39708,"uuid":"0e3d59dc-2ae3-4780-9b11-ce598c0a5cfa","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:28:06.872Z","updated_at":"2025-06-17T09:28:06.872Z"},{"id":39707,"uuid":"099939c2-4946-4b54-aef0-fee581da5338","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:28:06.400Z","updated_at":"2025-06-17T09:28:06.400Z"},{"id":39706,"uuid":"2e132fe0-850b-4da7-9353-c325642ec4c5","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-17T09:27:17.534Z","updated_at":"2025-06-17T09:27:17.534Z"},{"id":39704,"uuid":"abc9d5d9-4820-4358-bb5b-a66821137770","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:27:16.607Z","updated_at":"2025-06-17T09:27:16.607Z"},{"id":39703,"uuid":"87aa0883-d520-4978-9fde-bbc645a3f165","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:27:16.083Z","updated_at":"2025-06-17T09:27:16.360Z"},{"id":39702,"uuid":"4403ee01-36e6-4539-9041-02497c32dfa4","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:27:15.572Z","updated_at":"2025-06-17T09:27:15.830Z"},{"id":39701,"uuid":"5fa5af04-5357-4744-b544-d9c46c219d3f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:27:14.792Z","updated_at":"2025-06-17T09:27:15.011Z"},{"id":39700,"uuid":"f231f6b5-64a6-4e75-9a3c-e9b9f66265d9","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:27:14.294Z","updated_at":"2025-06-17T09:27:14.536Z"},{"id":39699,"uuid":"125dc610-ca55-470b-8f3c-d02d0b505fde","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:27:13.614Z","updated_at":"2025-06-17T09:27:13.614Z"},{"id":39698,"uuid":"7f0509c3-f436-4e35-9626-e66c89a0a8f9","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:27:13.378Z","updated_at":"2025-06-17T09:27:13.378Z"},{"id":39697,"uuid":"9056a253-2d42-422d-81a6-832fc77b87e4","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:27:12.838Z","updated_at":"2025-06-17T09:27:12.838Z"},{"id":39696,"uuid":"643eea2a-0d58-4959-aab3-a1cabd207f59","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:27:12.599Z","updated_at":"2025-06-17T09:27:12.599Z"},{"id":39695,"uuid":"dfd79673-53cc-4491-ba3c-8d9142b387fd","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:27:12.132Z","updated_at":"2025-06-17T09:27:12.132Z"},{"id":39694,"uuid":"4da5025f-ba3e-45fa-879a-97e5d5575ac2","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:27:11.658Z","updated_at":"2025-06-17T09:27:11.658Z"},{"id":39693,"uuid":"c9b556cc-05d9-43f8-9826-b96cb95b0c7c","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:27:10.857Z","updated_at":"2025-06-17T09:27:10.857Z"},{"id":39690,"uuid":"3d48f08d-6ee4-4d01-89d3-c3b8f7b34286","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-17T09:18:15.645Z","updated_at":"2025-06-17T09:18:15.645Z"},{"id":39689,"uuid":"dfa120e9-8223-433d-b6e0-f1b2708bdaab","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-17T09:14:10.581Z","updated_at":"2025-06-17T09:14:10.581Z"},{"id":39688,"uuid":"f9135936-dc19-4e3f-96c5-57cdaf506021","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-17T09:12:09.360Z","updated_at":"2025-06-17T09:12:09.360Z"},{"id":39686,"uuid":"52583a41-20e6-47f3-b629-a87fb1f5dd38","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:12:08.402Z","updated_at":"2025-06-17T09:12:08.402Z"},{"id":39685,"uuid":"1c395e0a-8eee-4dd5-8e92-f91a4596fade","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:12:07.940Z","updated_at":"2025-06-17T09:12:08.155Z"},{"id":39684,"uuid":"17ece4c8-8c4a-47a2-a8c7-5b6dc3d4ec1f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:12:07.433Z","updated_at":"2025-06-17T09:12:07.695Z"},{"id":39683,"uuid":"035f0a29-9781-45d2-80bf-cc2eea2f2cec","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:12:06.960Z","updated_at":"2025-06-17T09:12:07.199Z"},{"id":39682,"uuid":"d5da5849-950c-4290-9aef-177a5e4a616d","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:12:06.459Z","updated_at":"2025-06-17T09:12:06.711Z"},{"id":39681,"uuid":"88138978-7773-42d5-928d-d0b7f0ec67f6","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:12:06.219Z","updated_at":"2025-06-17T09:12:06.219Z"},{"id":39680,"uuid":"2214c01d-042c-49c0-9f6e-d6c484be37d9","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:12:05.966Z","updated_at":"2025-06-17T09:12:05.966Z"},{"id":39679,"uuid":"0f520fa4-c534-439e-bb36-f61b0830b593","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:12:05.718Z","updated_at":"2025-06-17T09:12:05.718Z"},{"id":39678,"uuid":"68db4579-054c-44d1-8460-1700884e7f1b","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:12:05.484Z","updated_at":"2025-06-17T09:12:05.484Z"},{"id":39677,"uuid":"223dfce9-6605-4a71-9e6e-d45b88f31b4d","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:12:04.995Z","updated_at":"2025-06-17T09:12:04.995Z"},{"id":39676,"uuid":"976cffd3-7fce-43ed-8292-c97a9f3ee137","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:12:04.508Z","updated_at":"2025-06-17T09:12:04.508Z"},{"id":39675,"uuid":"592f9b52-f03b-4bc5-b759-8525e66d9c26","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:12:04.059Z","updated_at":"2025-06-17T09:12:04.059Z"},{"id":39674,"uuid":"31d21751-e8a3-4995-af77-5dc674a3dd3f","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-17T09:11:17.078Z","updated_at":"2025-06-17T09:11:17.078Z"},{"id":39672,"uuid":"bda905f2-e9f7-4323-a5da-c32295f83f4f","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:11:16.156Z","updated_at":"2025-06-17T09:11:16.156Z"},{"id":39671,"uuid":"ef49204d-6f9c-40b3-beeb-be1f788ad289","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:11:15.667Z","updated_at":"2025-06-17T09:11:15.905Z"},{"id":39670,"uuid":"fe794120-6c64-4eb6-93ea-92e981dcb84b","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:11:15.196Z","updated_at":"2025-06-17T09:11:15.435Z"},{"id":39669,"uuid":"b7260636-5c68-4ee2-ae46-a76f66fd9b38","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:11:14.711Z","updated_at":"2025-06-17T09:11:14.959Z"},{"id":39668,"uuid":"7a405cf5-f999-44b6-ab4e-bc3a0070c67f","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-17T09:11:14.228Z","updated_at":"2025-06-17T09:11:14.474Z"},{"id":39667,"uuid":"eb108cd7-ed0b-43df-8cb8-25f6c9966db3","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:11:13.998Z","updated_at":"2025-06-17T09:11:13.998Z"},{"id":39666,"uuid":"645774a3-430d-46f6-8286-a3653e5c1486","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:11:13.758Z","updated_at":"2025-06-17T09:11:13.758Z"},{"id":39665,"uuid":"5714c29c-6869-4d26-aa05-1587f9bd3e99","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:11:13.513Z","updated_at":"2025-06-17T09:11:13.513Z"},{"id":39664,"uuid":"cf4f1245-9f48-4f5d-ba9c-332142fbf16e","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-17T09:11:13.256Z","updated_at":"2025-06-17T09:11:13.256Z"},{"id":39663,"uuid":"5c3637a2-aed3-4238-9ef4-8ea3ab31814a","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:11:12.777Z","updated_at":"2025-06-17T09:11:12.777Z"},{"id":39662,"uuid":"be5ed4dd-b374-4856-928d-f0957304123d","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:11:11.991Z","updated_at":"2025-06-17T09:11:11.991Z"},{"id":39661,"uuid":"176f5f3e-e327-46e0-9f15-0383fb12d612","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-17T09:11:11.518Z","updated_at":"2025-06-17T09:11:11.518Z"},{"id":39586,"uuid":"4d491a7f-32ed-4568-a9eb-0c64cc99e326","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-16T12:41:06.025Z","updated_at":"2025-06-16T12:41:06.025Z"},{"id":39584,"uuid":"a457b43b-680a-4106-9d22-dfc384b8aebf","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:41:05.029Z","updated_at":"2025-06-16T12:41:05.029Z"},{"id":39583,"uuid":"2fe116d3-477c-4991-8127-9359ef4cff90","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:41:04.444Z","updated_at":"2025-06-16T12:41:04.713Z"},{"id":39582,"uuid":"c2fe1bff-c18b-47e1-ae9c-0785a24cb672","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:41:03.935Z","updated_at":"2025-06-16T12:41:04.178Z"},{"id":39581,"uuid":"1fa03732-3d75-41ee-97fa-b94f0c94e0ab","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:41:03.454Z","updated_at":"2025-06-16T12:41:03.693Z"},{"id":39580,"uuid":"23e984de-dd65-4e2f-a8af-e8fc47ceb359","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:41:02.939Z","updated_at":"2025-06-16T12:41:03.215Z"},{"id":39579,"uuid":"6588afeb-9dac-43fc-9840-22e3d4f1e773","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:41:02.685Z","updated_at":"2025-06-16T12:41:02.685Z"},{"id":39578,"uuid":"548c867e-07f7-4fea-8419-132f154a1866","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:41:02.335Z","updated_at":"2025-06-16T12:41:02.335Z"},{"id":39577,"uuid":"bdb308d8-22fd-4792-82c4-495398d5e57d","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:41:01.738Z","updated_at":"2025-06-16T12:41:01.738Z"},{"id":39576,"uuid":"9e4d6bae-bf6f-496d-b10e-57d3f1880785","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:41:01.443Z","updated_at":"2025-06-16T12:41:01.443Z"},{"id":39575,"uuid":"0921d573-cf63-483f-bc68-67107319c3fd","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:41:00.928Z","updated_at":"2025-06-16T12:41:00.928Z"},{"id":39574,"uuid":"aca9edf5-e564-4c5c-8049-c21ec0538128","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:41:00.053Z","updated_at":"2025-06-16T12:41:00.053Z"},{"id":39573,"uuid":"a2fdc1d5-e89b-4bfe-a777-78c347ea48cc","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:40:59.213Z","updated_at":"2025-06-16T12:40:59.213Z"},{"id":39572,"uuid":"ec061785-66c5-4300-bb03-17272415e06f","name":"Template
-        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-16T12:34:41.056Z","updated_at":"2025-06-16T12:34:41.056Z"},{"id":39570,"uuid":"17f0e46f-239e-4bb8-9601-1ea833e1a801","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:40.013Z","updated_at":"2025-06-16T12:34:40.013Z"},{"id":39569,"uuid":"9cb37d93-e56c-4d41-ae40-ba6dc9d84c61","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:39.496Z","updated_at":"2025-06-16T12:34:39.737Z"},{"id":39568,"uuid":"e137b857-eb8e-46ea-8703-bd8d42efe2f5","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:38.654Z","updated_at":"2025-06-16T12:34:39.247Z"},{"id":39567,"uuid":"5018e287-b646-4001-b44a-0f76b1a71cb5","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:38.162Z","updated_at":"2025-06-16T12:34:38.403Z"},{"id":39566,"uuid":"d223be83-e5cd-4653-97cb-76279feb9a95","name":"Updated
-        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-16T12:34:37.683Z","updated_at":"2025-06-16T12:34:37.924Z"},{"id":39565,"uuid":"d1d2fc6d-294d-4a5f-b563-f52a557e3666","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:37.322Z","updated_at":"2025-06-16T12:34:37.322Z"},{"id":39564,"uuid":"ed517ad3-0811-4ecd-a6b2-662a730c7126","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:37.086Z","updated_at":"2025-06-16T12:34:37.086Z"},{"id":39563,"uuid":"a005a793-e792-467d-baac-2844e67d5ec5","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:36.844Z","updated_at":"2025-06-16T12:34:36.844Z"},{"id":39562,"uuid":"307dca90-bc45-4dcf-9fc7-1be6b8d90647","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:34:36.591Z","updated_at":"2025-06-16T12:34:36.591Z"},{"id":39561,"uuid":"1593a5e8-9cd4-444f-a563-4d85721b4aeb","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:35.781Z","updated_at":"2025-06-16T12:34:35.781Z"},{"id":39560,"uuid":"8e4a26e7-3144-41dd-8a9f-0f6a08845e77","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:34.979Z","updated_at":"2025-06-16T12:34:34.979Z"},{"id":39559,"uuid":"5cb2743b-accc-4cc9-8b19-9b4552f20df2","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-16T12:34:33.822Z","updated_at":"2025-06-16T12:34:33.822Z"},{"id":39558,"uuid":"de5e3bc8-ba14-4009-83f2-238d4fa27f8f","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.847Z","updated_at":"2025-06-16T12:32:10.847Z"},{"id":39557,"uuid":"1bda49ad-df09-4909-b75d-41be83722d59","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.587Z","updated_at":"2025-06-16T12:32:10.587Z"},{"id":39556,"uuid":"20fe63a7-0365-42a2-9c72-c6d9b8d942c8","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:10.029Z","updated_at":"2025-06-16T12:32:10.029Z"},{"id":39555,"uuid":"e37b6fb4-582c-47ff-9ccd-7a88ef088442","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:32:09.442Z","updated_at":"2025-06-16T12:32:09.442Z"},{"id":39554,"uuid":"825bf7ea-ccf0-4488-8de7-451fdfd4ff37","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:31:49.287Z","updated_at":"2025-06-16T12:31:49.287Z"},{"id":39553,"uuid":"5b50a0f9-5d42-4fe6-861d-836ac8c2eaa3","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T12:31:49.007Z","updated_at":"2025-06-16T12:31:49.007Z"},{"id":39542,"uuid":"961bf336-913e-4fe0-a3b9-ee203d441b92","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T11:40:30.175Z","updated_at":"2025-06-16T11:40:30.175Z"},{"id":39541,"uuid":"f2fe6b43-3900-416b-89cc-62257546ca70","name":"New
-        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-16T11:40:29.597Z","updated_at":"2025-06-16T11:40:29.597Z"},{"id":39539,"uuid":"da3be452-1e83-4841-b552-35b7658d13e9","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:34:38.504Z","updated_at":"2025-06-16T11:34:38.504Z"},{"id":39537,"uuid":"fed0b42b-f9bb-43db-b8a1-586dce861999","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:29:43.890Z","updated_at":"2025-06-16T11:29:43.890Z"},{"id":39529,"uuid":"8a6346c2-38d5-4a64-a475-ad218fdbeeee","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:27.231Z","updated_at":"2025-06-16T11:14:27.231Z"},{"id":39528,"uuid":"e6a09907-5d56-4f2b-81b4-fb76fcee84df","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:17.482Z","updated_at":"2025-06-16T11:14:17.482Z"},{"id":39527,"uuid":"b663e4a2-8a6d-4e5a-a173-dd2fdb03b1b5","name":"Welcome
-        Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:12:30.379Z","updated_at":"2025-06-16T11:12:30.379Z"},{"id":39510,"uuid":"24b2fc9d-1583-435c-9c17-43d007045a68","name":"test","category":"t1","subject":"new","body_html":null,"body_text":null,"created_at":"2025-06-16T09:22:48.875Z","updated_at":"2025-06-16T09:22:48.875Z"}]'
-  recorded_at: Mon, 23 Jun 2025 06:35:44 GMT
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:22.134Z","updated_at":"2025-06-23T06:54:22.134Z"}]'
+  recorded_at: Mon, 23 Jun 2025 06:54:48 GMT
 recorded_with: VCR 6.2.0

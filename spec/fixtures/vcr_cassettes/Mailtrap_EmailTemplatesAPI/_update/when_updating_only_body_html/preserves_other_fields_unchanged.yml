@@ -5,8 +5,8 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/email_templates
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"Test Template","subject":"Test Subject","category":"Test
-        Category","body_html":"<div>Test HTML</div>","body_text":"Test Text"}}'
+      string: '{"email_template":{"name":"Original Template","subject":"Original Subject","category":"Original
+        Category","body_html":"<div>Original HTML</div>","body_text":"Original Text"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -24,15 +24,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:54:49 GMT
+      - Mon, 23 Jun 2025 06:54:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '272'
+      - '292'
       Connection:
       - keep-alive
       Cf-Ray:
-      - 954213887fa0020f-WAW
+      - 954213b05cf9bfaf-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '145'
+      - '124'
       Etag:
-      - W/"ece196016a5a0712829e004d4666cfa0"
+      - W/"ec2afe8b201ff847c0b3f84b5534251a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-WI9JNYCVb06wheQsLTpJag==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-1SV23HGkZYsc4GC58uDF+g==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 20fe24df-b292-4201-a7a6-328fc5a2abe8
+      - 616592f1-d56c-4314-b324-5e2e9487a1ce
       X-Runtime:
-      - '0.058427'
+      - '0.036545'
       X-Cloud-Trace-Context:
-      - 53203041df7742fb88a7ff1d2afab7e7;o=0
+      - 2372bc9e859b416a80aa166a4049c099;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,16 +160,16 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":40425,"uuid":"c7020fc1-f4cc-4c9b-afa8-2a9024c71665","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:49.785Z","updated_at":"2025-06-23T06:54:49.785Z"}'
-  recorded_at: Mon, 23 Jun 2025 06:54:49 GMT
+      string: '{"id":40440,"uuid":"791bbd4d-8995-4593-a9ed-e85fb245b61e","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:56.152Z","updated_at":"2025-06-23T06:54:56.152Z"}'
+  recorded_at: Mon, 23 Jun 2025 06:54:56 GMT
 - request:
-    method: get
-    uri: https://mailtrap.io/api/accounts/1111111/email_templates/40425
+    method: patch
+    uri: https://mailtrap.io/api/accounts/1111111/email_templates/40440
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"email_template":{"body_html":"<div>New HTML Only</div>"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -187,7 +187,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:54:50 GMT
+      - Mon, 23 Jun 2025 06:54:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -213,9 +213,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '144'
+      - '123'
       Etag:
-      - W/"ece196016a5a0712829e004d4666cfa0"
+      - W/"a1a6227556378f1a22895552b46aec56"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -228,7 +228,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-+midL1N8a/UMfah1Wh9ukA==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-Zpxgy72N7yfHe5ljyYCN7g==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -306,11 +306,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 71ecfcc4-723f-4c14-9883-85b12d600146
+      - 138aa71d-1c3e-4ee5-b3d6-dcde26df15bc
       X-Runtime:
-      - '0.020742'
+      - '0.032502'
       X-Cloud-Trace-Context:
-      - f571fbfd56b74bc5c8d02d994971c521;o=0
+      - 9eeb41f6564f43b887190cefe9e8b513;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -318,13 +318,13 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9542138a1f63ecc0-WAW
+      - 954213b1cee80230-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":40425,"uuid":"c7020fc1-f4cc-4c9b-afa8-2a9024c71665","name":"Test
-        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:49.785Z","updated_at":"2025-06-23T06:54:49.785Z"}'
-  recorded_at: Mon, 23 Jun 2025 06:54:50 GMT
+      string: '{"id":40440,"uuid":"791bbd4d-8995-4593-a9ed-e85fb245b61e","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:56.152Z","updated_at":"2025-06-23T06:54:56.376Z"}'
+  recorded_at: Mon, 23 Jun 2025 06:54:56 GMT
 recorded_with: VCR 6.2.0

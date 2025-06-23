@@ -24,7 +24,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:35:53 GMT
+      - Mon, 23 Jun 2025 06:54:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9541f7ca2e04bff3-WAW
+      - 954213c1881c34d3-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '136'
+      - '112'
       Etag:
-      - W/"5a04d772b08d74b6896f5ab7a66a35c4"
+      - W/"cf7eeac15cd9f0c7634a09c87a694811"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-MNNXm5w8JGntdaPPj11p6w==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-4w5/1pv6CSmN8PG4p1UiMg==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 408c32b2-f20b-4f68-81a7-7a435cd06f17
+      - dffb962b-4186-4cd7-afa4-4695a18dfcef
       X-Runtime:
-      - '0.032780'
+      - '0.036005'
       X-Cloud-Trace-Context:
-      - 7e25a2daf7b242258ba77338b66f2b9b;o=0
+      - c76b54bf6c84452c81b4c736a46b52f7;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,10 +160,10 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":40405,"uuid":"e37b014a-c086-4c9d-b65b-3ede184e45dc","name":"Template
+      string: '{"id":40446,"uuid":"84e6d3d7-7d37-4dec-bcc3-8d8c82a63e11","name":"Template
         to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
-        HTML</div>","body_text":"Delete Text","created_at":"2025-06-23T06:35:53.403Z","updated_at":"2025-06-23T06:35:53.403Z"}'
-  recorded_at: Mon, 23 Jun 2025 06:35:53 GMT
+        HTML</div>","body_text":"Delete Text","created_at":"2025-06-23T06:54:58.904Z","updated_at":"2025-06-23T06:54:58.904Z"}'
+  recorded_at: Mon, 23 Jun 2025 06:54:59 GMT
 - request:
     method: delete
     uri: https://mailtrap.io/api/accounts/1111111/email_templates/999999
@@ -187,7 +187,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:35:53 GMT
+      - Mon, 23 Jun 2025 06:54:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -195,7 +195,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9541f7cba83b34b2-WAW
+      - 954213c3082e0206-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -215,7 +215,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '135'
+      - '111'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -228,7 +228,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-3sb2YPo1FB34UfQy3Vd2Jg==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-cArGG81NTtPg2e+D42JN7w==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -306,11 +306,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 7b8687cf-fcbf-4e35-93fd-540ec3e0e474
+      - 4bb3216f-cc77-4380-b597-eeb7aaffe451
       X-Runtime:
-      - '0.019473'
+      - '0.017788'
       X-Cloud-Trace-Context:
-      - fa7f60bcf549492185da7f799a53ddca;o=0
+      - d78db21094e9415bc07198393280ba7d;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -322,5 +322,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":"Not Found"}'
-  recorded_at: Mon, 23 Jun 2025 06:35:53 GMT
+  recorded_at: Mon, 23 Jun 2025 06:54:59 GMT
 recorded_with: VCR 6.2.0
