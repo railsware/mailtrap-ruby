@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 20 Jun 2025 16:03:03 GMT
+      - Mon, 23 Jun 2025 06:35:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,7 +31,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 952c7e782ccfbfda-WAW
+      - 9541f791db38ecb4-WAW
       Vary:
       - Accept
       - Accept-Encoding
@@ -54,7 +54,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '149'
       Etag:
-      - W/"e588e6b4a4c3e7ba64acc6a8b351853e"
+      - W/"843a1399749d76a4463a8acef0bcc4c5"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,7 +67,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-I/KnYWeC7lpejMlXEAjgwA==''; connect-src ''self'' assets.mailtrap.io
+        ''nonce-js-r4+v5tJpnaNu8P6/RT8qTg==''; connect-src ''self'' assets.mailtrap.io
         wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
         *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
         *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
@@ -145,11 +145,11 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 1971e6fe-b7e5-4e61-85cb-9d0bbb6cc43e
+      - c05a3e6a-4b57-4c8f-ad50-0f1d0298242e
       X-Runtime:
-      - '0.046352'
+      - '0.083657'
       X-Cloud-Trace-Context:
-      - 7aba533146f14671cb12fcbd49f942a6;o=0
+      - 04bd7f0683ea46d2814885fd0349a424;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -160,7 +160,31 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":40235,"uuid":"c1440207-bf94-4f9d-9f18-272ca713137c","name":"Welcome
+      string: '[{"id":40250,"uuid":"ef9530d6-8ed3-4b17-af57-88b995a0780a","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-06-20T16:03:12.407Z","updated_at":"2025-06-20T16:03:12.407Z"},{"id":40248,"uuid":"580666a4-8db7-4749-847c-ccf0871173f0","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-06-20T16:03:11.428Z","updated_at":"2025-06-20T16:03:11.428Z"},{"id":40247,"uuid":"2347d3b8-11c5-424c-a133-998a1f6bd3c0","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":null,"body_text":null,"created_at":"2025-06-20T16:03:10.936Z","updated_at":"2025-06-20T16:03:11.200Z"},{"id":40246,"uuid":"3ec762ef-7b97-4fc9-a015-ff29e9ec4e20","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":null,"body_text":null,"created_at":"2025-06-20T16:03:10.440Z","updated_at":"2025-06-20T16:03:10.694Z"},{"id":40245,"uuid":"e7d0d3b1-f584-4c20-afa8-07b44b71a01c","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T16:03:09.934Z","updated_at":"2025-06-20T16:03:10.195Z"},{"id":40244,"uuid":"1a9cc3a7-7cbd-49b9-87b3-0f882290e78f","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-06-20T16:03:09.001Z","updated_at":"2025-06-20T16:03:09.582Z"},{"id":40243,"uuid":"9d953522-9fe9-4208-af55-79c6a1dff714","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:08.459Z","updated_at":"2025-06-20T16:03:08.459Z"},{"id":40242,"uuid":"a7eefa6a-9270-4532-b147-9513ea8fb4b2","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.870Z","updated_at":"2025-06-20T16:03:07.870Z"},{"id":40241,"uuid":"d7595e4e-2e89-405f-bbc1-072c59e39119","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.629Z","updated_at":"2025-06-20T16:03:07.629Z"},{"id":40240,"uuid":"e320e2e4-7a8c-4448-b897-4dc3a0b58047","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-06-20T16:03:07.355Z","updated_at":"2025-06-20T16:03:07.355Z"},{"id":40239,"uuid":"7b191d70-92b0-4fab-886a-e3fd8f77f1d6","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:06.518Z","updated_at":"2025-06-20T16:03:06.518Z"},{"id":40238,"uuid":"ec134871-fc23-4556-944b-a060efb87d9b","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:06.053Z","updated_at":"2025-06-20T16:03:06.053Z"},{"id":40237,"uuid":"aeacb9de-4510-42f8-9fbd-44cdf571c614","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-06-20T16:03:05.242Z","updated_at":"2025-06-20T16:03:05.242Z"},{"id":40235,"uuid":"c1440207-bf94-4f9d-9f18-272ca713137c","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:47:24.164Z","updated_at":"2025-06-20T15:47:24.164Z"},{"id":40231,"uuid":"ece5c1d4-c870-4068-bae6-1cbb8fef61df","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:44:14.407Z","updated_at":"2025-06-20T15:44:14.407Z"},{"id":40229,"uuid":"6a5f364b-3581-418b-bccc-edac677767b8","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-20T15:38:47.623Z","updated_at":"2025-06-20T15:38:47.623Z"},{"id":40201,"uuid":"cde12c53-c8eb-41dc-8226-d51c61ef001a","name":"Template
@@ -491,5 +515,5 @@ http_interactions:
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:27.231Z","updated_at":"2025-06-16T11:14:27.231Z"},{"id":39528,"uuid":"e6a09907-5d56-4f2b-81b4-fb76fcee84df","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:14:17.482Z","updated_at":"2025-06-16T11:14:17.482Z"},{"id":39527,"uuid":"b663e4a2-8a6d-4e5a-a173-dd2fdb03b1b5","name":"Welcome
         Email","category":"welcome","subject":"Welcome to Mailtrap!","body_html":"<h1>Hello</h1>","body_text":"Hello","created_at":"2025-06-16T11:12:30.379Z","updated_at":"2025-06-16T11:12:30.379Z"},{"id":39510,"uuid":"24b2fc9d-1583-435c-9c17-43d007045a68","name":"test","category":"t1","subject":"new","body_html":null,"body_text":null,"created_at":"2025-06-16T09:22:48.875Z","updated_at":"2025-06-16T09:22:48.875Z"}]'
-  recorded_at: Fri, 20 Jun 2025 16:03:03 GMT
+  recorded_at: Mon, 23 Jun 2025 06:35:44 GMT
 recorded_with: VCR 6.2.0

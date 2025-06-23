@@ -65,16 +65,14 @@ module Mailtrap
     # @param body_text [String, nil] The plain text content
     # @return [EmailTemplate] Updated template object
     # @!macro api_errors
-    def update(template_id, name: nil, subject: nil, category: nil, body_html: nil, body_text: nil) # rubocop:disable Metrics/ParameterLists,Metrics/MethodLength
+    def update(template_id, name: nil, subject: nil, category: nil, **extra_params)
       response = client.patch("#{base_path}/#{template_id}",
                               {
                                 email_template: {
                                   name:,
                                   subject:,
-                                  category:,
-                                  body_html:,
-                                  body_text:
-                                }.compact.merge(body_html:, body_text:)
+                                  category:
+                                }.compact.merge(extra_params.slice(:body_html, :body_text))
                               })
       build_email_template(response)
     end
