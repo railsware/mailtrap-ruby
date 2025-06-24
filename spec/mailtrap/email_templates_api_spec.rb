@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Mailtrap::EmailTemplatesAPI, :vcr do
   subject(:template) { described_class.new(account_id, client) }
 
