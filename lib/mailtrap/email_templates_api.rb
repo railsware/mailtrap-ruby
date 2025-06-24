@@ -60,11 +60,16 @@ module Mailtrap
     # @option options [String, nil] :body_text The plain text content
     # @return [EmailTemplate] Updated template object
     # @!macro api_errors
-    def update(template_id, **options)
-      response = client.patch("#{base_path}/#{template_id}",
-                              {
-                                email_template: options.slice(:name, :subject, :category, :body_html, :body_text)
-                              })
+    # @raise [ArgumentError] If invalid options are provided
+    def update(template_id, options)
+      supported_options = %i[name subject category body_html body_text]
+      invalid_options = options.keys - supported_options
+
+      if invalid_options.any?
+        raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{supported_options}"
+      end
+
+      response = client.patch("#{base_path}/#{template_id}", email_template: options)
       build_email_template(response)
     end
 

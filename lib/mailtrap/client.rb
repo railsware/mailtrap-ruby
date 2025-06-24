@@ -55,7 +55,7 @@ module Mailtrap
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
-      perform_request(:post, api_host, send_url, mail)
+      perform_request(:post, api_host, send_path, mail)
     end
 
     # Performs a GET request to the specified path
@@ -111,7 +111,7 @@ module Mailtrap
       end
     end
 
-    def send_url
+    def send_path
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
