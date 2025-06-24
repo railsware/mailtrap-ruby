@@ -14,10 +14,10 @@ mail = Mailtrap::Mail::FromTemplate.new(
 )
 
 # create client and send
-client = Mailtrap::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'your-api-key'))
 client.send(mail)
 
-templates = Mailtrap::EmailTemplatesAPI.new(1_111_111, client)
+templates = Mailtrap::EmailTemplatesAPI.new(ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111), client)
 
 created_email_template = templates.create(
   name: 'Welcome Email',

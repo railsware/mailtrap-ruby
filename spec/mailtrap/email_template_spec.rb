@@ -3,8 +3,8 @@
 RSpec.describe Mailtrap::EmailTemplatesAPI do
   subject(:template) { described_class.new(account_id, client) }
 
-  let(:account_id) { 1_111_111 }
-  let(:client) { Mailtrap::Client.new(api_key: 'local-api-key') }
+  let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
+  let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
 
   describe '#list', :vcr do
     subject(:list) { template.list }

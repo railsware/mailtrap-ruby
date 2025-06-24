@@ -14,13 +14,6 @@ module Mailtrap
 
     attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id, :general_api_host
 
-    # @!macro api_errors
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
-    # @raise [Mailtrap::MailSizeError] If the message is too large
-
     # Initializes a new Mailtrap::Client instance.
     #
     # @param [String] api_key The Mailtrap API key to use for sending. Required.
@@ -69,6 +62,7 @@ module Mailtrap
     # @param path [String] The request path
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
+    # @raise [Mailtrap::MailSizeError] If the message is too large
     def get(path)
       perform_request(:get, general_api_host, path)
     end
@@ -157,7 +151,11 @@ module Mailtrap
       when Net::HTTPNoContent
         nil
       when Net::HTTPBadRequest
-        body = json_response(response.body)
+        body = if response.body.empty?
+                 { errors: ['bad request'] }
+               else
+                 json_response(response.body)
+               end
         raise Mailtrap::Error, body[:errors] || Array(body[:error])
       when Net::HTTPUnauthorized
         body = json_response(response.body)

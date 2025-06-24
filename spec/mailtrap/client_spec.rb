@@ -189,6 +189,16 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
+    it 'handles 400 with empty response body' do
+      stub_api_send 400, '' do
+        expect { send_mail }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to eq('bad request')
+          expect(error.messages).to eq(['bad request'])
+        end
+      end
+    end
+
     it 'handles 401' do
       stub_api_send 401, '{"errors":["Unauthorized"]}' do
         expect { send_mail }.to raise_error(Mailtrap::AuthorizationError)

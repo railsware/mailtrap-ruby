@@ -4,12 +4,6 @@ module Mailtrap
   class EmailTemplatesAPI
     attr_reader :client, :account_id
 
-    # @!macro api_errors
-    # @raise [Mailtrap::Error] If the API request fails with a client or server error
-    # @raise [Mailtrap::AuthorizationError] If the API key is invalid
-    # @raise [Mailtrap::RejectionError] If the server refuses to process the request
-    # @raise [Mailtrap::RateLimitError] If too many requests are made
-
     # @param account_id [Integer] The account ID
     # @param client [Mailtrap::Client] The client instance
     def initialize(account_id, client = Client.new)
@@ -35,11 +29,11 @@ module Mailtrap
     end
 
     # Creates a new email template
-    # @param name [String] The template name
-    # @param subject [String] The email subject
-    # @param category [String] The template category
-    # @param body_html [String] The HTML content
-    # @param body_text [String] The plain text content
+    # @param [String] name The template name
+    # @param [String] subject The email subject
+    # @param [String] category The template category
+    # @param [String, nil] body_html The HTML content. Default: nil.
+    # @param [String, nil] body_text The plain text content. Default: nil.
     # @return [EmailTemplate] Created template object
     # @!macro api_errors
     def create(name:, subject:, category:, body_html: nil, body_text: nil) # rubocop:disable Metrics/MethodLength
@@ -58,21 +52,18 @@ module Mailtrap
 
     # Updates an existing email template
     # @param template_id [Integer] The template ID
-    # @param name [String, nil] The template name
-    # @param subject [String, nil] The email subject
-    # @param category [String, nil] The template category
-    # @param body_html [String, nil] The HTML content
-    # @param body_text [String, nil] The plain text content
+    # @param [Hash] options The parameters to update
+    # @option options [String] :name The template name
+    # @option options [String] :subject The email subject
+    # @option options [String] :category The template category
+    # @option options [String, nil] :body_html The HTML content
+    # @option options [String, nil] :body_text The plain text content
     # @return [EmailTemplate] Updated template object
     # @!macro api_errors
-    def update(template_id, name: nil, subject: nil, category: nil, **extra_params)
+    def update(template_id, **options)
       response = client.patch("#{base_path}/#{template_id}",
                               {
-                                email_template: {
-                                  name:,
-                                  subject:,
-                                  category:
-                                }.compact.merge(extra_params.slice(:body_html, :body_text))
+                                email_template: options.slice(:name, :subject, :category, :body_html, :body_text)
                               })
       build_email_template(response)
     end

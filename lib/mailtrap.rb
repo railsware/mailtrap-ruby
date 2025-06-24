@@ -7,4 +7,10 @@ require_relative 'mailtrap/version'
 require_relative 'mailtrap/email_templates_api'
 require_relative 'mailtrap/email_template'
 
-module Mailtrap; end
+module Mailtrap
+  # @!macro api_errors
+  #   @raise [Mailtrap::Error] If the API request fails with a client or server error
+  #   @raise [Mailtrap::AuthorizationError] If the API key is invalid
+  #   @raise [Mailtrap::RejectionError] If the server refuses to process the request
+  #   @raise [Mailtrap::RateLimitError] If too many requests are made
+end
