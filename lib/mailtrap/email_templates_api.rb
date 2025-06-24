@@ -4,6 +4,8 @@ module Mailtrap
   class EmailTemplatesAPI
     attr_reader :client, :account_id
 
+    SUPPORTED_OPTIONS = %i[name subject category body_html body_text].freeze
+
     # @param account_id [Integer] The account ID
     # @param client [Mailtrap::Client] The client instance
     def initialize(account_id, client = Client.new)
@@ -29,24 +31,19 @@ module Mailtrap
     end
 
     # Creates a new email template
-    # @param [String] name The template name
-    # @param [String] subject The email subject
-    # @param [String] category The template category
-    # @param [String, nil] body_html The HTML content. Default: nil.
-    # @param [String, nil] body_text The plain text content. Default: nil.
+    # @param [Hash] options The parameters to create
+    # @option options [String] :name The template name
+    # @option options [String] :subject The email subject
+    # @option options [String] :category The template category
+    # @option options [String, nil] :body_html The HTML content. Default: nil.
+    # @option options [String, nil] :body_text The plain text content. Default: nil.
     # @return [EmailTemplate] Created template object
     # @!macro api_errors
-    def create(name:, subject:, category:, body_html: nil, body_text: nil) # rubocop:disable Metrics/MethodLength
-      response = client.post(base_path,
-                             {
-                               email_template: {
-                                 name:,
-                                 subject:,
-                                 category:,
-                                 body_html:,
-                                 body_text:
-                               }
-                             })
+    # @raise [ArgumentError] If invalid options are provided
+    def create(options)
+      validate_options(options)
+
+      response = client.post(base_path, email_template: options)
       build_email_template(response)
     end
 
@@ -62,12 +59,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(template_id, options)
-      supported_options = %i[name subject category body_html body_text]
-      invalid_options = options.keys - supported_options
-
-      if invalid_options.any?
-        raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{supported_options}"
-      end
+      validate_options(options)
 
       response = client.patch("#{base_path}/#{template_id}", email_template: options)
       build_email_template(response)
@@ -89,6 +81,13 @@ module Mailtrap
 
     def base_path
       "/api/accounts/#{account_id}/email_templates"
+    end
+
+    def validate_options(options, supported_options = SUPPORTED_OPTIONS)
+      invalid_options = options.keys - supported_options
+      return unless invalid_options.any?
+
+      raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{supported_options}"
     end
   end
 end
