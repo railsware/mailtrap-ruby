@@ -27,7 +27,7 @@ module Mailtrap
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
     # @param [String] general_api_host The general API hostname for non-sending operations. Default: GENERAL_API_HOST.
     # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil, or if incompatible options are provided. # rubocop:disable Layout/LineLength
-    def initialize( # rubocop:disable Metrics/ParameterLists,Metrics/MethodLength
+    def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
       api_port: API_PORT,
@@ -149,7 +149,7 @@ module Mailtrap
       request
     end
 
-    def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    def handle_response(response) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       case response
       when Net::HTTPOK, Net::HTTPCreated
         json_response(response.body)
@@ -174,6 +174,11 @@ module Mailtrap
       else
         raise Mailtrap::Error, ["unexpected status code=#{response.code}"]
       end
+    end
+
+    def response_errors(body)
+      parsed_body = json_response(body)
+      Array(parsed_body[:errors] || parsed_body[:error])
     end
 
     def json_response(body)

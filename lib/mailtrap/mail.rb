@@ -11,7 +11,7 @@ module Mailtrap
     class << self
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
-      def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      def from_message(message) # rubocop:disable Metrics/AbcSize
         Mailtrap::Mail::Base.new(
           from: prepare_addresses(address_list(message['from'])&.addresses).first,
           to: prepare_addresses(address_list(message['to'])&.addresses),
