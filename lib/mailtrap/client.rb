@@ -9,32 +9,33 @@ module Mailtrap
     SENDING_API_HOST = 'send.api.mailtrap.io'
     BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
-    API_PORT = 443
     GENERAL_API_HOST = 'mailtrap.io'
+    API_PORT = 443
 
-    attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id, :general_api_host
+    attr_reader :api_key, :api_host, :general_api_host, :api_port, :bulk, :sandbox, :inbox_id
 
     # Initializes a new Mailtrap::Client instance.
     #
     # @param [String] api_key The Mailtrap API key to use for sending. Required.
-    #                         If not set, is taken from the MAILTRAP_API_KEY environment variable.
-    # @param [String, nil] api_host The Mailtrap API hostname. If not set, is chosen internally.
+    #   If not set, is taken from the MAILTRAP_API_KEY environment variable.
+    # @param [String] api_host The Mailtrap API hostname. If not set, is chosen internally.
+    # @param [String] general_api_host The Mailtrap general API hostname for non-sending operations.
     # @param [Integer] api_port The Mailtrap API port. Default: 443.
     # @param [Boolean] bulk Whether to use the Mailtrap bulk sending API. Default: false.
-    #                       If enabled, is incompatible with `sandbox: true`.
+    #   If enabled, is incompatible with `sandbox: true`.
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
-    #                          If enabled, is incompatible with `bulk: true`.
+    #   If enabled, is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
-    # @param [String] general_api_host The general API hostname for non-sending operations. Default: GENERAL_API_HOST.
-    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil, or if incompatible options are provided. # rubocop:disable Layout/LineLength
+    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil,
+    #   or if incompatible options are provided.
     def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
+      general_api_host: GENERAL_API_HOST,
       api_port: API_PORT,
       bulk: false,
       sandbox: false,
-      inbox_id: nil,
-      general_api_host: GENERAL_API_HOST
+      inbox_id: nil
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
@@ -44,11 +45,11 @@ module Mailtrap
 
       @api_key = api_key
       @api_host = api_host
+      @general_api_host = general_api_host
       @api_port = api_port
       @bulk = bulk
       @sandbox = sandbox
       @inbox_id = inbox_id
-      @general_api_host = general_api_host
       @http_clients = {}
     end
 
