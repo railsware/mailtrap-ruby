@@ -18,7 +18,7 @@ mail = Mailtrap::Mail::Base.new(
   category: 'Integration Test',
   attachments: [
     {
-      content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
+      content: Base64.strict_encode64('Attachment content'), # base64 encoded content or IO string
       filename: 'attachment.txt'
     }
   ],
