@@ -5,9 +5,11 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'appraisal'
+gem 'irb'
 gem 'mail'
 gem 'net-smtp'
 gem 'rake', '~> 13.0'
+gem 'rdoc'
 gem 'rspec', '~> 3.0'
 gem 'rspec-its'
 gem 'rubocop', '~> 1.21'

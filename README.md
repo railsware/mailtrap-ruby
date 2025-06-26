@@ -62,11 +62,29 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
-Refer to the [`examples`](examples) folder for more examples.
+### Email Templates API
+
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+templates = Mailtrap::EmailTemplatesAPI.new 3229, client
+
+templates.create(
+  name: 'Welcome Email',
+  subject: 'Welcome to Mailtrap!',
+  body_html: '<h1>Hello</h1>',
+  body_text: 'Hello',
+  category: 'welcome'
+)
+```
+
+Refer to the [`examples`](examples) folder for more examples:
 
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
 - [ActionMailer](examples/action_mailer.rb)
+- [Email Templates API](examples/email_templates_api.rb)
 
 ### Content-Transfer-Encoding
 
@@ -77,7 +95,7 @@ sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
 Meaning your recipients will receive emails only in the default encoding which
 is `quoted-printable`, if you send with Mailtrap API.
 
-For those who does need to use `7bit` or any other encoding, SMTP provides
+For those who need to use `7bit` or any other encoding, SMTP provides
 better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.

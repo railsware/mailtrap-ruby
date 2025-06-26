@@ -14,5 +14,5 @@ mail = Mailtrap::Mail::FromTemplate.new(
 )
 
 # create client and send
-client = Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'your-api-key'))
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)

@@ -18,7 +18,7 @@ mail = Mailtrap::Mail::Base.new(
   category: 'Integration Test',
   attachments: [
     {
-      content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
+      content: Base64.strict_encode64('Attachment content'), # base64 encoded content or IO string
       filename: 'attachment.txt'
     }
   ],
@@ -36,6 +36,11 @@ encoded = Base64.encode64(data).gsub("\n", '')
 mail.add_attachment(content: encoded, filename: 'image.png')
 
 client = Mailtrap::Client.new(api_key: 'your-api-key')
+
+# Set your API credentials as environment variables
+# export MAILTRAP_API_KEY='your-api-key'
+#
+# client = Mailtrap::Client.new
 
 # Custom host / port
 # client = Mailtrap::Client.new(api_key: 'your-api-key', api_host: 'alternative.host.mailtrap.io', api_port: 8080)

@@ -9,32 +9,33 @@ module Mailtrap
     SENDING_API_HOST = 'send.api.mailtrap.io'
     BULK_SENDING_API_HOST = 'bulk.api.mailtrap.io'
     SANDBOX_API_HOST = 'sandbox.api.mailtrap.io'
-    API_PORT = 443
     GENERAL_API_HOST = 'mailtrap.io'
+    API_PORT = 443
 
-    attr_reader :api_key, :api_host, :api_port, :bulk, :sandbox, :inbox_id, :general_api_host
+    attr_reader :api_key, :api_host, :general_api_host, :api_port, :bulk, :sandbox, :inbox_id
 
     # Initializes a new Mailtrap::Client instance.
     #
     # @param [String] api_key The Mailtrap API key to use for sending. Required.
-    #                         If not set, is taken from the MAILTRAP_API_KEY environment variable.
-    # @param [String, nil] api_host The Mailtrap API hostname. If not set, is chosen internally.
+    #   If not set, it is taken from the MAILTRAP_API_KEY environment variable.
+    # @param [String] api_host The Mailtrap API hostname. If not set, it is chosen internally.
+    # @param [String] general_api_host The Mailtrap general API hostname for non-sending operations.
     # @param [Integer] api_port The Mailtrap API port. Default: 443.
     # @param [Boolean] bulk Whether to use the Mailtrap bulk sending API. Default: false.
-    #                       If enabled, is incompatible with `sandbox: true`.
+    #   If enabled, it is incompatible with `sandbox: true`.
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
-    #                          If enabled, is incompatible with `bulk: true`.
+    #   If enabled, it is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
-    # @param [String] general_api_host The general API hostname for non-sending operations. Default: GENERAL_API_HOST.
-    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil, or if incompatible options are provided. # rubocop:disable Layout/LineLength
-    def initialize( # rubocop:disable Metrics/ParameterLists,Metrics/MethodLength
+    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil,
+    #   or if incompatible options are provided.
+    def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
       api_host: nil,
+      general_api_host: GENERAL_API_HOST,
       api_port: API_PORT,
       bulk: false,
       sandbox: false,
-      inbox_id: nil,
-      general_api_host: GENERAL_API_HOST
+      inbox_id: nil
     )
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
@@ -44,11 +45,11 @@ module Mailtrap
 
       @api_key = api_key
       @api_host = api_host
+      @general_api_host = general_api_host
       @api_port = api_port
       @bulk = bulk
       @sandbox = sandbox
       @inbox_id = inbox_id
-      @general_api_host = general_api_host
       @http_clients = {}
     end
 
@@ -57,7 +58,7 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large
-    # @raise ArgumentError If the mail is not a Mail::Base object
+    # @raise [ArgumentError] If the mail is not a Mail::Base object
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
@@ -100,7 +101,7 @@ module Mailtrap
 
     private
 
-    def http_clients_for(host)
+    def http_client_for(host)
       @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
@@ -121,7 +122,7 @@ module Mailtrap
     end
 
     def perform_request(method, host, path, body = nil)
-      http_client = http_clients_for(host)
+      http_client = http_client_for(host)
       request = setup_request(method, path, body)
       response = http_client.request(request)
       handle_response(response)
@@ -149,25 +150,20 @@ module Mailtrap
       request
     end
 
-    def handle_response(response) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    def handle_response(response) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       case response
       when Net::HTTPOK, Net::HTTPCreated
         json_response(response.body)
       when Net::HTTPNoContent
         nil
       when Net::HTTPBadRequest
-        body = if response.body.empty?
-                 { errors: ['bad request'] }
-               else
-                 json_response(response.body)
-               end
-        raise Mailtrap::Error, body[:errors] || Array(body[:error])
+        raise Mailtrap::Error, ['bad request'] if response.body.empty?
+
+        raise Mailtrap::Error, response_errors(response.body)
       when Net::HTTPUnauthorized
-        body = json_response(response.body)
-        raise Mailtrap::AuthorizationError, body[:errors] || Array(body[:error])
+        raise Mailtrap::AuthorizationError, response_errors(response.body)
       when Net::HTTPForbidden
-        body = json_response(response.body)
-        raise Mailtrap::RejectionError, body[:errors] || Array(body[:error])
+        raise Mailtrap::RejectionError, response_errors(response.body)
       when Net::HTTPPayloadTooLarge
         raise Mailtrap::MailSizeError, ['message too large']
       when Net::HTTPTooManyRequests
@@ -179,6 +175,11 @@ module Mailtrap
       else
         raise Mailtrap::Error, ["unexpected status code=#{response.code}"]
       end
+    end
+
+    def response_errors(body)
+      parsed_body = json_response(body)
+      Array(parsed_body[:errors] || parsed_body[:error])
     end
 
     def json_response(body)
