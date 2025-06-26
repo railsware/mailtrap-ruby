@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     mailtrap (2.3.0)
+      base64
 
 GEM
   remote: https://rubygems.org/
@@ -13,6 +14,7 @@ GEM
       rake
       thor (>= 0.14.0)
     ast (2.4.2)
+    base64 (0.3.0)
     bigdecimal (3.1.8)
     crack (1.0.0)
       bigdecimal
