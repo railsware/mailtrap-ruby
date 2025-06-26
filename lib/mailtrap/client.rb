@@ -58,7 +58,7 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large
-    # @raise ArgumentError If the mail is not a Mail::Base object
+    # @raise [ArgumentError] If the mail is not a Mail::Base object
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
