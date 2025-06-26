@@ -5,7 +5,6 @@ require_relative 'mailtrap/mail'
 require_relative 'mailtrap/errors'
 require_relative 'mailtrap/version'
 require_relative 'mailtrap/email_templates_api'
-require_relative 'mailtrap/email_template'
 
 module Mailtrap
   # @!macro api_errors

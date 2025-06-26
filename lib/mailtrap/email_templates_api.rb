@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'email_template'
+
 module Mailtrap
   class EmailTemplatesAPI
     attr_reader :client, :account_id
