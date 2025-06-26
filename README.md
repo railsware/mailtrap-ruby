@@ -62,11 +62,29 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 ```
 
-Refer to the [`examples`](examples) folder for more examples.
+### Email Templates API
+
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+templates = Mailtrap::EmailTemplatesAPI.new 3229, client
+
+templates.create(
+  name: 'Welcome Email',
+  subject: 'Welcome to Mailtrap!',
+  body_html: '<h1>Hello</h1>',
+  body_text: 'Hello',
+  category: 'welcome'
+)
+```
+
+Refer to the [`examples`](examples) folder for more examples:
 
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
 - [ActionMailer](examples/action_mailer.rb)
+- [Email Templates API](examples/email_templates_api.rb)
 
 ### Content-Transfer-Encoding
 
