@@ -52,6 +52,12 @@ module Mailtrap
       @http_clients = {}
     end
 
+    # Sends an email
+    # @param mail [Mail::Base] The email to send
+    # @return [Hash, nil] The JSON response
+    # @!macro api_errors
+    # @raise [Mailtrap::MailSizeError] If the message is too large
+    # @raise ArgumentError If the mail is not a Mail::Base object
     def send(mail)
       raise ArgumentError, 'should be Mailtrap::Mail::Base object' unless mail.is_a? Mail::Base
 
@@ -62,7 +68,6 @@ module Mailtrap
     # @param path [String] The request path
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
-    # @raise [Mailtrap::MailSizeError] If the message is too large
     def get(path)
       perform_request(:get, general_api_host, path)
     end

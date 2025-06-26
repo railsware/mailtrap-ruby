@@ -8,7 +8,10 @@ module Mailtrap
 
     # @param account_id [Integer] The account ID
     # @param client [Mailtrap::Client] The client instance
-    def initialize(account_id, client = Client.new)
+    # @raise [ArgumentError] If account_id is nil
+    def initialize(account_id = ENV.fetch('MAILTRAP_ACCOUNT_ID'), client = Client.new)
+      raise ArgumentError, 'account_id is required' if account_id.to_i.zero?
+
       @account_id = account_id
       @client = client
     end
