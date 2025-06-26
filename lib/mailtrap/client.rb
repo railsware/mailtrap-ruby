@@ -101,7 +101,7 @@ module Mailtrap
 
     private
 
-    def http_clients_for(host)
+    def http_client_for(host)
       @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
@@ -122,7 +122,7 @@ module Mailtrap
     end
 
     def perform_request(method, host, path, body = nil)
-      http_client = http_clients_for(host)
+      http_client = http_client_for(host)
       request = setup_request(method, path, body)
       response = http_client.request(request)
       handle_response(response)
