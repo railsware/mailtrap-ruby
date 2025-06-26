@@ -37,6 +37,11 @@ mail.add_attachment(content: encoded, filename: 'image.png')
 
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 
+# Set your API credentials as environment variables
+# export MAILTRAP_API_KEY='your-api-key'
+#
+# client = Mailtrap::Client.new
+
 # Custom host / port
 # client = Mailtrap::Client.new(api_key: 'your-api-key', api_host: 'alternative.host.mailtrap.io', api_port: 8080)
 
