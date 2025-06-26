@@ -4,15 +4,16 @@ require_relative 'email_template'
 
 module Mailtrap
   class EmailTemplatesAPI
-    attr_reader :client, :account_id
-
     SUPPORTED_OPTIONS = %i[name subject category body_html body_text].freeze
+    private_constant :SUPPORTED_OPTIONS
+
+    attr_reader :account_id, :client
 
     # @param account_id [Integer] The account ID
     # @param client [Mailtrap::Client] The client instance
     # @raise [ArgumentError] If account_id is nil
     def initialize(account_id = ENV.fetch('MAILTRAP_ACCOUNT_ID'), client = Client.new)
-      raise ArgumentError, 'account_id is required' if account_id.to_i.zero?
+      raise ArgumentError, 'account_id is required' if account_id.nil?
 
       @account_id = account_id
       @client = client
@@ -46,7 +47,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      validate_options(options)
+      validate_options!(options)
 
       response = client.post(base_path, email_template: options)
       build_email_template(response)
@@ -64,7 +65,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(template_id, options)
-      validate_options(options)
+      validate_options!(options)
 
       response = client.patch("#{base_path}/#{template_id}", email_template: options)
       build_email_template(response)
@@ -88,11 +89,11 @@ module Mailtrap
       "/api/accounts/#{account_id}/email_templates"
     end
 
-    def validate_options(options, supported_options = SUPPORTED_OPTIONS)
-      invalid_options = options.keys - supported_options
-      return unless invalid_options.any?
+    def validate_options!(options)
+      invalid_options = options.keys - SUPPORTED_OPTIONS
+      return if invalid_options.empty?
 
-      raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{supported_options}"
+      raise ArgumentError, "invalid options are given: #{invalid_options}, supported_options: #{SUPPORTED_OPTIONS}"
     end
   end
 end
