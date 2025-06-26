@@ -77,7 +77,7 @@ sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
 Meaning your recipients will receive emails only in the default encoding which
 is `quoted-printable`, if you send with Mailtrap API.
 
-For those who does need to use `7bit` or any other encoding, SMTP provides
+For those who need to use `7bit` or any other encoding, SMTP provides
 better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.

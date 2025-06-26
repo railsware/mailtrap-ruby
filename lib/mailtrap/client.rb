@@ -17,14 +17,14 @@ module Mailtrap
     # Initializes a new Mailtrap::Client instance.
     #
     # @param [String] api_key The Mailtrap API key to use for sending. Required.
-    #   If not set, is taken from the MAILTRAP_API_KEY environment variable.
-    # @param [String] api_host The Mailtrap API hostname. If not set, is chosen internally.
+    #   If not set, it is taken from the MAILTRAP_API_KEY environment variable.
+    # @param [String] api_host The Mailtrap API hostname. If not set, it is chosen internally.
     # @param [String] general_api_host The Mailtrap general API hostname for non-sending operations.
     # @param [Integer] api_port The Mailtrap API port. Default: 443.
     # @param [Boolean] bulk Whether to use the Mailtrap bulk sending API. Default: false.
-    #   If enabled, is incompatible with `sandbox: true`.
+    #   If enabled, it is incompatible with `sandbox: true`.
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
-    #   If enabled, is incompatible with `bulk: true`.
+    #   If enabled, it is incompatible with `bulk: true`.
     # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
     # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil,
     #   or if incompatible options are provided.
