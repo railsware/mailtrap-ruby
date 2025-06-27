@@ -65,7 +65,7 @@ client.send(mail)
 Refer to the [`examples`](examples) folder for more examples.
 
 - [Full](examples/full.rb)
-- [Email template](examples/email_template.rb)
+- [Email Template](examples/email_template.rb)
 - [ActionMailer](examples/action_mailer.rb)
 
 ### Content-Transfer-Encoding
