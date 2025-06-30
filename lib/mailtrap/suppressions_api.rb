@@ -27,7 +27,7 @@ module Mailtrap
     private
 
     def base_path
-      "/api/accounts/#{@account_id}/suppressions"
+      "/api/accounts/#{account_id}/suppressions"
     end
   end
 end
