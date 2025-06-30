@@ -315,7 +315,7 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
-    context 'in bulk mode' do
+    context 'when in bulk mode' do
       let(:client) { described_class.new(api_key:, bulk: true) }
 
       it 'successfully sends a batch of emails', :vcr do
@@ -332,7 +332,7 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
-    context 'in sandbox mode' do
+    context 'when in sandbox mode' do
       let(:client) { described_class.new(api_key:, sandbox: true, inbox_id: 3_809_768) }
 
       it 'successfully sends a batch of emails', :vcr do

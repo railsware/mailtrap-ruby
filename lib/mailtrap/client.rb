@@ -37,12 +37,9 @@ module Mailtrap
       sandbox: false,
       inbox_id: nil
     )
-      raise ArgumentError, 'api_key is required' if api_key.nil?
-      raise ArgumentError, 'api_port is required' if api_port.nil?
-      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if sandbox && bulk
+      validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
 
       api_host ||= select_api_host(bulk:, sandbox:)
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
 
       @api_key = api_key
       @api_host = api_host
@@ -232,6 +229,13 @@ module Mailtrap
 
     def compact_with_empty_arrays(hash)
       hash.reject { |_, v| v.nil? || (v.is_a?(Array) && v.empty?) }
+    end
+
+    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      raise ArgumentError, 'api_key is required' if api_key.nil?
+      raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
   end
 end
