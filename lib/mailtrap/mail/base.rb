@@ -8,7 +8,7 @@ module Mailtrap
       attr_accessor :from, :to, :reply_to, :cc, :bcc, :headers, :custom_variables, :subject, :text, :html, :category
       attr_reader :attachments
 
-      def initialize( # rubocop:disable Metrics/ParameterLists, Metrics/MethodLength
+      def initialize( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
         reply_to: nil,
@@ -36,7 +36,7 @@ module Mailtrap
         @category = category
       end
 
-      def as_json # rubocop:disable Metrics/MethodLength
+      def as_json
         {
           'from' => from,
           'to' => to,

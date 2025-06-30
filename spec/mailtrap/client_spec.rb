@@ -166,8 +166,7 @@ RSpec.describe Mailtrap::Client do
   end
 
   describe 'errors' do
-    subject(:send_mail) { client.send(mail) }
-
+    let(:send_mail) { client.send(mail) }
     let(:mail) do
       Mailtrap::Mail::Base.new(
         from: { email: 'from@example.com' },
@@ -177,8 +176,12 @@ RSpec.describe Mailtrap::Client do
       )
     end
 
-    def stub_api_send(status, body = nil)
-      stub = stub_request(:post, %r{/api/send}).to_return(status:, body:)
+    def stub_api_send(status, body = nil, &block)
+      stub_post(%r{/api/send}, status, body, &block)
+    end
+
+    def stub_post(path, status, body)
+      stub = stub_request(:post, path).to_return(status:, body:)
       yield
       expect(stub).to have_been_requested
     end
@@ -213,9 +216,25 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
+    it 'handles 400 with empty response body' do
+      stub_post %r{/api/test}, 400, '' do
+        expect { client.post('/api/test') }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to eq('bad request')
+          expect(error.messages).to eq(['bad request'])
+        end
+      end
+    end
+
+    it 'handles general API 403' do
+      stub_post %r{/api/test}, 403, '{"errors":"Account access forbidden"}' do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::RejectionError)
+      end
+    end
+
     it 'handles generic client errors' do
       stub_api_send 418, '🫖' do
-        expect { send_mail }.to raise_error(Mailtrap::Error, 'client error')
+        expect { send_mail }.to raise_error(Mailtrap::Error, "client error '🫖'")
       end
     end
 

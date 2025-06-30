@@ -14,6 +14,9 @@ VCR.configure do |config|
   config.filter_sensitive_data('<BEARER_TOKEN>') do |interaction|
     next if interaction.request.uri =~ /localhost/
 
+    interaction.request.uri.gsub!(%r{/accounts/\d+/}, '/accounts/1111111/')
+    interaction.response.body.gsub!(/"account_id":\d+/, '"account_id": 1111111')
+
     auth_header = interaction.request.headers['Authorization']&.first
 
     if auth_header && (match = auth_header.match(/^Bearer\s+([^,\s]+)/))
