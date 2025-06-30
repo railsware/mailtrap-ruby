@@ -248,7 +248,7 @@ RSpec.describe Mailtrap::ContactsAPI do
         .to_return(status: 204)
 
       response = client.delete(contact_id)
-      expect(response).to be true
+      expect(response).to be_nil
     end
 
     it 'deletes contact by email' do
@@ -256,7 +256,7 @@ RSpec.describe Mailtrap::ContactsAPI do
         .to_return(status: 204)
 
       response = client.delete(email)
-      expect(response).to be true
+      expect(response).to be_nil
     end
   end
 end

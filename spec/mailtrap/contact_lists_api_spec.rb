@@ -152,7 +152,7 @@ RSpec.describe Mailtrap::ContactListsAPI do
         .to_return(status: 204)
 
       response = client.delete(contact_list_id)
-      expect(response).to be true
+      expect(response).to be_nil
     end
 
     it 'raises error when contact list not found' do
