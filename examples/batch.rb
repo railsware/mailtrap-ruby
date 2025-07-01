@@ -1,9 +1,20 @@
-require 'bundler/setup'
 require 'mailtrap'
 require 'base64'
 
-mail = Mailtrap::Mail::Base.new(
-  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+
+# Set your API credentials as environment variables
+# export MAILTRAP_API_KEY='your-api-key'
+#
+# client = Mailtrap::Client.new
+# Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
+# client = Mailtrap::Client.new(bulk: true)
+# Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
+# client = Mailtrap::Client.new(sandbox: true, inbox_id: 12)
+
+# Batch sending with Mailtrap::Mail::Batch::Base
+mail = Mailtrap::Mail::Batch::Base.new(
+  from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
   subject: 'You are awesome!',
   text: 'Congrats for sending test email with Mailtrap!',
   category: 'Integration Test',
@@ -21,26 +32,75 @@ mail = Mailtrap::Mail::Base.new(
   }
 )
 
-client = Mailtrap::Client.new(api_key: 'your-api-key')
-
-# Custom host / port
-# client = Mailtrap::Client.new(api_key: 'your-api-key', api_host: 'alternative.host.mailtrap.io', api_port: 8080)
-
-# Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
-# client = Mailtrap::Client.new(api_key: 'your-api-key', bulk: true)
-
-# Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
-# client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: 12)
-
 client.send_batch(mail, [
                     Mailtrap::Mail::Base.new(
                       to: [
-                        { email: 'your@email.com', name: 'Your name' }
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient1' }
                       ]
                     ),
                     Mailtrap::Mail::Base.new(
                       to: [
-                        { email: 'your2@email.com', name: 'Your name' }
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient2' }
+                      ]
+                    )
+                  ])
+
+# Batch sending with Mailtrap::Mail::Batch::FromTemplate
+mail = Mailtrap::Mail::Batch::FromTemplate.new(
+  from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+  reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+  template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+  template_variables: {
+    'user_name' => 'John Doe'
+  }
+)
+
+client.send_batch(mail, [
+                    Mailtrap::Mail::FromTemplate.new(
+                      to: [
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient1' }
+                      ]
+                    ),
+                    Mailtrap::Mail::FromTemplate.new(
+                      to: [
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient2' }
+                      ],
+                      template_variables: {
+                        'user_name' => 'John Doe 1',
+                        'user_name2' => 'John Doe 2'
+                      }
+                    )
+                  ])
+
+# Convert Mailtrap::Mail::Base to batch and send
+mail = Mailtrap::Mail::Base.new(
+  from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!',
+  category: 'Integration Test',
+  attachments: [
+    {
+      content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
+      filename: 'attachment.txt'
+    }
+  ],
+  headers: {
+    'X-MT-Header': 'Custom header'
+  },
+  custom_variables: {
+    year: 2022
+  }
+)
+
+client.send_batch(mail.to_batch, [
+                    Mailtrap::Mail::Base.new(
+                      to: [
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient1' }
+                      ]
+                    ),
+                    Mailtrap::Mail::Base.new(
+                      to: [
+                        { email: 'xegoxo7905@coasah.com', name: 'recipient2' }
                       ]
                     )
                   ])

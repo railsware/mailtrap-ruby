@@ -5,7 +5,7 @@ http_interactions:
     uri: https://bulk.api.mailtrap.io/api/batch
     body:
       encoding: UTF-8
-      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"headers":{},"custom_variables":{},"template_uuid":"be5ed4dd-b374-4856-928d-f0957304123d","template_variables":{"company_name":"Mailtrap"}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"to@mail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
+      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"attachments":[],"headers":{},"custom_variables":{},"template_uuid":"be5ed4dd-b374-4856-928d-f0957304123d","template_variables":{"company_name":"Mailtrap"}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"to@mail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 30 Jun 2025 09:52:01 GMT
+      - Wed, 02 Jul 2025 07:56:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,11 +37,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 957cc4b75af1ecc3-WAW
+      - 958c969fbd32eebe-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"success":true,"responses":[{"success":true,"message_ids":["ded885c0-5597-11f0-0040-f11042f604dd"]},{"success":true,"message_ids":["ded885c0-5597-11f0-0041-f11042f604dd"]}]}'
-  recorded_at: Mon, 30 Jun 2025 09:52:01 GMT
+      string: '{"success":true,"responses":[{"success":true,"message_ids":["19922620-571a-11f0-0040-f13664d022fb"]},{"success":true,"message_ids":["19922620-571a-11f0-0041-f13664d022fb"]}]}'
+  recorded_at: Wed, 02 Jul 2025 07:56:45 GMT
 recorded_with: VCR 6.2.0

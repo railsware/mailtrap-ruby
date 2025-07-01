@@ -51,23 +51,26 @@ module Mailtrap
       @http_clients = {}
     end
 
-    # Sends a batch of emails
-    # @param base [Mailtrap::Mail::Base] The base email configuration
-    # @param requests [Array<Mailtrap::Mail::Base>] Array of individual email requests
-    # @return [Hash] The JSON response
+    # Sends a batch of emails.
+    #
+    # @param base [Mailtrap::Mail::Batch::Base, Mailtrap::Mail::Batch::FromTemplate] The base email configuration for the batch. Must be a Mailtrap::Mail::Batch::Base or Mailtrap::Mail::Batch::FromTemplate object. # rubocop:disable Layout/LineLength
+    # @param requests [Array<Mailtrap::Mail::Batch::Base>, Array<Mailtrap::Mail::Batch::FromTemplate>] Array of individual email requests. All elements must be of the same type as base. # rubocop:disable Layout/LineLength
+    # @return [Hash] The JSON response from the API.
     # @!macro api_errors
-    # @raise [Mailtrap::MailSizeError] If the message is too large
-    # @raise [ArgumentError] If the mail is not a Mail::Base object
+    # @raise [Mailtrap::MailSizeError] If the message is too large.
+    # @raise [ArgumentError] If base or requests are not the correct type.
     def send_batch(base, requests)
-      raise ArgumentError, 'base should be Mailtrap::Mail::Base object' unless base.is_a?(Mail::Base)
+      unless base.is_a?(Mail::Batch::Base)
+        raise ArgumentError,
+              'base should be Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate object'
+      end
 
       unless requests.all?(Mail::Base)
         raise ArgumentError,
-              'requests should be an array of Mailtrap::Mail::Base objects'
+              'requests should be an array of Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate objects'
       end
-
       perform_request(:post, api_host, batch_request_path, {
-                        base: compact_with_empty_arrays(base.as_json),
+                        base: base.as_json.except('to', 'cc', 'bcc'),
                         requests:
                       })
     end
@@ -225,10 +228,6 @@ module Mailtrap
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
-    end
-
-    def compact_with_empty_arrays(hash)
-      hash.reject { |_, v| v.nil? || (v.is_a?(Array) && v.empty?) }
     end
 
     def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
