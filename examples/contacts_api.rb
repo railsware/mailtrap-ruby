@@ -1,30 +1,44 @@
 require 'mailtrap'
-account_id = 1_111_111
-client = Mailtrap::Client.new(api_key: 'your-api-key')
 
-contact_list = Mailtrap::ContactListsAPI.new(account_id, client)
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+contact_list = Mailtrap::ContactListsAPI.new 3229, client
+contacts = Mailtrap::ContactsAPI.new 3229, client
+
+# Set your API credentials as environment variables
+# export MAILTRAP_API_KEY='your-api-key'
+# export MAILTRAP_ACCOUNT_ID=your-account-id
+#
+# contact_list = Mailtrap::ContactListsAPI.new
+# contacts = Mailtrap::ContactsAPI.new
+
+# Create new contact list
 list = contact_list.create(name: 'Test List')
 
-contacts = Mailtrap::ContactsAPI.new(account_id, client)
-contact = contacts.create(email: 'test@example.com', fields: { first_name: 'John Doe' }, list_ids: [list.id])
-puts "Created Contact: #{contact.id}"
+# Get all contact lists
+contact_list.list
 
-contact = contacts.get(contact.id)
-puts "Contact: #{contact.email}"
-
-contact = contacts.update(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' }, list_ids: [2])
-puts "Updated Contact: #{contact.data.email}"
-
-contacts.delete(contact.data.id)
-puts 'Contact deleted'
-
-lists = contact_list.list
-puts "Contact Lists: #{lists}"
-
+# Update contact list
 contact_list.update(list.id, name: 'Test List Updated')
 
+# Get contact list
 list = contact_list.get(list.id)
-puts "Contact List: #{list.name}"
 
+# Create new contact
+contact = contacts.create(email: 'test@example.com', fields: { first_name: 'John Doe' }, list_ids: [list.id])
+
+# Get contact
+contact = contacts.get(contact.id)
+
+# Update contact using id
+updated_contact = contacts.update(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' },
+                                              list_ids_excluded: [list.id])
+
+# Update contact using email
+contacts.update(updated_contact.data.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' },
+                                            list_ids_included: [list.id])
+
+# Delete contact
+contacts.delete(contact.id)
+
+# Delete contact list
 contact_list.delete(list.id)
-puts 'Contact List deleted'
