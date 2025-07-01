@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"subject":"Batch
-        Subject","text":"Batch Text","headers":{},"custom_variables":{}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"to@mail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
+        Subject","text":"Batch Text","attachments":[],"headers":{},"custom_variables":{}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"to@mail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -24,7 +24,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 30 Jun 2025 09:52:00 GMT
+      - Wed, 02 Jul 2025 07:56:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -38,11 +38,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 957cc4b068d2bff3-WAW
+      - 958c9686a8ccc400-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"success":true,"responses":[{"success":true,"message_ids":["de2dede0-5597-11f0-0040-f11042f604dd"]},{"success":true,"message_ids":["de2dede0-5597-11f0-0041-f11042f604dd"]}]}'
-  recorded_at: Mon, 30 Jun 2025 09:52:00 GMT
+      string: '{"success":true,"responses":[{"success":true,"message_ids":["17287920-571a-11f0-0040-f13664d022fb"]},{"success":true,"message_ids":["17287920-571a-11f0-0041-f13664d022fb"]}]}'
+  recorded_at: Wed, 02 Jul 2025 07:56:41 GMT
 recorded_with: VCR 6.2.0

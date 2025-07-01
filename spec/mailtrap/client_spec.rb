@@ -254,7 +254,7 @@ RSpec.describe Mailtrap::Client do
   describe '#send_batch' do
     let(:api_key) { ENV.fetch('MAILTRAP_API_KEY', 'correct-api-key') }
     let(:base_mail) do
-      Mailtrap::Mail::Base.new(
+      Mailtrap::Mail::Batch::Base.new(
         from: {
           email: 'mailtrap@demomailtrap.co',
           name: 'Mailtrap'
@@ -318,7 +318,7 @@ RSpec.describe Mailtrap::Client do
     end
 
     context 'when in sandbox mode' do
-      let(:client) { described_class.new(api_key:, sandbox: true, inbox_id: 3_809_768) }
+      let(:client) { described_class.new(api_key:, sandbox: true, inbox_id: 3_861_666) }
 
       it 'successfully sends a batch of emails', :vcr do
         response = client.send_batch(base_mail, recipients)
@@ -337,7 +337,7 @@ RSpec.describe Mailtrap::Client do
     context 'with template' do
       let(:client) { described_class.new(api_key:, bulk: true) }
       let(:template_mail) do
-        Mailtrap::Mail::FromTemplate.new(
+        Mailtrap::Mail::Batch::FromTemplate.new(
           from: {
             email: 'mailtrap@demomailtrap.co',
             name: 'Mailtrap'
@@ -366,7 +366,7 @@ RSpec.describe Mailtrap::Client do
     context 'with API errors' do
       let(:client) { described_class.new(api_key:, bulk: true) }
       let(:invalid_mail) do
-        Mailtrap::Mail::Base.new(
+        Mailtrap::Mail::Batch::Base.new(
           text: 'Batch Text'
         )
       end
