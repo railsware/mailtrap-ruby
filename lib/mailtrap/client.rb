@@ -37,11 +37,9 @@ module Mailtrap
       sandbox: false,
       inbox_id: nil
     )
-      raise ArgumentError, 'api_key is required' if api_key.nil?
-      raise ArgumentError, 'api_port is required' if api_port.nil?
+      validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
 
       api_host ||= select_api_host(bulk:, sandbox:)
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
 
       @api_key = api_key
       @api_host = api_host
@@ -51,6 +49,30 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @http_clients = {}
+    end
+
+    # Sends a batch of emails.
+    #
+    # @param base [Mailtrap::Mail::Batch::Base, Mailtrap::Mail::Batch::FromTemplate] The base email configuration for the batch. Must be a Mailtrap::Mail::Batch::Base or Mailtrap::Mail::Batch::FromTemplate object. # rubocop:disable Layout/LineLength
+    # @param requests [Array<Mailtrap::Mail::Batch::Base>, Array<Mailtrap::Mail::Batch::FromTemplate>] Array of individual email requests. All elements must be of the same type as base. # rubocop:disable Layout/LineLength
+    # @return [Hash] The JSON response from the API.
+    # @!macro api_errors
+    # @raise [Mailtrap::MailSizeError] If the message is too large.
+    # @raise [ArgumentError] If base or requests are not the correct type.
+    def send_batch(base, requests)
+      unless base.is_a?(Mail::Batch::Base)
+        raise ArgumentError,
+              'base should be Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate object'
+      end
+
+      unless requests.all?(Mail::Base)
+        raise ArgumentError,
+              'requests should be an array of Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate objects'
+      end
+      perform_request(:post, api_host, batch_request_path, {
+                        base: base.as_json.except('to', 'cc', 'bcc'),
+                        requests:
+                      })
     end
 
     # Sends an email
@@ -121,6 +143,10 @@ module Mailtrap
       "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
     end
 
+    def batch_request_path
+      "/api/batch#{sandbox ? "/#{inbox_id}" : ""}"
+    end
+
     def perform_request(method, host, path, body = nil)
       http_client = http_client_for(host)
       request = setup_request(method, path, body)
@@ -184,6 +210,13 @@ module Mailtrap
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
+    end
+
+    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      raise ArgumentError, 'api_key is required' if api_key.nil?
+      raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
   end
 end
