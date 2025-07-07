@@ -47,13 +47,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(contact_id, options)
-      validate_options!(options, %i[email fields unsubscribed])
-
-      response = client.patch(
-        "#{base_path}/#{contact_id}",
-        { contact: options }
-      )
-      build_entity(response, ContactUpdateResponse)
+      base_update(contact_id, options, %i[email fields unsubscribed])
     end
 
     # Adds a contact to specified lists
@@ -62,11 +56,7 @@ module Mailtrap
     # @return [ContactUpdateResponse] Updated contact object
     # @!macro api_errors
     def add_to_lists(contact_id, contact_list_ids = [])
-      response = client.patch(
-        "#{base_path}/#{contact_id}",
-        { contact: { list_ids_included: contact_list_ids } }
-      )
-      build_entity(response, ContactUpdateResponse)
+      update_lists(contact_id, list_ids_included: contact_list_ids)
     end
 
     # Removes a contact from specified lists
@@ -75,14 +65,21 @@ module Mailtrap
     # @return [ContactUpdateResponse] Updated contact object
     # @!macro api_errors
     def remove_from_lists(contact_id, contact_list_ids = [])
-      response = client.patch(
-        "#{base_path}/#{contact_id}",
-        { contact: { list_ids_excluded: contact_list_ids } }
-      )
-      build_entity(response, ContactUpdateResponse)
+      update_lists(contact_id, list_ids_excluded: contact_list_ids)
     end
 
     private
+
+    def base_update(id, options, supported_options_override = supported_options)
+      validate_options!(options, supported_options_override)
+
+      response = client.patch("#{base_path}/#{id}", wrap_request(options))
+      build_entity(response, ContactUpdateResponse)
+    end
+
+    def update_lists(contact_id, options)
+      base_update(contact_id, options, %i[list_ids_included list_ids_excluded])
+    end
 
     def wrap_request(options)
       { contact: options }
