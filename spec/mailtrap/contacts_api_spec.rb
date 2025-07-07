@@ -175,8 +175,6 @@ RSpec.describe Mailtrap::ContactsAPI do
       {
         email:,
         fields: { last_name: 'Smith' },
-        list_ids_included: [3],
-        list_ids_excluded: [1, 2],
         unsubscribed: true
       }
     end
@@ -257,6 +255,224 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.delete(email)
       expect(response).to be_nil
+    end
+  end
+
+  describe '#add_to_lists' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:list_ids) { [1, 2, 3] }
+    let(:expected_response) do
+      {
+        'data' => {
+          'id' => contact_id,
+          'email' => email,
+          'created_at' => 1_748_163_401_202,
+          'updated_at' => 1_748_163_401_202,
+          'list_ids' => [1, 2, 3, 4, 5],
+          'status' => 'subscribed',
+          'fields' => {
+            'first_name' => 'John',
+            'last_name' => 'Smith'
+          }
+        },
+        'action' => 'updated'
+      }
+    end
+
+    it 'adds contact to lists by id' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_included: list_ids } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.add_to_lists(contact_id, list_ids)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id,
+          list_ids: include(1, 2, 3, 4, 5)
+        ),
+        action: 'updated'
+      )
+    end
+
+    it 'adds contact to lists by email' do
+      stub_request(:patch, "#{base_url}/contacts/#{CGI.escape(email)}")
+        .with(
+          body: { contact: { list_ids_included: list_ids } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.add_to_lists(email, list_ids)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          email:
+        )
+      )
+    end
+
+    it 'handles empty list_ids array' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_included: [] } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.add_to_lists(contact_id, [])
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id
+        )
+      )
+    end
+
+    it 'uses default empty array when no list_ids provided' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_included: [] } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.add_to_lists(contact_id)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id
+        )
+      )
+    end
+  end
+
+  describe '#remove_from_lists' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:list_ids) { [1, 2] }
+    let(:expected_response) do
+      {
+        'data' => {
+          'id' => contact_id,
+          'email' => email,
+          'created_at' => 1_748_163_401_202,
+          'updated_at' => 1_748_163_401_202,
+          'list_ids' => [3, 4, 5],
+          'status' => 'subscribed',
+          'fields' => {
+            'first_name' => 'John',
+            'last_name' => 'Smith'
+          }
+        },
+        'action' => 'updated'
+      }
+    end
+
+    it 'removes contact from lists by id' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_excluded: list_ids } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.remove_from_lists(contact_id, list_ids)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id,
+          list_ids: include(3, 4, 5)
+        ),
+        action: 'updated'
+      )
+    end
+
+    it 'removes contact from lists by email' do
+      stub_request(:patch, "#{base_url}/contacts/#{CGI.escape(email)}")
+        .with(
+          body: { contact: { list_ids_excluded: list_ids } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.remove_from_lists(email, list_ids)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          email:
+        )
+      )
+    end
+
+    it 'handles empty list_ids array' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_excluded: [] } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.remove_from_lists(contact_id, [])
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id
+        )
+      )
+    end
+
+    it 'uses default empty array when no list_ids provided' do
+      stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+        .with(
+          body: { contact: { list_ids_excluded: [] } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.remove_from_lists(contact_id)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          id: contact_id
+        )
+      )
+    end
+
+    it 'handles special characters in email' do
+      special_email = 'test+special@example.com'
+      stub_request(:patch, "#{base_url}/contacts/#{CGI.escape(special_email)}")
+        .with(
+          body: { contact: { list_ids_excluded: list_ids } }.to_json
+        )
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.remove_from_lists(special_email, list_ids)
+      expect(response).to have_attributes(
+        data: have_attributes(
+          email:
+        )
+      )
     end
   end
 end

@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
 require_relative 'contact'
-require 'ostruct'
 
 module Mailtrap
-  class ContactsAPI < BaseAPI
-    CREATE_SUPPORTED_OPTIONS = %i[email fields list_ids].freeze
-    UPDATE_SUPPORTED_OPTIONS = %i[email fields list_ids_included list_ids_excluded unsubscribed].freeze
-    private_constant :CREATE_SUPPORTED_OPTIONS, :UPDATE_SUPPORTED_OPTIONS
+  class ContactsAPI
+    include BaseAPI
+
+    supported_options %i[email fields list_ids]
+    response_class Contact
 
     # Retrieves a specific contact
     # @param contact_id [String] The contact identifier, which can be either a UUID or an email address
     # @return [Contact] Contact object
     # @!macro api_errors
     def get(contact_id)
-      response = client.get("#{base_path}/#{contact_id}")
-      build_entity(response[:data], Contact)
+      base_get(contact_id)
     end
 
     # Creates a new contact
@@ -27,10 +26,15 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      validate_options!(options, CREATE_SUPPORTED_OPTIONS)
+      base_create(options)
+    end
 
-      response = client.post(base_path, { contact: options })
-      build_entity(response[:data], Contact)
+    # Deletes a contact
+    # @param contact_id [String] The contact ID
+    # @return nil
+    # @!macro api_errors
+    def delete(contact_id)
+      base_delete(contact_id)
     end
 
     # Updates an existing contact
@@ -38,14 +42,12 @@ module Mailtrap
     # @param [Hash] options The parameters to update
     # @option options [String] :email The contact's email address
     # @option options [Hash] :fields The contact's fields
-    # @option options [Array<Integer>] :list_ids_included The contact's list IDs to include
-    # @option options [Array<Integer>] :list_ids_excluded The contact's list IDs to exclude
     # @option options [Boolean] :unsubscribed Whether to unsubscribe the contact
     # @return [ContactUpdateResponse] Updated contact object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(contact_id, options)
-      validate_options!(options, UPDATE_SUPPORTED_OPTIONS)
+      validate_options!(options, %i[email fields unsubscribed])
 
       response = client.patch(
         "#{base_path}/#{contact_id}",
@@ -54,15 +56,41 @@ module Mailtrap
       build_entity(response, ContactUpdateResponse)
     end
 
-    # Deletes a contact
-    # @param contact_id [String] The contact ID
-    # @return nil
+    # Adds a contact to specified lists
+    # @param contact_id [String] The contact ID or email address
+    # @param contact_list_ids [Array<Integer>] Array of list IDs to add the contact to
+    # @return [ContactUpdateResponse] Updated contact object
     # @!macro api_errors
-    def delete(contact_id)
-      client.delete("#{base_path}/#{contact_id}")
+    def add_to_lists(contact_id, contact_list_ids = [])
+      response = client.patch(
+        "#{base_path}/#{contact_id}",
+        { contact: { list_ids_included: contact_list_ids } }
+      )
+      build_entity(response, ContactUpdateResponse)
+    end
+
+    # Removes a contact from specified lists
+    # @param contact_id [String] The contact ID or email address
+    # @param contact_list_ids [Array<Integer>] Array of list IDs to remove the contact from
+    # @return [ContactUpdateResponse] Updated contact object
+    # @!macro api_errors
+    def remove_from_lists(contact_id, contact_list_ids = [])
+      response = client.patch(
+        "#{base_path}/#{contact_id}",
+        { contact: { list_ids_excluded: contact_list_ids } }
+      )
+      build_entity(response, ContactUpdateResponse)
     end
 
     private
+
+    def wrap_request(options)
+      { contact: options }
+    end
+
+    def handle_response(response)
+      build_entity(response[:data], response_class)
+    end
 
     def base_path
       "/api/accounts/#{account_id}/contacts"

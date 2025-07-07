@@ -30,12 +30,16 @@ contact = contacts.create(email: 'test@example.com', fields: { first_name: 'John
 contact = contacts.get(contact.id)
 
 # Update contact using id
-updated_contact = contacts.update(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' },
-                                              list_ids_excluded: [list.id])
+updated_contact = contacts.update(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' })
 
 # Update contact using email
-contacts.update(updated_contact.data.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' },
-                                            list_ids_included: [list.id])
+contacts.update(updated_contact.data.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' })
+
+# Remove contact from lists
+contacts.remove_from_lists(contact.id, [list.id])
+
+# Add contact to lists
+contacts.add_to_lists(contact.id, [list.id])
 
 # Delete contact
 contacts.delete(contact.id)

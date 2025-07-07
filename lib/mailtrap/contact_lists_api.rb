@@ -3,17 +3,19 @@
 require_relative 'contact_list'
 
 module Mailtrap
-  class ContactListsAPI < BaseAPI
-    SUPPORTED_OPTIONS = %i[name].freeze
-    private_constant :SUPPORTED_OPTIONS
+  class ContactListsAPI
+    include BaseAPI
+
+    supported_options %i[name]
+
+    response_class ContactList
 
     # Retrieves a specific contact list
     # @param list_id [Integer] The contact list identifier
     # @return [ContactList] Contact list object
     # @!macro api_errors
     def get(list_id)
-      response = client.get("#{base_path}/#{list_id}")
-      build_entity(response, ContactList)
+      base_get(list_id)
     end
 
     # Creates a new contact list
@@ -23,10 +25,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      validate_options!(options, SUPPORTED_OPTIONS)
-
-      response = client.post(base_path, options)
-      build_entity(response, ContactList)
+      base_create(options)
     end
 
     # Updates an existing contact list
@@ -37,12 +36,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(list_id, options)
-      validate_options!(options, SUPPORTED_OPTIONS)
-
-      response = client.patch(
-        "#{base_path}/#{list_id}", options
-      )
-      build_entity(response, ContactList)
+      base_update(list_id, options)
     end
 
     # Deletes a contact list
@@ -50,15 +44,14 @@ module Mailtrap
     # @return nil
     # @!macro api_errors
     def delete(list_id)
-      client.delete("#{base_path}/#{list_id}")
+      base_delete(list_id)
     end
 
     # Lists all contact lists for the account
     # @return [Array<ContactList>] Array of contact list objects
     # @!macro api_errors
     def list
-      response = client.get(base_path)
-      response.map { |list| build_entity(list, ContactList) }
+      base_list
     end
 
     private
