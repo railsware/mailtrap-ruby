@@ -9,6 +9,62 @@ require_relative 'errors'
 module Mailtrap
   module Mail
     class << self
+      def from_template(
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
+      end
+
+      def from_content(
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
+      end
+
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
       def from_message(message) # rubocop:disable Metrics/AbcSize

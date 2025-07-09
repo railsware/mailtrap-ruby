@@ -23,7 +23,7 @@ module Mailtrap
         custom_variables: {},
         category: nil,
         template_uuid: nil,
-        template_variables: nil
+        template_variables: {}
       )
         @from = from
         @to = to
