@@ -125,7 +125,7 @@ RSpec.describe Mailtrap::Client do
           text: 'Congrats for sending test email with Mailtrap!',
           category: 'Integration Test',
           attachments: [
-            { content: Base64.strict_encode64("hello world"), filename: 'attachment.txt' }
+            { content: Base64.strict_encode64('hello world'), filename: 'attachment.txt' }
           ]
         }
       end

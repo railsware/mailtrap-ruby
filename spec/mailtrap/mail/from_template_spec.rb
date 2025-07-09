@@ -96,13 +96,7 @@ RSpec.describe Mailtrap::Mail::FromTemplate do
       let(:expected_hash) do
         {
           'from' => { email: 'test@example.com', name: 'Mailtrap User' },
-          'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }],
-          'cc' => [],
-          'bcc' => [],
-          'headers' => {},
-          'attachments' => [],
-          'custom_variables' => {},
-          'template_variables' => {}
+          'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }]
         }
       end
 
@@ -133,7 +127,6 @@ RSpec.describe Mailtrap::Mail::FromTemplate do
         '"bcc":[{"email":"bcc@example.com"}],' \
         '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
         '"headers":{"Category-Header":"some_category"},' \
-        '"custom_variables":{},' \
         '"template_uuid":"7a58f94d-d282-4538-ae50-4714eafef80e",' \
         '"template_variables":{"user.name":"Jack Daniels"}' \
         '}'

@@ -7,9 +7,9 @@ require_relative 'mail/from_template'
 require_relative 'errors'
 
 module Mailtrap
-  module Mail
+  module Mail # rubocop:disable Metrics/ModuleLength
     class << self
-      def from_template(
+      def from_template( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
         reply_to: nil,
@@ -35,7 +35,7 @@ module Mailtrap
         )
       end
 
-      def from_content(
+      def from_content( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
         reply_to: nil,

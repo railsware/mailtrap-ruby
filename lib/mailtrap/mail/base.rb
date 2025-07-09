@@ -58,7 +58,7 @@ module Mailtrap
           'category' => category,
           'template_uuid' => template_uuid,
           'template_variables' => template_variables
-        }.compact
+        }.transform_values { |value| presence value }.compact
       end
 
       def to_json(*args)
@@ -83,6 +83,10 @@ module Mailtrap
         attachments << attachment
 
         attachment
+      end
+
+      def presence(value)
+        value.respond_to?(:empty?) && value.empty? ? nil : value
       end
     end
   end
