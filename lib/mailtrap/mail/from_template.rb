@@ -2,9 +2,8 @@
 
 module Mailtrap
   module Mail
+    # @deprecated Use Mailtrap::Mail::Base
     class FromTemplate < Base
-      attr_accessor :template_uuid, :template_variables
-
       def initialize( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
@@ -17,27 +16,7 @@ module Mailtrap
         template_uuid: nil,
         template_variables: {}
       )
-        super(
-          from:,
-          to:,
-          reply_to:,
-          cc:,
-          bcc:,
-          attachments:,
-          headers:,
-          custom_variables:
-        )
-        @template_uuid = template_uuid
-        @template_variables = template_variables
-      end
-
-      def as_json
-        super.merge(
-          {
-            'template_uuid' => template_uuid,
-            'template_variables' => template_variables
-          }
-        ).compact
+        super
       end
     end
   end
