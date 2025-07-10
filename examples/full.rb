@@ -64,5 +64,5 @@ client.send(
     { email: 'your@email.com', name: 'Your name' }
   ],
   subject: 'You are awesome!',
-  text: 'Congrats for sending test email with Mailtrap!',
+  text: 'Congrats for sending test email with Mailtrap!'
 )

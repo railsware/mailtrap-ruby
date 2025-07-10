@@ -21,7 +21,7 @@ client.send(mail)
 client.send(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
-    { email: 'your@email.com' },
+    { email: 'your@email.com' }
   ],
   template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
   template_variables: {
