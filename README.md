@@ -46,8 +46,8 @@ config.action_mailer.delivery_method = :mailtrap
 ```ruby
 require 'mailtrap'
 
-# create mail object
-mail = Mailtrap::Mail::Base.new(
+# Create mail object
+mail = Mailtrap::Mail.from_content(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com' }
@@ -57,9 +57,20 @@ mail = Mailtrap::Mail::Base.new(
   text: "Congrats for sending test email with Mailtrap!"
 )
 
-# create client and send
+# Create client and send
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
+
+# You can also pass the request parameters directly
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com' }
+  ],
+  subject: 'You are awesome!',
+  text: "Congrats for sending test email with Mailtrap!"
+)
+
 ```
 
 ### Email Templates API

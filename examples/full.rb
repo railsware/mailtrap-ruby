@@ -1,7 +1,11 @@
 require 'mailtrap'
 require 'base64'
 
-mail = Mailtrap::Mail::Base.new(
+# You can create a mail object using one of the following:
+# - Mailtrap::Mail.from_content
+# - Mailtrap::Mail.from_template
+# - Mailtrap::Mail::Base.new
+mail = Mailtrap::Mail.from_content(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com', name: 'Your name' }
@@ -52,3 +56,13 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: 12)
 
 client.send(mail)
+
+# You can also pass the request parameters directly
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com', name: 'Your name' }
+  ],
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!',
+)

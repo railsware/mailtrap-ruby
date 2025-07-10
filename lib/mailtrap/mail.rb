@@ -9,6 +9,10 @@ require_relative 'errors'
 module Mailtrap
   module Mail # rubocop:disable Metrics/ModuleLength
     class << self
+      # Builds a mail object that will be sent using a pre-defined email
+      # template. The template content (subject, text, html, category) is
+      # defined in the Mailtrap dashboard and referenced by the template_uuid.
+      # Template variables can be passed to customize the template content.
       def from_template( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
@@ -35,6 +39,7 @@ module Mailtrap
         )
       end
 
+      # Builds a mail object with content including subject, text, html, and category.
       def from_content( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
@@ -65,6 +70,7 @@ module Mailtrap
         )
       end
 
+      # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
       def from_message(message) # rubocop:disable Metrics/AbcSize
