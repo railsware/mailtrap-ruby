@@ -136,7 +136,7 @@ module Mailtrap
     end
 
     def send_path
-      "/api/send#{sandbox ? "/#{inbox_id}" : ""}"
+      "/api/send#{"/#{inbox_id}" if sandbox}"
     end
 
     def perform_request(method, host, path, body = nil)
