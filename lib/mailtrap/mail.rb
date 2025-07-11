@@ -7,8 +7,117 @@ require_relative 'mail/from_template'
 require_relative 'errors'
 
 module Mailtrap
-  module Mail
+  module Mail # rubocop:disable Metrics/ModuleLength
+    SPECIAL_HEADERS = %w[
+      from
+      to
+      cc
+      bcc
+      subject
+      category
+      customvariables
+      contenttype
+    ].freeze
+    private_constant :SPECIAL_HEADERS
+
+    # ActionMailer adds these headers by calling `Mail::Message#encoded`,
+    # as if the message is to be delivered via SMTP.
+    # Since the message will actually be generated on the Mailtrap side from its components,
+    # the headers are redundant and potentially conflicting, so we remove them.
+    ACTIONMAILER_ADDED_HEADERS = %w[
+      contenttransferencoding
+      date
+      messageid
+      mimeversion
+    ].freeze
+    private_constant :ACTIONMAILER_ADDED_HEADERS
+
+    HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
+    private_constant :HEADERS_TO_REMOVE
+
     class << self
+      # Builds a mail object that will be sent using a pre-defined email
+      # template. The template content (subject, text, html, category) is
+      # defined in the Mailtrap dashboard and referenced by the template_uuid.
+      # Template variables can be passed to customize the template content.
+      # @example
+      #   mail = Mailtrap::Mail.from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
+      def from_template( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
+      end
+
+      # Builds a mail object with content including subject, text, html, and category.
+      # @example
+      #   mail = Mailtrap::Mail.from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
+      def from_content( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
+      end
+
+      # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
       def from_message(message) # rubocop:disable Metrics/AbcSize
@@ -28,30 +137,6 @@ module Mailtrap
       end
 
       private
-
-      SPECIAL_HEADERS = %w[
-        from
-        to
-        cc
-        bcc
-        subject
-        category
-        customvariables
-        contenttype
-      ].freeze
-
-      # ActionMailer adds these headers by calling `Mail::Message#encoded`,
-      # as if the message is to be delivered via SMTP.
-      # Since the message will actually be generated on the Mailtrap side from its components,
-      # the headers are redundant and potentially conflicting, so we remove them.
-      ACTIONMAILER_ADDED_HEADERS = %w[
-        contenttransferencoding
-        date
-        messageid
-        mimeversion
-      ].freeze
-
-      HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
 
       # @param header [Mail::Field, nil]
       # @return [Mail::AddressList, nil]

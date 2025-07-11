@@ -67,13 +67,8 @@ RSpec.describe Mailtrap::Mail::Base do
       {
         'from' => { email: 'test@example.com', name: 'Mailtrap User' },
         'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }],
-        'cc' => [],
-        'bcc' => [],
         'subject' => 'This is subject',
-        'text' => 'This is text',
-        'headers' => {},
-        'attachments' => [],
-        'custom_variables' => {}
+        'text' => 'This is text'
       }
     end
 
@@ -139,7 +134,6 @@ RSpec.describe Mailtrap::Mail::Base do
         '"html":"<div>Test HTML</div>",' \
         '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
         '"headers":{"Category-Header":"some_category"},' \
-        '"custom_variables":{},' \
         '"category":"another_category"' \
         '}'
     end
