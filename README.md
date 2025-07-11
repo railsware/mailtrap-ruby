@@ -54,7 +54,7 @@ mail = Mailtrap::Mail.from_content(
   ],
   reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   subject: 'You are awesome!',
-  text: "Congrats for sending test email with Mailtrap!"
+  text: 'Congrats for sending test email with Mailtrap!'
 )
 
 # Create client and send
@@ -68,7 +68,7 @@ client.send(
     { email: 'your@email.com' }
   ],
   subject: 'You are awesome!',
-  text: "Congrats for sending test email with Mailtrap!"
+  text: 'Congrats for sending test email with Mailtrap!'
 )
 
 ```

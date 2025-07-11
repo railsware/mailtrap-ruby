@@ -13,6 +13,17 @@ module Mailtrap
       # template. The template content (subject, text, html, category) is
       # defined in the Mailtrap dashboard and referenced by the template_uuid.
       # Template variables can be passed to customize the template content.
+      # @example
+      #   mail = Mailtrap::Mail.from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
       def from_template( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],
@@ -40,6 +51,15 @@ module Mailtrap
       end
 
       # Builds a mail object with content including subject, text, html, and category.
+      # @example
+      #   mail = Mailtrap::Mail.from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
       def from_content( # rubocop:disable Metrics/ParameterLists
         from: nil,
         to: [],

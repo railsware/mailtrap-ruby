@@ -54,6 +54,27 @@ module Mailtrap
     end
 
     # Sends an email
+    # @example
+    #   mail = Mailtrap::Mail.from_template(
+    #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+    #     to: [
+    #       { email: 'your@email.com' }
+    #     ],
+    #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+    #     template_variables: {
+    #       'user_name' => 'John Doe'
+    #     }
+    #   )
+    #   client.send(mail)
+    # @example
+    #   client.send(
+    #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+    #     to: [
+    #       { email: 'your@email.com' }
+    #     ],
+    #     subject: 'You are awesome!',
+    #     text: 'Congrats for sending test email with Mailtrap!'
+    #   )
     # @param mail [#to_json] The email to send
     # @return [Hash] The JSON response
     # @!macro api_errors
