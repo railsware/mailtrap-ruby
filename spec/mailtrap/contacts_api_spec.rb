@@ -211,7 +211,6 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       expect(response).to have_attributes(
         id: contact_id,
-        action: 'updated',
         fields: include(
           last_name: 'Smith'
         )
@@ -289,8 +288,7 @@ RSpec.describe Mailtrap::ContactsAPI do
       response = client.add_to_lists(contact_id, list_ids)
       expect(response).to have_attributes(
         id: contact_id,
-        list_ids: include(1, 2, 3, 4, 5),
-        action: 'updated'
+        list_ids: include(1, 2, 3, 4, 5)
       )
     end
 
@@ -378,8 +376,7 @@ RSpec.describe Mailtrap::ContactsAPI do
       response = client.remove_from_lists(contact_id, list_ids)
       expect(response).to have_attributes(
         id: contact_id,
-        list_ids: include(3, 4, 5),
-        action: 'updated'
+        list_ids: include(3, 4, 5)
       )
     end
 

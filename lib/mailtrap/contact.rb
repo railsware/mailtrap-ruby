@@ -22,11 +22,14 @@ module Mailtrap
     :action,
     keyword_init: true
   ) do
+    def initialize(options)
+      @action = options[:action]
+      super(options.except(:action))
+    end
+
     # @return [Boolean] Whether the contact was newly created
     def newly_created?
-      return true if action.nil? # usually means that the contact was created by #create api
-
-      action == 'created'
+      @action != 'updated'
     end
 
     # @return [Hash] The contact attributes as a hash
