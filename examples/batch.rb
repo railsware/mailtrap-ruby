@@ -71,3 +71,30 @@ client.send_batch(mail, [
                       }
                     )
                   ])
+
+# You can also pass the request parameters directly
+client.send_batch({
+
+                    from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+                    reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+                    template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+                    template_variables: {
+                      'user_name' => 'John Doe'
+                    },
+                  },
+                  [
+                    {
+                      to: [
+                        { email: 'your@email.com', name: 'recipient1' }
+                      ]
+                    },
+                    {
+                      to: [
+                        { email: 'your@email.com', name: 'recipient2' }
+                      ],
+                      template_variables: {
+                        'user_name' => 'John Doe 1',
+                        'user_name2' => 'John Doe 2'
+                      }
+                    }
+                  ])
