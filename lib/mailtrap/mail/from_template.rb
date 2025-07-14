@@ -19,11 +19,11 @@ module Mailtrap
         super
       end
 
-      # Converts this template-based Mail object to a Mailtrap::Mail::Batch::FromTemplate object for batch sending.
+      # Converts this template-based Mail object to a Mailtrap::Mail::Base object for batch sending.
       #
-      # @return [Mailtrap::Mail::Batch::FromTemplate] A new batch email object with the same properties as this template mail. # rubocop:disable Layout/LineLength
+      # @return [Mailtrap::Mail::Base] A new batch email object with the same properties as this template mail.
       def to_batch
-        Mailtrap::Mail::Batch::FromTemplate.new(
+        Mailtrap::Mail::Base.new(
           from:,
           reply_to:,
           attachments:,

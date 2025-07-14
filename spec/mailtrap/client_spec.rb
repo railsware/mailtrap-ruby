@@ -269,7 +269,7 @@ RSpec.describe Mailtrap::Client do
   describe '#send_batch' do
     let(:api_key) { ENV.fetch('MAILTRAP_API_KEY', 'correct-api-key') }
     let(:base_mail) do
-      Mailtrap::Mail::Batch::Base.new(
+      Mailtrap::Mail::Base.new(
         from: {
           email: 'mailtrap@demomailtrap.co',
           name: 'Mailtrap'
@@ -352,7 +352,7 @@ RSpec.describe Mailtrap::Client do
     context 'with template' do
       let(:client) { described_class.new(api_key:, bulk: true) }
       let(:template_mail) do
-        Mailtrap::Mail::Batch::FromTemplate.new(
+        Mailtrap::Mail::Base.new(
           from: {
             email: 'mailtrap@demomailtrap.co',
             name: 'Mailtrap'
@@ -381,7 +381,7 @@ RSpec.describe Mailtrap::Client do
     context 'with API errors' do
       let(:client) { described_class.new(api_key:, bulk: true) }
       let(:invalid_mail) do
-        Mailtrap::Mail::Batch::Base.new(
+        Mailtrap::Mail::Base.new(
           text: 'Batch Text'
         )
       end

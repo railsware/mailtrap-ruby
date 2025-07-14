@@ -88,23 +88,6 @@ module Mailtrap
       def presence(value)
         value.respond_to?(:empty?) && value.empty? ? nil : value
       end
-
-      # Converts this Mail object to a Mailtrap::Mail::Batch::Base object for batch sending.
-      #
-      # @return [Mailtrap::Mail::Batch::Base] A new batch email object with the same properties as this mail.
-      def to_batch
-        Mailtrap::Mail::Batch::Base.new(
-          from:,
-          reply_to:,
-          subject:,
-          text:,
-          html:,
-          attachments:,
-          headers:,
-          custom_variables:,
-          category:
-        )
-      end
     end
   end
 end

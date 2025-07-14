@@ -53,21 +53,21 @@ module Mailtrap
 
     # Sends a batch of emails.
     #
-    # @param base [Mailtrap::Mail::Batch::Base, Mailtrap::Mail::Batch::FromTemplate] The base email configuration for the batch. Must be a Mailtrap::Mail::Batch::Base or Mailtrap::Mail::Batch::FromTemplate object. # rubocop:disable Layout/LineLength
-    # @param requests [Array<Mailtrap::Mail::Batch::Base>, Array<Mailtrap::Mail::Batch::FromTemplate>] Array of individual email requests. All elements must be of the same type as base. # rubocop:disable Layout/LineLength
+    # @param base [Mailtrap::Mail::Base, Mailtrap::Mail::Base] The base email configuration for the batch. Must be a Mailtrap::Mail::Base or Mailtrap::Mail::Base object. # rubocop:disable Layout/LineLength
+    # @param requests [Array<Mailtrap::Mail::Base>, Array<Mailtrap::Mail::Base>] Array of individual email requests. All elements must be of the same type as base. # rubocop:disable Layout/LineLength
     # @return [Hash] The JSON response from the API.
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large.
     # @raise [ArgumentError] If base or requests are not the correct type.
     def send_batch(base, requests)
-      unless base.is_a?(Mail::Batch::Base)
+      unless base.is_a?(Mail::Base)
         raise ArgumentError,
-              'base should be Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate object'
+              'base should be Mailtrap::Mail::Base or Mailtrap::Mail::FromTemplate object'
       end
 
       unless requests.all?(Mail::Base)
         raise ArgumentError,
-              'requests should be an array of Mailtrap::Mail::Batch::Base or Mailtrap::Mail::FromTemplate objects'
+              'requests should be an array of Mailtrap::Mail::Base or Mailtrap::Mail::FromTemplate objects'
       end
       perform_request(:post, api_host, batch_request_path, {
                         base: base.as_json.except('to', 'cc', 'bcc'),
@@ -162,7 +162,7 @@ module Mailtrap
     end
 
     def batch_request_path
-      "/api/batch#{sandbox ? "/#{inbox_id}" : ""}"
+      "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
 
     def perform_request(method, host, path, body = nil)

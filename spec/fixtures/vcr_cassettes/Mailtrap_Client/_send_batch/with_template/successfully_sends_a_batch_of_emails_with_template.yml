@@ -5,7 +5,7 @@ http_interactions:
     uri: https://bulk.api.mailtrap.io/api/batch
     body:
       encoding: UTF-8
-      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"attachments":[],"headers":{},"custom_variables":{},"template_uuid":"be5ed4dd-b374-4856-928d-f0957304123d","template_variables":{"company_name":"Mailtrap"}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}},{"to":[{"email":"to@mail.com","name":"recipient2"}],"cc":[],"bcc":[],"attachments":[],"headers":{},"custom_variables":{}}]}'
+      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"template_uuid":"be5ed4dd-b374-4856-928d-f0957304123d","template_variables":{"company_name":"Mailtrap"}},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}]},{"to":[{"email":"to@mail.com","name":"recipient2"}]}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
