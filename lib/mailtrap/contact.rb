@@ -10,6 +10,7 @@ module Mailtrap
   # @attr_reader status [String] The contact status (subscribed/unsubscribed)
   # @attr_reader created_at [Integer] The creation timestamp
   # @attr_reader updated_at [Integer] The last update timestamp
+  # @attr_reader action [String] The performed action (created/updated)
   Contact = Struct.new(
     :id,
     :email,
@@ -18,25 +19,17 @@ module Mailtrap
     :status,
     :created_at,
     :updated_at,
+    :action,
     keyword_init: true
   ) do
+    # @return [Boolean] Whether the contact was newly created
+    def newly_created?
+      return true if action.nil? # usually means that the contact was created by #create api
+
+      action == 'created'
+    end
+
     # @return [Hash] The contact attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
-
-  # Data Transfer Object for Contact Update Response
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/16eab4fff9740-contact-update-response
-  # @attr_reader action [String] The performed action (created/updated)
-  # @attr_reader data [Contact, Hash] The contact data
-  ContactUpdateResponse = Struct.new(:action, :data, keyword_init: true) do
-    def initialize(*)
-      super
-      self.data = Contact.new(data) if data.is_a?(Hash)
-    end
-
-    # @return [Hash] The response attributes as a hash
     def to_h
       super.compact
     end

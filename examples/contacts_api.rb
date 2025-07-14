@@ -3,6 +3,7 @@ require 'mailtrap'
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 contact_list = Mailtrap::ContactListsAPI.new 3229, client
 contacts = Mailtrap::ContactsAPI.new 3229, client
+contact_fields = Mailtrap::ContactFieldsAPI.new 3229, client
 
 # Set your API credentials as environment variables
 # export MAILTRAP_API_KEY='your-api-key'
@@ -10,6 +11,7 @@ contacts = Mailtrap::ContactsAPI.new 3229, client
 #
 # contact_list = Mailtrap::ContactListsAPI.new
 # contacts = Mailtrap::ContactsAPI.new
+# contact_fields = Mailtrap::ContactFieldsAPI.new
 
 # Create new contact list
 list = contact_list.create(name: 'Test List')
@@ -25,15 +27,18 @@ list = contact_list.get(list.id)
 
 # Create new contact
 contact = contacts.create(email: 'test@example.com', fields: { first_name: 'John Doe' }, list_ids: [list.id])
+contact.newly_created? # => true
 
 # Get contact
 contact = contacts.get(contact.id)
 
 # Update contact using id
-updated_contact = contacts.update(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' })
+updated_contact = contacts.upsert(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' })
+updated_contact.newly_created? # => false
 
 # Update contact using email
-contacts.update(updated_contact.data.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' })
+contacts.upsert(updated_contact.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' })
+updated_contact.newly_created? # => false
 
 # Remove contact from lists
 contacts.remove_from_lists(contact.id, [list.id])
@@ -46,3 +51,18 @@ contacts.delete(contact.id)
 
 # Delete contact list
 contact_list.delete(list.id)
+
+# Create new contact field
+field = contact_fields.create(name: 'Updated name', data_type: 'text', merge_tag: 'updated_name')
+
+# Get all contact fields
+contact_fields.list
+
+# Update contact field
+contact_fields.update(field.id, name: 'Updated name 2', merge_tag: 'updated_name_2')
+
+# Get contact field
+field = contact_fields.get(field.id)
+
+# Delete contact field
+contact_fields.delete(field.id)

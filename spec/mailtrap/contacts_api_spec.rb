@@ -152,6 +152,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.create(contact_data)
       expect(response).to have_attributes(email:)
+      expect(response.newly_created?).to eq(true)
     end
 
     it 'raises error for invalid contact data' do
@@ -206,17 +207,16 @@ RSpec.describe Mailtrap::ContactsAPI do
           body: expected_response.to_json,
           headers: { 'Content-Type' => 'application/json' }
         )
-      response = client.update(contact_id, update_data)
+      response = client.upsert(contact_id, update_data)
 
       expect(response).to have_attributes(
-        data: have_attributes(
           id: contact_id,
           fields: include(
             last_name: 'Smith'
-          )
-        ),
-        action: 'updated'
-      )
+          ),
+          action: 'updated'
+        )
+      expect(response.newly_created?).to eq(false)
     end
 
     it 'contact by email' do
@@ -230,12 +230,11 @@ RSpec.describe Mailtrap::ContactsAPI do
           headers: { 'Content-Type' => 'application/json' }
         )
 
-      response = client.update(email, update_data)
+      response = client.upsert(email, update_data)
       expect(response).to have_attributes(
-        data: have_attributes(
           email:
-        )
       )
+      expect(response.newly_created?).to eq(false)
     end
   end
   # rubocop:enable RSpec/MultipleMemoizedHelpers
@@ -291,11 +290,9 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.add_to_lists(contact_id, list_ids)
       expect(response).to have_attributes(
-        data: have_attributes(
           id: contact_id,
-          list_ids: include(1, 2, 3, 4, 5)
-        ),
-        action: 'updated'
+          list_ids: include(1, 2, 3, 4, 5),
+          action: 'updated'
       )
     end
 
@@ -312,9 +309,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.add_to_lists(email, list_ids)
       expect(response).to have_attributes(
-        data: have_attributes(
-          email:
-        )
+        email:
       )
     end
 
@@ -331,9 +326,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.add_to_lists(contact_id, [])
       expect(response).to have_attributes(
-        data: have_attributes(
-          id: contact_id
-        )
+        id: contact_id
       )
     end
 
@@ -350,9 +343,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.add_to_lists(contact_id)
       expect(response).to have_attributes(
-        data: have_attributes(
-          id: contact_id
-        )
+        id: contact_id
       )
     end
   end
@@ -390,10 +381,8 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.remove_from_lists(contact_id, list_ids)
       expect(response).to have_attributes(
-        data: have_attributes(
-          id: contact_id,
-          list_ids: include(3, 4, 5)
-        ),
+        id: contact_id,
+        list_ids: include(3, 4, 5),
         action: 'updated'
       )
     end
@@ -411,9 +400,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.remove_from_lists(email, list_ids)
       expect(response).to have_attributes(
-        data: have_attributes(
-          email:
-        )
+        email:
       )
     end
 
@@ -430,9 +417,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.remove_from_lists(contact_id, [])
       expect(response).to have_attributes(
-        data: have_attributes(
-          id: contact_id
-        )
+        id: contact_id
       )
     end
 
@@ -449,9 +434,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.remove_from_lists(contact_id)
       expect(response).to have_attributes(
-        data: have_attributes(
-          id: contact_id
-        )
+        id: contact_id
       )
     end
 
@@ -469,9 +452,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.remove_from_lists(special_email, list_ids)
       expect(response).to have_attributes(
-        data: have_attributes(
-          email:
-        )
+        email:
       )
     end
   end

@@ -6,9 +6,9 @@ module Mailtrap
   class ContactListsAPI
     include BaseAPI
 
-    supported_options %i[name]
+    self.supported_options = %i[name]
 
-    response_class ContactList
+    self.response_class = ContactList
 
     # Retrieves a specific contact list
     # @param list_id [Integer] The contact list identifier

@@ -6,9 +6,9 @@ module Mailtrap
   class EmailTemplatesAPI
     include BaseAPI
 
-    supported_options %i[name subject category body_html body_text]
+    self.supported_options = %i[name subject category body_html body_text]
 
-    response_class EmailTemplate
+    self.response_class = EmailTemplate
 
     # Lists all email templates for the account
     # @return [Array<EmailTemplate>] Array of template objects

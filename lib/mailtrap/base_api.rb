@@ -9,19 +9,19 @@ module Mailtrap
     end
 
     module ClassMethods
-      def supported_options(options)
+      def supported_options=(options)
         @supported_options = options
       end
 
-      def get_supported_options # rubocop:disable Naming/AccessorMethodName
+      def supported_options
         @supported_options
       end
 
-      def response_class(response_class)
+      def response_class=(response_class)
         @response_class = response_class
       end
 
-      def get_response_class # rubocop:disable Naming/AccessorMethodName
+      def response_class
         @response_class
       end
     end
@@ -39,11 +39,11 @@ module Mailtrap
     private
 
     def supported_options
-      self.class.get_supported_options
+      self.class.supported_options
     end
 
     def response_class
-      self.class.get_response_class
+      self.class.response_class
     end
 
     def validate_options!(options, supported_options)

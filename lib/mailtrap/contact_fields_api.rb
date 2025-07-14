@@ -6,9 +6,9 @@ module Mailtrap
   class ContactFieldsAPI
     include BaseAPI
 
-    supported_options %i[name data_type merge_tag]
+    self.supported_options = %i[name data_type merge_tag]
 
-    response_class ContactField
+    self.response_class = ContactField
 
     # Retrieves a specific contact field
     # @param field_id [Integer] The contact field identifier
