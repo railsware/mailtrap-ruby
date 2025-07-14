@@ -152,7 +152,7 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.create(contact_data)
       expect(response).to have_attributes(email:)
-      expect(response.newly_created?).to eq(true)
+      expect(response.newly_created?).to be true
     end
 
     it 'raises error for invalid contact data' do
@@ -210,13 +210,13 @@ RSpec.describe Mailtrap::ContactsAPI do
       response = client.upsert(contact_id, update_data)
 
       expect(response).to have_attributes(
-          id: contact_id,
-          fields: include(
-            last_name: 'Smith'
-          ),
-          action: 'updated'
+        id: contact_id,
+        action: 'updated',
+        fields: include(
+          last_name: 'Smith'
         )
-      expect(response.newly_created?).to eq(false)
+      )
+      expect(response.newly_created?).to be false
     end
 
     it 'contact by email' do
@@ -231,10 +231,8 @@ RSpec.describe Mailtrap::ContactsAPI do
         )
 
       response = client.upsert(email, update_data)
-      expect(response).to have_attributes(
-          email:
-      )
-      expect(response.newly_created?).to eq(false)
+      expect(response).to have_attributes(email:)
+      expect(response.newly_created?).to be false
     end
   end
   # rubocop:enable RSpec/MultipleMemoizedHelpers
@@ -290,9 +288,9 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       response = client.add_to_lists(contact_id, list_ids)
       expect(response).to have_attributes(
-          id: contact_id,
-          list_ids: include(1, 2, 3, 4, 5),
-          action: 'updated'
+        id: contact_id,
+        list_ids: include(1, 2, 3, 4, 5),
+        action: 'updated'
       )
     end
 
@@ -308,9 +306,7 @@ RSpec.describe Mailtrap::ContactsAPI do
         )
 
       response = client.add_to_lists(email, list_ids)
-      expect(response).to have_attributes(
-        email:
-      )
+      expect(response).to have_attributes(email:)
     end
 
     it 'handles empty list_ids array' do
