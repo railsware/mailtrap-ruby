@@ -18,21 +18,6 @@ module Mailtrap
       )
         super
       end
-
-      # Converts this template-based Mail object to a Mailtrap::Mail::Base object for batch sending.
-      #
-      # @return [Mailtrap::Mail::Base] A new batch email object with the same properties as this template mail.
-      def to_batch
-        Mailtrap::Mail::Base.new(
-          from:,
-          reply_to:,
-          attachments:,
-          headers:,
-          custom_variables:,
-          template_uuid:,
-          template_variables:
-        )
-      end
     end
   end
 end

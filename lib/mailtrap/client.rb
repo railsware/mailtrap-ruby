@@ -53,31 +53,57 @@ module Mailtrap
 
     # Sends a batch of emails.
     # @example
-    # mail = Mailtrap::Mail::Base.new(
-    #   from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
-    #   reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
-    #   template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
-    #   template_variables: {
-    #     'user_name' => 'John Doe'
-    #   }
-    # )
+    #  mail = Mailtrap::Mail::Base.new(
+    #    from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+    #    reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+    #    template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+    #    template_variables: {
+    #      'user_name' => 'John Doe'
+    #    }
+    #  )
     #
-    # client.send_batch(mail, [
-    #                     Mailtrap::Mail::Base.new(
-    #                       to: [
-    #                         { email: 'your@email.com', name: 'recipient1' }
-    #                       ]
-    #                     ),
-    #                     Mailtrap::Mail::Base.new(
-    #                       to: [
-    #                         { email: 'your@email.com', name: 'recipient2' }
-    #                       ],
-    #                       template_variables: {
-    #                         'user_name' => 'John Doe 1',
-    #                         'user_name2' => 'John Doe 2'
-    #                       }
-    #                     )
-    #                   ])
+    #  client.send_batch(mail, [
+    #                      Mailtrap::Mail::Base.new(
+    #                        to: [
+    #                          { email: 'your@email.com', name: 'recipient1' }
+    #                        ]
+    #                      ),
+    #                      Mailtrap::Mail::Base.new(
+    #                        to: [
+    #                          { email: 'your@email.com', name: 'recipient2' }
+    #                        ],
+    #                        template_variables: {
+    #                          'user_name' => 'John Doe 1',
+    #                          'user_name2' => 'John Doe 2'
+    #                        }
+    #                      )
+    #                    ])
+    #
+    # @example
+    #  client.send_batch({
+    #    from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+    #    reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+    #    template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+    #    template_variables: {
+    #      'user_name' => 'John Doe'
+    #    },
+    #  },
+    #  [
+    #    {
+    #      to: [
+    #        { email: 'your@email.com', name: 'recipient1' }
+    #      ]
+    #    },
+    #    {
+    #      to: [
+    #        { email: 'your@email.com', name: 'recipient2' }
+    #      ],
+    #      template_variables: {
+    #        'user_name' => 'John Doe 1',
+    #        'user_name2' => 'John Doe 2'
+    #      }
+    #    }
+    #  ])
     # @param base [#to_json] The base email configuration for the batch.
     # @param requests [Array<#to_json>] Array of individual email requests.
     # @return [Hash] The JSON response from the API.
