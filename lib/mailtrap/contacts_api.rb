@@ -74,7 +74,8 @@ module Mailtrap
       validate_options!(options, supported_options_override)
 
       response = client.patch("#{base_path}/#{id}", wrap_request(options))
-      build_entity(response[:data].merge(action: response[:action]), Contact)
+
+      response_class.new(response[:data].merge(action: response[:action]).slice(*response_class.members + [:action]))
     end
 
     def update_lists(contact_id, options)

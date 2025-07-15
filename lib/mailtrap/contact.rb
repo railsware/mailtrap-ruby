@@ -19,7 +19,6 @@ module Mailtrap
     :status,
     :created_at,
     :updated_at,
-    :action,
     keyword_init: true
   ) do
     def initialize(options)
