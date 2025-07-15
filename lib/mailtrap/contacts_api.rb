@@ -70,14 +70,6 @@ module Mailtrap
 
     private
 
-    def base_update(id, options, supported_options_override = supported_options)
-      validate_options!(options, supported_options_override)
-
-      response = client.patch("#{base_path}/#{id}", wrap_request(options))
-
-      response_class.new(response[:data].merge(action: response[:action]).slice(*response_class.members + [:action]))
-    end
-
     def update_lists(contact_id, options)
       base_update(contact_id, options, %i[list_ids_included list_ids_excluded])
     end
@@ -87,7 +79,7 @@ module Mailtrap
     end
 
     def handle_response(response)
-      build_entity(response[:data], response_class)
+      response_class.new response[:data].slice(*response_class.members).merge(action: response[:action])
     end
 
     def base_path
