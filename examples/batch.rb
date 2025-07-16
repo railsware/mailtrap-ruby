@@ -13,7 +13,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # client = Mailtrap::Client.new(sandbox: true, inbox_id: 12)
 
 # Batch sending with Mailtrap::Mail::Base
-mail = Mailtrap::Mail.batch_from_content(
+mail = Mailtrap::Mail.batch_base_from_content(
   from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
   subject: 'You are awesome!',
   text: 'Congrats for sending test email with Mailtrap!',
@@ -48,7 +48,7 @@ client.send_batch(
 )
 
 # Batch sending with Mailtrap::Mail::Base
-mail = Mailtrap::Mail.batch_from_template(
+mail = Mailtrap::Mail.batch_base_from_template(
   from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
   reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',

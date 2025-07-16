@@ -122,26 +122,62 @@ module Mailtrap
       # defined in the Mailtrap dashboard and referenced by the template_uuid.
       # Template variables can be passed to customize the template content.
       # @example
-      #   mail = Mailtrap::Mail.batch_from_template(
+      #   mail = Mailtrap::Mail.batch_base_from_template(
       #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
       #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
       #     template_variables: {
       #       'user_name' => 'John Doe'
       #     }
       #   )
-      def batch_from_template(**args)
-        from_template(**args.except(:to, :cc, :bcc))
+      def batch_base_from_template( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
       end
 
       # Builds a mail object with content including subject, text, html, and category.
       # @example
-      #   mail = Mailtrap::Mail.batch_from_content(
+      #   mail = Mailtrap::Mail.batch_base_from_content(
       #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
       #     subject: 'You are awesome!',
       #     text: 'Congrats for sending test email with Mailtrap!'
       #   )
-      def batch_from_content(**args)
-        from_content(**args.except(:to, :cc, :bcc))
+      def batch_base_from_content( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
       end
 
       # Builds a mail object from Mail::Message
