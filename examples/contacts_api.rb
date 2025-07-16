@@ -25,19 +25,31 @@ contact_list.update(list.id, name: 'Test List Updated')
 # Get contact list
 list = contact_list.get(list.id)
 
+# Create new contact field
+field = contact_fields.create(name: 'Nickname', data_type: 'text', merge_tag: 'nickname')
+
+# Get all contact fields
+contact_fields.list
+
+# Update contact field
+contact_fields.update(field.id, name: 'Nickname 2', merge_tag: 'nickname')
+
+# Get contact field
+field = contact_fields.get(field.id)
+
 # Create new contact
-contact = contacts.create(email: 'test@example.com', fields: { first_name: 'John Doe' }, list_ids: [list.id])
+contact = contacts.create(email: 'test@example.com', fields: { field.merge_tag => 'John Doe' }, list_ids: [list.id])
 contact.newly_created? # => true
 
 # Get contact
 contact = contacts.get(contact.id)
 
 # Update contact using id
-updated_contact = contacts.upsert(contact.id, email: 'test2@example.com', fields: { first_name: 'Jane Doe' })
+updated_contact = contacts.upsert(contact.id, email: 'test2@example.com', fields: { field.merge_tag => 'Jane Doe' })
 updated_contact.newly_created? # => false
 
 # Update contact using email
-contacts.upsert(updated_contact.email, email: 'test3@example.com', fields: { first_name: 'Jane Doe' })
+contacts.upsert(updated_contact.email, email: 'test3@example.com', fields: { field.merge_tag => 'Jane Doe' })
 updated_contact.newly_created? # => false
 
 # Remove contact from lists
@@ -51,18 +63,6 @@ contacts.delete(contact.id)
 
 # Delete contact list
 contact_list.delete(list.id)
-
-# Create new contact field
-field = contact_fields.create(name: 'Updated name', data_type: 'text', merge_tag: 'updated_name')
-
-# Get all contact fields
-contact_fields.list
-
-# Update contact field
-contact_fields.update(field.id, name: 'Updated name 2', merge_tag: 'updated_name_2')
-
-# Get contact field
-field = contact_fields.get(field.id)
 
 # Delete contact field
 contact_fields.delete(field.id)
