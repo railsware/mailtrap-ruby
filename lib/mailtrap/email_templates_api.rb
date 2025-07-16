@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'base_api'
 require_relative 'email_template'
 
 module Mailtrap
