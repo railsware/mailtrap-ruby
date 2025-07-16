@@ -117,6 +117,33 @@ module Mailtrap
         )
       end
 
+      # Builds a mail object that will be sent using a pre-defined email
+      # template. The template content (subject, text, html, category) is
+      # defined in the Mailtrap dashboard and referenced by the template_uuid.
+      # Template variables can be passed to customize the template content.
+      # @example
+      #   mail = Mailtrap::Mail.batch_from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
+      def batch_from_template(**args)
+        from_template(**args.except(:to, :cc, :bcc))
+      end
+
+      # Builds a mail object with content including subject, text, html, and category.
+      # @example
+      #   mail = Mailtrap::Mail.batch_from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
+      def batch_from_content(**args)
+        from_content(**args.except(:to, :cc, :bcc))
+      end
+
       # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]

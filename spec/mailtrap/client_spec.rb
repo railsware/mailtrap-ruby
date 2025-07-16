@@ -110,7 +110,7 @@ RSpec.describe Mailtrap::Client do
           described_class.new(api_key:, bulk: true, sandbox: true)
         end
 
-        it { expect { send }.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API') }
+        it { expect { send }.to raise_error(ArgumentError, 'bulk stream is not applicable for sandbox API') }
       end
     end
 
@@ -311,11 +311,11 @@ RSpec.describe Mailtrap::Client do
       it 'raises an error' do
         expect do
           client.send_batch(base_mail, recipients)
-        end.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API')
+        end.to raise_error(ArgumentError, 'bulk stream is not applicable for sandbox API')
       end
     end
 
-    context 'when in bulk mode' do
+    context 'when in bulk stream' do
       let(:client) { described_class.new(api_key:, bulk: true) }
 
       it 'successfully sends a batch of emails', :vcr do

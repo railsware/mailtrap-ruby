@@ -187,8 +187,6 @@ module Mailtrap
     end
 
     def select_api_host(bulk:, sandbox:)
-      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
-
       if sandbox
         SANDBOX_API_HOST
       elsif bulk
@@ -274,7 +272,7 @@ module Mailtrap
     def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
-      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
       raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
   end
