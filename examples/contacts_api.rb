@@ -4,6 +4,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 contact_lists = Mailtrap::ContactListsAPI.new 3229, client
 contacts = Mailtrap::ContactsAPI.new 3229, client
 contact_fields = Mailtrap::ContactFieldsAPI.new 3229, client
+contact_imports = Mailtrap::ContactImportsAPI.new 3229, client
 
 # Set your API credentials as environment variables
 # export MAILTRAP_API_KEY='your-api-key'
@@ -12,6 +13,7 @@ contact_fields = Mailtrap::ContactFieldsAPI.new 3229, client
 # contact_lists = Mailtrap::ContactListsAPI.new
 # contacts = Mailtrap::ContactsAPI.new
 # contact_fields = Mailtrap::ContactFieldsAPI.new
+# contact_imports = Mailtrap::ContactImportsAPI.new
 
 # Create new contact list
 list = contact_lists.create(name: 'Test List')
@@ -135,8 +137,41 @@ contacts.add_to_lists(contact.id, [list.id])
 # Delete contact
 contacts.delete(contact.id)
 
-# Delete contact list
-contact_lists.delete(list.id)
-
 # Delete contact field
 contact_fields.delete(field.id)
+
+# Create a new contact import
+contact_import = contact_imports.create(
+  [
+    {
+      email: 'imported@example.com',
+      fields: {
+        first_name: 'Jane',
+      },
+      list_ids_included: [list.id],
+      list_ids_excluded: []
+    }
+  ]
+)
+# => ContactImport.new(
+#      id: 1,
+#      status: 'created',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Get a contact import by ID
+contact_imports.get(contact_import.id)
+# => ContactImport.new(
+#      id: 1,
+#      status: 'started',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Delete contact list
+contact_lists.delete(list.id)
