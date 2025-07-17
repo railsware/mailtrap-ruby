@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.api.mailtrap.io/api/batch/3861666
+    body:
+      encoding: UTF-8
+      string: '{"base":{"from":{"email":"mailtrap@demomailtrap.co","name":"Mailtrap"},"subject":"Batch Subject","text":"Batch Text"},"requests":[{"to":[{"email":"to@mail.com","name":"recipient1"}]},{"to":[{"email":"to@mail.com","name":"recipient2"}]}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 02 Jul 2025 07:54:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=0
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 958c92e2cbe6da34-WAW
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"success":true,"responses":[{"success":true,"message_ids":["4967738534"]},{"success":true,"message_ids":["4967738533"]}]}'
+  recorded_at: Wed, 02 Jul 2025 07:54:12 GMT
+recorded_with: VCR 6.2.0

@@ -37,11 +37,9 @@ module Mailtrap
       sandbox: false,
       inbox_id: nil
     )
-      raise ArgumentError, 'api_key is required' if api_key.nil?
-      raise ArgumentError, 'api_port is required' if api_port.nil?
+      validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
 
       api_host ||= select_api_host(bulk:, sandbox:)
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
 
       @api_key = api_key
       @api_host = api_host
@@ -51,6 +49,76 @@ module Mailtrap
       @sandbox = sandbox
       @inbox_id = inbox_id
       @http_clients = {}
+    end
+
+    # Sends a batch of emails.
+    # @example Sending batch emails using helpers
+    #   mail = Mailtrap::Mail.batch_base_from_template(
+    #     from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+    #     reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+    #     template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+    #     template_variables: {
+    #       'user_name' => 'John Doe'
+    #     }
+    #   )
+    #
+    #   client.send_batch(
+    #     mail,
+    #     [
+    #       Mailtrap::Mail.from_content(
+    #         to: [
+    #           { email: 'your@email.com', name: 'recipient1' }
+    #         ]
+    #       ),
+    #       Mailtrap::Mail.from_template(
+    #         to: [
+    #           { email: 'your@email.com', name: 'recipient2' }
+    #         ],
+    #         template_variables: {
+    #           'user_name' => 'John Doe 1',
+    #           'user_name2' => 'John Doe 2'
+    #         }
+    #       )
+    #     ]
+    #   )
+    #
+    # @example Sending batch emails using plain hashes
+    #   client.send_batch(
+    #     {
+    #       from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+    #       reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
+    #       template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
+    #       template_variables: {
+    #         'user_name' => 'John Doe'
+    #       }
+    #     },
+    #     [
+    #       {
+    #         to: [
+    #           { email: 'your@email.com', name: 'recipient1' }
+    #         ]
+    #       },
+    #       {
+    #         to: [
+    #           { email: 'your@email.com', name: 'recipient2' }
+    #         ],
+    #         template_variables: {
+    #           'user_name' => 'John Doe 1',
+    #           'user_name2' => 'John Doe 2'
+    #         }
+    #       }
+    #     ]
+    #   )
+    # @param base [#to_json] The base email configuration for the batch.
+    # @param requests [Array<#to_json>] Array of individual email requests.
+    # @return [Hash] The JSON response from the API.
+    # @!macro api_errors
+    # @raise [Mailtrap::MailSizeError] If the message is too large.
+    def send_batch(base, requests)
+      perform_request(:post, api_host, batch_request_path, {
+                        base:,
+                        requests:
+                      })
     end
 
     # Sends an email
@@ -124,8 +192,6 @@ module Mailtrap
     end
 
     def select_api_host(bulk:, sandbox:)
-      raise ArgumentError, 'bulk mode is not applicable for sandbox API' if bulk && sandbox
-
       if sandbox
         SANDBOX_API_HOST
       elsif bulk
@@ -137,6 +203,10 @@ module Mailtrap
 
     def send_path
       "/api/send#{"/#{inbox_id}" if sandbox}"
+    end
+
+    def batch_request_path
+      "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
 
     def perform_request(method, host, path, body = nil)
@@ -202,6 +272,13 @@ module Mailtrap
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
+    end
+
+    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      raise ArgumentError, 'api_key is required' if api_key.nil?
+      raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
   end
 end

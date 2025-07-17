@@ -117,6 +117,75 @@ module Mailtrap
         )
       end
 
+      # Builds a base mail object for batch sending using a pre-defined email template.
+      # This "base" defines shared properties (such as sender, reply-to, template UUID, and template variables)
+      # that will be used as defaults for all emails in the batch. Individual batch requests can override these values.
+      # Use this method when you want to send multiple emails with similar content, leveraging a template defined in the Mailtrap dashboard. # rubocop:disable Layout/LineLength
+      # Template variables can be passed to customize the template content for all recipients, and can be overridden per request. # rubocop:disable Layout/LineLength
+      # @example
+      #   base_mail = Mailtrap::Mail.batch_base_from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
+      #   # Use base_mail as the base for batch sending with Mailtrap::Client#send_batch
+      def batch_base_from_template( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
+      end
+
+      # Builds a base mail object for batch sending with custom content (subject, text, html, category).
+      # This "base" defines shared properties for all emails in the batch, such as sender, subject, and body.
+      # Individual batch requests can override these values as needed.
+      # Use this method when you want to send multiple emails with similar custom content to different recipients.
+      # @example
+      #   base_mail = Mailtrap::Mail.batch_base_from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
+      #   # Use base_mail as the base for batch sending with Mailtrap::Client#send_batch
+      def batch_base_from_content( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
+      end
+
       # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
