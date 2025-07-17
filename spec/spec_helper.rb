@@ -47,3 +47,18 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+# Custom matcher to verify object IDs are different
+RSpec::Matchers.define :have_different_object_id_than do |expected|
+  match do |actual|
+    !actual.equal?(expected)
+  end
+
+  failure_message do |actual|
+    "expected #{actual.inspect} (object_id: #{actual.object_id}) to have a different object_id than #{expected.inspect} (object_id: #{expected.object_id})" # rubocop:disable Layout/LineLength
+  end
+
+  failure_message_when_negated do |actual|
+    "expected #{actual.inspect} (object_id: #{actual.object_id}) to have the same object_id as #{expected.inspect} (object_id: #{expected.object_id})" # rubocop:disable Layout/LineLength
+  end
+end
