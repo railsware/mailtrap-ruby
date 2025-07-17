@@ -9,21 +9,7 @@ module Mailtrap
     end
 
     module ClassMethods
-      def supported_options=(options)
-        @supported_options = options
-      end
-
-      def supported_options
-        @supported_options
-      end
-
-      def response_class=(response_class)
-        @response_class = response_class
-      end
-
-      def response_class
-        @response_class
-      end
+      attr_accessor :supported_options, :response_class
     end
 
     # @param account_id [Integer] The account ID

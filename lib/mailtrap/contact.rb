@@ -10,7 +10,6 @@ module Mailtrap
   # @attr_reader status [String] The contact status (subscribed/unsubscribed)
   # @attr_reader created_at [Integer] The creation timestamp
   # @attr_reader updated_at [Integer] The last update timestamp
-  # @attr_reader action [String] The performed action (created/updated)
   Contact = Struct.new(
     :id,
     :email,
