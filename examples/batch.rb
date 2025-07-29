@@ -12,67 +12,71 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
 # client = Mailtrap::Client.new(sandbox: true, inbox_id: 12)
 
-# Batch sending with Mailtrap::Mail::Base
-mail = Mailtrap::Mail.batch_base_from_content(
+# Batch sending with text and html content
+batch_base = Mailtrap::Mail.batch_base_from_content(
   from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
   subject: 'You are awesome!',
   text: 'Congrats for sending test email with Mailtrap!',
-  category: 'Integration Test',
-  # attachments: [
-  #   {
-  #     content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
-  #     filename: 'attachment.txt'
-  #   }
-  # ],
-  headers: {
-    'X-MT-Header': 'Custom header'
-  },
-  custom_variables: {
-    year: 2022
-  }
+  html: '<p>Congrats for sending test email with Mailtrap!</p>'
 )
 
+File.open('attachment.txt') do |f|
+  batch_base.add_attachment(content: f, filename: 'attachment.txt')
+end
+
 client.send_batch(
-  mail, [
+  batch_base, [
     Mailtrap::Mail.from_content(
       to: [
-        { email: 'your@email.com', name: 'recipient1' }
+        { email: 'john.doe@email.com', name: 'John Doe' }
       ]
     ),
     Mailtrap::Mail::Base.new(
       to: [
-        { email: 'your@email.com', name: 'recipient2' }
+        { email: 'jane.doe@email.com', name: 'Jane Doe' }
       ]
-    )
+    ),
+    {
+      to: [
+        { email: 'david.doe@email.com', name: 'David Doe' }
+      ]
+    }
   ]
 )
 
-# Batch sending with Mailtrap::Mail::Base
-mail = Mailtrap::Mail.batch_base_from_template(
+# Batch sending with template
+batch_base = Mailtrap::Mail.batch_base_from_template(
   from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
   reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
-  template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
-  template_variables: {
-    'user_name' => 'John Doe'
-  }
+  template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c'
 )
 
 client.send_batch(
-  mail, [
-    Mailtrap::Mail::Base.new(
+  batch_base, [
+    Mailtrap::Mail.from_template(
       to: [
-        { email: 'your@email.com', name: 'recipient1' }
-      ]
+        { email: 'john.doe@email.com', name: 'John Doe' }
+      ],
+      template_variables: {
+        user_name: 'John Doe'
+      }
     ),
     Mailtrap::Mail::Base.new(
       to: [
-        { email: 'your@email.com', name: 'recipient2' }
+        { email: 'jane.doe@email.com', name: 'Jane Doe' }
       ],
       template_variables: {
-        'user_name' => 'John Doe 1',
-        'user_name2' => 'John Doe 2'
+        user_name: 'Jane Doe'
       }
-    )
+    ),
+    {
+      to: [
+        { email: 'david.doe@email.com', name: 'David Doe' }
+      ],
+      template_variables: {
+        user_name: 'David Doe'
+      }
+    }
   ]
 )
 
@@ -81,24 +85,30 @@ client.send_batch(
   {
     from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
     reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
-    template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
-    template_variables: {
-      'user_name' => 'John Doe'
-    },
-  },
-  [
+    template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c'
+  }, [
     {
       to: [
-        { email: 'your@email.com', name: 'recipient1' }
-      ]
-    },
-    {
-      to: [
-        { email: 'your@email.com', name: 'recipient2' }
+        { email: 'john.doe@email.com', name: 'John Doe' }
       ],
       template_variables: {
-        'user_name' => 'John Doe 1',
-        'user_name2' => 'John Doe 2'
+        user_name: 'John Doe'
+      }
+    },
+    {
+      to: [
+        { email: 'jane.doe@email.com', name: 'Jane Doe' }
+      ],
+      template_variables: {
+        user_name: 'Jane Doe'
+      }
+    },
+    {
+      to: [
+        { email: 'david.doe@email.com', name: 'David Doe' }
+      ],
+      template_variables: {
+        user_name: 'David Doe'
       }
     }
   ]
