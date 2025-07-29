@@ -52,59 +52,63 @@ module Mailtrap
     end
 
     # Sends a batch of emails.
-    # @example Sending batch emails using helpers
-    #   mail = Mailtrap::Mail.batch_base_from_template(
+    # @example Batch sending with template
+    #   batch_base = Mailtrap::Mail.batch_base_from_template(
     #     from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
     #     reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
-    #     template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
-    #     template_variables: {
-    #       'user_name' => 'John Doe'
-    #     }
+    #     template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c'
     #   )
     #
     #   client.send_batch(
-    #     mail,
-    #     [
-    #       Mailtrap::Mail.from_content(
-    #         to: [
-    #           { email: 'your@email.com', name: 'recipient1' }
-    #         ]
-    #       ),
+    #     batch_base, [
     #       Mailtrap::Mail.from_template(
     #         to: [
-    #           { email: 'your@email.com', name: 'recipient2' }
+    #           { email: 'john.doe@email.com', name: 'John Doe' }
     #         ],
     #         template_variables: {
-    #           'user_name' => 'John Doe 1',
-    #           'user_name2' => 'John Doe 2'
+    #           user_name: 'John Doe'
     #         }
-    #       )
+    #       ),
+    #       Mailtrap::Mail::Base.new(
+    #         to: [
+    #           { email: 'jane.doe@email.com', name: 'Jane Doe' }
+    #         ],
+    #         template_variables: {
+    #           user_name: 'Jane Doe'
+    #         }
+    #       ),
+    #       {
+    #         to: [
+    #           { email: 'david.doe@email.com', name: 'David Doe' }
+    #         ],
+    #         template_variables: {
+    #           user_name: 'David Doe'
+    #         }
+    #       }
     #     ]
     #   )
     #
-    # @example Sending batch emails using plain hashes
+    # @example Passing the request parameters directly
     #   client.send_batch(
     #     {
     #       from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
     #       reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
-    #       template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c',
-    #       template_variables: {
-    #         'user_name' => 'John Doe'
-    #       }
-    #     },
-    #     [
+    #       template_uuid: '339c8ab0-e73c-4269-984e-0d2446aacf2c'
+    #     }, [
     #       {
     #         to: [
-    #           { email: 'your@email.com', name: 'recipient1' }
-    #         ]
+    #           { email: 'john.doe@email.com', name: 'John Doe' }
+    #         ],
+    #         template_variables: {
+    #           user_name: 'John Doe'
+    #         }
     #       },
     #       {
     #         to: [
-    #           { email: 'your@email.com', name: 'recipient2' }
+    #           { email: 'jane.doe@email.com', name: 'Jane Doe' }
     #         ],
     #         template_variables: {
-    #           'user_name' => 'John Doe 1',
-    #           'user_name2' => 'John Doe 2'
+    #           user_name: 'Jane Doe'
     #         }
     #       }
     #     ]
