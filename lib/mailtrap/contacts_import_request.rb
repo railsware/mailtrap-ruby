@@ -18,7 +18,7 @@ module Mailtrap
         return self
       end
 
-      @data[email][:fields] = fields
+      @data[email][:fields].merge!(fields)
 
       self
     end
@@ -33,7 +33,7 @@ module Mailtrap
         return self
       end
 
-      @data[email][:list_ids_included].concat(list_ids)
+      @data[email][:list_ids_included] |= list_ids
 
       self
     end
@@ -48,7 +48,7 @@ module Mailtrap
         return self
       end
 
-      @data[email][:list_ids_excluded].concat(list_ids)
+      @data[email][:list_ids_excluded] |= list_ids
 
       self
     end

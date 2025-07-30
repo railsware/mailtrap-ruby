@@ -185,4 +185,51 @@ RSpec.describe Mailtrap::ContactImportsAPI do
       end
     end
   end
+
+  describe '#start' do
+    let(:contacts) do
+      [
+        {
+          email: 'example@example.com',
+          fields: {
+            fname: 'John',
+            age: 30,
+            is_subscribed: true,
+            birthday: '1990-05-15'
+          },
+          list_ids_included: [1, 2],
+          list_ids_excluded: [3]
+        }
+      ]
+    end
+
+    let(:expected_response) do
+      {
+        'id' => 'import-789',
+        'status' => 'created',
+        'created_contacts_count' => 1,
+        'updated_contacts_count' => 0,
+        'contacts_over_limit_count' => 0
+      }
+    end
+
+    it 'is an alias for #create and works identically' do
+      stub_request(:post, "#{base_url}/contacts/imports")
+        .with(body: { contacts: }.to_json)
+        .to_return(
+          status: 200,
+          body: expected_response.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      response = client.start(contacts)
+      expect(response).to have_attributes(
+        id: 'import-789',
+        status: 'created',
+        created_contacts_count: 1,
+        updated_contacts_count: 0,
+        contacts_over_limit_count: 0
+      )
+    end
+  end
 end
