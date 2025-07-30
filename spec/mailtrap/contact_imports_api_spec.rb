@@ -107,5 +107,82 @@ RSpec.describe Mailtrap::ContactImportsAPI do
 
       expect { client.create(contacts) }.to raise_error(Mailtrap::Error)
     end
+
+    context 'when using ContactsImportRequest' do
+      let(:basic_contact_data) do
+        {
+          email: 'example@example.com',
+          fields: {
+            fname: 'John',
+            age: 30,
+            is_subscribed: true,
+            birthday: '1990-05-15'
+          }
+        }
+      end
+
+      def expect_successful_import(request_body, response_data = expected_response)
+        stub_request(:post, "#{base_url}/contacts/imports")
+          .with(body: request_body.to_json)
+          .to_return(
+            status: 200,
+            body: response_data.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+      end
+
+      shared_examples 'successful contact import' do |expected_id, expected_count|
+        it 'returns the expected import response' do
+          expect(response).to have_attributes(
+            id: expected_id,
+            status: 'created',
+            created_contacts_count: expected_count,
+            updated_contacts_count: 0,
+            contacts_over_limit_count: 0
+          )
+        end
+      end
+
+      describe 'step-by-step method calls' do
+        let(:request) do
+          req = Mailtrap::ContactsImportRequest.new
+          req.upsert(email: basic_contact_data[:email], fields: basic_contact_data[:fields])
+          req.add_to_lists(email: basic_contact_data[:email], list_ids: [1, 2])
+          req.remove_from_lists(email: basic_contact_data[:email], list_ids: [3])
+        end
+
+        let(:expected_request_body) do
+          {
+            contacts: [
+              basic_contact_data.merge(
+                list_ids_included: [1, 2],
+                list_ids_excluded: [3]
+              )
+            ]
+          }
+        end
+
+        let(:response) do
+          expect_successful_import(expected_request_body)
+          client.create(request)
+        end
+
+        include_examples 'successful contact import', 'import-456', 1
+      end
+
+      it 'validates request data and raises error when invalid options are provided' do
+        request = Mailtrap::ContactsImportRequest.new
+        # Manually add invalid data to simulate corrupted request
+        request.instance_variable_get(:@data)['test@example.com'] = {
+          email: 'test@example.com',
+          fields: {},
+          list_ids_included: [],
+          list_ids_excluded: [],
+          invalid_field: 'should not be here'
+        }
+
+        expect { client.create(request) }.to raise_error(ArgumentError, /invalid options are given/)
+      end
+    end
   end
 end

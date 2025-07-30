@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'contact_import'
+require_relative 'contacts_import_request'
 
 module Mailtrap
   class ContactImportsAPI
@@ -19,8 +20,9 @@ module Mailtrap
     end
 
     # Create contacts import
-    # @param contacts [Array<Hash>] Array of contact objects to import
-    #   Each contact object should have the following keys:
+    # @param contacts [Array<Hash>, ContactsImportRequest, #to_a] Any object that responds to #to_a and returns an array of contact hashes. # rubocop:disable Layout/LineLength
+    #   Accepts Array<Hash>, ContactsImportRequest, or any other object implementing #to_a
+    #   When using Array<Hash>, each contact object should have the following keys:
     #   - email [String] The contact's email address
     #   - fields [Hash] Object of fields in the format: field_merge_tag => String, Integer, Float, Boolean, or ISO-8601 date string (yyyy-mm-dd) # rubocop:disable Layout/LineLength
     #   - list_ids_included [Array<Integer>] List IDs to include the contact in
@@ -29,12 +31,14 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(contacts)
-      contacts.each do |contact|
+      contact_data = contacts.to_a
+      contact_data.each do |contact|
         validate_options!(contact, supported_options)
       end
-      response = client.post(base_path, contacts:)
+      response = client.post(base_path, contacts: contact_data)
       handle_response(response)
     end
+    alias start create
 
     private
 
