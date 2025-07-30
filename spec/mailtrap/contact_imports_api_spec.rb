@@ -143,7 +143,7 @@ RSpec.describe Mailtrap::ContactImportsAPI do
         end
       end
 
-      describe 'step-by-step method calls' do
+      describe 'step-by-step method calls' do # rubocop:disable RSpec/MultipleMemoizedHelpers
         let(:request) do
           req = Mailtrap::ContactsImportRequest.new
           req.upsert(email: basic_contact_data[:email], fields: basic_contact_data[:fields])
