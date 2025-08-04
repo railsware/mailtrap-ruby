@@ -73,6 +73,38 @@ client.send(
 
 ```
 
+### Batch Sending
+
+Send up to 500 emails in one API call:
+
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+
+batch_base = Mailtrap::Mail.batch_base_from_content(
+  from: { email: 'mailtrap@demomailtrap.co', name: 'Mailtrap Test' },
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!',
+  html: '<p>Congrats for sending test email with Mailtrap!</p>'
+)
+
+client.send_batch(
+  batch_base, [
+    Mailtrap::Mail.from_content(
+      to: [
+        { email: 'john.doe@email.com', name: 'John Doe' }
+      ]
+    ),
+    Mailtrap::Mail.from_content(
+      to: [
+        { email: 'jane.doe@email.com', name: 'Jane Doe' }
+      ]
+    )
+  ]
+)
+```
+
 ### Email Templates API
 
 ```ruby
@@ -94,6 +126,7 @@ Refer to the [`examples`](examples) folder for more examples:
 
 - [Full](examples/full.rb)
 - [Email template](examples/email_template.rb)
+- [Batch Sending](examples/batch.rb)
 - [ActionMailer](examples/action_mailer.rb)
 - [Email Templates API](examples/email_templates_api.rb)
 
