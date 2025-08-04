@@ -64,8 +64,8 @@ module Mailtrap
       client.delete("#{base_path}/#{id}")
     end
 
-    def base_list
-      response = client.get(base_path)
+    def base_list(query_params = {})
+      response = client.get(base_path, query_params)
       response.map { |item| handle_response(item) }
     end
 
