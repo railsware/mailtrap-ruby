@@ -110,7 +110,7 @@ RSpec.describe Mailtrap::Client do
           described_class.new(api_key:, bulk: true, sandbox: true)
         end
 
-        it { expect { send }.to raise_error(ArgumentError, 'bulk mode is not applicable for sandbox API') }
+        it { expect { send }.to raise_error(ArgumentError, 'bulk stream is not applicable for sandbox API') }
       end
     end
 
@@ -262,6 +262,144 @@ RSpec.describe Mailtrap::Client do
     it 'handles unexpected response status code' do
       stub_api_send 307 do
         expect { send_mail }.to raise_error(Mailtrap::Error, 'unexpected status code=307')
+      end
+    end
+  end
+
+  describe '#send_batch' do
+    let(:api_key) { ENV.fetch('MAILTRAP_API_KEY', 'correct-api-key') }
+    let(:base_mail) do
+      Mailtrap::Mail::Base.new(
+        from: {
+          email: 'mailtrap@demomailtrap.co',
+          name: 'Mailtrap'
+        },
+        subject: 'Batch Subject',
+        text: 'Batch Text'
+      )
+    end
+    let(:recipients) do
+      [
+        Mailtrap::Mail::Base.new(
+          to: [
+            {
+              email: ENV.fetch('MAILTRAP_TO_EMAIL', 'to@mail.com'),
+              name: 'recipient1'
+            }
+          ]
+        ),
+        Mailtrap::Mail::Base.new(
+          to: [
+            {
+              email: ENV.fetch('MAILTRAP_TO_EMAIL', 'to@mail.com'),
+              name: 'recipient2'
+            }
+          ]
+        )
+      ]
+    end
+
+    context 'when bulk and sandbox modes are used together' do
+      let(:client) do
+        described_class.new(
+          api_key:,
+          bulk: true,
+          sandbox: true
+        )
+      end
+
+      it 'raises an error' do
+        expect do
+          client.send_batch(base_mail, recipients)
+        end.to raise_error(ArgumentError, 'bulk stream is not applicable for sandbox API')
+      end
+    end
+
+    context 'when in bulk stream' do
+      let(:client) { described_class.new(api_key:, bulk: true) }
+
+      it 'successfully sends a batch of emails', :vcr do
+        response = client.send_batch(base_mail, recipients)
+        expect(response).to include(
+          success: true,
+          responses: array_including(
+            hash_including(
+              success: true,
+              message_ids: array_including(kind_of(String))
+            )
+          )
+        )
+      end
+    end
+
+    context 'when in sandbox mode' do
+      let(:client) { described_class.new(api_key:, sandbox: true, inbox_id: 3_861_666) }
+
+      it 'successfully sends a batch of emails', :vcr do
+        response = client.send_batch(base_mail, recipients)
+        expect(response).to include(
+          success: true,
+          responses: array_including(
+            hash_including(
+              success: true,
+              message_ids: array_including(kind_of(String))
+            )
+          )
+        )
+      end
+    end
+
+    context 'with template' do
+      let(:client) { described_class.new(api_key:, bulk: true) }
+      let(:template_mail) do
+        Mailtrap::Mail::Base.new(
+          from: {
+            email: 'mailtrap@demomailtrap.co',
+            name: 'Mailtrap'
+          },
+          template_uuid: ENV.fetch('MAILTRAP_TEMPLATE_UUID', 'be5ed4dd-b374-4856-928d-f0957304123d'),
+          template_variables: {
+            company_name: 'Mailtrap'
+          }
+        )
+      end
+
+      it 'successfully sends a batch of emails with template', :vcr do
+        response = client.send_batch(template_mail, recipients)
+        expect(response).to include(
+          success: true,
+          responses: array_including(
+            hash_including(
+              success: true,
+              message_ids: array_including(kind_of(String))
+            )
+          )
+        )
+      end
+    end
+
+    context 'with API errors' do
+      let(:client) { described_class.new(api_key:, bulk: true) }
+      let(:invalid_mail) do
+        Mailtrap::Mail::Base.new(
+          text: 'Batch Text'
+        )
+      end
+
+      it 'handles API errors', :vcr do
+        response = client.send_batch(invalid_mail, recipients)
+        expect(response).to include(
+          success: true,
+          responses: array_including(
+            hash_including(
+              success: false,
+              errors: array_including(
+                "'from' is required",
+                "'subject' is required"
+              )
+            )
+          )
+        )
       end
     end
   end
