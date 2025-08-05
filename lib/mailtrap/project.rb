@@ -3,7 +3,7 @@
 module Mailtrap
   # Data Transfer Object for Project
   # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/ee252e413d78a-create-project
-  # @attr_reader id [String] The contact ID
+  # @attr_reader id [String] The project ID
   # @attr_reader name [String] The project name
   # @attr_reader share_links [Array] Array of links
   # @attr_reader inboxes [Array] Array of inboxes
@@ -21,12 +21,12 @@ module Mailtrap
       super
     end
 
-    # @return [Boolean] Whether the contact was newly created
+    # @return [Boolean] Whether the project was newly created
     def newly_created?
       @action != 'updated'
     end
 
-    # @return [Hash] The contact attributes as a hash
+    # @return [Hash] The project attributes as a hash
     def to_h
       super.compact
     end
