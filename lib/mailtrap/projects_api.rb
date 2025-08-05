@@ -11,8 +11,8 @@ module Mailtrap
 
     self.response_class = Project
 
-    # Lists all email templates for the account
-    # @return [Array<EmailTemplate>] Array of template objects
+    # Lists all projects for the account
+    # @return [Array<Project>] Array of projects
     # @!macro api_errors
     def list
       base_list
@@ -29,7 +29,7 @@ module Mailtrap
     # Creates a new project
     # @param [Hash] options The parameters to create
     # @option options [String] :name The project name
-    # @return [EmailTemplate] Created project object
+    # @return [Project] Created project object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
