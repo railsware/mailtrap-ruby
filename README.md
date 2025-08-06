@@ -62,6 +62,18 @@ Or install it yourself as:
 
 ## Usage
 
+### Basic Setup
+
+Before you start sending emails, you'll need:
+- A [Mailtrap account](https://mailtrap.io/signup)
+- A [verified domain](https://mailtrap.io/sending/domains) 
+- An API key from your Mailtrap dashboard
+
+Set your API key as an environment variable:
+```bash
+export MAILTRAP_API_KEY="your-api-key"
+```
+
 ### Minimal
 
 ```ruby
@@ -110,9 +122,7 @@ mail = Mailtrap::Mail.from_content(
 )
 
 # Create client and send
-client = Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY'))
-# or set your API key directly:
-# client = Mailtrap::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 
 # You can also pass the request parameters directly
