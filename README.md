@@ -110,7 +110,9 @@ mail = Mailtrap::Mail.from_content(
 )
 
 # Create client and send
-client = Mailtrap::Client.new(api_key: 'your-api-key')
+client = Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY'))
+# or set your API key directly:
+# client = Mailtrap::Client.new(api_key: 'your-api-key')
 client.send(mail)
 
 # You can also pass the request parameters directly
@@ -207,8 +209,7 @@ require 'mailtrap'
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 templates = Mailtrap::EmailTemplatesAPI.new(3229, client)
 
-# Create a new email template
-email_template = templates.create(
+templates.create(
   name: 'Welcome Email',
   subject: 'Welcome to Mailtrap!',
   body_html: '<h1>Hello</h1>',
@@ -259,7 +260,7 @@ contact = contacts.create(
 # Get contact
 contact = contacts.get(contact.id)
 
-# Update contact (upsert by ID or email)
+# Update contact
 contacts.upsert(
   contact.id,
   email: 'test2@example.com',
@@ -268,12 +269,6 @@ contacts.upsert(
 
 # List contacts
 contacts.list
-
-# Add contact to lists
-contacts.add_to_lists(contact.id, [list.id])
-
-# Remove contact from lists
-contacts.remove_from_lists(contact.id, [list.id])
 
 # Delete contact
 contacts.delete(contact.id)
