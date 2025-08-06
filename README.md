@@ -4,7 +4,7 @@
 [![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
 [![license](https://shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 
-# Mailtrap Ruby client - Official
+# Official Mailtrap Ruby client
 
 ## Prerequisites
 
@@ -17,30 +17,32 @@ To get the most out of this official Mailtrap.io Ruby SDK:
 
 This Ruby gem offers integration with the [official API](https://api-docs.mailtrap.io/) for [Mailtrap](https://mailtrap.io).
 
-Quickly integrate Mailtrap with your Ruby application.
+Quickly add email sending functionality to your Ruby application with Mailtrap.
+
+(This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/))
 
 Currently, with this SDK you can:
 
 * **Email API/SMTP**
-  * Send an email (Transactional and Bulk streams)
-  * Send an email with a template
-  * Send a batch of emails (Transactional and Bulk streams)
+    * Send an email (Transactional and Bulk streams)
+    * Send an email with a template
+    * Send a batch of emails (Transactional and Bulk streams)
 * **Email Sandbox (Testing)**
-  * Send an email
-  * Send an email with a template
-  * Message management
-  * Inbox management
-  * Project management
+    * Send an email
+    * Send an email with a template
+    * Message management
+    * Inbox management
+    * Project management
 * **Contact management**
-  * Contacts CRUD
-  * Lists CRUD
-  * Contact fields CRUD
+    * Contacts CRUD
+    * Lists CRUD
+    * Contact fields CRUD
 * **General**
-  * Templates CRUD
-  * Suppressions management (find and delete)
-  * Account access management
-  * Permissions management
-  * List accounts you have access to
+    * Templates CRUD
+    * Suppressions management (find and delete)
+    * Account access management
+    * Permissions management
+    * List accounts you have access to
 
 ## Installation
 
@@ -52,15 +54,11 @@ gem 'mailtrap'
 
 And then execute:
 
-```bash
-bundle install
-```
+    $ bundle install
 
 Or install it yourself as:
 
-```bash
-gem install mailtrap
-```
+    $ gem install mailtrap
 
 ## Usage
 
@@ -72,18 +70,13 @@ require 'mailtrap'
 # For this example to work, you need to set up a sending domain,
 # and obtain a token that is authorized to send from the domain.
 
-TOKEN = "<YOUR-TOKEN-HERE>"
-SENDER_EMAIL = "<SENDER@YOURDOMAIN.COM>"
-RECIPIENT_EMAIL = "<RECIPIENT@EMAIL.COM>"
-
-client = Mailtrap::Client.new(api_key: TOKEN)
-sender = { name: "Mailtrap Test", email: SENDER_EMAIL }
+client = Mailtrap::Client.new(api_key: 'your-api-key')
 
 client.send(
-  from: sender,
-  to: [{ email: RECIPIENT_EMAIL }],
-  subject: "Hello from Mailtrap!",
-  text: "Welcome to Mailtrap Sending!"
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [{ email: 'your@email.com' }],
+  subject: 'Hello from Mailtrap!',
+  text: 'Welcome to Mailtrap Sending!'
 )
 ```
 
@@ -92,12 +85,12 @@ client.send(
 ```ruby
 # config/environments/production.rb
 config.action_mailer.delivery_method = :mailtrap
-config.action_mailer.mailtrap_settings = {
-  api_key: 'your-api-key'
-}
 
 # Set the MAILTRAP_API_KEY environment variable
-# using your hosting solution.
+# using your hosting solution, or customize the settings:
+config.action_mailer.mailtrap_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY')
+}
 ```
 
 ### Pure Ruby
@@ -214,13 +207,26 @@ require 'mailtrap'
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 templates = Mailtrap::EmailTemplatesAPI.new(3229, client)
 
-templates.create(
+# Create a new email template
+email_template = templates.create(
   name: 'Welcome Email',
   subject: 'Welcome to Mailtrap!',
   body_html: '<h1>Hello</h1>',
   body_text: 'Hello',
   category: 'welcome'
 )
+
+# Get all templates
+templates.list
+
+# Get a specific template
+templates.get(email_template.id)
+
+# Update a template
+templates.update(email_template.id, name: 'Welcome Updated')
+
+# Delete a template
+templates.delete(email_template.id)
 ```
 
 ### Contacts API
@@ -253,7 +259,7 @@ contact = contacts.create(
 # Get contact
 contact = contacts.get(contact.id)
 
-# Update contact
+# Update contact (upsert by ID or email)
 contacts.upsert(
   contact.id,
   email: 'test2@example.com',
@@ -262,6 +268,12 @@ contacts.upsert(
 
 # List contacts
 contacts.list
+
+# Add contact to lists
+contacts.add_to_lists(contact.id, [list.id])
+
+# Remove contact from lists
+contacts.remove_from_lists(contact.id, [list.id])
 
 # Delete contact
 contacts.delete(contact.id)
@@ -281,14 +293,14 @@ ActionMailer::Base.add_delivery_method :mailtrap_sandbox, Mailtrap::ActionMailer
 # config/environments/production.rb
 config.action_mailer.delivery_method = :mailtrap
 config.action_mailer.mailtrap_settings = {
-  api_key: 'your-api-key'
+  api_key: ENV.fetch('MAILTRAP_API_KEY')
 }
 config.action_mailer.mailtrap_bulk_settings = {
-  api_key: 'your-api-key',
+  api_key: ENV.fetch('MAILTRAP_API_KEY'),
   bulk: true
 }
 config.action_mailer.mailtrap_sandbox_settings = {
-  api_key: 'your-api-key',
+  api_key: ENV.fetch('MAILTRAP_API_KEY'),
   sandbox: true,
   inbox_id: 12
 }
