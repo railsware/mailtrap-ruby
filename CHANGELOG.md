@@ -1,3 +1,12 @@
+## [2.4.0] - 2025-08-04
+
+- Add Email Templates API
+- Add Contacts API
+- Add Contact Fields API
+- Add Contact Lists API
+- Add Batch Sending
+- Deprecate `Mailtrap::Mail::FromTemplate` in favour of `Mailtrap::Mail.from_template`
+
 ## [2.3.0] - 2025-03-06
 
 - Drop Ruby 3.0 support
