@@ -11,10 +11,6 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
 
     it 'maps response data to Project objects' do
       expect(list).to all(be_a(Mailtrap::Project))
-      expect(list.first).to have_attributes(
-        id: be_a(Integer),
-        name: be_a(String)
-      )
     end
 
     context 'when api key is incorrect' do

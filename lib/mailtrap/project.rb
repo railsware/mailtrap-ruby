@@ -21,11 +21,6 @@ module Mailtrap
       super
     end
 
-    # @return [Boolean] Whether the project was newly created
-    def newly_created?
-      @action != 'updated'
-    end
-
     # @return [Hash] The project attributes as a hash
     def to_h
       super.compact
