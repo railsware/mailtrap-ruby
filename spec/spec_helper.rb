@@ -14,14 +14,33 @@ VCR.configure do |config|
   config.filter_sensitive_data('<BEARER_TOKEN>') do |interaction|
     next if interaction.request.uri =~ /localhost/
 
-    # interaction.request.uri.gsub!(%r{/accounts/\d+/}, '/accounts/1111111/')
-    # interaction.response.body.gsub!(/"account_id":\d+/, '"account_id": 1111111')
-
     auth_header = interaction.request.headers['Authorization']&.first
 
     if auth_header && (match = auth_header.match(/^Bearer\s+([^,\s]+)/))
       match.captures.first
     end
+  end
+
+  config.filter_sensitive_data('ACCOUNT_ID') { ENV.fetch('MAILTRAP_ACCOUNT_ID') }
+
+  config.before_record do |interaction|
+    body = JSON.parse(interaction.response.body)
+
+    case body
+    when Hash
+      body["share_links"].transform_values! { |e| e.gsub(/\/share\/.+/, '/share/REDACTED') } if body.key?("share_links")
+    when Array
+      body.map do |item|
+        item["share_links"].transform_values! { |e| e.gsub(/\/share\/.+/, '/share/REDACTED') } if item.key?("share_links")
+        item
+      end
+    else
+      # noop
+    end
+
+    interaction.response.body = body.to_json
+  rescue JSON::ParserError
+    # do nothing
   end
 
   header_matcher = lambda do |request_1, request_2|

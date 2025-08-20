@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/1495731/projects
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects
     body:
       encoding: UTF-8
       string: '{"project":{"name":"Project to Delete"}}'
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 17:52:20 GMT
+      - Wed, 20 Aug 2025 19:39:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -51,9 +51,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '148'
+      - '135'
       Etag:
-      - W/"b622f11beff3d9bf2f24c54822f5611c"
+      - W/"56768091f4f63f7fe2a28200fe899d70"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -66,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-zLl1cCnPYt28XJJTccOqbA==''; connect-src ''self''
+        translate.google.com ''nonce-js-uT7a7lm3RYj3o/RNIzRACA==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,26 +146,26 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 4317a0eb-eea6-4b87-98e1-f220fa0fcba6
+      - 7c0f99ec-10af-4a25-b76f-2cf537215a40
       X-Runtime:
-      - '0.065330'
+      - '0.054625'
       X-Cloud-Trace-Context:
-      - 0e2f395c51a149ccc06ed80c02b7da63;o=0
+      - 59329bd52a7e4f0a8effa0aa1d393151;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 9723be6dff1a0202-WAW
+      - 97245c0fded00296-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":2486783,"name":"Project to Delete","share_links":{"admin":"https://mailtrap.io/projects/2486783/share/QEVuQwEAw-LAwE2xik9eyeZatwg5XJ_XxKQ_ik4rXON2CXurGVD2AyEXnMmtt0GrOk1vh1c0mdY6PdoP8-oqlOy1VtJeM2sR8wwyYLzUEEI4tM5SU8w9CPJcKy_i1ohRMZ7Ij5hn","viewer":"https://mailtrap.io/projects/2486783/share/QEVuQwEAw-LAwE2xik9eyeZatwg5XJ_XxKQ_ik4rXON2CXurGVD2AyEXnMmtt0GrOk1vh1c0nER1Ee2Xxo9ORk3GxeXMuymwqrneXElPICtCSsczgQ3_6d-WnBY04ED8ta_XPwNm"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
-  recorded_at: Wed, 20 Aug 2025 17:52:20 GMT
+      encoding: UTF-8
+      string: '{"id":2487019,"name":"Project to Delete","share_links":{"admin":"https://mailtrap.io/projects/2487019/share/REDACTED","viewer":"https://mailtrap.io/projects/2487019/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Wed, 20 Aug 2025 19:39:56 GMT
 - request:
     method: delete
-    uri: https://mailtrap.io/api/accounts/1495731/projects/999999
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects/999999
     body:
       encoding: US-ASCII
       string: ''
@@ -186,7 +186,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 20 Aug 2025 17:52:20 GMT
+      - Wed, 20 Aug 2025 19:39:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -214,7 +214,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '147'
+      - '134'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -227,7 +227,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-ZH3xNufc8WwS8tug4lHbow==''; connect-src ''self''
+        translate.google.com ''nonce-js-kR8D4PR2Y1kdUHJrFbdliQ==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -307,21 +307,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 0e1e5c96-9673-4769-97b0-3711fe30cbaa
+      - cfe6f8f2-a59d-4e2b-b86d-904cde174bc9
       X-Runtime:
-      - '0.009687'
+      - '0.013922'
       X-Cloud-Trace-Context:
-      - 97284988d70b4c5687a4e22550c3f44e;o=0
+      - c0d7e4eb2e0046b488d0576dd04cec99;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 9723be6f89f27057-WAW
+      - 97245c11bbf05ab6-VIE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"error":"Not Found"}'
-  recorded_at: Wed, 20 Aug 2025 17:52:20 GMT
+  recorded_at: Wed, 20 Aug 2025 19:39:57 GMT
 recorded_with: VCR 6.2.0

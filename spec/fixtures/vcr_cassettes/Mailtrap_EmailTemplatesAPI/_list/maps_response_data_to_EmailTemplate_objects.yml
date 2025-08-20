@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mailtrap.io/api/accounts/1111111/email_templates
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates
     body:
       encoding: US-ASCII
       string: ''
@@ -23,15 +23,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:54:48 GMT
+      - Wed, 20 Aug 2025 19:39:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 95421382d9eb01fa-WAW
+      Server:
+      - cloudflare
       Vary:
       - Accept
       - Accept-Encoding
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '148'
+      - '149'
       Etag:
-      - W/"67f72cadb48b63652fc60ad28a7f1dc9"
+      - W/"c4b615d080f6cc2f1f1fad8321b831b9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,117 +67,952 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-bt0zAuWzIQB3T0ZkQVHiZQ==''; connect-src ''self'' assets.mailtrap.io
-        wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
-        *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
-        *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
-        *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo
-        *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz
-        *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com
-        *.clarity.ms *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        www.google.com wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
+        translate.google.com ''nonce-js-zvluQIKF6VTG57C2OEjUPg==''; connect-src ''self''
+        assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com *.clarity.ms
+        *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com www.google.com
+        wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
         *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
         *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
-        t.co/1/i/adsct *.growthbook.io; img-src ''self'' data: blob: assets.mailtrap.io
-        *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al
-        *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au
-        *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg
-        *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br
-        *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca
-        *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com
-        *.clarity.ms *.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        *.google.com track.hubspot.com *.facebook.com *.facebook.net *.analytics.google.com
-        *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct
-        secure.gravatar.com; frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net
-        www.googletagmanager.com www.facebook.com www.recaptcha.net; frame-ancestors
+        t.co/1/i/adsct *.growthbook.io meta-gateway.mailtrap.io translate-pa.googleapis.com;
+        img-src ''self'' data: blob: assets.mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com *.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com *.google.com track.hubspot.com
+        *.facebook.com *.facebook.net *.analytics.google.com *.google-analytics.com
+        *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct secure.gravatar.com;
+        frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net www.googletagmanager.com
+        www.facebook.com www.recaptcha.net translate.googleapis.com; frame-ancestors
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - faade360-df04-41cb-a351-7e5c7d10f78e
+      - 141ad900-7bbe-4f32-849c-be2091773329
       X-Runtime:
-      - '0.027047'
+      - '0.078274'
       X-Cloud-Trace-Context:
-      - c06fb8a0e59a42fc837232705787f206;o=0
+      - 695ce0e5b4a7448ecb84ff532b9f7242;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
-      Server:
-      - cloudflare
+      Cf-Ray:
+      - 97245b81fa803bc7-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: '[{"id":40423,"uuid":"2e0f2a45-3b0b-4742-b6b6-acb371e420b8","name":"New
+      encoding: UTF-8
+      string: '[{"id":45457,"uuid":"820d4e5f-7723-42cb-91a4-6c14bd89f1a2","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T18:52:44.513Z","updated_at":"2025-08-20T18:52:44.513Z"},{"id":45455,"uuid":"69d1f147-4ea7-4f4a-a961-afa58a892e28","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:43.611Z","updated_at":"2025-08-20T18:52:43.611Z"},{"id":45454,"uuid":"8663c8c9-b007-4138-a221-08f4f1611fb6","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:42.472Z","updated_at":"2025-08-20T18:52:43.007Z"},{"id":45453,"uuid":"8d7be82c-1b93-45a3-a28f-cd24bd4efba4","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:41.979Z","updated_at":"2025-08-20T18:52:42.231Z"},{"id":45452,"uuid":"7602321a-9291-4bc8-935b-006c893e87ff","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:41.466Z","updated_at":"2025-08-20T18:52:41.725Z"},{"id":45451,"uuid":"b6fd03c0-9df9-4047-a798-31dabcb06f1f","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:41.007Z","updated_at":"2025-08-20T18:52:41.247Z"},{"id":45450,"uuid":"307a9330-61e3-4ef2-bc4a-28ac596ee3b1","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:40.525Z","updated_at":"2025-08-20T18:52:40.763Z"},{"id":45449,"uuid":"8f6d7122-717e-4782-a7f8-8e2e8125876b","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:40.041Z","updated_at":"2025-08-20T18:52:40.274Z"},{"id":45448,"uuid":"5d4e6c77-7168-4f0e-82ad-a3322888ccd4","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:52:39.566Z","updated_at":"2025-08-20T18:52:39.777Z"},{"id":45447,"uuid":"0219c358-6531-4ed7-a2a3-915b5df6a44e","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T18:52:38.695Z","updated_at":"2025-08-20T18:52:39.341Z"},{"id":45446,"uuid":"28bd9bd4-e74a-484a-8230-393d902aa9b4","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-23T06:54:25.377Z","updated_at":"2025-06-23T06:54:25.377Z"},{"id":40422,"uuid":"f5ac55d2-f2a8-4182-b440-055119994b0a","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:25.154Z","updated_at":"2025-06-23T06:54:25.154Z"},{"id":40421,"uuid":"58c27b45-03ac-49e6-85cc-48c090d1c119","name":"New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:52:37.884Z","updated_at":"2025-08-20T18:52:37.884Z"},{"id":45445,"uuid":"ac95676f-768b-4d68-b8bc-dd43e1fc2692","name":"New
         Template","category":"New Category","subject":"New Subject","body_html":"<div>New
-        HTML</div>","body_text":"New Text","created_at":"2025-06-23T06:54:24.923Z","updated_at":"2025-06-23T06:54:24.923Z"},{"id":40420,"uuid":"b778baa9-98ee-4a47-9f75-97555de7d550","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:24.694Z","updated_at":"2025-06-23T06:54:24.694Z"},{"id":40419,"uuid":"69d611fb-3d99-40ac-ae89-ed5018934f4e","name":"Test
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:52:37.639Z","updated_at":"2025-08-20T18:52:37.639Z"},{"id":45444,"uuid":"c1742805-5c39-496a-9eab-a4e14000fda9","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:24.191Z","updated_at":"2025-06-23T06:54:24.191Z"},{"id":40418,"uuid":"e74bb071-0bf6-4c4d-a075-c58eeca8e3d7","name":"Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:52:37.200Z","updated_at":"2025-08-20T18:52:37.200Z"},{"id":45443,"uuid":"e5cec737-17b0-435d-a9f8-01670d1ca13f","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:23.740Z","updated_at":"2025-06-23T06:54:23.740Z"},{"id":40417,"uuid":"4d2909fd-6c42-4581-9ffe-798fede44ddb","name":"Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:52:36.757Z","updated_at":"2025-08-20T18:52:36.757Z"},{"id":45442,"uuid":"7fca12ce-fc58-4399-873f-6a7d73c911b6","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T18:51:56.079Z","updated_at":"2025-08-20T18:51:56.079Z"},{"id":45440,"uuid":"b1c57a73-86e0-4d76-848b-ce3b48b57ef9","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:55.187Z","updated_at":"2025-08-20T18:51:55.187Z"},{"id":45439,"uuid":"637f0efe-73c4-4ba8-bdce-84d16043fd8d","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:54.024Z","updated_at":"2025-08-20T18:51:54.543Z"},{"id":45438,"uuid":"04fe2dc3-af32-4cb8-bad0-bf1ffc81904f","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:53.523Z","updated_at":"2025-08-20T18:51:53.801Z"},{"id":45437,"uuid":"89a01927-ac93-4b0f-bdb1-e04a8b4f636b","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:53.026Z","updated_at":"2025-08-20T18:51:53.269Z"},{"id":45436,"uuid":"35d5fdf5-aa85-4c11-94a1-6828bf550a41","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:52.271Z","updated_at":"2025-08-20T18:51:52.779Z"},{"id":45435,"uuid":"0700b153-1130-46f6-8bad-5675a93006e8","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:51.809Z","updated_at":"2025-08-20T18:51:52.042Z"},{"id":45434,"uuid":"8bc908ed-5a09-4da9-b040-78494d566fed","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:51.303Z","updated_at":"2025-08-20T18:51:51.545Z"},{"id":45433,"uuid":"9e2ab9b9-4057-474d-bc0f-7deb1961e2c8","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:51:50.442Z","updated_at":"2025-08-20T18:51:51.006Z"},{"id":45432,"uuid":"87b8590b-d449-4d82-a11a-93140c362ac1","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T18:51:49.940Z","updated_at":"2025-08-20T18:51:50.198Z"},{"id":45431,"uuid":"3d227272-f9b1-4033-88f7-d286b021606a","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:51:49.139Z","updated_at":"2025-08-20T18:51:49.139Z"},{"id":45430,"uuid":"639828f8-64a9-41f3-835f-4c52e7b5777e","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:51:48.522Z","updated_at":"2025-08-20T18:51:48.522Z"},{"id":45429,"uuid":"a3751442-2bb0-4d49-81b2-a6946f126352","name":"Test
         Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
-        HTML</div>","body_text":"Test Text","created_at":"2025-06-23T06:54:23.292Z","updated_at":"2025-06-23T06:54:23.292Z"},{"id":40416,"uuid":"2a770112-44da-4da1-8626-6131343b57e9","name":"Original
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:51:47.376Z","updated_at":"2025-08-20T18:51:47.376Z"},{"id":45428,"uuid":"3eb1133b-1add-4baa-ba56-ed3d2aa26e07","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:51:46.512Z","updated_at":"2025-08-20T18:51:46.512Z"},{"id":45427,"uuid":"2efa635e-7a38-4c82-a53a-ceb896ac67c3","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T18:48:33.124Z","updated_at":"2025-08-20T18:48:33.124Z"},{"id":45425,"uuid":"7b00eac5-566a-4c64-9230-67bf73be868e","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:22.600Z","updated_at":"2025-06-23T06:54:22.600Z"},{"id":40415,"uuid":"49f89f62-5f59-4925-9e6a-441d95830d95","name":"Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:31.718Z","updated_at":"2025-08-20T18:48:31.718Z"},{"id":45424,"uuid":"86aa3ee5-7826-4d3a-8253-8b451e28e2e6","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:30.650Z","updated_at":"2025-08-20T18:48:31.197Z"},{"id":45423,"uuid":"92615713-0baa-4b4d-a125-3dfcd65adb1b","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:30.209Z","updated_at":"2025-08-20T18:48:30.422Z"},{"id":45422,"uuid":"045cc5bf-9297-4218-bd95-2327b3852cb7","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:29.776Z","updated_at":"2025-08-20T18:48:29.981Z"},{"id":45421,"uuid":"9e890b30-57da-46a2-8afc-6e085acaf4a0","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:29.305Z","updated_at":"2025-08-20T18:48:29.544Z"},{"id":45420,"uuid":"e0e16097-a24a-485d-b0a1-d84c927d39f2","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:28.791Z","updated_at":"2025-08-20T18:48:29.043Z"},{"id":45419,"uuid":"6aed3bf5-7861-4188-b3f1-1eb5679dd4af","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:27.675Z","updated_at":"2025-08-20T18:48:28.214Z"},{"id":45418,"uuid":"e47e83ed-db95-461f-8c23-6f6f6ff16e76","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:48:26.878Z","updated_at":"2025-08-20T18:48:27.419Z"},{"id":45417,"uuid":"e6a059cf-529e-4a29-aa7f-8fbbe55a420d","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T18:48:26.369Z","updated_at":"2025-08-20T18:48:26.602Z"},{"id":45416,"uuid":"ef01bd41-1cc4-4076-995b-a19047898655","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:48:25.598Z","updated_at":"2025-08-20T18:48:25.598Z"},{"id":45415,"uuid":"1ea4d91b-78ac-49e6-a108-6b5b9439cca2","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:48:25.018Z","updated_at":"2025-08-20T18:48:25.018Z"},{"id":45414,"uuid":"b6a9999a-5e0c-471f-80c1-21903270d91c","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:48:24.237Z","updated_at":"2025-08-20T18:48:24.237Z"},{"id":45413,"uuid":"b4c6f066-0332-4b3e-be72-70e0bd6e848b","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:48:23.488Z","updated_at":"2025-08-20T18:48:23.488Z"},{"id":45412,"uuid":"5564c9c2-4e1c-4944-9e6b-f7607edbecf2","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T18:46:44.723Z","updated_at":"2025-08-20T18:46:44.723Z"},{"id":45410,"uuid":"1f68d089-f9d7-438a-8f79-c5ae4acec362","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:22.134Z","updated_at":"2025-06-23T06:54:22.134Z"}]'
-  recorded_at: Mon, 23 Jun 2025 06:54:48 GMT
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:42.665Z","updated_at":"2025-08-20T18:46:42.665Z"},{"id":45409,"uuid":"eec6aa99-5f19-4191-8fe3-d143e52f6b9d","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:41.589Z","updated_at":"2025-08-20T18:46:42.128Z"},{"id":45408,"uuid":"e48813f2-2594-4d5a-a3d0-9683bf75f7c2","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:41.130Z","updated_at":"2025-08-20T18:46:41.359Z"},{"id":45407,"uuid":"e0891834-cec6-445b-8eab-433dcf3a053d","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:40.618Z","updated_at":"2025-08-20T18:46:40.845Z"},{"id":45406,"uuid":"91e81486-b027-421f-9522-842f426b8a18","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:39.829Z","updated_at":"2025-08-20T18:46:40.055Z"},{"id":45405,"uuid":"fddd538a-d0bb-4fa2-839b-02af1ad526ca","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:39.365Z","updated_at":"2025-08-20T18:46:39.604Z"},{"id":45404,"uuid":"2276fec6-90bc-40ef-8124-aa051f63749a","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:38.558Z","updated_at":"2025-08-20T18:46:39.120Z"},{"id":45403,"uuid":"e21d0a48-8e17-44b2-b2b6-770ede600650","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T18:46:37.771Z","updated_at":"2025-08-20T18:46:37.986Z"},{"id":45402,"uuid":"26f13d52-2a0c-46f0-bb0f-5671465a91b0","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T18:46:36.318Z","updated_at":"2025-08-20T18:46:36.894Z"},{"id":45401,"uuid":"3ec616db-a996-4db9-83b9-48e359c1e305","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:46:35.180Z","updated_at":"2025-08-20T18:46:35.180Z"},{"id":45400,"uuid":"d24a75b3-efdd-4573-b82b-8d7d2782bc62","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T18:46:34.948Z","updated_at":"2025-08-20T18:46:34.948Z"},{"id":45399,"uuid":"1c778445-5fc7-4035-a408-72ead1ea41a7","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:46:34.138Z","updated_at":"2025-08-20T18:46:34.138Z"},{"id":45398,"uuid":"0a0379e5-38de-4d9e-9f42-daa5ea2d14c0","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T18:46:33.728Z","updated_at":"2025-08-20T18:46:33.728Z"},{"id":45391,"uuid":"79a70773-086a-4bd9-b0f7-6c57dbfc3317","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T17:55:39.505Z","updated_at":"2025-08-20T17:55:39.505Z"},{"id":45389,"uuid":"d80bf682-3768-499a-980a-7781e3c3d9d7","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:38.640Z","updated_at":"2025-08-20T17:55:38.640Z"},{"id":45388,"uuid":"4edb4f91-b900-4da6-a311-0b56ba721b19","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:38.208Z","updated_at":"2025-08-20T17:55:38.427Z"},{"id":45387,"uuid":"ce19703a-939b-4cd2-b459-beddab915200","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:37.764Z","updated_at":"2025-08-20T17:55:37.986Z"},{"id":45386,"uuid":"17230553-149b-40a0-973f-1fb6170e91ba","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:36.701Z","updated_at":"2025-08-20T17:55:37.231Z"},{"id":45385,"uuid":"510a5fce-0cc0-4770-9d33-c517d583aa3f","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:35.963Z","updated_at":"2025-08-20T17:55:36.489Z"},{"id":45384,"uuid":"b698b735-ce51-432a-9a19-b34ee1c511ad","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:35.439Z","updated_at":"2025-08-20T17:55:35.743Z"},{"id":45383,"uuid":"1b41ca5a-0ab7-4df2-96bf-21b9008c78f8","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:34.252Z","updated_at":"2025-08-20T17:55:34.810Z"},{"id":45382,"uuid":"0eb1678a-83b4-401a-b812-3670dc2100c0","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:55:33.480Z","updated_at":"2025-08-20T17:55:34.022Z"},{"id":45381,"uuid":"619a8907-1c2d-4cc5-9213-8cfa78db33b4","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T17:55:33.016Z","updated_at":"2025-08-20T17:55:33.263Z"},{"id":45380,"uuid":"e89a8e8e-46df-4e3e-b1ad-ac1e5e91e811","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T17:55:32.218Z","updated_at":"2025-08-20T17:55:32.218Z"},{"id":45379,"uuid":"d72373dc-6428-42e5-a114-459019e30019","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T17:55:31.646Z","updated_at":"2025-08-20T17:55:31.646Z"},{"id":45378,"uuid":"e2d05698-de28-4bcf-9d1e-94b6cb72eccf","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T17:55:30.922Z","updated_at":"2025-08-20T17:55:30.922Z"},{"id":45377,"uuid":"95767211-b04e-4d42-af96-2e6a7e69663b","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T17:55:29.837Z","updated_at":"2025-08-20T17:55:29.837Z"},{"id":45371,"uuid":"435555c9-5429-4349-ae64-c4947107e95b","name":"Template
+        to Delete","category":"Delete Category","subject":"Delete Subject","body_html":"<div>Delete
+        HTML</div>","body_text":"Delete Text","created_at":"2025-08-20T17:36:05.057Z","updated_at":"2025-08-20T17:36:05.057Z"},{"id":45369,"uuid":"0342d269-1806-43c0-b31f-c4f97b4dfe8d","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:03.807Z","updated_at":"2025-08-20T17:36:03.807Z"},{"id":45368,"uuid":"e4d12a06-5f23-4c52-bae7-b00061f79321","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:03.031Z","updated_at":"2025-08-20T17:36:03.250Z"},{"id":45367,"uuid":"996452ef-433b-4544-8316-a4ac453e63e6","name":"Original
+        Template","category":"Updated Category","subject":"Original Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:02.571Z","updated_at":"2025-08-20T17:36:02.794Z"},{"id":45366,"uuid":"440699c6-0625-413f-bbe4-5c25dc87aa73","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:02.163Z","updated_at":"2025-08-20T17:36:02.367Z"},{"id":45365,"uuid":"73d29ebc-ea5e-4504-ae7d-20987836dd84","name":"Original
+        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
+        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:01.676Z","updated_at":"2025-08-20T17:36:01.929Z"},{"id":45364,"uuid":"12b5383d-a38e-4fc5-b06b-fbae392ffe2c","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:36:00.501Z","updated_at":"2025-08-20T17:36:01.029Z"},{"id":45363,"uuid":"24a2369f-cdd6-4d55-9ed3-1d70e883a310","name":"Original
+        Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:35:59.709Z","updated_at":"2025-08-20T17:35:59.972Z"},{"id":45362,"uuid":"b8499534-2863-4d3c-971c-a6cc9aad86ca","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Original
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T17:35:58.933Z","updated_at":"2025-08-20T17:35:59.160Z"},{"id":45361,"uuid":"f523f3b0-02a2-4a21-9b61-8bf1e7e7dde3","name":"Updated
+        Template","category":"Updated Category","subject":"Updated Subject","body_html":"<div>Updated
+        HTML</div>","body_text":"Updated Text","created_at":"2025-08-20T17:35:58.128Z","updated_at":"2025-08-20T17:35:58.346Z"},{"id":45360,"uuid":"2eead4f9-e230-4891-8f2e-ff3063b11672","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T17:35:57.357Z","updated_at":"2025-08-20T17:35:57.357Z"},{"id":45359,"uuid":"baa0c903-ed41-4d97-8580-a3860748ca97","name":"New
+        Template","category":"New Category","subject":"New Subject","body_html":"<div>New
+        HTML</div>","body_text":"New Text","created_at":"2025-08-20T17:35:57.115Z","updated_at":"2025-08-20T17:35:57.115Z"},{"id":45358,"uuid":"72dfe9fc-ceed-4c44-beb8-127a4ca5fb3d","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T17:35:56.377Z","updated_at":"2025-08-20T17:35:56.377Z"},{"id":45357,"uuid":"f13a5adf-a80e-48b2-b380-68dd8d4db50e","name":"Test
+        Template","category":"Test Category","subject":"Test Subject","body_html":"<div>Test
+        HTML</div>","body_text":"Test Text","created_at":"2025-08-20T17:35:55.286Z","updated_at":"2025-08-20T17:35:55.286Z"},{"id":32465,"uuid":"b1a4faf4-581c-4271-a308-40e5b91aed5f","name":"Test","category":"Test","subject":"Test","body_html":"<!DOCTYPE
+        html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\"
+        xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n    <!--[if
+        gte mso 9]>\n    <xml>\n        <o:OfficeDocumentSettings>\n            <o:AllowPNG
+        />\n            <o:PixelsPerInch>96</o:PixelsPerInch>\n        </o:OfficeDocumentSettings>\n    </xml>\n    <![endif]-->\n    <meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n    <meta
+        name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n    <meta
+        name=\"x-apple-disable-message-reformatting\" />\n    <!--[if !mso]><!-->\n    <meta
+        http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <!--<![endif]-->\n    <title></title>\n    <style
+        type=\"text/css\">\n        @media only screen and (min-width: 520px) {\n            .u-row
+        {\n                width: 500px !important;\n            }\n            .u-row
+        .u-col {\n                vertical-align: top;\n            }\n            .u-row
+        .u-col-50 {\n                width: 250px !important;\n            }\n            .u-row
+        .u-col-100 {\n                width: 500px !important;\n            }\n        }\n        @media
+        (max-width: 520px) {\n            .u-row-container {\n                max-width:
+        100% !important;\n                padding-left: 0 !important;\n                padding-right:
+        0 !important;\n            }\n            .u-row .u-col {\n                min-width:
+        320px !important;\n                max-width: 100% !important;\n                display:
+        block !important;\n            }\n            .u-row {\n                width:
+        100% !important;\n            }\n            .u-col {\n                width:
+        100% !important;\n            }\n            .u-col > div {\n                margin:
+        0 auto;\n            }\n        }\n        body {\n            margin: 0;\n            padding:
+        0;\n        }\n        table,\n        td,\n        tr {\n            vertical-align:
+        top;\n            border-collapse: collapse;\n        }\n        p {\n            margin:
+        0;\n        }\n        .ie-container table,\n        .mso-container table
+        {\n            table-layout: fixed;\n        }\n        * {\n            line-height:
+        inherit;\n        }\n        a[x-apple-data-detectors=\"true\"] {\n            color:
+        inherit !important;\n            text-decoration: none !important;\n        }\n        table,\n        td
+        {\n            color: #000;\n        }\n        #u_body a {\n            color:
+        #00e;\n            text-decoration: underline;\n        }\n        @media
+        (max-width: 480px) {\n            #u_content_button_2 .v-padding {\n                padding:
+        10px 20px !important;\n            }\n        }\n    </style>\n</head>\n<body
+        class=\"clean-body u_body\" style=\"margin: 0; padding: 0; -webkit-text-size-adjust:
+        100%; background-color: #f6fafb; color: #000;\">\n<!--[if IE]><div class=\"ie-container\"><![endif]-->\n<!--[if
+        mso]><div class=\"mso-container\"><![endif]-->\n<table\n        id=\"u_body\"\n        style=\"border-collapse:
+        collapse; table-layout: fixed; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace:
+        0; vertical-align: top; min-width: 320px; margin: 0 auto; background-color:
+        #f6fafb; width: 100%;\"\n        cellpadding=\"0\"\n        cellspacing=\"0\"\n>\n    <tbody>\n    <tr
+        style=\"vertical-align: top;\">\n        <td style=\"word-break: break-word;
+        border-collapse: collapse !important; vertical-align: top;\">\n            <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        align=\"center\" style=\"background-color: #f6fafb;\"><![endif]-->\n            <div
+        class=\"u-row-container\" style=\"padding: 0; background-color: transparent;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: transparent;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: transparent;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-100\" style=\"max-width: 320px; min-width: 500px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 30px 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: center; word-wrap:
+        break-word;\">\n                                                <p style=\"line-height:
+        140%;\">{{company_info_name}}<span style=\"color: #7e8c8d; line-height: 19.6px;\">
+        </span></p>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 0; background-color: #fff;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: #fff;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px;background-color: #ffffff;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: #ffffff;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-100\" style=\"max-width: 320px; min-width: 500px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 30px 10px
+        10px; font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <!--[if
+        mso]><table width=\"100%\"><tr><td><![endif]-->\n                                            <h1
+        style=\"margin: 0; line-height: 140%; text-align: center; word-wrap: break-word;
+        font-size: 26px; font-weight: 400;\">\n                                                                    <span>\n                                                                        <span>\n                                                                            <span>\n                                                                                <span>\n                                                                                    <span>\n                                                                                        <span>\n                                                                                            <span>\n                                                                                                <span><strong>Campaign
+        name</strong></span>\n                                                                                            </span>\n                                                                                        </span>\n                                                                                    </span>\n                                                                                </span>\n                                                                            </span>\n                                                                        </span>\n                                                                    </span>\n                                            </h1>\n                                            <!--[if
+        mso]></td></tr></table><![endif]-->\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px 10px
+        30px; font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n                                                <tr>\n                                                    <td
+        style=\"padding-right: 0; padding-left: 0;\" align=\"center\">\n                                                        <img\n                                                                align=\"center\"\n                                                                border=\"0\"\n                                                                src=\"https://cdn.tools.unlayer.com/image/placeholder.png\"\n                                                                alt=\"\"\n                                                                title=\"\"\n                                                                style=\"\n                                                                                    outline:
+        0;\n                                                                                    text-decoration:
+        none;\n                                                                                    -ms-interpolation-mode:
+        bicubic;\n                                                                                    clear:
+        both;\n                                                                                    display:
+        inline-block !important;\n                                                                                    border:
+        none;\n                                                                                    height:
+        auto;\n                                                                                    float:
+        none;\n                                                                                    width:
+        100%;\n                                                                                    max-width:
+        480px;\n                                                                                \"\n                                                                width=\"480\"\n                                                        />\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 0 0 20px; background-color: #fff;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: transparent;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px 0px 20px;background-color: #ffffff;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: transparent;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"250\" style=\"width: 250px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-50\" style=\"max-width: 320px; min-width: 250px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n                                                <tr>\n                                                    <td
+        style=\"padding-right: 0; padding-left: 0;\" align=\"center\">\n                                                        <img\n                                                                align=\"center\"\n                                                                border=\"0\"\n                                                                src=\"https://cdn.tools.unlayer.com/image/placeholder.png\"\n                                                                alt=\"\"\n                                                                title=\"\"\n                                                                style=\"\n                                                                                    outline:
+        0;\n                                                                                    text-decoration:
+        none;\n                                                                                    -ms-interpolation-mode:
+        bicubic;\n                                                                                    clear:
+        both;\n                                                                                    display:
+        inline-block !important;\n                                                                                    border:
+        none;\n                                                                                    height:
+        auto;\n                                                                                    float:
+        none;\n                                                                                    width:
+        100%;\n                                                                                    max-width:
+        230px;\n                                                                                \"\n                                                                width=\"230\"\n                                                        />\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\"><p
+        style=\"line-height: 140%;\">Description</p></div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]><td
+        align=\"center\" width=\"250\" style=\"width: 250px;padding: 0px;border-top:
+        0px solid transparent;border-left: 0px solid transparent;border-right: 0px
+        solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius:
+        0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-50\" style=\"max-width: 320px; min-width: 250px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n                                                <tr>\n                                                    <td
+        style=\"padding-right: 0; padding-left: 0;\" align=\"center\">\n                                                        <img\n                                                                align=\"center\"\n                                                                border=\"0\"\n                                                                src=\"https://cdn.tools.unlayer.com/image/placeholder.png\"\n                                                                alt=\"\"\n                                                                title=\"\"\n                                                                style=\"\n                                                                                    outline:
+        0;\n                                                                                    text-decoration:
+        none;\n                                                                                    -ms-interpolation-mode:
+        bicubic;\n                                                                                    clear:
+        both;\n                                                                                    display:
+        inline-block !important;\n                                                                                    border:
+        none;\n                                                                                    height:
+        auto;\n                                                                                    float:
+        none;\n                                                                                    width:
+        100%;\n                                                                                    max-width:
+        230px;\n                                                                                \"\n                                                                width=\"230\"\n                                                        />\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\"><p
+        style=\"line-height: 140%;\">Description</p></div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 0 0 30px; background-color: #fff;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: transparent;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px 0px 30px;background-color: #ffffff;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: transparent;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"250\" style=\"width: 250px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-50\" style=\"max-width: 320px; min-width: 250px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n                                                <tr>\n                                                    <td
+        style=\"padding-right: 0; padding-left: 0;\" align=\"center\">\n                                                        <img\n                                                                align=\"center\"\n                                                                border=\"0\"\n                                                                src=\"https://cdn.tools.unlayer.com/image/placeholder.png\"\n                                                                alt=\"\"\n                                                                title=\"\"\n                                                                style=\"\n                                                                                    outline:
+        0;\n                                                                                    text-decoration:
+        none;\n                                                                                    -ms-interpolation-mode:
+        bicubic;\n                                                                                    clear:
+        both;\n                                                                                    display:
+        inline-block !important;\n                                                                                    border:
+        none;\n                                                                                    height:
+        auto;\n                                                                                    float:
+        none;\n                                                                                    width:
+        100%;\n                                                                                    max-width:
+        230px;\n                                                                                \"\n                                                                width=\"230\"\n                                                        />\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\"><p
+        style=\"line-height: 140%;\">Description</p></div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]><td
+        align=\"center\" width=\"250\" style=\"width: 250px;padding: 0px;border-top:
+        0px solid transparent;border-left: 0px solid transparent;border-right: 0px
+        solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius:
+        0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-50\" style=\"max-width: 320px; min-width: 250px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n                                                <tr>\n                                                    <td
+        style=\"padding-right: 0; padding-left: 0;\" align=\"center\">\n                                                        <img\n                                                                align=\"center\"\n                                                                border=\"0\"\n                                                                src=\"https://cdn.tools.unlayer.com/image/placeholder.png\"\n                                                                alt=\"\"\n                                                                title=\"\"\n                                                                style=\"\n                                                                                    outline:
+        0;\n                                                                                    text-decoration:
+        none;\n                                                                                    -ms-interpolation-mode:
+        bicubic;\n                                                                                    clear:
+        both;\n                                                                                    display:
+        inline-block !important;\n                                                                                    border:
+        none;\n                                                                                    height:
+        auto;\n                                                                                    float:
+        none;\n                                                                                    width:
+        100%;\n                                                                                    max-width:
+        230px;\n                                                                                \"\n                                                                width=\"230\"\n                                                        />\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;\"><p
+        style=\"line-height: 140%;\">Description</p></div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 0; background-color: #fff;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: transparent;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px;background-color: #ffffff;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: transparent;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-100\" style=\"max-width: 320px; min-width: 500px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table\n                                                    height=\"0px\"\n                                                    align=\"center\"\n                                                    border=\"0\"\n                                                    cellpadding=\"0\"\n                                                    cellspacing=\"0\"\n                                                    width=\"100%\"\n                                                    style=\"\n                                                                        border-collapse:
+        collapse;\n                                                                        table-layout:
+        fixed;\n                                                                        border-spacing:
+        0;\n                                                                        mso-table-lspace:
+        0;\n                                                                        mso-table-rspace:
+        0;\n                                                                        vertical-align:
+        top;\n                                                                        border-top:
+        1px solid #e6e4e4;\n                                                                        -ms-text-size-adjust:
+        100%;\n                                                                        -webkit-text-size-adjust:
+        100%;\n                                                                    \"\n                                            >\n                                                <tbody>\n                                                <tr
+        style=\"vertical-align: top;\">\n                                                    <td\n                                                            style=\"\n                                                                                    word-break:
+        break-word;\n                                                                                    border-collapse:
+        collapse !important;\n                                                                                    vertical-align:
+        top;\n                                                                                    font-size:
+        0;\n                                                                                    line-height:
+        0;\n                                                                                    mso-line-height-rule:
+        exactly;\n                                                                                    -ms-text-size-adjust:
+        100%;\n                                                                                    -webkit-text-size-adjust:
+        100%;\n                                                                                \"\n                                                    >\n                                                        <span>&#160;</span>\n                                                    </td>\n                                                </tr>\n                                                </tbody>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 20px 0 30px; background-color:
+        #fff;\">\n                <div class=\"u-row\" style=\"margin: 0 auto; min-width:
+        320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word;
+        word-break: break-word; background-color: transparent;\">\n                    <div
+        style=\"border-collapse: collapse; display: table; width: 100%; height: 100%;
+        background-color: transparent;\">\n                        <!--[if (mso)|(IE)]><table
+        width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding:
+        20px 0px 30px;background-color: #ffffff;\" align=\"center\"><table cellpadding=\"0\"
+        cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr style=\"background-color:
+        transparent;\"><![endif]-->\n                        <!--[if (mso)|(IE)]><td
+        align=\"center\" width=\"500\" style=\"width: 500px;padding: 0px;border-top:
+        0px solid transparent;border-left: 0px solid transparent;border-right: 0px
+        solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius:
+        0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-100\" style=\"max-width: 320px; min-width: 500px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px;
+        font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-size: 14px; line-height: 140%; text-align: center; word-wrap:
+        break-word;\"><p style=\"line-height: 140%;\">Take a look for more exiting
+        propositions:</p></div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        id=\"u_content_button_2\" style=\"font-family: arial, helvetica, sans-serif;\"
+        role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 10px 10px
+        30px; font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <!--[if
+        mso]>\n                                            <style>\n                                                .v-button
+        {\n                                                    background: transparent
+        !important;\n                                                }\n                                            </style>\n                                            <![endif]-->\n                                            <div
+        align=\"center\">\n                                                <!--[if
+        mso]><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\"
+        href=\"\" style=\"height:37px; v-text-anchor:middle; width:384px;\" arcsize=\"11%\"  stroke=\"f\"
+        fillcolor=\"#4c83ee\"><w:anchorlock/><center style=\"color:#FFFFFF;\"><![endif]-->\n                                                <a\n                                                        href=\"\"\n                                                        target=\"_blank\"\n                                                        class=\"v-button\"\n                                                        style=\"\n                                                                            box-sizing:
+        border-box;\n                                                                            display:
+        inline-block;\n                                                                            text-decoration:
+        none;\n                                                                            -webkit-text-size-adjust:
+        none;\n                                                                            text-align:
+        center;\n                                                                            color:
+        #fff;\n                                                                            background-color:
+        #4c83ee;\n                                                                            border-radius:
+        4px;\n                                                                            -webkit-border-radius:
+        4px;\n                                                                            -moz-border-radius:
+        4px;\n                                                                            width:
+        80%;\n                                                                            max-width:
+        100%;\n                                                                            overflow-wrap:
+        break-word;\n                                                                            word-break:
+        break-word;\n                                                                            word-wrap:
+        break-word;\n                                                                            mso-border-alt:
+        none;\n                                                                            font-size:
+        14px;\n                                                                        \"\n                                                >\n                                                    <span
+        class=\"v-padding\" style=\"display: block; padding: 10px 50px; line-height:
+        120%;\"><span style=\"line-height: 16.8px;\">Call to action</span></span>\n                                                </a>\n                                                <!--[if
+        mso]></center></v:roundrect><![endif]-->\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <div
+        class=\"u-row-container\" style=\"padding: 0; background-color: transparent;\">\n                <div
+        class=\"u-row\" style=\"margin: 0 auto; min-width: 320px; max-width: 500px;
+        overflow-wrap: break-word; word-wrap: break-word; word-break: break-word;
+        background-color: transparent;\">\n                    <div style=\"border-collapse:
+        collapse; display: table; width: 100%; height: 100%; background-color: transparent;\">\n                        <!--[if
+        (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td
+        style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table
+        cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:500px;\"><tr
+        style=\"background-color: transparent;\"><![endif]-->\n                        <!--[if
+        (mso)|(IE)]><td align=\"center\" width=\"500\" style=\"width: 500px;padding:
+        0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right:
+        0px solid transparent;border-bottom: 0px solid transparent;border-radius:
+        0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;\" valign=\"top\"><![endif]-->\n                        <div
+        class=\"u-col u-col-100\" style=\"max-width: 320px; min-width: 500px; display:
+        table-cell; vertical-align: top;\">\n                            <div style=\"height:
+        100%; width: 100% !important; border-radius: 0; -webkit-border-radius: 0;
+        -moz-border-radius: 0;\">\n                                <!--[if (!mso)&(!IE)]><!--><div\n                                    style=\"\n                                                    box-sizing:
+        border-box;\n                                                    height: 100%;\n                                                    padding:
+        0;\n                                                    border-top: 0 solid
+        transparent;\n                                                    border-left:
+        0 solid transparent;\n                                                    border-right:
+        0 solid transparent;\n                                                    border-bottom:
+        0 solid transparent;\n                                                    border-radius:
+        0;\n                                                    -webkit-border-radius:
+        0;\n                                                    -moz-border-radius:
+        0;\n                                                \"\n                            ><!--<![endif]-->\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 40px 10px
+        24px; font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <table\n                                                    height=\"0px\"\n                                                    align=\"center\"\n                                                    border=\"0\"\n                                                    cellpadding=\"0\"\n                                                    cellspacing=\"0\"\n                                                    width=\"100%\"\n                                                    style=\"\n                                                                        border-collapse:
+        collapse;\n                                                                        table-layout:
+        fixed;\n                                                                        border-spacing:
+        0;\n                                                                        mso-table-lspace:
+        0;\n                                                                        mso-table-rspace:
+        0;\n                                                                        vertical-align:
+        top;\n                                                                        border-top:
+        1px solid #e0dfdf;\n                                                                        -ms-text-size-adjust:
+        100%;\n                                                                        -webkit-text-size-adjust:
+        100%;\n                                                                    \"\n                                            >\n                                                <tbody>\n                                                <tr
+        style=\"vertical-align: top;\">\n                                                    <td\n                                                            style=\"\n                                                                                    word-break:
+        break-word;\n                                                                                    border-collapse:
+        collapse !important;\n                                                                                    vertical-align:
+        top;\n                                                                                    font-size:
+        0;\n                                                                                    line-height:
+        0;\n                                                                                    mso-line-height-rule:
+        exactly;\n                                                                                    -ms-text-size-adjust:
+        100%;\n                                                                                    -webkit-text-size-adjust:
+        100%;\n                                                                                \"\n                                                    >\n                                                        <span>&#160;</span>\n                                                    </td>\n                                                </tr>\n                                                </tbody>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 0; font-family:
+        arial, helvetica, sans-serif;\" align=\"left\">\n                                            <div
+        style=\"font-family: helvetica, sans-serif; font-size: 13px; line-height:
+        140%; text-align: center; word-wrap: break-word;\">\n                                                <p
+        style=\"line-height: 140%;\">\n                                                                        <span
+        style=\"color: #8b949f; line-height: 18.2px;\">\n                                                                            ©
+        {{company_info_name}} &nbsp;\n                                                                            <span\n                                                                                    style=\"line-height:
+        18.2px;\"\n                                                                                    data-metadata=\"<!--(figmeta)eyJmaWxlS2V5IjoiMjRBblpkSE5yYWlJRDZhOURUTllReSIsInBhc3RlSUQiOjQ2NDQ0OTk5NSwiZGF0YVR5cGUiOiJzY2VuZSJ9Cg==(/figmeta)-->\"\n                                                                            ></span>\n                                                                            <span\n                                                                                    style=\"line-height:
+        18.2px;\"\n                                                                                    data-buffer=\"<!--(figma)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(/figma)-->\"\n                                                                            ></span>\n                                                                            •
+        &nbsp;{{company_info_address}} &nbsp;• &nbsp;{{company_info_city}}, {{company_info_zip_code}},
+        {{company_info_country}}\n                                                                        </span>\n                                                </p>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <table
+        style=\"font-family: arial, helvetica, sans-serif;\" role=\"presentation\"
+        cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n                                    <tbody>\n                                    <tr>\n                                        <td
+        style=\"overflow-wrap: break-word; word-break: break-word; padding: 16px 10px
+        40px; font-family: arial, helvetica, sans-serif;\" align=\"left\">\n                                            <!--[if
+        mso]>\n                                            <style>\n                                                .v-button
+        {\n                                                    background: transparent
+        !important;\n                                                }\n                                            </style>\n                                            <![endif]-->\n                                            <div
+        align=\"center\">\n                                                <!--[if
+        mso]><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\"
+        href=\"__unsubscribe_url__\" style=\"height:16px; v-text-anchor:middle; width:72px;\"
+        arcsize=\"25%\"  stroke=\"f\" fillcolor=\"#ffffff\"><w:anchorlock/><center
+        style=\"color:#8b949f;font-family: helvetica,sans-serif; \"><![endif]-->\n                                                <a\n                                                        href=\"__unsubscribe_url__\"\n                                                        target=\"_blank\"\n                                                        class=\"v-button\"\n                                                        style=\"\n                                                                            box-sizing:
+        border-box;\n                                                                            display:
+        inline-block;\n                                                                            text-decoration:
+        none;\n                                                                            -webkit-text-size-adjust:
+        none;\n                                                                            text-align:
+        center;\n                                                                            color:
+        #8b949f;\n                                                                            background-color:
+        #fff;\n                                                                            border-radius:
+        4px;\n                                                                            -webkit-border-radius:
+        4px;\n                                                                            -moz-border-radius:
+        4px;\n                                                                            width:
+        auto;\n                                                                            max-width:
+        100%;\n                                                                            overflow-wrap:
+        break-word;\n                                                                            word-break:
+        break-word;\n                                                                            word-wrap:
+        break-word;\n                                                                            mso-border-alt:
+        none;\n                                                                            font-family:
+        helvetica, sans-serif;\n                                                                            font-size:
+        13px;\n                                                                        \"\n                                                >\n                                                                        <span
+        class=\"v-padding\" style=\"display: block; padding: 0; line-height: 120%;\">\n                                                                            <span
+        style=\"text-decoration: underline; line-height: 15.6px;\"><span style=\"line-height:
+        15.6px;\">Unsubscribe</span></span>\n                                                                        </span>\n                                                </a>\n                                                <!--[if
+        mso]></center></v:roundrect><![endif]-->\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    </tbody>\n                                </table>\n                                <!--[if
+        (!mso)&(!IE)]><!-->\n                            </div>\n                                <!--<![endif]-->\n                            </div>\n                        </div>\n                        <!--[if
+        (mso)|(IE)]></td><![endif]-->\n                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->\n                    </div>\n                </div>\n            </div>\n            <!--[if
+        (mso)|(IE)]></td></tr></table><![endif]-->\n        </td>\n    </tr>\n    </tbody>\n</table>\n<!--[if
+        mso]></div><![endif]-->\n<!--[if IE]></div><![endif]-->\n</body>\n</html>\n","body_text":null,"created_at":"2025-03-21T10:47:23.628Z","updated_at":"2025-03-21T10:47:25.874Z"},{"id":7337,"uuid":"a9ec7cef-146c-4ea0-83e1-7040bf8dd556","name":"Welcome","category":"New
+        Template","subject":"Welcome to [[product.name]], {{user_name}}!","body_html":"<!--
+        Change values in [brackets] in the template and pass { {variables} } with
+        API call -->\n<!-- Feel free to adjust it to your needs and delete all these
+        comments-->\n<!-- Also adapt TXT version of this email -->\n<!DOCTYPE html>\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\">\n\n<head>\n  <title></title>\n  <!--[if
+        !mso]><!-- -->\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <!--<![endif]-->\n  <meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta
+        name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style
+        type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    .ReadMsgBody
+        {\n      width: 100%;\n    }\n\n    .ExternalClass {\n      width: 100%;\n    }\n\n    .ExternalClass
+        * {\n      line-height: 100%;\n    }\n\n    body {\n      margin: 0;\n      padding:
+        0;\n      -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n    }\n\n    table,\n    td
+        {\n      border-collapse: collapse;\n      mso-table-lspace: 0pt;\n      mso-table-rspace:
+        0pt;\n    }\n\n  </style>\n  <!--[if !mso]><!-->\n  <style type=\"text/css\">\n    @media
+        only screen and (max-width:480px) {\n      @-ms-viewport {\n        width:
+        320px;\n      }\n      @viewport {\n        width: 320px;\n      }\n    }\n  </style>\n  <!--<![endif]-->\n  <!--[if
+        mso]><xml>  <o:OfficeDocumentSettings>    <o:AllowPNG/>    <o:PixelsPerInch>96</o:PixelsPerInch>  </o:OfficeDocumentSettings></xml><![endif]-->\n  <!--[if
+        lte mso 11]><style type=\"text/css\">  .outlook-group-fix {    width:100%
+        !important;  }</style><![endif]-->\n  <!--[if !mso]><!-->\n  <link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap\"
+        rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n    @import
+        url(''https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap'');\n  </style>\n  <!--<![endif]-->\n  <style
+        type=\"text/css\">\n    @media only screen and (max-width:595px) {\n      .container
+        {\n        width: 100% !important;\n      }\n      .button {\n        display:
+        block !important;\n        width: auto !important;\n      }\n    }\n  </style>\n</head>\n\n<body
+        style=\"font-family: ''Inter'', sans-serif; background: #E5E5E5;\">\n  <table
+        width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\"
+        bgcolor=\"#F6FAFB\">\n    <tbody>\n      <tr>\n        <td valign=\"top\"
+        align=\"center\">\n          <table class=\"container\" width=\"600\" cellspacing=\"0\"
+        cellpadding=\"0\" border=\"0\">\n            <tbody>\n              <tr>\n                <td
+        style=\"padding:48px 0 30px 0; text-align: center; font-size: 14px; color:
+        #4C83EE;\">\n                  [Company name]\n                </td>\n              </tr>\n              <tr>\n                <td
+        class=\"main-content\" style=\"padding: 48px 30px 40px; color: #000000;\"
+        bgcolor=\"#ffffff\">\n                  <table width=\"100%\" cellspacing=\"0\"
+        cellpadding=\"0\" border=\"0\">\n                    <tbody>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 24px 0; font-size: 18px; line-height: 150%; font-weight:
+        bold; color: #000000; letter-spacing: 0.01em;\">\n                          Welcome,
+        {{user_name}}!\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 10px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          Thanks
+        for choosing [Company Name]! We are happy to see you on board.\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 16px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          To
+        get started, do this next step:\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 24px 0;\">\n                          <a class=\"button\"
+        href=\"{{next_step_link}}\" title=\"Reset Password\" style=\"width: 100%;
+        background: #4C83EE; text-decoration: none; display: inline-block; padding:
+        10px 0; color: #fff; font-size: 14px; line-height: 21px; text-align: center;
+        font-weight: bold; border-radius: 7px;\">Next Step</a>\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 16px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          If
+        you need some help to get started check our:\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 8px;\">\n                          <a style=\"display:
+        flex; justify-content: space-between; align-items: center; padding: 28px 24px;
+        border-radius: 4px; background-color: #FFF9F9; text-decoration: none;\" href=\"{{get_started_link}}\">\n                            <span
+        style=\"width: 90%; font-size: 14px; line-height: 150%; font-weight: bold;
+        color: #29426E; letter-spacing: 0.01em;\">Get Started Guide</span>\n                            <span
+        style=\"width: 10%; float: right;\">\n                              <strong>→</strong>\n                            </span>\n                          </a>\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 60px;\">\n                          <a style=\"display:
+        flex; padding: 28px 24px; border-radius: 4px; background-color: #FFF9F9; text-decoration:
+        none;\" href=\"{{onboarding_video_link}}\">\n                            <span
+        style=\"width: 90%; font-size: 14px; line-height: 150%; font-weight: bold;
+        color: #29426E; letter-spacing: 0.01em;\">Onboarding Video</span>\n                            <span
+        style=\"width: 10%; float: right;\">\n                              <strong>→</strong>\n                            </span>\n                          </a>\n                        </td>\n                      </tr>\n                      <tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 16px;\">\n                          <span style=\"display:
+        block; width: 117px; border-bottom: 1px solid #8B949F;\"></span>\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"font-size: 14px; line-height: 170%; font-weight: 400; color: #000000;
+        letter-spacing: 0.01em;\">\n                          Best regards, <br><strong>[Company
+        name]</strong>\n                        </td>\n                      </tr>\n                    </tbody>\n                  </table>\n                </td>\n              </tr>\n              <tr>\n                <td
+        style=\"padding: 24px 0 48px; font-size: 0px;\">\n                  <!--[if
+        mso | IE]>      <table role=\"presentation\" border=\"0\" cellpadding=\"0\"
+        cellspacing=\"0\">        <tr>          <td style=\"vertical-align:top;width:300px;\">      <![endif]-->\n                  <div
+        class=\"outlook-group-fix\" style=\"padding: 0 0 20px 0; vertical-align: top;
+        display: inline-block; text-align: center; width:100%;\">\n                    <span
+        style=\"padding: 0; font-size: 11px; line-height: 15px; font-weight: normal;
+        color: #8B949F;\">[Company Legal Name]<br/>[Company Physical Address]\n                    </div>\n                  </div>\n                  <!--[if
+        mso | IE]>      </td></tr></table>      <![endif]-->\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</body>\n</html>\n","body_text":"Welcome,
+        {{user_name}}!\n\nThanks for choosing [Company Name]! We are happy to see
+        you on board.\n\nTo get started, do this next step:\n\nNext Step -> {{next_step_link}}\n\nIf
+        you need some help to get started check our:\n- Get Started Guide -> {{get_started_link}}\n-
+        Onboarding Video -> {{onboarding_video_link}}\n\n--\nBest regards,\n[Company
+        name]\n\n[Company Legal Name]\n[Company Physical Address]\n","created_at":"2024-04-01T11:04:13.629Z","updated_at":"2025-03-14T09:00:23.909Z"},{"id":2395,"uuid":"ae44e3f2-35d0-4e2b-ac3f-7f66e2675bc0","name":"Reset
+        Password","category":"New Template","subject":"Password reset request","body_html":"<!--
+        Change values in [brackets] in the template and pass { {variables} } with
+        API call -->\n<!-- Feel free to adjust it to your needs and delete all these
+        comments-->\n<!-- Also adapt TXT version of this email -->\n<!DOCTYPE html>\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\">\n\n<head>\n  <title></title>\n  <!--[if
+        !mso]><!-- -->\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <!--<![endif]-->\n  <meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta
+        name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style
+        type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    .ReadMsgBody
+        {\n      width: 100%;\n    }\n\n    .ExternalClass {\n      width: 100%;\n    }\n\n    .ExternalClass
+        * {\n      line-height: 100%;\n    }\n\n    body {\n      margin: 0;\n      padding:
+        0;\n      -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n    }\n\n    table,\n    td
+        {\n      border-collapse: collapse;\n      mso-table-lspace: 0pt;\n      mso-table-rspace:
+        0pt;\n    }\n\n  </style>\n  <!--[if !mso]><!-->\n  <style type=\"text/css\">\n    @media
+        only screen and (max-width:480px) {\n      @-ms-viewport {\n        width:
+        320px;\n      }\n      @viewport {\n        width: 320px;\n      }\n    }\n  </style>\n  <!--<![endif]-->\n  <!--[if
+        mso]><xml>  <o:OfficeDocumentSettings>    <o:AllowPNG/>    <o:PixelsPerInch>96</o:PixelsPerInch>  </o:OfficeDocumentSettings></xml><![endif]-->\n  <!--[if
+        lte mso 11]><style type=\"text/css\">  .outlook-group-fix {    width:100%
+        !important;  }</style><![endif]-->\n  <!--[if !mso]><!-->\n  <link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap\"
+        rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n    @import
+        url(''https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap'');\n  </style>\n  <!--<![endif]-->\n  <style
+        type=\"text/css\">\n    @media only screen and (max-width:595px) {\n      .container
+        {\n        width: 100% !important;\n      }\n      .button {\n        display:
+        block !important;\n        width: auto !important;\n      }\n    }\n  </style>\n</head>\n\n<body
+        style=\"font-family: ''Inter'', sans-serif; background: #E5E5E5;\">\n  <table
+        width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\"
+        bgcolor=\"#F6FAFB\">\n    <tbody>\n      <tr>\n        <td valign=\"top\"
+        align=\"center\">\n          <table class=\"container\" width=\"600\" cellspacing=\"0\"
+        cellpadding=\"0\" border=\"0\">\n            <tbody>\n              <tr>\n                <td
+        style=\"padding:48px 0 30px 0; text-align: center; font-size: 14px; color:
+        #4C83EE;\">\n                  [Company name]\n                </td>\n              </tr>\n              <tr>\n                <td
+        class=\"main-content\" style=\"padding: 48px 30px 40px; color: #000000;\"
+        bgcolor=\"#ffffff\">\n                  <table width=\"100%\" cellspacing=\"0\"
+        cellpadding=\"0\" border=\"0\">\n                    <tbody>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 24px 0; font-size: 18px; line-height: 150%; font-weight:
+        bold; color: #000000; letter-spacing: 0.01em;\">\n                          Hello!
+        Forgot your password?\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 10px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          We
+        received a password reset request for your account: <span style=\"color: #4C83EE;\">{{user_email}}</span>.\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 16px 0; font-size: 14px; line-height: 150%; font-weight:
+        700; color: #000000; letter-spacing: 0.01em;\">\n                          Click
+        the button below to proceed.\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 24px 0;\">\n                          <a class=\"button\"
+        href=\"{{pass_reset_link}}\" title=\"Reset Password\" style=\"width: 100%;
+        background: #22D172; text-decoration: none; display: inline-block; padding:
+        10px 0; color: #fff; font-size: 14px; line-height: 21px; text-align: center;
+        font-weight: bold; border-radius: 7px;\">Reset Password</a>\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 10px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          The
+        password reset link is only valid for the next 24 hours.\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 60px 0; font-size: 14px; line-height: 150%; font-weight:
+        400; color: #000000; letter-spacing: 0.01em;\">\n                          If
+        you didn’t request the password reset, please ignore this message or contact
+        our support at <a href=\"mailto:[[support_email]]\">[support_email]</a>.\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"padding: 0 0 16px;\">\n                          <span style=\"display:
+        block; width: 117px; border-bottom: 1px solid #8B949F;\"></span>\n                        </td>\n                      </tr>\n                      <tr>\n                        <td
+        style=\"font-size: 14px; line-height: 170%; font-weight: 400; color: #000000;
+        letter-spacing: 0.01em;\">\n                          Best regards, <br><strong>[Company
+        name]</strong>\n                        </td>\n                      </tr>\n                    </tbody>\n                  </table>\n                </td>\n              </tr>\n              <tr>\n                <td
+        style=\"padding: 24px 0 48px; font-size: 0px;\">\n                  <!--[if
+        mso | IE]>      <table role=\"presentation\" border=\"0\" cellpadding=\"0\"
+        cellspacing=\"0\">        <tr>          <td style=\"vertical-align:top;width:300px;\">      <![endif]-->\n                  <div
+        class=\"outlook-group-fix\" style=\"padding: 0 0 20px 0; vertical-align: top;
+        display: inline-block; text-align: center; width:100%;\">\n                    <span
+        style=\"padding: 0; font-size: 11px; line-height: 15px; font-weight: normal;
+        color: #8B949F;\">[Company Legal Name]<br/>[Company Physical Address]\n                    </div>\n                  </div>\n                  <!--[if
+        mso | IE]>      </td></tr></table>      <![endif]-->\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</body>\n</html>\n","body_text":"Hello!
+        Forgot your password?\n\nWe received a password reset request for your account:
+        {{user_email}}.\n\nClick the link below to proceed:\n{{pass_reset_link}}\n\nThe
+        password reset link is only valid for the next 24 hours.\nIf you didn’t request
+        the password reset, please ignore this message or contact our support at [support_email].\n\n--\nBest
+        regards,\n[Company name]\n\n[Company Legal Name]\n[Company Physical Address]","created_at":"2023-08-21T12:41:19.172Z","updated_at":"2025-03-14T09:00:01.698Z"}]'
+  recorded_at: Wed, 20 Aug 2025 19:39:34 GMT
 recorded_with: VCR 6.2.0

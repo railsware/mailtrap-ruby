@@ -175,7 +175,7 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
     end
     let(:project_id) { created_project.id }
 
-    it 'returns no content' do
+    it 'returns deleted project id' do
       expect(delete).to eq({ id: project_id })
     end
 

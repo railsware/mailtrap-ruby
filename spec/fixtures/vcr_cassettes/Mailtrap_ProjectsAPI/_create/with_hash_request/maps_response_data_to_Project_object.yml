@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/1495731/projects
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects
     body:
       encoding: UTF-8
       string: '{"project":{"name":"New Project"}}'
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 17:52:16 GMT
+      - Wed, 20 Aug 2025 19:39:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -51,9 +51,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '144'
+      - '147'
       Etag:
-      - W/"a68c882fe35f3d6c88366fba80950b50"
+      - W/"3a08cbe0c9468aee83834fcc12e9aa75"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -66,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-aJgNjEFcTUoLiAPIufinFQ==''; connect-src ''self''
+        translate.google.com ''nonce-js-Pn5kNfwuk41mmAvi7JlpQA==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,21 +146,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - f004bae8-dc72-44b8-a42d-6907e935e056
+      - 5c8218bc-444c-4aa8-b033-4f611da6ab55
       X-Runtime:
-      - '0.085135'
+      - '0.072225'
       X-Cloud-Trace-Context:
-      - 5649035f61f24858cee69e574934d818;o=0
+      - 6449621478394982cbb4ce3f0a521484;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 9723be54198cb5f1-WAW
+      - 97245beb3df55acb-VIE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":2486777,"name":"New Project","share_links":{"admin":"https://mailtrap.io/projects/2486777/share/QEVuQwEAuaujY_AHYD-acbiokYAJfKRCLpIg5obnzVMl8r3Yuj4f7nfVaGL7_i0rZcCzn5Nk2iIXls1nwh70kvum6jaTPkze4ye3Q_6DDQnXHLbd_W6Mf4Hfrn-uX3T0vRKZPb42","viewer":"https://mailtrap.io/projects/2486777/share/QEVuQwEAuaujY_AHYD-acbiokYAJfKRCLpIg5obnzVMl8r3Yuj4f7nfVaGL7_i0rZcCzn5Nk-0jQ0EpFVQn4tpnwVd5ohfjoGo2xMc_V-TwmctPZuU1807wgAcLM4D5Ap-8bHzvr"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
-  recorded_at: Wed, 20 Aug 2025 17:52:16 GMT
+      encoding: UTF-8
+      string: '{"id":2487013,"name":"New Project","share_links":{"admin":"https://mailtrap.io/projects/2487013/share/REDACTED","viewer":"https://mailtrap.io/projects/2487013/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Wed, 20 Aug 2025 19:39:51 GMT
 recorded_with: VCR 6.2.0
