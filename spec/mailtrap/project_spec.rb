@@ -59,51 +59,6 @@ RSpec.describe Mailtrap::Project do
     end
   end
 
-  describe '#newly_created?' do
-    subject(:newly_created) { project.newly_created? }
-
-    context 'when action is not updated' do
-      let(:project) do
-        described_class.new(
-          id: '123456',
-          name: 'My Project',
-          action: 'created'
-        )
-      end
-
-      it 'returns true' do
-        expect(newly_created).to be true
-      end
-    end
-
-    context 'when action is updated' do
-      let(:project) do
-        described_class.new(
-          id: '123456',
-          name: 'My Project',
-          action: 'updated'
-        )
-      end
-
-      it 'returns false' do
-        expect(newly_created).to be false
-      end
-    end
-
-    context 'when action is nil' do
-      let(:project) do
-        described_class.new(
-          id: '123456',
-          name: 'My Project'
-        )
-      end
-
-      it 'returns true' do
-        expect(newly_created).to be true
-      end
-    end
-  end
-
   describe '#to_h' do
     subject(:hash) { project.to_h }
 

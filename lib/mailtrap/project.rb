@@ -17,7 +17,6 @@ module Mailtrap
     keyword_init: true
   ) do
     def initialize(options)
-      @action = options.delete(:action)
       super
     end
 

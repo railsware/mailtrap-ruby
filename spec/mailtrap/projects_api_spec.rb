@@ -3,8 +3,8 @@
 RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   subject(:project) { described_class.new(account_id, client) }
 
-  let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
-  let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
+  let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID') }
+  let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY')) }
 
   describe '#list' do
     subject(:list) { project.list }
@@ -176,7 +176,7 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
     let(:project_id) { created_project.id }
 
     it 'returns no content' do
-      expect(delete).to be_nil
+      expect(delete).to eq({ id: project_id })
     end
 
     context 'when project does not exist' do
