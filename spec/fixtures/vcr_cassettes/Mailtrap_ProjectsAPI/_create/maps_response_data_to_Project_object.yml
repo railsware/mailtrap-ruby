@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
+    method: post
     uri: https://mailtrap.io/api/accounts/1495731/projects
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"project":{"name":"New Project"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -19,15 +19,15 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 17:52:13 GMT
+      - Wed, 20 Aug 2025 17:52:15 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '31'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Server:
@@ -44,8 +44,6 @@ http_interactions:
       - none
       Referrer-Policy:
       - strict-origin-when-cross-origin
-      Www-Authenticate:
-      - Token realm="Application"
       Vary:
       - Accept
       X-Mailtrap-Version:
@@ -53,9 +51,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '149'
+      - '145'
+      Etag:
+      - W/"dfc165cc00a6870a105d1d1691e67714"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Content-Security-Policy:
       - 'default-src ''self''; style-src ''self'' data: blob: ''unsafe-inline'' assets.mailtrap.io
         www.googletagmanager.com fonts.googleapis.com; font-src ''self'' data: blob:
@@ -66,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-qC6EIFUaaBIL4Bpdy5stQw==''; connect-src ''self''
+        translate.google.com ''nonce-js-zDKpR0LPu9I14ZiiQ5/vbA==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,21 +146,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - f3821a49-d32c-42ac-bb7a-573450935560
+      - 9cf5fcfa-c328-4326-9da1-0f4d867a6b79
       X-Runtime:
-      - '0.007050'
+      - '0.067005'
       X-Cloud-Trace-Context:
-      - c626ee7352e64d268412945d73008b05;o=0
+      - 39ff386af19c44ffcfbe23f199ea9cf6;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 9723be45ad0d5411-WAW
+      - 9723be528d0becc6-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: UTF-8
-      string: '{"error":"Incorrect API token"}'
-  recorded_at: Wed, 20 Aug 2025 17:52:13 GMT
+      encoding: ASCII-8BIT
+      string: '{"id":2486776,"name":"New Project","share_links":{"admin":"https://mailtrap.io/projects/2486776/share/QEVuQwEAbdhPz3b1om0FoYxI8EGjVZYEQSc4zRZkGAFX3jNlEo_hB0x_Vt4o9aDfb0-KvQ-k019aKpMpvs3wvA4lITaKP-hn2SOZQyddk3INHqidJxnJTJ9rsoNCNqYZSuAIED6-","viewer":"https://mailtrap.io/projects/2486776/share/QEVuQwEAbdhPz3b1om0FoYxI8EGjVZYEQSc4zRZkGAFX3jNlEo_hB0x_Vt4o9aDfb0-KvQ-kA-973c8gwSUakL0l61Nm3gfSkB5bRe5YT5k74QwsBbMRYGvNDfU7zudTMmkzmQbG"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Wed, 20 Aug 2025 17:52:15 GMT
 recorded_with: VCR 6.2.0
