@@ -189,19 +189,21 @@ module Mailtrap
       # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
-      def from_message(message) # rubocop:disable Metrics/AbcSize
+      def from_message(message)
         Mailtrap::Mail::Base.new(
-          from: prepare_addresses(address_list(message['from'])&.addresses).first,
-          to: prepare_addresses(address_list(message['to'])&.addresses),
-          cc: prepare_addresses(address_list(message['cc'])&.addresses),
-          bcc: prepare_addresses(address_list(message['bcc'])&.addresses),
+          from: prepare_addresses(message['from']).first,
+          to: prepare_addresses(message['to']),
+          cc: prepare_addresses(message['cc']),
+          bcc: prepare_addresses(message['bcc']),
           subject: message.subject,
           text: prepare_text_part(message),
           html: prepare_html_part(message),
           headers: prepare_headers(message),
           attachments: prepare_attachments(message.attachments),
           category: message['category']&.unparsed_value,
-          custom_variables: message['custom_variables']&.unparsed_value
+          custom_variables: message['custom_variables']&.unparsed_value,
+          template_uuid: message['template_uuid']&.unparsed_value,
+          template_variables: message['template_variables']&.unparsed_value
         )
       end
 
@@ -219,8 +221,9 @@ module Mailtrap
         header.respond_to?(:element) ? header.element : header.address_list
       end
 
-      # @param addresses [Array<Mail::Address>, nil]
-      def prepare_addresses(addresses)
+      # @param header [Mail::Field, nil]
+      def prepare_addresses(header)
+        addresses = address_list(header)&.addresses
         Array(addresses).map { |address| prepare_address(address) }
       end
 
