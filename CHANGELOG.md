@@ -1,3 +1,6 @@
+## [2.4.1] - 2025-08-21
+- Set `template_uuid` and `template_variables` when building mail from `Mail::Message`
+
 ## [2.4.0] - 2025-08-04
 
 - Add Email Templates API
