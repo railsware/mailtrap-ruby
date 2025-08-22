@@ -2,176 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"Original Template","subject":"Original Subject","category":"Original
-        Category","body_html":"<div>Original HTML</div>","body_text":"Original Text"}}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
-      Authorization:
-      - Bearer <BEARER_TOKEN>
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Wed, 20 Aug 2025 19:39:43 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '292'
-      Connection:
-      - keep-alive
-      Server:
-      - cloudflare
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      Vary:
-      - Accept
-      X-Mailtrap-Version:
-      - v2
-      X-Ratelimit-Limit:
-      - '150'
-      X-Ratelimit-Remaining:
-      - '144'
-      Etag:
-      - W/"e0c1d496cb425e5ac8cb0bc2a3aea23c"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Security-Policy:
-      - 'default-src ''self''; style-src ''self'' data: blob: ''unsafe-inline'' assets.mailtrap.io
-        www.googletagmanager.com fonts.googleapis.com; font-src ''self'' data: blob:
-        ''unsafe-inline'' assets.mailtrap.io static.hsappstatic.net fonts.gstatic.cn
-        fonts.gstatic.com *.s-microsoft.com use.typekit.net; script-src ''self'' data:
-        blob: assets.mailtrap.io *.cookiebot.com www.clarity.ms *.doubleclick.net
-        *.googlesyndication.com *.googletagmanager.com www.googleadservices.com www.google.com
-        beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
-        cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
-        www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-AypQSCRe5iSTMy3a7x8Y6A==''; connect-src ''self''
-        assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
-        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
-        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
-        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
-        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
-        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
-        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
-        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
-        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
-        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
-        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
-        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
-        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
-        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
-        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
-        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
-        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
-        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
-        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
-        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
-        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
-        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
-        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
-        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
-        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
-        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
-        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
-        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
-        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
-        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
-        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
-        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
-        *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com *.clarity.ms
-        *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com www.google.com
-        wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
-        *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
-        *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
-        t.co/1/i/adsct *.growthbook.io meta-gateway.mailtrap.io translate-pa.googleapis.com;
-        img-src ''self'' data: blob: assets.mailtrap.io *.google.com *.google.ad *.google.ae
-        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
-        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
-        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
-        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
-        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
-        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
-        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
-        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
-        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
-        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
-        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
-        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
-        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
-        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
-        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
-        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
-        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
-        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
-        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
-        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
-        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
-        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
-        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
-        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
-        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
-        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
-        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
-        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
-        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
-        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
-        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
-        *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com *.clarity.ms *.doubleclick.net
-        *.googlesyndication.com *.googletagmanager.com *.google.com track.hubspot.com
-        *.facebook.com *.facebook.net *.analytics.google.com *.google-analytics.com
-        *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct secure.gravatar.com;
-        frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net www.googletagmanager.com
-        www.facebook.com www.recaptcha.net translate.googleapis.com; frame-ancestors
-        ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
-        object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
-      X-Request-Id:
-      - 31eec740-6cba-4aae-9e2c-28212bfe110b
-      X-Runtime:
-      - '0.021785'
-      X-Cloud-Trace-Context:
-      - ef2ba7e862c14c6fc588166465a1c2a7;o=0
-      Strict-Transport-Security:
-      - max-age=0
-      Cf-Cache-Status:
-      - DYNAMIC
-      Cf-Ray:
-      - 97245bb759b8c25b-VIE
-      Alt-Svc:
-      - h3=":443"; ma=86400
-    body:
-      encoding: UTF-8
-      string: '{"id":45470,"uuid":"09edc55b-7804-47b9-9804-1bc361d62840","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T19:39:42.991Z","updated_at":"2025-08-20T19:39:42.991Z"}'
-  recorded_at: Wed, 20 Aug 2025 19:39:43 GMT
-- request:
-    method: patch
-    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates/45470
-    body:
-      encoding: UTF-8
-      string: '{"email_template":{"body_html":"<div>New HTML Only</div>"}}'
+      string: '{"project":{"name":"Original Project"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -189,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:43 GMT
+      - Wed, 20 Aug 2025 19:39:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -219,7 +53,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '143'
       Etag:
-      - W/"dcdce607950ba1713b65be0983b8c6fd"
+      - W/"cde7dd238e48172879ed153806f8c12b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -232,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-Uv117BncOmEiaMjLsl/EWg==''; connect-src ''self''
+        translate.google.com ''nonce-js-GjlSPuvDLa6Mw9W9ejcf/w==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -312,23 +146,184 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 95783236-9efb-4f29-b231-3e11e8c8f3b6
+      - 80aedb79-f143-4ba7-ac48-cd08aefc5c6a
       X-Runtime:
-      - '0.028618'
+      - '0.067541'
       X-Cloud-Trace-Context:
-      - '0396308be5834dfd8d19fc0bfde6e806;o=0'
+      - 38b46e1f6ca446e98d69584a3f350719;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245bbaaa9aee4d-WAW
+      - 97245bf41cb6ef8f-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":45470,"uuid":"09edc55b-7804-47b9-9804-1bc361d62840","name":"Original
-        Template","category":"Original Category","subject":"Original Subject","body_html":"<div>New
-        HTML Only</div>","body_text":"Original Text","created_at":"2025-08-20T19:39:42.991Z","updated_at":"2025-08-20T19:39:43.542Z"}'
-  recorded_at: Wed, 20 Aug 2025 19:39:43 GMT
+      string: '{"id":2487015,"name":"Original Project","share_links":{"admin":"https://mailtrap.io/projects/2487015/share/REDACTED","viewer":"https://mailtrap.io/projects/2487015/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Wed, 20 Aug 2025 19:39:52 GMT
+- request:
+    method: patch
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects/2487015
+    body:
+      encoding: UTF-8
+      string: '{"project":{"name":"Updated Project"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Aug 2025 19:39:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '142'
+      Etag:
+      - W/"5ec41129912ae51add4bda52a98cf14d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Security-Policy:
+      - 'default-src ''self''; style-src ''self'' data: blob: ''unsafe-inline'' assets.mailtrap.io
+        www.googletagmanager.com fonts.googleapis.com; font-src ''self'' data: blob:
+        ''unsafe-inline'' assets.mailtrap.io static.hsappstatic.net fonts.gstatic.cn
+        fonts.gstatic.com *.s-microsoft.com use.typekit.net; script-src ''self'' data:
+        blob: assets.mailtrap.io *.cookiebot.com www.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com www.googleadservices.com www.google.com
+        beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
+        cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
+        www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
+        translate.google.com ''nonce-js-HaS1BZha6CJlYl9B3Mdefg==''; connect-src ''self''
+        assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com *.clarity.ms
+        *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com www.google.com
+        wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
+        *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
+        *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
+        t.co/1/i/adsct *.growthbook.io meta-gateway.mailtrap.io translate-pa.googleapis.com;
+        img-src ''self'' data: blob: assets.mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com *.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com *.google.com track.hubspot.com
+        *.facebook.com *.facebook.net *.analytics.google.com *.google-analytics.com
+        *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct secure.gravatar.com;
+        frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net www.googletagmanager.com
+        www.facebook.com www.recaptcha.net translate.googleapis.com; frame-ancestors
+        ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
+        object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
+      X-Request-Id:
+      - e6d8a49f-5737-45b9-a1e8-0f11dd5b084b
+      X-Runtime:
+      - '0.066391'
+      X-Cloud-Trace-Context:
+      - d4b991b6df4a433dc9b5de746c94a760;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 97245bf86b7802a4-WAW
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":2487015,"name":"Updated Project","share_links":{"admin":"https://mailtrap.io/projects/2487015/share/REDACTED","viewer":"https://mailtrap.io/projects/2487015/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Wed, 20 Aug 2025 19:39:53 GMT
 recorded_with: VCR 6.2.0

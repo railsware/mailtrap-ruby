@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/1111111/email_templates
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates
     body:
       encoding: UTF-8
       string: '{"email_template":{"name":"Original Template","subject":"Original Subject","category":"Original
@@ -24,15 +24,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:54:54 GMT
+      - Wed, 20 Aug 2025 19:39:40 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
       - '292'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213a49a47ef97-WAW
+      Server:
+      - cloudflare
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -52,9 +52,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '132'
+      - '148'
       Etag:
-      - W/"b500cbca28084c365780ccefac06ffed"
+      - W/"96549e49c2d72b94504b6cdb6e98d36b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -67,106 +67,108 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-tihLz4lnVyXbMV32GmdZTQ==''; connect-src ''self'' assets.mailtrap.io
-        wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
-        *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
-        *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
-        *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo
-        *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz
-        *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com
-        *.clarity.ms *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        www.google.com wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
+        translate.google.com ''nonce-js-AISaXB6iOH6hQaIFrmBdrA==''; connect-src ''self''
+        assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com *.clarity.ms
+        *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com www.google.com
+        wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
         *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
         *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
-        t.co/1/i/adsct *.growthbook.io; img-src ''self'' data: blob: assets.mailtrap.io
-        *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al
-        *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au
-        *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg
-        *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br
-        *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca
-        *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com
-        *.clarity.ms *.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        *.google.com track.hubspot.com *.facebook.com *.facebook.net *.analytics.google.com
-        *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct
-        secure.gravatar.com; frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net
-        www.googletagmanager.com www.facebook.com www.recaptcha.net; frame-ancestors
+        t.co/1/i/adsct *.growthbook.io meta-gateway.mailtrap.io translate-pa.googleapis.com;
+        img-src ''self'' data: blob: assets.mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com *.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com *.google.com track.hubspot.com
+        *.facebook.com *.facebook.net *.analytics.google.com *.google-analytics.com
+        *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct secure.gravatar.com;
+        frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net www.googletagmanager.com
+        www.facebook.com www.recaptcha.net translate.googleapis.com; frame-ancestors
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - a10aced7-e589-4f85-8634-ec8a63ab3296
+      - 3f817ff9-a1ff-454d-9387-43c6e32d7a5b
       X-Runtime:
-      - '0.028169'
+      - '0.025438'
       X-Cloud-Trace-Context:
-      - 4183cffa2a1b4d02ccf6fe88a694df49;o=0
+      - 998ab09604d74ba6c8dadebb3a730ffa;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
-      Server:
-      - cloudflare
+      Cf-Ray:
+      - 97245ba87976ee48-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":40436,"uuid":"4a1ce768-0b1f-4298-a10a-89135723d3f8","name":"Original
+      string: '{"id":45468,"uuid":"de5ca448-0256-494b-a9ac-a356c6d1b5fe","name":"Original
         Template","category":"Original Category","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:54.261Z","updated_at":"2025-06-23T06:54:54.261Z"}'
-  recorded_at: Mon, 23 Jun 2025 06:54:54 GMT
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T19:39:40.653Z","updated_at":"2025-08-20T19:39:40.653Z"}'
+  recorded_at: Wed, 20 Aug 2025 19:39:40 GMT
 - request:
     method: patch
-    uri: https://mailtrap.io/api/accounts/1111111/email_templates/40436
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates/45468
     body:
       encoding: UTF-8
       string: '{"email_template":{"category":"New Category Only"}}'
@@ -187,13 +189,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Jun 2025 06:54:54 GMT
+      - Wed, 20 Aug 2025 19:39:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Server:
+      - cloudflare
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -213,9 +217,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '131'
+      - '147'
       Etag:
-      - W/"92d2aa0d52be77dedafa97e4de753c1a"
+      - W/"ea24fef1dec55abb5c0fa56f1a900b56"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -228,103 +232,103 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        ''nonce-js-SlY3D7TaHGQlwyswsdlS8g==''; connect-src ''self'' assets.mailtrap.io
-        wss://mailtrap.io *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag
-        *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at
-        *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf
-        *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo
-        *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz
-        *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com
-        *.clarity.ms *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        www.google.com wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
+        translate.google.com ''nonce-js-f389OlJrRou3nfKyblBocQ==''; connect-src ''self''
+        assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat errors.rw.rw *.cookiebot.com *.clarity.ms
+        *.g.doubleclick.net *.googlesyndication.com *.googletagmanager.com www.google.com
+        wss://ws-helpscout.pusher.com sockjs-helpscout.pusher.com *.helpscout.net
         *.firstpromoter.com connect.facebook.net *.facebook.com www.recaptcha.net
         *.analytics.google.com *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com
-        t.co/1/i/adsct *.growthbook.io; img-src ''self'' data: blob: assets.mailtrap.io
-        *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al
-        *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au
-        *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg
-        *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br
-        *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca
-        *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck
-        *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu
-        *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk
-        *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg
-        *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr
-        *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl
-        *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn
-        *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il
-        *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je
-        *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh
-        *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la
-        *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu
-        *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg
-        *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu
-        *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na
-        *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np
-        *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe
-        *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr
-        *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru
-        *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg
-        *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so
-        *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg
-        *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to
-        *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua
-        *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc
-        *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs
-        *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com
-        *.clarity.ms *.doubleclick.net *.googlesyndication.com *.googletagmanager.com
-        *.google.com track.hubspot.com *.facebook.com *.facebook.net *.analytics.google.com
-        *.google-analytics.com *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct
-        secure.gravatar.com; frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net
-        www.googletagmanager.com www.facebook.com www.recaptcha.net; frame-ancestors
+        t.co/1/i/adsct *.growthbook.io meta-gateway.mailtrap.io translate-pa.googleapis.com;
+        img-src ''self'' data: blob: assets.mailtrap.io *.google.com *.google.ad *.google.ae
+        *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
+        *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
+        *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj
+        *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw
+        *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg
+        *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn
+        *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy
+        *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do
+        *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et
+        *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge
+        *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr
+        *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht
+        *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in
+        *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo
+        *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr
+        *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk
+        *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma
+        *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm
+        *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx
+        *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni
+        *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu
+        *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg
+        *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps
+        *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw
+        *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh
+        *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm
+        *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th
+        *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr
+        *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug
+        *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve
+        *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za
+        *.google.co.zm *.google.co.zw *.google.cat *.cookiebot.com *.clarity.ms *.doubleclick.net
+        *.googlesyndication.com *.googletagmanager.com *.google.com track.hubspot.com
+        *.facebook.com *.facebook.net *.analytics.google.com *.google-analytics.com
+        *.quora.com *.linkedin.com analytics.twitter.com t.co/1/i/adsct secure.gravatar.com;
+        frame-src ''self'' consentcdn.cookiebot.com td.doubleclick.net www.googletagmanager.com
+        www.facebook.com www.recaptcha.net translate.googleapis.com; frame-ancestors
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 8c2da3e2-5c76-4915-96d7-b35f5d31ddc3
+      - 8af44265-802b-4c95-bc01-0b46506879d3
       X-Runtime:
-      - '0.030298'
+      - '0.018454'
       X-Cloud-Trace-Context:
-      - 01ff0e83e2aa4823ce094855a4aecb57;o=0
+      - 650bcd5740584f94ce33c3cc8481b18e;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
-      Server:
-      - cloudflare
       Cf-Ray:
-      - 954213a5fa8cbf21-WAW
+      - 97245bac1c985aa3-VIE
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":40436,"uuid":"4a1ce768-0b1f-4298-a10a-89135723d3f8","name":"Original
+      encoding: UTF-8
+      string: '{"id":45468,"uuid":"de5ca448-0256-494b-a9ac-a356c6d1b5fe","name":"Original
         Template","category":"New Category Only","subject":"Original Subject","body_html":"<div>Original
-        HTML</div>","body_text":"Original Text","created_at":"2025-06-23T06:54:54.261Z","updated_at":"2025-06-23T06:54:54.491Z"}'
-  recorded_at: Mon, 23 Jun 2025 06:54:54 GMT
+        HTML</div>","body_text":"Original Text","created_at":"2025-08-20T19:39:40.653Z","updated_at":"2025-08-20T19:39:41.183Z"}'
+  recorded_at: Wed, 20 Aug 2025 19:39:41 GMT
 recorded_with: VCR 6.2.0
