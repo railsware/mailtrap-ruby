@@ -143,6 +143,18 @@ RSpec.describe Mailtrap::Mail do
       its(:from) { is_expected.to be_nil }
     end
 
+    context 'when template is set' do
+      let(:message_params) do
+        super().merge(
+          template_uuid: 'c0746b78-f422-46ce-bce5-6f52ad5aab7f',
+          template_variables: { first_name: 'John' }
+        )
+      end
+
+      its(:template_uuid) { is_expected.to eq('c0746b78-f422-46ce-bce5-6f52ad5aab7f') }
+      its(:template_variables) { is_expected.to eq('first_name' => 'John') }
+    end
+
     %i[from to cc bcc].each do |header|
       context "when '#{header}' is invalid" do
         let(:message_params) { super().merge(header => 'invalid email@example.com') }
