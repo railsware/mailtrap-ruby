@@ -2,16 +2,47 @@
 [![docs](https://shields.io/badge/docs-rubydoc.info-blue)](https://rubydoc.info/gems/mailtrap)
 [![gem](https://shields.io/gem/v/mailtrap)](https://rubygems.org/gems/mailtrap)
 [![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
-
-
+[![license](https://shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 
 # Official Mailtrap Ruby client
+
+## Prerequisites
+
+To get the most out of this official Mailtrap.io Ruby SDK:
+
+* [Create a Mailtrap account](https://mailtrap.io/signup)
+* [Verify your domain](https://mailtrap.io/sending/domains)
+
+## Supported functionality
 
 This Ruby gem offers integration with the [official API](https://api-docs.mailtrap.io/) for [Mailtrap](https://mailtrap.io).
 
 Quickly add email sending functionality to your Ruby application with Mailtrap.
 
 (This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/))
+
+Currently, with this SDK you can:
+
+* **Email API/SMTP**
+    * Send an email (Transactional and Bulk streams)
+    * Send an email with a template
+    * Send a batch of emails (Transactional and Bulk streams)
+* **Email Sandbox (Testing)**
+    * Send an email
+    * Send an email with a template
+    * Message management
+    * Inbox management
+    * Project management
+* **Contact management**
+    * Contacts CRUD
+    * Lists CRUD
+    * Contact fields CRUD
+* **General**
+    * Templates CRUD
+    * Suppressions management (find and delete)
+    * Account access management
+    * Permissions management
+    * List accounts you have access to
 
 ## Installation
 
@@ -31,14 +62,47 @@ Or install it yourself as:
 
 ## Usage
 
+### Basic Setup
+
+Before you start sending emails, you'll need:
+- A [Mailtrap account](https://mailtrap.io/signup)
+- A [verified domain](https://mailtrap.io/sending/domains) 
+- An API key from your Mailtrap dashboard
+
+Set your API key as an environment variable:
+```bash
+export MAILTRAP_API_KEY="your-api-key"
+```
+
+### Minimal
+
+```ruby
+require 'mailtrap'
+
+# For this example to work, you need to set up a sending domain,
+# and obtain a token that is authorized to send from the domain.
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [{ email: 'your@email.com' }],
+  subject: 'Hello from Mailtrap!',
+  text: 'Welcome to Mailtrap Sending!'
+)
+```
+
 ### Ruby on Rails
 
 ```ruby
-# place this code in config/environments/production.rb:
+# config/environments/production.rb
 config.action_mailer.delivery_method = :mailtrap
 
-# then set the MAILTRAP_API_KEY environment variable
-# using your hosting solution.
+# Set the MAILTRAP_API_KEY environment variable
+# using your hosting solution, or customize the settings:
+config.action_mailer.mailtrap_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY')
+}
 ```
 
 ### Pure Ruby
@@ -70,7 +134,49 @@ client.send(
   subject: 'You are awesome!',
   text: 'Congrats for sending test email with Mailtrap!'
 )
+```
 
+### Send Email Using Template
+
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+
+mail = Mailtrap::Mail.from_template(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com' }
+  ],
+  template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+  template_variables: {
+    'user_name' => 'John Doe'
+  }
+)
+
+client.send(mail)
+```
+
+### Email Sandbox (Testing)
+
+```ruby
+require 'mailtrap'
+
+# Send to sandbox inbox for testing
+client = Mailtrap::Client.new(
+  api_key: 'your-api-key',
+  sandbox: true,
+  inbox_id: 12
+)
+
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com' }
+  ],
+  subject: 'Test Email',
+  text: 'This is a test email sent to sandbox inbox'
+)
 ```
 
 ### Batch Sending
@@ -111,7 +217,7 @@ client.send_batch(
 require 'mailtrap'
 
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-templates = Mailtrap::EmailTemplatesAPI.new 3229, client
+templates = Mailtrap::EmailTemplatesAPI.new(3229, client)
 
 templates.create(
   name: 'Welcome Email',
@@ -120,17 +226,122 @@ templates.create(
   body_text: 'Hello',
   category: 'welcome'
 )
+
+# Get all templates
+templates.list
+
+# Get a specific template
+templates.get(email_template.id)
+
+# Update a template
+templates.update(email_template.id, name: 'Welcome Updated')
+
+# Delete a template
+templates.delete(email_template.id)
 ```
 
-Refer to the [`examples`](examples) folder for more examples:
+### Contacts API
 
-- [Full](examples/full.rb)
-- [Email template](examples/email_template.rb)
-- [Batch Sending](examples/batch.rb)
-- [ActionMailer](examples/action_mailer.rb)
-- [Email Templates API](examples/email_templates_api.rb)
+```ruby
+require 'mailtrap'
 
-### Content-Transfer-Encoding
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+contacts = Mailtrap::ContactsAPI.new(3229, client)
+contact_lists = Mailtrap::ContactListsAPI.new(3229, client)
+contact_fields = Mailtrap::ContactFieldsAPI.new(3229, client)
+
+# Create contact list
+list = contact_lists.create(name: 'Test List')
+
+# Create contact field
+field = contact_fields.create(
+  name: 'Nickname',
+  data_type: 'text',
+  merge_tag: 'nickname'
+)
+
+# Create contact
+contact = contacts.create(
+  email: 'test@example.com',
+  fields: { field.merge_tag => 'John Doe' },
+  list_ids: [list.id]
+)
+
+# Get contact
+contact = contacts.get(contact.id)
+
+# Update contact
+contacts.upsert(
+  contact.id,
+  email: 'test2@example.com',
+  fields: { field.merge_tag => 'Jane Doe' }
+)
+
+# List contacts
+contacts.list
+
+# Delete contact
+contacts.delete(contact.id)
+```
+
+### Multiple Mailtrap Clients
+
+You can configure multiple Mailtrap clients to operate simultaneously. This setup is
+particularly useful when you need to send emails using both the transactional
+and bulk APIs, or when using sandbox for testing:
+
+```ruby
+# config/application.rb
+ActionMailer::Base.add_delivery_method :mailtrap_bulk, Mailtrap::ActionMailer::DeliveryMethod
+ActionMailer::Base.add_delivery_method :mailtrap_sandbox, Mailtrap::ActionMailer::DeliveryMethod
+
+# config/environments/production.rb
+config.action_mailer.delivery_method = :mailtrap
+config.action_mailer.mailtrap_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY')
+}
+config.action_mailer.mailtrap_bulk_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY'),
+  bulk: true
+}
+config.action_mailer.mailtrap_sandbox_settings = {
+  api_key: ENV.fetch('MAILTRAP_API_KEY'),
+  sandbox: true,
+  inbox_id: 12
+}
+
+# app/mailers/foo_mailer.rb
+mail(delivery_method: :mailtrap_bulk)  # For bulk sending
+mail(delivery_method: :mailtrap_sandbox)  # For sandbox testing
+```
+
+## Examples
+
+Refer to the [`examples`](examples) folder for the source code of this and other advanced examples:
+
+### Contacts API
+
+* [Contacts](examples/contacts_api.rb)
+
+### Sending API
+
+* [Full](examples/full.rb)
+* [Email template](examples/email_template.rb)
+* [ActionMailer](examples/action_mailer.rb)
+
+### Batch Sending API
+
+* [Batch Sending](examples/batch.rb)
+
+### Templates API
+
+* [Email Templates API](examples/email_templates_api.rb)
+
+### Email Sandbox (Testing) API
+
+* [Sandbox examples in Full](examples/full.rb)
+
+## Content-Transfer-Encoding
 
 `mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
 replicate SMTP. That is why you should expect some limitations when it comes to
@@ -143,30 +354,6 @@ For those who need to use `7bit` or any other encoding, SMTP provides
 better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.
-
-### Multiple Mailtrap Clients
-
-You can configure two Mailtrap clients to operate simultaneously. This setup is
-particularly useful when you need to send emails using both the transactional
-and bulk APIs. Refer to the configuration example below:
-
-```ruby
-# config/application.rb
-ActionMailer::Base.add_delivery_method :mailtrap_bulk, Mailtrap::ActionMailer::DeliveryMethod
-
-# config/environments/production.rb
-config.action_mailer.delivery_method = :mailtrap
-config.action_mailer.mailtrap_settings = {
-  api_key: 'your-api-key'
-}
-config.action_mailer.mailtrap_bulk_settings = {
-  api_key: 'your-api-key',
-  bulk: true
-}
-
-# app/mailers/foo_mailer.rb
-mail(delivery_method: :mailtrap_bulk)
-```
 
 ## Migration guide v1 → v2
 
