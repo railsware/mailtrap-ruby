@@ -4,6 +4,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 contact_lists = Mailtrap::ContactListsAPI.new 3229, client
 contacts = Mailtrap::ContactsAPI.new 3229, client
 contact_fields = Mailtrap::ContactFieldsAPI.new 3229, client
+contact_imports = Mailtrap::ContactImportsAPI.new 3229, client
 
 # Set your API credentials as environment variables
 # export MAILTRAP_API_KEY='your-api-key'
@@ -12,6 +13,7 @@ contact_fields = Mailtrap::ContactFieldsAPI.new 3229, client
 # contact_lists = Mailtrap::ContactListsAPI.new
 # contacts = Mailtrap::ContactsAPI.new
 # contact_fields = Mailtrap::ContactFieldsAPI.new
+# contact_imports = Mailtrap::ContactImportsAPI.new
 
 # Create new contact list
 list = contact_lists.create(name: 'Test List')
@@ -135,8 +137,97 @@ contacts.add_to_lists(contact.id, [list.id])
 # Delete contact
 contacts.delete(contact.id)
 
-# Delete contact list
-contact_lists.delete(list.id)
-
 # Delete contact field
 contact_fields.delete(field.id)
+
+# Create a new contact import
+contact_import = contact_imports.create(
+  [
+    {
+      email: 'imported@example.com',
+      fields: {
+        first_name: 'Jane',
+      },
+      list_ids_included: [list.id],
+      list_ids_excluded: []
+    }
+  ]
+)
+# => ContactImport.new(
+#      id: 1,
+#      status: 'created',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Get a contact import by ID
+contact_imports.get(contact_import.id)
+# => ContactImport.new(
+#      id: 1,
+#      status: 'started',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Create a new contact import using ContactsImportRequest builder
+import_request = Mailtrap::ContactsImportRequest.new
+
+# Add contacts using the builder pattern
+import_request
+  .upsert(
+    email: 'john.doe@example.com',
+    fields: { first_name: 'John' }
+  )
+  .add_to_lists(email: 'john.doe@example.com', list_ids: [list.id])
+  .upsert(
+    email: 'jane.smith@example.com',
+    fields: { first_name: 'Jane' }
+  )
+  .add_to_lists(email: 'jane.smith@example.com', list_ids: [list.id])
+  .remove_from_lists(email: 'jane.smith@example.com', list_ids: [])
+
+# Execute the import
+contact_imports.create(import_request)
+# => ContactImport.new(
+#      id: 2,
+#      status: 'created',
+#      list_ids: [1],
+#      created_contacts_count: 2,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Alternative: Step-by-step building
+builder = Mailtrap::ContactsImportRequest.new
+builder.upsert(email: 'jane.doe@example.com', fields: { first_name: 'Jane' })
+builder.add_to_lists(email: 'jane.doe@example.com', list_ids: [list.id])
+
+contact_import_2 = contact_imports.create(builder)
+# => ContactImport.new(
+#      id: 3,
+#      status: 'created',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+sleep 3 # Wait for the import to complete (if needed)
+
+# Get the import status
+contact_imports.get(contact_import_2.id)
+# => ContactImport.new(
+#      id: 3,
+#      status: 'completed',
+#      list_ids: [1],
+#      created_contacts_count: 1,
+#      updated_contacts_count: 0,
+#      contacts_over_limit_count: 0
+#    )
+
+# Delete contact list
+contact_lists.delete(list.id)
